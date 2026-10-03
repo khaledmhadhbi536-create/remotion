@@ -1,5 +1,7 @@
 import { Composition, Folder } from "remotion";
 import { HairPackAd } from "./HairPackAd";
+import { TOTAL_FRAMES } from "./presentation/edit";
+import { ProductPresentation } from "./presentation/ProductPresentation";
 import { CtaScene } from "./scenes/CtaScene";
 import { HookScene } from "./scenes/HookScene";
 import { PackIntroScene } from "./scenes/PackIntroScene";
@@ -18,6 +20,16 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1080}
+      />
+
+      {/* Seller's footage, re-edited: 9:16 with Arabic subtitles and sound design */}
+      <Composition
+        id="ProductPresentation"
+        component={ProductPresentation}
+        durationInFrames={TOTAL_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
       />
 
       <Folder name="Scenes">

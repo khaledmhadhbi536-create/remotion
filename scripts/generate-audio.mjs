@@ -254,6 +254,17 @@ const pop = () => {
 	return out;
 };
 
+// Short UI tick for chips / checkmarks
+const click = () => {
+	const len = Math.floor(0.06 * SR);
+	const out = new Float32Array(len);
+	for (let i = 0; i < len; i++) {
+		const t = i / SR;
+		out[i] = (Math.sin(2 * Math.PI * 2200 * t) * 0.6 + noise() * 0.4) * Math.exp(-t / 0.008);
+	}
+	return out;
+};
+
 const cashBell = () => {
 	const out = new Float32Array(Math.floor(1.2 * SR));
 	[
@@ -441,6 +452,9 @@ const outputs = {
 	shimmer: master(mono(shimmer()), 1.8),
 	pop: master(mono(pop()), 0.15),
 	'cash-bell': master(mono(cashBell()), 1.2),
+	impact: master(mono(impact(1)), 1.6),
+	riser: master(mono(riser(1.5, 1)), 1.5),
+	click: master(mono(click()), 0.06),
 };
 
 const hasFfmpeg = spawnSync('ffmpeg', ['-version']).status === 0;
