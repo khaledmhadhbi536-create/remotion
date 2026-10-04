@@ -9,7 +9,10 @@ import { bodyFont, brandFont, colors, displayFont } from "../theme";
 // (free delivery to all governorates + cash on delivery), then a clear "order now".
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
-const OrderButton: React.FC<{ readonly at: number }> = ({ at }) => {
+const OrderButton: React.FC<{
+  readonly at: number;
+  readonly label: string;
+}> = ({ at, label }) => {
   const frame = useCurrentFrame();
   return (
     <div
@@ -35,7 +38,7 @@ const OrderButton: React.FC<{ readonly at: number }> = ({ at }) => {
           (1 + 0.05 * Math.max(0, Math.sin(((frame - at) / 15) * Math.PI))),
       }}
     >
-      اطلب توّا
+      {label}
       <svg
         width="60"
         height="60"
@@ -95,7 +98,9 @@ const Perk: React.FC<{
   );
 };
 
-export const CtaScene: React.FC = () => {
+export const CtaScene: React.FC<{ readonly cta?: string }> = ({
+  cta = "اطلب توّا",
+}) => {
   const frame = useCurrentFrame();
   // Final hit of the music (28s) → end card
   const END = 126;
@@ -241,7 +246,7 @@ export const CtaScene: React.FC = () => {
             paddingBottom: 80,
           }}
         >
-          <OrderButton at={81} />
+          <OrderButton at={81} label={cta} />
         </AbsoluteFill>
       </AbsoluteFill>
 
@@ -293,7 +298,7 @@ export const CtaScene: React.FC = () => {
         >
           باك نموّ الشعر للرجال • 5 في 1
         </div>
-        <OrderButton at={END + 6} />
+        <OrderButton at={END + 6} label={cta} />
         <div
           style={{
             fontFamily: bodyFont,

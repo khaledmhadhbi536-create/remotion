@@ -469,7 +469,13 @@ const outputs = {
 	click: master(mono(click()), 0.06),
 };
 // Longer versions for the 5-piece pack ads — generated last so the files above stay identical
+// The (no longer shipped) 38s arrangement is still built so the shared random generator
+// stays in the same state and music-34s.mp3 remains bit-identical to the rendered ads.
+buildMusic(19);
 outputs['music-34s'] = master(buildMusic(17), 34);
+// Campaign videos: 18s (deal, gift) and 26s (natural); the 30s angle uses music.mp3
+outputs['music-18s'] = master(buildMusic(9), 18);
+outputs['music-26s'] = master(buildMusic(13), 26);
 
 const hasFfmpeg = spawnSync('ffmpeg', ['-version']).status === 0;
 for (const [name, buf] of Object.entries(outputs)) {

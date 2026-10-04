@@ -13,6 +13,8 @@ Dans le Gestionnaire de publicités, chargez le **4:5** et le **9:16** dans la m
 
 📈 Stratégie (analyse produits, prix, lancement des pubs, opérations) : **[PLAN-MARKETING.md](PLAN-MARKETING.md)**
 
+🎯 **Campagne prête à lancer** : 4 vidéos (une par avatar / angle) en 4:5 et 9:16, plus les 4 visuels statiques, le plan Meta et TikTok, les budgets et les règles de décision : **[CAMPAGNE.md](CAMPAGNE.md)**. Rendu : `npm run campaign`.
+
 🖼️ **4 publicités statiques** (4 avatars / angles, en 4:5 et 9:16) : `renders/statics/`, avec textes et ciblage dans **[ADS-STATIQUES.md](ADS-STATIQUES.md)**. Rendu : `npm run statics`.
 
 ## Modifier rapidement
@@ -41,7 +43,9 @@ src/
   HairPackReel.tsx      # Cadres 9:16 et 4:5 : en-tête + pub carrée + sous-titres
   config.ts             # Prix, nom de boutique, contact
   theme.ts              # Couleurs, polices, durée des transitions
-  scenes/               # OfferHook, Hook, PackIntro, Step (×3), Value, Cta
+  campaign/AngleAds.tsx # Les 4 vidéos de campagne (V1 Deal, V2 Early, V3 Natural, V4 Gift)
+  statics/StaticAds.tsx # Les 4 visuels statiques
+  scenes/               # OfferHook, Hook, AngleHooks, NumberedPack, PackIntro, Step, Value, Cta
   components/           # ProductImage / PackGroup, Captions (sous-titres), motifs, cheveux animés…
 public/
   products/             # Produits détourés
@@ -57,7 +61,8 @@ La musique est **générée par code**, sans aucun droit d'auteur : groove style
 npm i
 npm run dev        # Remotion Studio (aperçu + édition)
 npm run render:all # les 3 formats (1:1, 4:5, 9:16) + couvertures
-npm run still      # rend la miniature
+npm run campaign   # les 4 vidéos de campagne (4:5 + 9:16) + couvertures
+npm run statics    # les 4 visuels statiques (4:5 + 9:16)
 npm run audio      # régénère musique et effets (nécessite ffmpeg)
 ```
 

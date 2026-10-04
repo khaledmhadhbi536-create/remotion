@@ -93,15 +93,40 @@ export const FEED_45_LAYOUT: FrameLayout = {
   captionSize: 58,
 };
 
-export const HairPackReel: React.FC<FrameLayout> = ({
-  headerTop,
-  brandSize,
-  titleSize,
-  squareTop,
-  squareSize,
-  captionTop,
-  captionSize,
-}) => {
+// 9:16 tuned for Reels, Stories AND TikTok: TikTok's right icon column and bottom caption
+// area are larger than Instagram's, so the square is smaller and everything sits higher.
+export const SOCIAL_916_LAYOUT: FrameLayout = {
+  headerTop: 235,
+  brandSize: 48,
+  titleSize: 42,
+  squareTop: 375,
+  squareSize: 900,
+  captionTop: 1295,
+  captionSize: 64,
+};
+
+export const HairPackReel: React.FC<FrameLayout> = (layout) => (
+  <AdFrame layout={layout} captions={PACK_CAPTIONS}>
+    <HairPackAd />
+  </AdFrame>
+);
+
+// Branded frame around any square (1080×1080) ad: header + scaled square + captions
+export const AdFrame: React.FC<{
+  readonly layout: FrameLayout;
+  readonly captions: CaptionPhrase[];
+  readonly priceBumpAt?: number;
+  readonly children: React.ReactNode;
+}> = ({ layout, captions, priceBumpAt = CTA_START + 36, children }) => {
+  const {
+    headerTop,
+    brandSize,
+    titleSize,
+    squareTop,
+    squareSize,
+    captionTop,
+    captionSize,
+  } = layout;
   const frame = useCurrentFrame();
   const scale = squareSize / 1080;
   return (
@@ -147,16 +172,11 @@ export const HairPackReel: React.FC<FrameLayout> = ({
               borderRadius: 999,
               padding: "0 22px 4px",
               scale: String(
-                interpolate(
-                  frame,
-                  [CTA_START + 36, CTA_START + 48],
-                  [1, 1.25],
-                  {
-                    extrapolateLeft: "clamp",
-                    extrapolateRight: "clamp",
-                    easing: Easing.bezier(0.3, 1.6, 0.5, 1),
-                  },
-                ),
+                interpolate(frame, [priceBumpAt, priceBumpAt + 12], [1, 1.25], {
+                  extrapolateLeft: "clamp",
+                  extrapolateRight: "clamp",
+                  easing: Easing.bezier(0.3, 1.6, 0.5, 1),
+                }),
               ),
             }}
           >
@@ -187,13 +207,13 @@ export const HairPackReel: React.FC<FrameLayout> = ({
             transformOrigin: "0 0",
           }}
         >
-          <HairPackAd />
+          {children}
         </div>
       </div>
 
       {/* Captions under the square */}
       <CaptionTrack
-        phrases={PACK_CAPTIONS}
+        phrases={captions}
         top={captionTop}
         activeColor="rgba(200,150,62,0.95)"
         emphasisColor={colors.goldLight}

@@ -1,5 +1,16 @@
 import { Composition, Folder, Still } from "remotion";
 import {
+  CAMPAIGN,
+  V1Deal,
+  V1Framed,
+  V2Early,
+  V2Framed,
+  V3Framed,
+  V3Natural,
+  V4Framed,
+  V4Gift,
+} from "./campaign/AngleAds";
+import {
   StaticDeal,
   StaticEarly,
   StaticGift,
@@ -58,6 +69,114 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+
+      {/* Campaign — 4 videos, one per avatar / angle, in 1:1, 4:5 (feed) and 9:16 (Reels, Stories, TikTok) */}
+      <Folder name="Campaign">
+        <Composition
+          id="V1-Deal-1x1"
+          component={V1Deal}
+          durationInFrames={CAMPAIGN.v1.frames}
+          fps={30}
+          width={1080}
+          height={1080}
+        />
+        <Composition
+          id="V1-Deal-4x5"
+          component={V1Framed}
+          durationInFrames={CAMPAIGN.v1.frames}
+          fps={30}
+          width={1080}
+          height={1350}
+          defaultProps={{ format: "feed45" as const }}
+        />
+        <Composition
+          id="V1-Deal-9x16"
+          component={V1Framed}
+          durationInFrames={CAMPAIGN.v1.frames}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ format: "social916" as const }}
+        />
+        <Composition
+          id="V2-Early-1x1"
+          component={V2Early}
+          durationInFrames={CAMPAIGN.v2.frames}
+          fps={30}
+          width={1080}
+          height={1080}
+        />
+        <Composition
+          id="V2-Early-4x5"
+          component={V2Framed}
+          durationInFrames={CAMPAIGN.v2.frames}
+          fps={30}
+          width={1080}
+          height={1350}
+          defaultProps={{ format: "feed45" as const }}
+        />
+        <Composition
+          id="V2-Early-9x16"
+          component={V2Framed}
+          durationInFrames={CAMPAIGN.v2.frames}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ format: "social916" as const }}
+        />
+        <Composition
+          id="V3-Natural-1x1"
+          component={V3Natural}
+          durationInFrames={CAMPAIGN.v3.frames}
+          fps={30}
+          width={1080}
+          height={1080}
+        />
+        <Composition
+          id="V3-Natural-4x5"
+          component={V3Framed}
+          durationInFrames={CAMPAIGN.v3.frames}
+          fps={30}
+          width={1080}
+          height={1350}
+          defaultProps={{ format: "feed45" as const }}
+        />
+        <Composition
+          id="V3-Natural-9x16"
+          component={V3Framed}
+          durationInFrames={CAMPAIGN.v3.frames}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ format: "social916" as const }}
+        />
+        <Composition
+          id="V4-Gift-1x1"
+          component={V4Gift}
+          durationInFrames={CAMPAIGN.v4.frames}
+          fps={30}
+          width={1080}
+          height={1080}
+        />
+        <Composition
+          id="V4-Gift-4x5"
+          component={V4Framed}
+          durationInFrames={CAMPAIGN.v4.frames}
+          fps={30}
+          width={1080}
+          height={1350}
+          defaultProps={{ format: "feed45" as const }}
+        />
+        <Composition
+          id="V4-Gift-9x16"
+          component={V4Framed}
+          durationInFrames={CAMPAIGN.v4.frames}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ format: "social916" as const }}
+        />
+      </Folder>
 
       {/* Static ads — 4 avatars / angles, 4:5 feed + 9:16 stories */}
       <Folder name="StaticAds">

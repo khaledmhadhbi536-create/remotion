@@ -58,7 +58,15 @@ const PainChip: React.FC<{
   );
 };
 
-export const HookScene: React.FC = () => {
+export const HookScene: React.FC<{
+  readonly title?: string;
+  readonly chips?: readonly [string, string, string];
+  readonly sub?: string;
+}> = ({
+  title = "تساقط الشعر؟",
+  chips = ["يطيح", "خفيف", "الصلعة"],
+  sub = "جرّبت كل شي… و ما نفع شي؟",
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -118,14 +126,14 @@ export const HookScene: React.FC = () => {
             }),
           }}
         >
-          تساقط الشعر؟
+          {title}
         </div>
         <div
           style={{ display: "flex", gap: 20, marginTop: 50, direction: "rtl" }}
         >
-          <PainChip label="يطيح" at={30} tilt={-4} />
-          <PainChip label="خفيف" at={45} tilt={3} />
-          <PainChip label="الصلعة" at={60} tilt={-2} />
+          <PainChip label={chips[0]} at={30} tilt={-4} />
+          <PainChip label={chips[1]} at={45} tilt={3} />
+          <PainChip label={chips[2]} at={60} tilt={-2} />
         </div>
         <div
           style={{
@@ -149,7 +157,7 @@ export const HookScene: React.FC = () => {
             }),
           }}
         >
-          جرّبت كل شي… و ما نفع شي؟
+          {sub}
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

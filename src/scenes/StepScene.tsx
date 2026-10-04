@@ -18,6 +18,8 @@ export type StepSceneProps = {
   readonly accent: string;
   readonly background: string;
   readonly dark?: boolean;
+  // Overrides the "الخطوة N" pill (e.g. "مكوّن طبيعي")
+  readonly tag?: string;
 };
 
 export const StepScene: React.FC<StepSceneProps> = ({
@@ -30,6 +32,7 @@ export const StepScene: React.FC<StepSceneProps> = ({
   accent,
   background,
   dark = false,
+  tag,
 }) => {
   const frame = useCurrentFrame();
   const textColor = dark ? colors.white : colors.charcoal;
@@ -167,7 +170,7 @@ export const StepScene: React.FC<StepSceneProps> = ({
             }),
           }}
         >
-          الخطوة {step}
+          {tag ?? `الخطوة ${step}`}
         </div>
         <div
           style={{
