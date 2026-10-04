@@ -25,7 +25,7 @@ loadFont({
   weight: "400 900",
 });
 
-// Palette: Sidi Bou Said blue & whitewash, jasmine white, gold, and a rose/plum range for the pack
+// Palette: Sidi Bou Said blue & whitewash, jasmine white, gold, and a charcoal/bronze range for the (men's) pack
 export const colors = {
   blue: "#0B4F9C",
   blueDeep: "#062B57",
@@ -41,12 +41,12 @@ export const colors = {
   green: "#4F8A3A",
   red: "#E63946",
   ink: "#14223A",
-  // Pack palette, matched to the pink products
-  rose: "#E8578A",
-  roseDeep: "#B8326A",
-  blush: "#FCE8EE",
-  plum: "#2E0B24",
-  plumSoft: "#4A1639",
+  // Pack palette — masculine: charcoal, bronze and cool grey
+  bronze: "#C8963E",
+  bronzeDeep: "#8A6420",
+  mist: "#E9ECEF",
+  charcoal: "#121820",
+  charcoalSoft: "#25303C",
 };
 
 // Cuts are 12-frame transitions centred on the bar lines of the 120 BPM soundtrack,

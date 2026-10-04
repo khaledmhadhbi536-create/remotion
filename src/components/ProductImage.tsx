@@ -91,7 +91,7 @@ export const PackGroup: React.FC<{
       }}
     />
     <ProductImage
-      product="brushPink"
+      product="brushTerracotta"
       height={170 * scale}
       style={{
         position: "absolute",

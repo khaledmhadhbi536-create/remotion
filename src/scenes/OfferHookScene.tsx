@@ -12,10 +12,10 @@ const overshoot = Easing.bezier(0.2, 1.5, 0.4, 1);
 // Product burst: [product, height, x-centre, start frame]
 const BURST: [ProductKey, number, number, number][] = [
   ["rosemaryOil", 340, 150, 8],
-  ["bottlePink", 380, 320, 11],
+  ["bottleBlack", 380, 320, 11],
   ["dermaRoller", 220, 545, 6],
   ["sidr", 320, 780, 14],
-  ["brushPink", 200, 955, 17],
+  ["brushTerracotta", 200, 955, 17],
 ];
 
 export const OfferHookScene: React.FC = () => {
@@ -27,7 +27,7 @@ export const OfferHookScene: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        background: `radial-gradient(circle at 50% 42%, ${colors.rose} 0%, ${colors.roseDeep} 45%, ${colors.plum} 100%)`,
+        background: `radial-gradient(circle at 50% 42%, ${colors.bronze} 0%, ${colors.bronzeDeep} 45%, ${colors.charcoal} 100%)`,
         overflow: "hidden",
         translate: `${Math.sin(frame * 3.3) * shake}px ${Math.cos(frame * 2.9) * shake}px`,
       }}
@@ -129,7 +129,7 @@ export const OfferHookScene: React.FC = () => {
               fontFamily: displayFont,
               fontSize: 160,
               lineHeight: 1,
-              color: colors.plum,
+              color: colors.charcoal,
               background: colors.goldLight,
               padding: "0 40px 26px",
               borderRadius: 30,
@@ -186,7 +186,7 @@ export const OfferHookScene: React.FC = () => {
               (0.75 + 0.25 * Math.abs(Math.sin(frame / 6))),
           }}
         >
-          الكمية محدودة • توصيل مجاني
+          الكمية محدودة • الخلاص عند الاستلام
         </div>
       </AbsoluteFill>
 

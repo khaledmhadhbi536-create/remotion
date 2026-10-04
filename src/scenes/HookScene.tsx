@@ -76,7 +76,7 @@ export const HookScene: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        background: `radial-gradient(circle at 50% 35%, ${colors.plumSoft} 0%, ${colors.plum} 70%)`,
+        background: `radial-gradient(circle at 50% 35%, ${colors.charcoalSoft} 0%, ${colors.charcoal} 70%)`,
         overflow: "hidden",
       }}
     >
@@ -123,9 +123,9 @@ export const HookScene: React.FC = () => {
         <div
           style={{ display: "flex", gap: 20, marginTop: 50, direction: "rtl" }}
         >
-          <PainChip label="خفيف" at={30} tilt={-4} />
-          <PainChip label="ضعيف" at={45} tilt={3} />
-          <PainChip label="ما يطولش" at={60} tilt={-2} />
+          <PainChip label="يطيح" at={30} tilt={-4} />
+          <PainChip label="خفيف" at={45} tilt={3} />
+          <PainChip label="الصلعة" at={60} tilt={-2} />
         </div>
         <div
           style={{
@@ -149,7 +149,7 @@ export const HookScene: React.FC = () => {
             }),
           }}
         >
-          جرّبتي كل شي… و ما نفع شي؟
+          جرّبت كل شي… و ما نفع شي؟
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

@@ -73,8 +73,8 @@ export const RemotionRoot: React.FC = () => {
             howTo: "مرّة في الجمعة على فروة الراس",
             products: [{ product: "dermaRoller", height: 260 }],
             motion: "roll",
-            accent: colors.rose,
-            background: colors.blush,
+            accent: colors.bronze,
+            background: colors.mist,
           }}
         />
         <Composition

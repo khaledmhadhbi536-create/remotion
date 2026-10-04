@@ -16,7 +16,7 @@ const OrderButton: React.FC<{ readonly at: number }> = ({ at }) => {
       style={{
         fontFamily: displayFont,
         fontSize: 78,
-        color: colors.plum,
+        color: colors.charcoal,
         background: `linear-gradient(180deg, ${colors.goldLight} 0%, ${colors.gold} 100%)`,
         padding: "10px 64px 22px",
         borderRadius: 999,
@@ -35,7 +35,7 @@ const OrderButton: React.FC<{ readonly at: number }> = ({ at }) => {
           (1 + 0.05 * Math.max(0, Math.sin(((frame - at) / 15) * Math.PI))),
       }}
     >
-      اطلبي توّا
+      اطلب توّا
       <svg
         width="60"
         height="60"
@@ -44,7 +44,7 @@ const OrderButton: React.FC<{ readonly at: number }> = ({ at }) => {
       >
         <path
           d="M2 5 L8 5 M5 2 L8 5 L5 8"
-          stroke={colors.plum}
+          stroke={colors.charcoal}
           strokeWidth="1.4"
           fill="none"
           strokeLinecap="round"
@@ -83,7 +83,7 @@ const Perk: React.FC<{
         <circle cx="5" cy="5" r="5" fill={colors.goldLight} />
         <path
           d="M2.6 5.2 L4.3 6.8 L7.4 3.6"
-          stroke={colors.plum}
+          stroke={colors.charcoal}
           strokeWidth="1.2"
           fill="none"
           strokeLinecap="round"
@@ -105,7 +105,7 @@ export const CtaScene: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        background: `radial-gradient(circle at 30% 40%, ${colors.rose} 0%, ${colors.roseDeep} 45%, ${colors.plum} 100%)`,
+        background: `radial-gradient(circle at 30% 40%, ${colors.bronze} 0%, ${colors.bronzeDeep} 45%, ${colors.charcoal} 100%)`,
         overflow: "hidden",
       }}
     >
@@ -118,7 +118,7 @@ export const CtaScene: React.FC = () => {
             style={{
               fontFamily: displayFont,
               fontSize: 84,
-              color: colors.plum,
+              color: colors.charcoal,
               background: colors.white,
               padding: "4px 50px 16px",
               borderRadius: 18,
@@ -229,7 +229,7 @@ export const CtaScene: React.FC = () => {
               marginTop: 30,
             }}
           >
-            <Perk at={51}>توصيل مجاني لكل الولايات</Perk>
+            <Perk at={51}>الكمية محدودة</Perk>
             <Perk at={66}>الخلاص عند الاستلام</Perk>
           </div>
         </div>
@@ -251,11 +251,11 @@ export const CtaScene: React.FC = () => {
           alignItems: "center",
           justifyContent: "center",
           opacity: endIn,
-          background: colors.blush,
+          background: colors.mist,
           clipPath: `circle(${endIn * 110}% at 50% 50%)`,
         }}
       >
-        <TilePattern color={colors.rose} opacity={0.1} drift={frame * 0.3} />
+        <TilePattern color={colors.bronze} opacity={0.1} drift={frame * 0.3} />
         <PackGroup
           scale={0.62}
           style={{
@@ -275,7 +275,7 @@ export const CtaScene: React.FC = () => {
               ...clamp,
               easing: Easing.bezier(0.16, 1, 0.3, 1),
             }),
-            color: colors.plum,
+            color: colors.charcoal,
             lineHeight: 1.1,
             marginTop: 10,
           }}
@@ -286,12 +286,12 @@ export const CtaScene: React.FC = () => {
           style={{
             fontFamily: displayFont,
             fontSize: 64,
-            color: colors.roseDeep,
+            color: colors.bronzeDeep,
             direction: "rtl",
             marginBottom: 36,
           }}
         >
-          باك نموّ الشعر 5 في 1
+          باك نموّ الشعر للرجال • 5 في 1
         </div>
         <OrderButton at={END + 6} />
         <div
@@ -299,7 +299,7 @@ export const CtaScene: React.FC = () => {
             fontFamily: bodyFont,
             fontWeight: 800,
             fontSize: 44,
-            color: colors.plum,
+            color: colors.charcoal,
             marginTop: 34,
             direction: "rtl",
           }}

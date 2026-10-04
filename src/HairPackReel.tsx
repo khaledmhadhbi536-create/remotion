@@ -20,7 +20,7 @@ export const PACK_CAPTIONS: CaptionPhrase[] = [
     emphasis: [`${PRICES.pack}`],
   },
   { start: 4.2, end: 6.0, text: "الشعر يطيح؟", emphasis: ["يطيح؟"] },
-  { start: 6.0, end: 7.8, text: "خفيف و ما يطولش؟", emphasis: ["خفيف"] },
+  { start: 6.0, end: 7.8, text: "خفيف و بدات الصلعة؟", emphasis: ["الصلعة؟"] },
   {
     start: 8.2,
     end: 11.8,
@@ -30,7 +30,7 @@ export const PACK_CAPTIONS: CaptionPhrase[] = [
   {
     start: 12.2,
     end: 15.8,
-    text: "اغسلي بالسدر البيو و مشط الجذور يوصّلو للجذور",
+    text: "اغسل بالسدر البيو و مشط الجذور يوصّلو للجذور",
     emphasis: ["بالسدر", "الجذور"],
   },
   {
@@ -57,7 +57,7 @@ export const PACK_CAPTIONS: CaptionPhrase[] = [
     text: `اليوم الخمسة بـ ${PRICES.pack} دينار برك`,
     emphasis: [`${PRICES.pack}`],
   },
-  { start: 32.0, end: 33.9, text: "اطلبي توّا!", emphasis: ["توّا!"] },
+  { start: 32.0, end: 33.9, text: "اطلب توّا!", emphasis: ["توّا!"] },
 ];
 
 const SQUARE_TOP = 400;
@@ -67,10 +67,10 @@ export const HairPackReel: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        background: `linear-gradient(180deg, ${colors.plumSoft} 0%, ${colors.plum} 100%)`,
+        background: `linear-gradient(180deg, ${colors.charcoalSoft} 0%, ${colors.charcoal} 100%)`,
       }}
     >
-      <TilePattern color={colors.rose} opacity={0.08} drift={frame * 0.3} />
+      <TilePattern color={colors.bronze} opacity={0.08} drift={frame * 0.3} />
 
       {/* Header */}
       <AbsoluteFill style={{ alignItems: "center", paddingTop: 110 }}>
@@ -98,10 +98,10 @@ export const HairPackReel: React.FC = () => {
             gap: 18,
           }}
         >
-          باك نموّ الشعر {PACK_PIECES} في 1
+          باك نموّ الشعر للرجال • {PACK_PIECES} في 1
           <span
             style={{
-              background: colors.rose,
+              background: colors.bronze,
               borderRadius: 999,
               padding: "0 24px 6px",
               fontSize: 48,
@@ -143,7 +143,7 @@ export const HairPackReel: React.FC = () => {
       <CaptionTrack
         phrases={PACK_CAPTIONS}
         top={SQUARE_TOP + 1080 + 70}
-        activeColor="rgba(232,87,138,0.95)"
+        activeColor="rgba(200,150,62,0.95)"
         emphasisColor={colors.goldLight}
         fontSize={76}
       />

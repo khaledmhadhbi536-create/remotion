@@ -1,4 +1,4 @@
-# Pack Pousse des Cheveux 5 en 1 à 49 DT (AURA BIO) — Pubs vidéo 34s (Remotion)
+# Pack Pousse des Cheveux 5 en 1 pour hommes à 49 DT (AURA BIO) — Pubs vidéo 34s (Remotion)
 
 Pub de **34 secondes** avec un hook promo (« عرض استثنائي! 5 قطع بـ 49 د.ت ») en **derja tunisienne** pour le pack **Derma Roller 540 + huile de romarin + flacon applicateur + poudre de sidr + brosse de massage**, à partir des photos des produits. Deux formats :
 

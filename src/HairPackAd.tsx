@@ -31,7 +31,7 @@ const END_CARD = CTA_START + 126; // 32s, final hit of the music
 const DHT_LINE = "الإكليل معروف ضد الـDHT";
 
 const sfx = (name: string) => staticFile(`audio/${name}.mp3`);
-const dark = `linear-gradient(160deg, ${colors.plumSoft} 0%, ${colors.plum} 100%)`;
+const dark = `linear-gradient(160deg, ${colors.charcoalSoft} 0%, ${colors.charcoal} 100%)`;
 
 export const HairPackAd: React.FC = () => {
   const { fps } = useVideoConfig();
@@ -78,20 +78,20 @@ export const HairPackAd: React.FC = () => {
         >
           <StepScene
             step={1}
-            title="اغسلي بالسدر البيو"
+            title="اغسل بالسدر البيو"
             bullets={[
-              "خلطيه بالماء في مشط الجذور",
+              "اخلطو بالماء في مشط الجذور",
               "يوصل للجذور طول",
               "تنظيف طبيعي بلا كيمياء",
             ]}
-            howTo="طبّقيه بالمشط على الجذور و اشطفي"
+            howTo="طبّقو بالمشط على الجذور و اشطف"
             products={[
               { product: "sidr", height: 330 },
-              { product: "bottlePink", height: 400 },
+              { product: "bottleBlack", height: 400 },
             ]}
             motion="tilt"
-            accent={colors.rose}
-            background={colors.blush}
+            accent={colors.bronze}
+            background={colors.mist}
           />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={slideIn} timing={timing} />
@@ -108,9 +108,9 @@ export const HairPackAd: React.FC = () => {
               "و بعدو قطرات زيت الإكليل",
               ...(DHT_LINE ? [DHT_LINE] : []),
             ]}
-            howTo="رولّي على فروة الراس و حطّي القطرات"
+            howTo="رولّ على فروة الراس و حطّ القطرات"
             products={[
-              { product: "dermaRoller", height: 170 },
+              { product: "dermaRoller", height: 145 },
               { product: "rosemaryOil", height: 330 },
             ]}
             motion="roll"
@@ -128,12 +128,12 @@ export const HairPackAd: React.FC = () => {
           <StepScene
             step={3}
             title="فرشة تدليك الراس"
-            bullets={["تنشّط الدورة الدموية", "دلّكي فروة الراس بلطف"]}
+            bullets={["تنشّط الدورة الدموية", "دلّك فروة الراس بلطف"]}
             howTo="دقيقتين تدليك في الدوش"
-            products={[{ product: "brushPink", height: 330 }]}
+            products={[{ product: "brushTerracotta", height: 330 }]}
             motion="massage"
-            accent={colors.rose}
-            background={colors.blush}
+            accent={colors.bronze}
+            background={colors.mist}
           />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={timing} />

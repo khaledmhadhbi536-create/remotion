@@ -21,11 +21,11 @@ export const PackIntroScene: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        background: `radial-gradient(circle at 50% 60%, ${colors.white} 0%, ${colors.blush} 55%, #F6C9D8 100%)`,
+        background: `radial-gradient(circle at 50% 60%, ${colors.white} 0%, ${colors.mist} 55%, #C9CED6 100%)`,
         overflow: "hidden",
       }}
     >
-      <TilePattern color={colors.rose} opacity={0.08} drift={-frame * 0.4} />
+      <TilePattern color={colors.bronze} opacity={0.08} drift={-frame * 0.4} />
 
       <AbsoluteFill
         style={{ alignItems: "center", paddingTop: 96, direction: "rtl" }}
@@ -35,18 +35,18 @@ export const PackIntroScene: React.FC = () => {
             fontFamily: bodyFont,
             fontWeight: 800,
             fontSize: 52,
-            color: colors.roseDeep,
+            color: colors.bronzeDeep,
             opacity: interpolate(frame, [6, 12], [0, 1], clamp),
           }}
         >
-          الحل؟ باك فيه 5 قطع
+          الحل؟ باك رجالي فيه 5 قطع
         </div>
         <div
           style={{
             fontFamily: displayFont,
             fontSize: 112,
             lineHeight: 1.15,
-            color: colors.plum,
+            color: colors.charcoal,
             marginTop: 8,
             opacity: interpolate(frame, [10, 16], [0, 1], clamp),
             scale: interpolate(frame, [10, 22], [0.7, 1], {
@@ -76,7 +76,7 @@ export const PackIntroScene: React.FC = () => {
           style={{ rotate: "-5deg", ...drop(51) }}
         />
         <ProductImage
-          product="bottlePink"
+          product="bottleBlack"
           height={400}
           style={{ rotate: "3deg", ...drop(66) }}
         />
@@ -91,7 +91,7 @@ export const PackIntroScene: React.FC = () => {
           style={{ rotate: "4deg", ...drop(81) }}
         />
         <ProductImage
-          product="brushPink"
+          product="brushTerracotta"
           height={180}
           style={{ rotate: "6deg", ...drop(96) }}
         />
@@ -106,7 +106,7 @@ export const PackIntroScene: React.FC = () => {
           width: 170,
           height: 170,
           borderRadius: "50%",
-          background: colors.rose,
+          background: colors.bronze,
           color: colors.white,
           display: "flex",
           flexDirection: "column",

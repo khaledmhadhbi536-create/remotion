@@ -32,7 +32,7 @@ export const StepScene: React.FC<StepSceneProps> = ({
   dark = false,
 }) => {
   const frame = useCurrentFrame();
-  const textColor = dark ? colors.white : colors.plum;
+  const textColor = dark ? colors.white : colors.charcoal;
 
   // Usage demo motions (start once the product has landed)
   const t = Math.max(0, frame - 20);
@@ -52,7 +52,7 @@ export const StepScene: React.FC<StepSceneProps> = ({
   return (
     <AbsoluteFill style={{ background, overflow: "hidden" }}>
       <TilePattern
-        color={dark ? "#ffffff" : colors.rose}
+        color={dark ? "#ffffff" : colors.bronze}
         opacity={dark ? 0.06 : 0.08}
         drift={frame * 0.4}
       />
@@ -255,8 +255,8 @@ export const StepScene: React.FC<StepSceneProps> = ({
             fontFamily: bodyFont,
             fontWeight: 800,
             fontSize: 40,
-            color: dark ? colors.plum : colors.white,
-            background: dark ? colors.goldLight : colors.plum,
+            color: dark ? colors.charcoal : colors.white,
+            background: dark ? colors.goldLight : colors.charcoal,
             padding: "10px 36px 14px",
             borderRadius: 18,
             direction: "rtl",

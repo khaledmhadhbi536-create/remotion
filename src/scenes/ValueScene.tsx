@@ -49,7 +49,7 @@ const Row: React.FC<{
           fontFamily: bodyFont,
           fontWeight: 900,
           fontSize: 40,
-          color: colors.plum,
+          color: colors.charcoal,
           marginRight: 20,
         }}
       >
@@ -60,7 +60,7 @@ const Row: React.FC<{
           fontFamily: bodyFont,
           fontWeight: 900,
           fontSize: 40,
-          color: colors.roseDeep,
+          color: colors.bronzeDeep,
         }}
       >
         {price} د.ت
@@ -74,11 +74,11 @@ export const ValueScene: React.FC = () => {
   return (
     <AbsoluteFill
       style={{
-        background: `linear-gradient(160deg, ${colors.plumSoft} 0%, ${colors.plum} 100%)`,
+        background: `linear-gradient(160deg, ${colors.charcoalSoft} 0%, ${colors.charcoal} 100%)`,
         overflow: "hidden",
       }}
     >
-      <TilePattern color={colors.rose} opacity={0.1} drift={-frame * 0.5} />
+      <TilePattern color={colors.bronze} opacity={0.1} drift={-frame * 0.5} />
       <AbsoluteFill style={{ alignItems: "center", paddingTop: 60, gap: 14 }}>
         <div
           style={{
@@ -113,7 +113,7 @@ export const ValueScene: React.FC = () => {
         />
         <Row
           at={45}
-          product="bottlePink"
+          product="bottleBlack"
           height={92}
           label="قارورة بمشط للجذور"
           price={PRICES.applicator}
@@ -127,7 +127,7 @@ export const ValueScene: React.FC = () => {
         />
         <Row
           at={69}
-          product="brushPink"
+          product="brushTerracotta"
           height={78}
           label="فرشة تدليك الراس"
           price={PRICES.brush}

@@ -1,4 +1,4 @@
-# Plan marketing — Pack Pousse des Cheveux 5 en 1 (AURA BIO)
+# Plan marketing — Pack Pousse des Cheveux 5 en 1 pour hommes (AURA BIO)
 
 ## 1. Analyse des produits (photos dans `assets/source-images/`)
 
@@ -6,9 +6,11 @@
 |---|---|---|---|
 | `derma-roller-540` | **Derma Roller 540 micro-aiguilles** | Micro-perforations du cuir chevelu : stimule la zone et aide les soins à pénétrer | Étape 1 : préparer |
 | `rosemary-oil-aura-bio` | **Huile de romarin AURA BIO** (huile végétale, 30 ml) | Soin des racines ; c'est l'ingrédient star « pousse » sur les réseaux | Étape 2 : nourrir |
-| `applicator-bottle-black` / `…-pink` | **Flacon applicateur à peigne** (rose ou noir) | Dépose l'huile directement sur les racines, raie par raie, sans gaspillage | Étape 3 : appliquer |
+| `applicator-bottle-black` | **Flacon applicateur à peigne** (noir) | Dépose l'huile directement sur les racines, raie par raie, sans gaspillage | Étape 3 : appliquer |
 | `sidr-powder-aura-bio` | **Poudre de sidr royal AURA BIO** | Lavage naturel et doux, sans produits chimiques ; très connu au Maghreb | Étape 4 : laver |
 | `applicator-bottle-and-brush-pink` / `scalp-massager-brush` | **Brosse de massage** en silicone | Masse le cuir chevelu et répartit le sidr sous la douche | Étape 5 : masser |
+
+**Cible : les hommes** (calvitie, cheveux qui tombent ou s'affinent). Tous les textes sont au masculin (« اغسل »، « اطلب توّا ») et la charte est charbon / bronze, avec le flacon noir.
 
 **Constat :** avec l'huile de romarin et le sidr, le pack n'est plus un lot d'accessoires. C'est une **routine naturelle complète** : préparer, nourrir, appliquer, laver, masser. Les deux soins **AURA BIO** donnent une marque et un côté « bio / naturel » qui rassure et justifie un prix plus haut.
 
@@ -16,7 +18,7 @@
 
 **Nom :** « باك نموّ الشعر 5 في 1 » / *Pack Pousse des Cheveux 5 en 1*
 
-**Contenu :** Derma Roller 540 + huile de romarin 30 ml + flacon applicateur « مشط الجذور » (rose ou noir) + poudre de sidr bio + brosse de massage.
+**Contenu :** Derma Roller 540 + huile de romarin 30 ml + flacon applicateur « مشط الجذور » (noir) + poudre de sidr bio + brosse de massage.
 
 **La routine (3 étapes, celle des vidéos) :**
 1. **Laver au sidr bio** : mélanger le sidr à l'eau dans le flacon « مشط الجذور » pour l'appliquer directement sur les racines, puis rincer.
@@ -35,7 +37,7 @@
 | Poudre de sidr | 15 DT |
 | Brosse de massage | 20 DT |
 | **Valeur totale (ancrage)** | **110 DT** |
-| **Prix promo du pack** | **49 DT** (−55 %), livraison gratuite, paiement à la livraison |
+| **Prix promo du pack** | **49 DT** (−55 %), paiement à la livraison (frais de livraison **non offerts**) |
 | Recharge huile + sidr (relance) | 35 DT |
 
 **Pourquoi 49 DT fonctionne en hook :** « 5 قطع بـ 49 د.ت » est une offre choc. 5 produits pour moins de 50 DT, c'est moins de 10 DT par pièce, et la remise de −55 % se voit tout de suite.
@@ -46,10 +48,12 @@
 |---|---|
 | Prix de vente | 49 |
 | Coût d'achat des 5 produits + emballage (estimation) | −24 |
-| Livraison (société de livraison, estimation) | −7 |
-| **Marge avant publicité** | **18** → CPA maximum (seuil de rentabilité) |
-| Objectif coût pub par commande **livrée** | ≤ 8 |
-| **Marge nette visée** | **≈ 8–10** |
+| Livraison | 0 (payée par le client) |
+| **Marge avant publicité** | **25** → CPA maximum (seuil de rentabilité) |
+| Objectif coût pub par commande **livrée** | ≤ 10 |
+| **Marge nette visée** | **≈ 12–15** |
+
+La livraison n'est plus offerte, donc les frais (≈ 7 DT) sont payés par le client et la marge passe de 18 à **25 DT**. Annoncez le montant exact à la confirmation téléphonique pour éviter les refus de colis.
 
 Pour que 49 DT reste rentable :
 - **présentez-le comme une promo limitée** (c'est le cas dans la vidéo : « عرض استثنائي », « الكمية محدودة »), puis remontez à 59 ou 69 DT quand le stock promo est vendu ;
@@ -68,14 +72,14 @@ Deux formats, même montage :
 
 | Temps | Scène | Sous-titre (9:16) |
 |---|---|---|
-| 0–4s | **Hook promo** : flash, tampon « عرض استثنائي! », les 5 produits explosent à l'écran, prix géant **49 د.ت**, « بلاصة 110 » barré, « الكمية محدودة • توصيل مجاني » | عرض استثنائي! 5 قطع بـ 49 دينار برك |
+| 0–4s | **Hook promo** : flash, tampon « عرض استثنائي! », les 5 produits explosent à l'écran, prix géant **49 د.ت**, « بلاصة 110 » barré, « الكمية محدودة • الخلاص عند الاستلام » | عرض استثنائي! 5 قطع بـ 49 دينار برك |
 | 4–8s | Problème : « تساقط الشعر؟ » + خفيف / ضعيف / ما يطولش | الشعر يطيح؟ خفيف و ما يطولش؟ |
 | 8–12s | Les 5 produits tombent sur le beat : « روتين طبيعي في 3 خطوات » | الحل: روتين طبيعي في 3 خطوات |
 | 12–16s | Étape 1 : sidr bio + مشط الجذور | اغسلي بالسدر البيو و مشط الجذور يوصّلو للجذور |
 | 16–20s | Étape 2 : Derma Roller 2×/semaine + gouttes de romarin | ديرما رولر مرّتين في الجمعة و بعدو قطرات إكليل الجبل |
 | 20–24s | Étape 3 : brosse, circulation sanguine | و الفرشة تنشّط الدورة الدموية |
 | 24–28s | « شنوّة فيه الباك؟ » : 5 lignes de prix, total 110 DT | كل وحدة وحدها بـ 110 دينار |
-| 28–34s | 110 → **49 DT**, livraison gratuite, paiement à la livraison, « اطلبي توّا » | اليوم الخمسة بـ 49 دينار برك |
+| 28–34s | 110 → **49 DT**, « الكمية محدودة », paiement à la livraison, « اطلب توّا » | اليوم الخمسة بـ 49 دينار برك |
 
 **Sound design :**
 - **Hook :** flash et impact à l'ouverture, « pop » à chaque produit qui explose, impact et cloche quand le prix tombe, clic sur le prix barré.
@@ -103,9 +107,9 @@ Deux formats, même montage :
 
 | Ensemble de pubs | Audience |
 |---|---|
-| A | Tunisie, femmes 20–45, **large** (Advantage+), sans intérêts |
-| B | Femmes 20–45, intérêts : soins capillaires, huiles naturelles, beauté |
-| C | Hommes et femmes 25–45, intérêts : barbe, calvitie (avec la variante « flacon noir ») |
+| A | Tunisie, **hommes 22–45**, **large** (Advantage+), sans intérêts |
+| B | Hommes 22–45, intérêts : calvitie, perte de cheveux, minoxidil, barbe, soins pour hommes |
+| C | Hommes 25–50, intérêts : salle de sport, football, barbier (audience « style ») |
 
 **Créatives à tester (3 par ensemble) :**
 1. Cette vidéo (hook problème).
