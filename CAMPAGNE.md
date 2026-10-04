@@ -111,15 +111,14 @@ Compte publicitaire **NATURA VASELINE TEST** (`1984526072212989`), page **Aura B
 | Ensemble C · hommes 28–50 · 3 $/j | `ADS_C-Natural_H28-50_TN` | 120250835781290050 |
 | Ensemble D · femmes 25–55 · 3 $/j | `ADS_D-Gift_F25-55_TN` | 120250835781950050 |
 
-**Publicités créées : 7, toutes en pause.** A vidéo + statique, B vidéo + statique, C statique, D vidéo + statique.
+**Publicités créées : 8, toutes en pause.** Une vidéo + une statique par angle (A, B, C, D).
 - Bouton « Envoyer un message ».
 - Texte en derja de `ADS-STATIQUES.md`.
 
 **Emplacements :** Facebook (fil, Stories, Reels, Marketplace, vidéos, profil). Audience Network, colonne de droite et Messenger sont exclus.
 
 **À faire dans le Gestionnaire de publicités avant d'activer :**
-1. **Pub C-Natural vidéo** : la vidéo `AURA_HAIR_V3-Natural_4x5` est déjà dans la bibliothèque, il reste à créer la pub dans l'ensemble C. Pour aller vite, dupliquez « AURA_HAIR_C-Natural_static » puis remplacez l'image par la vidéo.
-2. **9:16 pour Stories / Reels** : dans chaque pub, utilisez « Modifier le média par emplacement » et choisissez le fichier `…_9x16` déjà chargé.
-3. **Instagram** : aucun compte Instagram n'est relié à ce compte publicitaire. Reliez-le (Paramètres de la page → Comptes liés), puis ajoutez Instagram dans les emplacements.
-4. **Message pré-rempli** différent par angle (A / B / C / D), dans la partie « Modèle de message » de chaque pub.
-5. **Activer la campagne** quand tout est prêt.
+1. **9:16 pour Stories / Reels** : dans chaque pub, utilisez « Modifier le média par emplacement » et choisissez le fichier `…_9x16` déjà chargé.
+2. **Instagram** : le compte Instagram est relié à la page, mais pas au compte publicitaire. Dans Paramètres du business (naturaglow) → Comptes → Comptes Instagram → Aura Bio → Éléments connectés, ajoutez NATURA VASELINE TEST. Ensuite, les pubs seront recréées avec l'identité Instagram et les emplacements Instagram seront ajoutés.
+3. **Message pré-rempli** différent par angle (A / B / C / D), dans la partie « Modèle de message » de chaque pub.
+4. **Activer la campagne** quand tout est prêt.
