@@ -1,4 +1,11 @@
-import { Composition, Folder } from "remotion";
+import { Composition, Folder, Still } from "remotion";
+import {
+  StaticDeal,
+  StaticEarly,
+  StaticGift,
+  StaticNatural,
+  StoryFrame,
+} from "./statics/StaticAds";
 import { HairPackAd, PACK_AD_FRAMES } from "./HairPackAd";
 import { FEED_45_LAYOUT, HairPackReel, REEL_LAYOUT } from "./HairPackReel";
 import { TOTAL_FRAMES } from "./presentation/edit";
@@ -51,6 +58,62 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+
+      {/* Static ads — 4 avatars / angles, 4:5 feed + 9:16 stories */}
+      <Folder name="StaticAds">
+        <Still
+          id="Static-A-Deal-4x5"
+          component={StaticDeal}
+          width={1080}
+          height={1350}
+        />
+        <Still
+          id="Static-B-Early-4x5"
+          component={StaticEarly}
+          width={1080}
+          height={1350}
+        />
+        <Still
+          id="Static-C-Natural-4x5"
+          component={StaticNatural}
+          width={1080}
+          height={1350}
+        />
+        <Still
+          id="Static-D-Gift-4x5"
+          component={StaticGift}
+          width={1080}
+          height={1350}
+        />
+        <Still
+          id="Static-A-Deal-9x16"
+          component={StoryFrame}
+          width={1080}
+          height={1920}
+          defaultProps={{ ad: "deal" as const }}
+        />
+        <Still
+          id="Static-B-Early-9x16"
+          component={StoryFrame}
+          width={1080}
+          height={1920}
+          defaultProps={{ ad: "early" as const }}
+        />
+        <Still
+          id="Static-C-Natural-9x16"
+          component={StoryFrame}
+          width={1080}
+          height={1920}
+          defaultProps={{ ad: "natural" as const }}
+        />
+        <Still
+          id="Static-D-Gift-9x16"
+          component={StoryFrame}
+          width={1080}
+          height={1920}
+          defaultProps={{ ad: "gift" as const }}
+        />
+      </Folder>
 
       <Folder name="Scenes">
         <Composition

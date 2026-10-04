@@ -13,6 +13,8 @@ Dans le Gestionnaire de publicités, chargez le **4:5** et le **9:16** dans la m
 
 📈 Stratégie (analyse produits, prix, lancement des pubs, opérations) : **[PLAN-MARKETING.md](PLAN-MARKETING.md)**
 
+🖼️ **4 publicités statiques** (4 avatars / angles, en 4:5 et 9:16) : `renders/statics/`, avec textes et ciblage dans **[ADS-STATIQUES.md](ADS-STATIQUES.md)**. Rendu : `npm run statics`.
+
 ## Modifier rapidement
 
 - **Prix, nom de la marque, contact :** `src/config.ts`
