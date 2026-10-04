@@ -66,9 +66,12 @@ Pour changer les prix dans les vidéos, modifiez `src/config.ts`, puis lancez `n
 
 ## 4. Les vidéos (34s)
 
-Deux formats, même montage :
-- **1:1** (`renders/pack-cheveux-5en1-49dt-1080x1080.mp4`) pour le fil Facebook / Instagram ;
-- **9:16** (`renders/pack-cheveux-5en1-49dt-9x16.mp4`) pour Reels / TikTok / Stories, avec en-tête AURA BIO + prix et **sous-titres arabes mot par mot** sous la vidéo.
+Trois formats, même montage :
+- **4:5** (`renders/pack-cheveux-5en1-49dt-4x5.mp4`) pour le **fil** Facebook et Instagram, avec en-tête AURA BIO + prix et sous-titres ;
+- **9:16** (`renders/pack-cheveux-5en1-49dt-9x16.mp4`) pour **Reels et Stories**, avec sous-titres arabes mot par mot, tout dans les zones sûres ;
+- **1:1** (`renders/pack-cheveux-5en1-49dt-1x1.mp4`) pour la colonne de droite, Marketplace et les publications organiques.
+
+Dans chaque publicité, chargez le **4:5 + 9:16** avec « Personnaliser le placement » : Meta choisit le bon format selon l'emplacement.
 
 | Temps | Scène | Sous-titre (9:16) |
 |---|---|---|

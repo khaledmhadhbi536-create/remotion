@@ -1,6 +1,6 @@
 import { Composition, Folder } from "remotion";
 import { HairPackAd, PACK_AD_FRAMES } from "./HairPackAd";
-import { HairPackReel } from "./HairPackReel";
+import { FEED_45_LAYOUT, HairPackReel, REEL_LAYOUT } from "./HairPackReel";
 import { TOTAL_FRAMES } from "./presentation/edit";
 import { ProductPresentation } from "./presentation/ProductPresentation";
 import { CtaScene } from "./scenes/CtaScene";
@@ -30,6 +30,16 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
+        defaultProps={REEL_LAYOUT}
+      />
+      <Composition
+        id="HairPackFeed45"
+        component={HairPackReel}
+        durationInFrames={PACK_AD_FRAMES}
+        fps={30}
+        width={1080}
+        height={1350}
+        defaultProps={FEED_45_LAYOUT}
       />
 
       {/* Seller's footage, re-edited: 9:16 with Arabic subtitles and sound design */}

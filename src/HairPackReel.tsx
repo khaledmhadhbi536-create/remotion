@@ -60,10 +60,50 @@ export const PACK_CAPTIONS: CaptionPhrase[] = [
   { start: 32.0, end: 33.9, text: "اطلب توّا!", emphasis: ["توّا!"] },
 ];
 
-const SQUARE_TOP = 400;
+// Layouts for the formats Meta recommends. The square ad is scaled into a branded frame.
+// 9:16 keeps everything inside Reels / Stories safe zones (top ~250px and bottom ~400px
+// are covered by Instagram / Facebook UI); 4:5 is the tallest feed format on both apps.
+export type FrameLayout = {
+  readonly headerTop: number;
+  readonly brandSize: number;
+  readonly titleSize: number;
+  readonly squareTop: number;
+  readonly squareSize: number;
+  readonly captionTop: number;
+  readonly captionSize: number;
+};
 
-export const HairPackReel: React.FC = () => {
+export const REEL_LAYOUT: FrameLayout = {
+  headerTop: 250,
+  brandSize: 52,
+  titleSize: 46,
+  squareTop: 400,
+  squareSize: 960,
+  captionTop: 1385,
+  captionSize: 68,
+};
+
+export const FEED_45_LAYOUT: FrameLayout = {
+  headerTop: 22,
+  brandSize: 40,
+  titleSize: 38,
+  squareTop: 140,
+  squareSize: 1080,
+  captionTop: 1232,
+  captionSize: 58,
+};
+
+export const HairPackReel: React.FC<FrameLayout> = ({
+  headerTop,
+  brandSize,
+  titleSize,
+  squareTop,
+  squareSize,
+  captionTop,
+  captionSize,
+}) => {
   const frame = useCurrentFrame();
+  const scale = squareSize / 1080;
   return (
     <AbsoluteFill
       style={{
@@ -73,13 +113,14 @@ export const HairPackReel: React.FC = () => {
       <TilePattern color={colors.bronze} opacity={0.08} drift={frame * 0.3} />
 
       {/* Header */}
-      <AbsoluteFill style={{ alignItems: "center", paddingTop: 110 }}>
+      <AbsoluteFill style={{ alignItems: "center", paddingTop: headerTop }}>
         <div
           style={{
             fontFamily: brandFont,
             fontWeight: 900,
-            fontSize: 64,
-            letterSpacing: 8,
+            fontSize: brandSize,
+            lineHeight: 1.1,
+            letterSpacing: brandSize / 8,
             color: colors.goldLight,
           }}
         >
@@ -87,15 +128,16 @@ export const HairPackReel: React.FC = () => {
         </div>
         <div
           style={{
-            marginTop: 14,
+            marginTop: 8,
             fontFamily: bodyFont,
             fontWeight: 900,
-            fontSize: 56,
+            fontSize: titleSize,
+            lineHeight: 1.3,
             color: colors.white,
             direction: "rtl",
             display: "flex",
             alignItems: "center",
-            gap: 18,
+            gap: 16,
           }}
         >
           باك نموّ الشعر للرجال • {PACK_PIECES} في 1
@@ -103,8 +145,7 @@ export const HairPackReel: React.FC = () => {
             style={{
               background: colors.bronze,
               borderRadius: 999,
-              padding: "0 24px 6px",
-              fontSize: 48,
+              padding: "0 22px 4px",
               scale: String(
                 interpolate(
                   frame,
@@ -124,28 +165,39 @@ export const HairPackReel: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      {/* The square ad (with all its audio) */}
+      {/* The square ad (with all its audio), scaled into the frame */}
       <div
         style={{
           position: "absolute",
-          top: SQUARE_TOP,
-          left: 0,
-          width: 1080,
-          height: 1080,
+          top: squareTop,
+          left: (1080 - squareSize) / 2,
+          width: squareSize,
+          height: squareSize,
           overflow: "hidden",
+          borderRadius: squareSize < 1080 ? 28 : 0,
           boxShadow: "0 20px 60px rgba(0,0,0,0.45)",
         }}
       >
-        <HairPackAd />
+        <div
+          style={{
+            position: "absolute",
+            width: 1080,
+            height: 1080,
+            scale: String(scale),
+            transformOrigin: "0 0",
+          }}
+        >
+          <HairPackAd />
+        </div>
       </div>
 
       {/* Captions under the square */}
       <CaptionTrack
         phrases={PACK_CAPTIONS}
-        top={SQUARE_TOP + 1080 + 70}
+        top={captionTop}
         activeColor="rgba(200,150,62,0.95)"
         emphasisColor={colors.goldLight}
-        fontSize={76}
+        fontSize={captionSize}
       />
     </AbsoluteFill>
   );

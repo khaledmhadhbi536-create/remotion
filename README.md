@@ -2,8 +2,14 @@
 
 Pub de **34 secondes** avec un hook promo (« عرض استثنائي! 5 قطع بـ 49 د.ت ») en **derja tunisienne** pour le pack **Derma Roller 540 + huile de romarin + flacon applicateur + poudre de sidr + brosse de massage**, à partir des photos des produits. Deux formats :
 
-- ▶️ **1:1 (fil Facebook / Instagram)** : [`renders/pack-cheveux-5en1-49dt-1080x1080.mp4`](renders/pack-cheveux-5en1-49dt-1080x1080.mp4)
-- ▶️ **9:16 (Reels / TikTok / Stories)**, avec sous-titres arabes mot par mot : [`renders/pack-cheveux-5en1-49dt-9x16.mp4`](renders/pack-cheveux-5en1-49dt-9x16.mp4)
+| Format | Fichier | Où l'utiliser (Facebook + Instagram) |
+|---|---|---|
+| **4:5** 1080×1350 | [`renders/pack-cheveux-5en1-49dt-4x5.mp4`](renders/pack-cheveux-5en1-49dt-4x5.mp4) | **Fil d'actualité** FB et IG : le format recommandé, il prend le plus de place à l'écran |
+| **9:16** 1080×1920 | [`renders/pack-cheveux-5en1-49dt-9x16.mp4`](renders/pack-cheveux-5en1-49dt-9x16.mp4) | **Reels et Stories** FB et IG, sous-titres arabes, contenu dans les zones sûres (rien sous l'interface en haut ~250px et en bas ~400px) |
+| **1:1** 1080×1080 | [`renders/pack-cheveux-5en1-49dt-1x1.mp4`](renders/pack-cheveux-5en1-49dt-1x1.mp4) | Colonne de droite FB, Marketplace, carrousels, publication organique |
+| Couvertures | `renders/cover-1x1.jpg`, `cover-4x5.jpg`, `cover-9x16.jpg` | Miniature / image de couverture de chaque format (frame du hook « 5 قطع بـ 49 د.ت ») |
+
+Dans le Gestionnaire de publicités, chargez le **4:5** et le **9:16** dans la même publicité (« Personnaliser le placement ») : Meta affiche le bon format selon l'emplacement.
 
 📈 Stratégie (analyse produits, prix, lancement des pubs, opérations) : **[PLAN-MARKETING.md](PLAN-MARKETING.md)**
 
@@ -13,7 +19,7 @@ Pub de **34 secondes** avec un hook promo (« عرض استثنائي! 5 قطع 
 - **Textes de chaque étape :** `src/HairPackAd.tsx` (props des `<StepScene>`)
 - **Sous-titres de la version 9:16 :** `PACK_CAPTIONS` dans `src/HairPackReel.tsx`
 
-Ensuite, lancez `npm run render` (1:1) et `npm run render:reel` (9:16).
+Ensuite, lancez `npm run render:all` (rend les 3 formats et les couvertures).
 
 ## Images produits
 
@@ -30,7 +36,7 @@ Pour un meilleur rendu, remplacez-les par des photos HD prises sur fond uni, en 
 src/
   Root.tsx              # Compositions HairPackAd, HairPackReel, ProductPresentation + scènes
   HairPackAd.tsx        # Timeline 1:1 : TransitionSeries + pistes audio
-  HairPackReel.tsx      # Version 9:16 : en-tête + pub carrée + sous-titres
+  HairPackReel.tsx      # Cadres 9:16 et 4:5 : en-tête + pub carrée + sous-titres
   config.ts             # Prix, nom de boutique, contact
   theme.ts              # Couleurs, polices, durée des transitions
   scenes/               # OfferHook, Hook, PackIntro, Step (×3), Value, Cta
@@ -48,8 +54,7 @@ La musique est **générée par code**, sans aucun droit d'auteur : groove style
 ```console
 npm i
 npm run dev        # Remotion Studio (aperçu + édition)
-npm run render     # rend la version 1:1
-npm run render:reel  # rend la version 9:16 sous-titrée
+npm run render:all # les 3 formats (1:1, 4:5, 9:16) + couvertures
 npm run still      # rend la miniature
 npm run audio      # régénère musique et effets (nécessite ffmpeg)
 ```
