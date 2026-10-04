@@ -1,5 +1,6 @@
 import { Composition, Folder } from "remotion";
-import { HairPackAd } from "./HairPackAd";
+import { HairPackAd, PACK_AD_FRAMES } from "./HairPackAd";
+import { HairPackReel } from "./HairPackReel";
 import { TOTAL_FRAMES } from "./presentation/edit";
 import { ProductPresentation } from "./presentation/ProductPresentation";
 import { CtaScene } from "./scenes/CtaScene";
@@ -12,14 +13,23 @@ import { colors } from "./theme";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      {/* Main deliverable: 30s, 1080×1080 (1:1 feed format) */}
+      {/* 5-piece hair pack: 38s, 1080×1080 (1:1 feed) + 9:16 reel with captions */}
       <Composition
         id="HairPackAd"
         component={HairPackAd}
-        durationInFrames={900}
+        durationInFrames={PACK_AD_FRAMES}
         fps={30}
         width={1080}
         height={1080}
+      />
+
+      <Composition
+        id="HairPackReel"
+        component={HairPackReel}
+        durationInFrames={PACK_AD_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
       />
 
       {/* Seller's footage, re-edited: 9:16 with Arabic subtitles and sound design */}

@@ -12,13 +12,25 @@ import { StepScene } from "./scenes/StepScene";
 import { ValueScene } from "./scenes/ValueScene";
 import { colors, TRANSITION } from "./theme";
 
-// 30s square (1:1) Facebook / Instagram feed ad for the "Hair Growth 3-in-1" pack:
-// derma roller + root-comb applicator bottle + scalp massage brush.
+// 38s square (1:1) feed ad for the "Hair Growth 5-in-1" pack:
+// derma roller + rosemary oil + root-comb applicator + sidr powder + scalp massage brush.
 //
-// Hook 0–4s → Pack 4–8s → Step 1 8–12s → Step 2 12–16s → Step 3 16–20s → Value 20–24s → Offer + CTA 24–30s
+// Hook 0–4 → Pack 4–8 → Steps 8–28 (4s each) → Value 28–32 → Offer + CTA 32–38
+// Every cut lands on a bar line of the 120 BPM soundtrack (public/audio/music-38s.mp3).
+export const PACK_AD_FRAMES = 1140;
+
+// Scene start frames (scene durations minus 12-frame transition overlaps)
+const STEP_START = [234, 354, 474, 594, 714];
+const VALUE_START = 834;
+const CTA_START = 954;
+const END_CARD = CTA_START + 126; // 36s, final hit of the music
+
+const sfx = (name: string) => staticFile(`audio/${name}.mp3`);
+
 export const HairPackAd: React.FC = () => {
   const { fps } = useVideoConfig();
   const timing = linearTiming({ durationInFrames: TRANSITION });
+  const slideIn = slide({ direction: "from-right" });
 
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
@@ -41,10 +53,7 @@ export const HairPackAd: React.FC = () => {
         >
           <PackIntroScene />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition
-          presentation={slide({ direction: "from-right" })}
-          timing={timing}
-        />
+        <TransitionSeries.Transition presentation={slideIn} timing={timing} />
         <TransitionSeries.Sequence
           name="Step 1 · Derma roller"
           durationInFrames={132}
@@ -53,7 +62,7 @@ export const HairPackAd: React.FC = () => {
           <StepScene
             step={1}
             title="ديرما رولر 540 إبرة"
-            bullets={["ينشّط بصيلات الشعر", "يخلّي الزيت يدخل للجذور"]}
+            bullets={["ينشّط فروة الراس", "يخلّي الزيت يدخل للجذور"]}
             howTo="مرّة في الجمعة على فروة الراس"
             products={[{ product: "dermaRoller", height: 260 }]}
             motion="roll"
@@ -61,47 +70,76 @@ export const HairPackAd: React.FC = () => {
             background={colors.blush}
           />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition
-          presentation={slide({ direction: "from-right" })}
-          timing={timing}
-        />
+        <TransitionSeries.Transition presentation={slideIn} timing={timing} />
         <TransitionSeries.Sequence
-          name="Step 2 · Applicator"
+          name="Step 2 · Rosemary oil"
           durationInFrames={132}
           premountFor={fps}
         >
           <StepScene
             step={2}
-            title="قارورة بمشط للجذور"
-            bullets={[
-              "الزيت يوصل للجذور طول",
-              "بلا تبذير و بلا وسخ",
-              "بالوردي و إلا بالأكحل",
-            ]}
-            howTo="حطّي فيها الزيت متاعك و مشّطي"
-            products={[
-              { product: "bottlePink", height: 470 },
-              { product: "bottleBlack", height: 470 },
-            ]}
+            title="زيت إكليل الجبل"
+            bullets={["يغذّي جذور الشعر", "زيت نباتي 30 مل"]}
+            howTo="شويّة قطرات على فروة الراس"
+            products={[{ product: "rosemaryOil", height: 440 }]}
             motion="tilt"
             accent={colors.gold}
             background={`linear-gradient(160deg, ${colors.plumSoft} 0%, ${colors.plum} 100%)`}
             dark
           />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition
-          presentation={slide({ direction: "from-right" })}
-          timing={timing}
-        />
+        <TransitionSeries.Transition presentation={slideIn} timing={timing} />
         <TransitionSeries.Sequence
-          name="Step 3 · Massage brush"
+          name="Step 3 · Applicator"
           durationInFrames={132}
           premountFor={fps}
         >
           <StepScene
             step={3}
+            title="قارورة بمشط للجذور"
+            bullets={[
+              "الزيت يوصل للجذور طول",
+              "بلا تبذير و بلا وسخ",
+              "بالوردي و إلا بالأكحل",
+            ]}
+            howTo="حطّي فيها زيت الإكليل و مشّطي"
+            products={[
+              { product: "bottlePink", height: 470 },
+              { product: "bottleBlack", height: 470 },
+            ]}
+            motion="tilt"
+            accent={colors.rose}
+            background={colors.blush}
+          />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={slideIn} timing={timing} />
+        <TransitionSeries.Sequence
+          name="Step 4 · Sidr"
+          durationInFrames={132}
+          premountFor={fps}
+        >
+          <StepScene
+            step={4}
+            title="سدر طبيعي"
+            bullets={["يغسل و ينظّف بلطف", "بلا مواد كيميائية"]}
+            howTo="اخلطيه بالماء و اغسلي بيه شعرك"
+            products={[{ product: "sidr", height: 420 }]}
+            motion="tilt"
+            accent={colors.gold}
+            background={`linear-gradient(160deg, ${colors.plumSoft} 0%, ${colors.plum} 100%)`}
+            dark
+          />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={slideIn} timing={timing} />
+        <TransitionSeries.Sequence
+          name="Step 5 · Massage brush"
+          durationInFrames={132}
+          premountFor={fps}
+        >
+          <StepScene
+            step={5}
             title="فرشة تدليك الراس"
-            bullets={["تحرّك الدورة الدموية", "تنظيف عميق مع الشامبو"]}
+            bullets={["تحرّك الدورة الدموية", "توزّع السدر مليح"]}
             howTo="دقيقتين تدليك في الدوش"
             products={[{ product: "brushPink", height: 330 }]}
             motion="massage"
@@ -130,11 +168,34 @@ export const HairPackAd: React.FC = () => {
         </TransitionSeries.Sequence>
       </TransitionSeries>
 
-      {/* Soundtrack (generated by scripts/generate-audio.mjs) */}
+      {/* Soundtrack (generated by scripts/generate-audio.mjs, 19 bars = 38s) */}
       <Audio
         name="Music"
-        src={staticFile("audio/music.mp3")}
+        src={sfx("music-38s")}
         volume={0.75}
+        premountFor={fps}
+      />
+
+      {/* Hook: stamps on the pain points */}
+      <Audio
+        name="Pop · chip 1"
+        from={30}
+        src={sfx("pop")}
+        volume={0.55}
+        premountFor={fps}
+      />
+      <Audio
+        name="Pop · chip 2"
+        from={45}
+        src={sfx("pop")}
+        volume={0.55}
+        premountFor={fps}
+      />
+      <Audio
+        name="Pop · chip 3"
+        from={60}
+        src={sfx("pop")}
+        volume={0.55}
         premountFor={fps}
       />
 
@@ -142,107 +203,185 @@ export const HairPackAd: React.FC = () => {
       <Audio
         name="Whoosh → Pack"
         from={110}
-        src={staticFile("audio/whoosh.mp3")}
+        src={sfx("whoosh")}
         volume={0.5}
         premountFor={fps}
       />
       <Audio
         name="Whoosh → Step 1"
         from={230}
-        src={staticFile("audio/whoosh.mp3")}
+        src={sfx("whoosh")}
         volume={0.45}
         premountFor={fps}
       />
       <Audio
         name="Whoosh → Step 2"
         from={350}
-        src={staticFile("audio/whoosh.mp3")}
+        src={sfx("whoosh")}
         volume={0.45}
         premountFor={fps}
       />
       <Audio
         name="Whoosh → Step 3"
         from={470}
-        src={staticFile("audio/whoosh.mp3")}
+        src={sfx("whoosh")}
+        volume={0.45}
+        premountFor={fps}
+      />
+      <Audio
+        name="Whoosh → Step 4"
+        from={590}
+        src={sfx("whoosh")}
+        volume={0.45}
+        premountFor={fps}
+      />
+      <Audio
+        name="Whoosh → Step 5"
+        from={710}
+        src={sfx("whoosh")}
         volume={0.45}
         premountFor={fps}
       />
       <Audio
         name="Whoosh → Value"
-        from={590}
-        src={staticFile("audio/whoosh.mp3")}
+        from={830}
+        src={sfx("whoosh")}
         volume={0.5}
         premountFor={fps}
       />
       <Audio
         name="Whoosh → CTA"
-        from={710}
-        src={staticFile("audio/whoosh.mp3")}
+        from={950}
+        src={sfx("whoosh")}
         volume={0.5}
         premountFor={fps}
       />
 
-      {/* Accents: products landing, value rows, price */}
+      {/* Pack intro: 5 products land, then the 5-in-1 badge */}
       <Audio
-        name="Pop · roller lands"
+        name="Pop · roller"
         from={150}
-        src={staticFile("audio/pop.mp3")}
+        src={sfx("pop")}
         volume={0.6}
         premountFor={fps}
       />
       <Audio
-        name="Pop · bottle lands"
+        name="Pop · rosemary"
         from={165}
-        src={staticFile("audio/pop.mp3")}
+        src={sfx("pop")}
         volume={0.6}
         premountFor={fps}
       />
       <Audio
-        name="Pop · brush lands"
+        name="Pop · applicator"
         from={180}
-        src={staticFile("audio/pop.mp3")}
+        src={sfx("pop")}
         volume={0.6}
         premountFor={fps}
       />
       <Audio
-        name="Shimmer · 3-in-1"
+        name="Pop · sidr"
         from={195}
-        src={staticFile("audio/shimmer.mp3")}
-        volume={0.5}
-        premountFor={fps}
-      />
-      <Audio
-        name="Pop · row 1"
-        from={615}
-        src={staticFile("audio/pop.mp3")}
+        src={sfx("pop")}
         volume={0.6}
         premountFor={fps}
       />
       <Audio
-        name="Pop · row 2"
-        from={630}
-        src={staticFile("audio/pop.mp3")}
+        name="Pop · brush"
+        from={210}
+        src={sfx("pop")}
         volume={0.6}
         premountFor={fps}
       />
       <Audio
-        name="Pop · row 3"
-        from={645}
-        src={staticFile("audio/pop.mp3")}
-        volume={0.6}
+        name="Shimmer · 5-in-1"
+        from={222}
+        src={sfx("shimmer")}
+        volume={0.45}
         premountFor={fps}
       />
+
+      {/* Steps: a click on each benefit tick */}
+      {STEP_START.map((s, i) => (
+        <React.Fragment key={s}>
+          <Audio
+            name={`Click · step ${i + 1} a`}
+            from={s + 36}
+            src={sfx("click")}
+            volume={0.55}
+            premountFor={fps}
+          />
+          <Audio
+            name={`Click · step ${i + 1} b`}
+            from={s + 51}
+            src={sfx("click")}
+            volume={0.55}
+            premountFor={fps}
+          />
+          {i === 2 ? (
+            <Audio
+              name="Click · step 3 c"
+              from={s + 66}
+              src={sfx("click")}
+              volume={0.55}
+              premountFor={fps}
+            />
+          ) : null}
+        </React.Fragment>
+      ))}
+
+      {/* Value stack: one pop per row, shimmer on the total */}
+      {[21, 33, 45, 57, 69].map((d) => (
+        <Audio
+          key={d}
+          name={`Pop · row @${d}`}
+          from={VALUE_START + d}
+          src={sfx("pop")}
+          volume={0.55}
+          premountFor={fps}
+        />
+      ))}
+      <Audio
+        name="Shimmer · total"
+        from={VALUE_START + 87}
+        src={sfx("shimmer")}
+        volume={0.4}
+        premountFor={fps}
+      />
+
+      {/* Offer */}
       <Audio
         name="Cash bell (price)"
-        from={750}
-        src={staticFile("audio/cash-bell.mp3")}
+        from={CTA_START + 36}
+        src={sfx("cash-bell")}
         volume={0.55}
         premountFor={fps}
       />
       <Audio
+        name="Click · free delivery"
+        from={CTA_START + 51}
+        src={sfx("click")}
+        volume={0.55}
+        premountFor={fps}
+      />
+      <Audio
+        name="Click · cash on delivery"
+        from={CTA_START + 66}
+        src={sfx("click")}
+        volume={0.55}
+        premountFor={fps}
+      />
+      <Audio
+        name="Pop · order button"
+        from={CTA_START + 81}
+        src={sfx("pop")}
+        volume={0.6}
+        premountFor={fps}
+      />
+      <Audio
         name="Shimmer (end card)"
-        from={840}
-        src={staticFile("audio/shimmer.mp3")}
+        from={END_CARD}
+        src={sfx("shimmer")}
         volume={0.5}
         premountFor={fps}
       />

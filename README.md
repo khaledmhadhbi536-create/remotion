@@ -1,25 +1,26 @@
-# Pack Pousse des Cheveux 3 en 1 — Pub vidéo 30s (Remotion)
+# Pack Pousse des Cheveux 5 en 1 (AURA BIO) — Pubs vidéo 38s (Remotion)
 
-Vidéo promotionnelle de **30 secondes**, format **carré 1080×1080** (fil d'actu Facebook / Instagram), en **derja tunisienne**.
-Elle met en scène le pack **Derma Roller 540 + flacon applicateur à peigne + brosse de massage du cuir chevelu**, à partir des photos des produits.
+Pub de **38 secondes** en **derja tunisienne** pour le pack **Derma Roller 540 + huile de romarin + flacon applicateur + poudre de sidr + brosse de massage**, à partir des photos des produits. Deux formats :
 
-▶️ Rendu final : [`renders/pack-cheveux-30s-1080x1080.mp4`](renders/pack-cheveux-30s-1080x1080.mp4) · miniature : [`renders/thumbnail.jpg`](renders/thumbnail.jpg)
+- ▶️ **1:1 (fil Facebook / Instagram)** : [`renders/pack-cheveux-5en1-38s-1080x1080.mp4`](renders/pack-cheveux-5en1-38s-1080x1080.mp4)
+- ▶️ **9:16 (Reels / TikTok / Stories)**, avec sous-titres arabes mot par mot : [`renders/pack-cheveux-5en1-38s-9x16.mp4`](renders/pack-cheveux-5en1-38s-9x16.mp4)
 
 📈 Stratégie (analyse produits, prix, lancement des pubs, opérations) : **[PLAN-MARKETING.md](PLAN-MARKETING.md)**
 
 ## Modifier rapidement
 
-- **Prix, nom de la boutique, contact :** `src/config.ts`
+- **Prix, nom de la marque, contact :** `src/config.ts`
 - **Textes de chaque étape :** `src/HairPackAd.tsx` (props des `<StepScene>`)
+- **Sous-titres de la version 9:16 :** `PACK_CAPTIONS` dans `src/HairPackReel.tsx`
 
-Ensuite, lancez `npm run render`.
+Ensuite, lancez `npm run render` (1:1) et `npm run render:reel` (9:16).
 
 ## Images produits
 
 | Fichiers | Contenu |
 |---|---|
 | `assets/source-images/` | Les captures d'écran d'origine |
-| `public/products/` | Les produits détourés (fond supprimé) : `derma-roller.png`, `bottle-pink.png`, `bottle-black.png`, `brush-pink.png`, `brush-terracotta.png` |
+| `public/products/` | Les produits détourés (fond supprimé) : `derma-roller.png`, `rosemary-oil.png`, `bottle-pink.png`, `bottle-black.png`, `sidr-powder.png`, `brush-pink.png`, `brush-terracotta.png` |
 
 Pour un meilleur rendu, remplacez-les par des photos HD prises sur fond uni, en gardant les mêmes noms de fichiers. Si les proportions changent, mettez à jour `ratio` dans `src/components/ProductImage.tsx`.
 
@@ -27,12 +28,13 @@ Pour un meilleur rendu, remplacez-les par des photos HD prises sur fond uni, en 
 
 ```
 src/
-  Root.tsx              # Composition HairPackAd + chaque scène dans "Scenes"
-  HairPackAd.tsx        # Timeline : TransitionSeries + pistes audio
+  Root.tsx              # Compositions HairPackAd, HairPackReel, ProductPresentation + scènes
+  HairPackAd.tsx        # Timeline 1:1 : TransitionSeries + pistes audio
+  HairPackReel.tsx      # Version 9:16 : en-tête + pub carrée + sous-titres
   config.ts             # Prix, nom de boutique, contact
   theme.ts              # Couleurs, polices, durée des transitions
-  scenes/               # Hook, PackIntro, Step (×3), Value, Cta
-  components/           # ProductImage / PackGroup, motifs, cheveux animés…
+  scenes/               # Hook, PackIntro, Step (×5), Value, Cta
+  components/           # ProductImage / PackGroup, Captions (sous-titres), motifs, cheveux animés…
 public/
   products/             # Produits détourés
   audio/                # Musique + effets (générés par scripts/generate-audio.mjs)
@@ -46,7 +48,8 @@ La musique est **générée par code**, sans aucun droit d'auteur : groove style
 ```console
 npm i
 npm run dev        # Remotion Studio (aperçu + édition)
-npm run render     # rend renders/pack-cheveux-30s-1080x1080.mp4
+npm run render     # rend la version 1:1
+npm run render:reel  # rend la version 9:16 sous-titrée
 npm run still      # rend la miniature
 npm run audio      # régénère musique et effets (nécessite ffmpeg)
 ```

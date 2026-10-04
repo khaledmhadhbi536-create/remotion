@@ -1,7 +1,7 @@
 {
   "name": "nawar-promo",
   "version": "1.0.0",
-  "description": "Pack Pousse des Cheveux 3 en 1 — 30s Tunisian promo video (1080x1080) built with Remotion",
+  "description": "Pack Pousse des Cheveux 3 en 1 \u2014 30s Tunisian promo video (1080x1080) built with Remotion",
   "repository": {},
   "license": "UNLICENSED",
   "private": true,
@@ -25,10 +25,11 @@
   "scripts": {
     "dev": "remotion studio",
     "audio": "node scripts/generate-audio.mjs",
-    "render": "remotion render HairPackAd renders/pack-cheveux-30s-1080x1080.mp4 --codec=h264 --crf=20",
-    "still": "remotion still HairPackAd renders/thumbnail.jpg --frame=800",
+    "render": "remotion render HairPackAd renders/pack-cheveux-5en1-38s-1080x1080.mp4 --codec=h264 --crf=20",
+    "still": "remotion still HairPackAd renders/thumbnail.jpg --frame=1010",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "render:reel": "remotion render HairPackReel renders/pack-cheveux-5en1-38s-9x16.mp4 --codec=h264 --crf=20"
   }
 }

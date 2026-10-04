@@ -156,10 +156,10 @@ export const CtaScene: React.FC = () => {
             }}
           />
           <PackGroup
-            scale={0.8}
+            scale={0.66}
             style={{
               position: "absolute",
-              left: 30,
+              left: 0,
               top: 40,
               translate: `0px ${Math.sin(frame / 10) * 8}px`,
             }}
@@ -291,7 +291,7 @@ export const CtaScene: React.FC = () => {
             marginBottom: 36,
           }}
         >
-          باك نموّ الشعر 3 في 1
+          باك نموّ الشعر 5 في 1
         </div>
         <OrderButton at={END + 6} />
         <div
@@ -301,9 +301,10 @@ export const CtaScene: React.FC = () => {
             fontSize: 44,
             color: colors.plum,
             marginTop: 34,
+            direction: "rtl",
           }}
         >
-          {WEBSITE}
+          {WEBSITE || "ابعثلنا ميساج على الصفحة"}
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

@@ -1,72 +1,87 @@
-# Plan marketing — Pack Pousse des Cheveux 3 en 1
+# Plan marketing — Pack Pousse des Cheveux 5 en 1 (AURA BIO)
 
-## 1. Analyse des produits (à partir des 4 photos)
+## 1. Analyse des produits (photos dans `assets/source-images/`)
 
 | Photo | Produit | Ce qu'il fait | Rôle dans la routine |
 |---|---|---|---|
-| `applicator-bottle-black` | **Flacon applicateur à peigne** (noir, gradué ~6 oz / 180 ml) | Dépose l'huile/le soin directement sur les racines, raie par raie | Étape 2 : appliquer |
-| `applicator-bottle-and-brush-pink` | **Même flacon en rose + brosse de massage** | Version rose du flacon ; brosse en silicone à picots | Étapes 2 et 3 |
-| `derma-roller-540` | **Derma Roller 540 micro-aiguilles** | Micro-perforations du cuir chevelu, stimule la zone et améliore la pénétration des soins | Étape 1 : préparer |
-| `scalp-massager-brush` | **Brosse de massage du cuir chevelu** (silicone) | Massage + nettoyage en profondeur avec le shampoing | Étape 3 : masser / laver |
+| `derma-roller-540` | **Derma Roller 540 micro-aiguilles** | Micro-perforations du cuir chevelu : stimule la zone et aide les soins à pénétrer | Étape 1 : préparer |
+| `rosemary-oil-aura-bio` | **Huile de romarin AURA BIO** (huile végétale, 30 ml) | Soin des racines ; c'est l'ingrédient star « pousse » sur les réseaux | Étape 2 : nourrir |
+| `applicator-bottle-black` / `…-pink` | **Flacon applicateur à peigne** (rose ou noir) | Dépose l'huile directement sur les racines, raie par raie, sans gaspillage | Étape 3 : appliquer |
+| `sidr-powder-aura-bio` | **Poudre de sidr royal AURA BIO** | Lavage naturel et doux, sans produits chimiques ; très connu au Maghreb | Étape 4 : laver |
+| `applicator-bottle-and-brush-pink` / `scalp-massager-brush` | **Brosse de massage** en silicone | Masse le cuir chevelu et répartit le sidr sous la douche | Étape 5 : masser |
 
-**Constat :** pris séparément, ce sont des accessoires bon marché qu'on trouve partout. Ensemble, ils forment une **routine complète contre la chute de cheveux** : préparer, appliquer puis masser. C'est cette routine qu'on vend, pas trois objets.
-Les produits sont roses ou noirs et visent surtout **les femmes de 20 à 45 ans**. Le flacon noir permet aussi de toucher les hommes (barbe, calvitie) dans une deuxième campagne.
+**Constat :** avec l'huile de romarin et le sidr, le pack n'est plus un lot d'accessoires. C'est une **routine naturelle complète** : préparer, nourrir, appliquer, laver, masser. Les deux soins **AURA BIO** donnent une marque et un côté « bio / naturel » qui rassure et justifie un prix plus haut.
 
 ## 2. Le pack
 
-**Nom :** « باك نموّ الشعر 3 في 1 » / *Pack Pousse des Cheveux 3 en 1*
+**Nom :** « باك نموّ الشعر 5 في 1 » / *Pack Pousse des Cheveux 5 en 1*
 
-**Contenu :** 1 Derma Roller 540 + 1 flacon applicateur (rose ou noir, au choix) + 1 brosse de massage.
+**Contenu :** Derma Roller 540 + huile de romarin 30 ml + flacon applicateur (rose ou noir) + poudre de sidr + brosse de massage.
 
-**Promesse (sans affirmation médicale) :** « روتين كامل في باك واحد » (une routine complète dans un seul pack). Le roller prépare, le flacon applique le soin aux racines, la brosse masse et nettoie.
+**Promesse (sans affirmation médicale) :** « روتين كامل للعناية بالشعر » (une routine complète pour prendre soin des cheveux).
+
+**Bonus fidélisation :** l'huile et le sidr sont des **consommables**. Proposez une **recharge « huile + sidr » à 35 DT** après 4 à 6 semaines (relance WhatsApp) : c'est là que se fait la marge récurrente.
 
 ## 3. Prix
 
 | | Prix |
 |---|---|
-| Derma Roller (prix affiché seul) | 35 DT |
+| Derma Roller | 35 DT |
+| Huile de romarin 30 ml | 25 DT |
 | Flacon applicateur | 15 DT |
+| Poudre de sidr | 15 DT |
 | Brosse de massage | 20 DT |
-| **Valeur totale (ancrage)** | **70 DT** |
-| **Prix du pack** | **49 DT**, livraison gratuite, paiement à la livraison |
-| Offre « duo » (2 packs, pour la sœur / la maman) | 85 DT |
+| **Valeur totale (ancrage)** | **110 DT** |
+| **Prix du pack** | **79 DT**, livraison gratuite, paiement à la livraison |
+| Recharge huile + sidr (relance) | 35 DT |
 
-**Pourquoi 49 DT :**
-- On reste **sous la barre psychologique des 50 DT**, la zone d'achat impulsif sur Facebook en Tunisie.
-- L'ancrage à 70 DT donne **−30 %** : une économie lisible et crédible.
+**Pourquoi 79 DT :**
+- On reste **sous la barre des 80 DT**.
+- L'ancrage à 110 DT donne **−28 %** : l'économie est visible et crédible.
+- Avec deux soins de marque dans le pack, 79 DT reste un prix d'impulsion pour un « coffret routine ».
+- Si le taux de conversion est faible après le test, descendez à **69 DT** avant de toucher à la pub.
 
 **Rentabilité (estimations à remplacer par vos vrais coûts) :**
 
 | Poste | DT / commande |
 |---|---|
-| Prix de vente | 49 |
-| Coût d'achat des 3 produits + emballage (estimation) | −12 |
+| Prix de vente | 79 |
+| Coût d'achat des 5 produits + emballage (estimation) | −24 |
 | Livraison (société de livraison, estimation) | −7 |
-| **Marge avant publicité** | **30** → c'est votre CPA maximum (seuil de rentabilité) |
-| Objectif coût pub par commande **livrée** | ≤ 12 |
-| **Marge nette visée** | **≈ 15–18** |
+| **Marge avant publicité** | **48** → c'est votre CPA maximum (seuil de rentabilité) |
+| Objectif coût pub par commande **livrée** | ≤ 18 |
+| **Marge nette visée** | **≈ 25–30** |
 
 > ⚠️ En paiement à la livraison, 15 à 25 % des colis peuvent être refusés. Calculez le CPA sur les commandes **livrées**, pas sur les commandes passées.
 
-Pour changer les prix dans la vidéo, modifiez `src/config.ts`, puis lancez `npm run render`.
+Pour changer les prix dans les vidéos, modifiez `src/config.ts`, puis lancez `npm run render` et `npm run render:reel`.
 
-## 4. La vidéo (30s, 1:1)
+## 4. Les vidéos (38s)
 
-| Temps | Scène | Objectif |
+Deux formats, même montage :
+- **1:1** (`renders/pack-cheveux-5en1-38s-1080x1080.mp4`) pour le fil Facebook / Instagram ;
+- **9:16** (`renders/pack-cheveux-5en1-38s-9x16.mp4`) pour Reels / TikTok / Stories, avec en-tête AURA BIO + prix et **sous-titres arabes mot par mot** sous la vidéo.
+
+| Temps | Scène | Sous-titre (9:16) |
 |---|---|---|
-| 0–4s | « تساقط الشعر؟ » + خفيف / ضعيف / ما يطولش | Arrêter le scroll : la cible se reconnaît |
-| 4–8s | « روتين كامل في باك واحد » : les 3 produits tombent sur le beat, badge « 3 في 1 » | Présenter la solution |
-| 8–12s | Étape 1 : Derma Roller, mouvement de roulement | Rôle du produit + mode d'emploi |
-| 12–16s | Étape 2 : flacon (rose ou noir), mouvement d'application | Idem + choix de couleur |
-| 16–20s | Étape 3 : brosse, mouvement de massage | Idem |
-| 20–24s | « شنوّة فيه الباك؟ » : prix de chaque produit, total 70 DT | Justifier la valeur |
-| 24–30s | 70 → **49 DT**, livraison gratuite, paiement à la livraison, « اطلبي توّا » | Passer à l'action |
+| 0–4s | « تساقط الشعر؟ » + خفيف / ضعيف / ما يطولش | الشعر يطيح؟ خفيف و ما يطولش؟ |
+| 4–8s | Les 5 produits tombent sur le beat, badge « 5 في 1 » | عملنالك باك فيه 5 قطع… روتين كامل |
+| 8–12s | Étape 1 : Derma Roller (mouvement de roulement) | الأولى: ديرما رولر ينشّط فروة الراس |
+| 12–16s | Étape 2 : huile de romarin | الثانية: زيت إكليل الجبل يغذّي الجذور |
+| 16–20s | Étape 3 : flacon applicateur (rose ou noir) | الثالثة: قارورة بمشط توصّل الزيت للجذور |
+| 20–24s | Étape 4 : sidr | الرابعة: السدر يغسل و ينظّف بلا كيمياء |
+| 24–28s | Étape 5 : brosse (mouvement de massage) | الخامسة: الفرشة تدلّك و تنشّط الراس |
+| 28–32s | « شنوّة فيه الباك؟ » : 5 lignes de prix, total 110 DT | كل وحدة وحدها بـ 110 دينار |
+| 32–38s | 110 → **79 DT**, livraison gratuite, paiement à la livraison, « اطلبي توّا » | اليوم الباك الكامل بـ 79 دينار برك |
+
+**Sound design :** musique mezoued de 38s (chaque coupe sur une mesure), pop à chaque étiquette et à chaque produit qui tombe, whoosh à chaque coupe, clic à chaque bénéfice, scintillement (badge, total, fin), cloche sur le prix.
 
 **Règles respectées :**
 - La vidéo se comprend **sans le son**.
 - Le texte reste dans les marges de sécurité.
 - Chaque coupe tombe sur la musique.
 - Pas de faux avis ni de faux chiffres.
+- Les sous-titres reprennent le texte à l'écran : la vidéo est complète même en muet.
 
 ## 5. Lancement sur Facebook / Instagram
 
@@ -84,7 +99,7 @@ Pour changer les prix dans la vidéo, modifiez `src/config.ts`, puis lancez `npm
 
 **Créatives à tester (3 par ensemble) :**
 1. Cette vidéo (hook problème).
-2. La même vidéo avec un hook prix : « باك 3 في 1 بـ 49 د.ت فقط » dès la 1ʳᵉ seconde.
+2. La même vidéo avec un hook prix : « باك 5 في 1 بـ 79 د.ت فقط » dès la 1ʳᵉ seconde.
 3. Une vidéo **UGC** filmée au téléphone : déballage du pack + démonstration (souvent la plus performante en Tunisie).
 
 **À surveiller :**
@@ -105,7 +120,7 @@ Pour changer les prix dans la vidéo, modifiez `src/config.ts`, puis lancez `npm
 ## 6. Opérations (là où se joue la rentabilité)
 
 - **Confirmer chaque commande par téléphone en moins de 2 h** (le délai fait chuter la livraison).
-- **Script de confirmation :** confirmer l'adresse, la couleur et le prix, puis proposer le **duo à 85 DT** (upsell).
+- **Script de confirmation :** confirmer l'adresse, la couleur et le prix, puis proposer une **2ᵉ huile de romarin à 20 DT** (upsell facile, c'est le produit qu'on finit en premier).
 - **Message WhatsApp** à l'expédition avec le mode d'emploi en derja : cela réduit les refus et les retours.
 - **Relance J+15 :** demander une photo ou un avis. Ce sont vos **vrais** avis pour les prochaines pubs.
 
@@ -120,4 +135,5 @@ Pour changer les prix dans la vidéo, modifiez `src/config.ts`, puis lancez `npm
   - pas sur une peau irritée ou blessée.
 
   Mettez ces consignes sur la fiche jointe au colis.
-- **À remplacer :** `NAWAR` et `nawar.tn` sont des placeholders. Mettez le nom de votre page et votre contact dans `src/config.ts`.
+- **Marque et contact :** les vidéos affichent `AURA BIO` (la marque sur l'huile et le sidr) et « ابعثلنا ميساج على الصفحة ». Changez `STORE_NAME` / `WEBSITE` dans `src/config.ts` si besoin.
+- **Huile de romarin :** usage externe uniquement, test de tolérance sur une petite zone avant la première utilisation.

@@ -8,6 +8,8 @@ export const PRODUCTS = {
   bottleBlack: { src: "products/bottle-black.png", ratio: 578 / 1725 },
   brushPink: { src: "products/brush-pink.png", ratio: 833 / 862 },
   brushTerracotta: { src: "products/brush-terracotta.png", ratio: 604 / 548 },
+  rosemaryOil: { src: "products/rosemary-oil.png", ratio: 400 / 1020 },
+  sidr: { src: "products/sidr-powder.png", ratio: 384 / 612 },
 } as const;
 
 export type ProductKey = keyof typeof PRODUCTS;
@@ -45,7 +47,7 @@ export const ProductImage: React.FC<{
   );
 };
 
-// The 3-piece pack arranged as one hero group (bottle at the back, roller and brush in front)
+// The 5-piece pack arranged as one hero group: tall items at the back, roller and brush in front
 export const PackGroup: React.FC<{
   readonly scale?: number;
   readonly style?: React.CSSProperties;
@@ -53,38 +55,58 @@ export const PackGroup: React.FC<{
   <div
     style={{
       position: "relative",
-      width: 420 * scale,
+      width: 520 * scale,
       height: 520 * scale,
       ...style,
     }}
   >
     <ProductImage
-      product="bottleBlack"
-      height={440 * scale}
+      product="sidr"
+      height={360 * scale}
       style={{
         position: "absolute",
-        left: 150 * scale,
+        left: 250 * scale,
+        top: 20 * scale,
+        rotate: "5deg",
+      }}
+    />
+    <ProductImage
+      product="bottleBlack"
+      height={430 * scale}
+      style={{
+        position: "absolute",
+        left: 175 * scale,
         top: 0,
-        rotate: "4deg",
+        rotate: "-2deg",
+      }}
+    />
+    <ProductImage
+      product="rosemaryOil"
+      height={300 * scale}
+      style={{
+        position: "absolute",
+        left: 60 * scale,
+        top: 90 * scale,
+        rotate: "-6deg",
       }}
     />
     <ProductImage
       product="brushPink"
-      height={180 * scale}
+      height={170 * scale}
       style={{
         position: "absolute",
-        left: 230 * scale,
-        top: 320 * scale,
+        left: 330 * scale,
+        top: 340 * scale,
         rotate: "8deg",
       }}
     />
     <ProductImage
       product="dermaRoller"
-      height={190 * scale}
+      height={180 * scale}
       style={{
         position: "absolute",
-        left: -30 * scale,
-        top: 310 * scale,
+        left: -20 * scale,
+        top: 330 * scale,
         rotate: "-6deg",
       }}
     />

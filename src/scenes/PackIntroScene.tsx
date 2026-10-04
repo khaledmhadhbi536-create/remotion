@@ -4,7 +4,7 @@ import { Sparkle, TilePattern } from "../components/Decor";
 import { ProductImage } from "../components/ProductImage";
 import { bodyFont, colors, displayFont } from "../theme";
 
-// 4–8s · SOLUTION — "a complete routine in one pack": the 3 products drop in on the beat
+// 4–8s · SOLUTION — "a complete routine in one pack": the 5 products drop in on the beat
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 export const PackIntroScene: React.FC = () => {
@@ -60,34 +60,44 @@ export const PackIntroScene: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      {/* Products land one per beat: 0.5s apart */}
+      {/* Products land one per beat (every 15 frames) */}
       <AbsoluteFill
         style={{
           flexDirection: "row",
           alignItems: "flex-end",
           justifyContent: "center",
-          gap: 24,
+          gap: 12,
           paddingBottom: 130,
         }}
       >
         <ProductImage
+          product="rosemaryOil"
+          height={320}
+          style={{ rotate: "-5deg", ...drop(51) }}
+        />
+        <ProductImage
           product="bottlePink"
-          height={540}
-          style={{ rotate: "-6deg", ...drop(51) }}
+          height={400}
+          style={{ rotate: "3deg", ...drop(66) }}
         />
         <ProductImage
           product="dermaRoller"
-          height={310}
-          style={{ marginBottom: 20, ...drop(36) }}
+          height={190}
+          style={{ marginBottom: 10, ...drop(36) }}
+        />
+        <ProductImage
+          product="sidr"
+          height={300}
+          style={{ rotate: "4deg", ...drop(81) }}
         />
         <ProductImage
           product="brushPink"
-          height={280}
-          style={{ rotate: "6deg", ...drop(66) }}
+          height={180}
+          style={{ rotate: "6deg", ...drop(96) }}
         />
       </AbsoluteFill>
 
-      {/* 3-in-1 badge */}
+      {/* 5-in-1 badge */}
       <div
         style={{
           position: "absolute",
@@ -103,8 +113,8 @@ export const PackIntroScene: React.FC = () => {
           alignItems: "center",
           justifyContent: "center",
           boxShadow: "0 14px 30px rgba(184,50,106,0.4)",
-          rotate: `${interpolate(frame, [81, 93], [-40, 10], { ...clamp, easing: Easing.bezier(0.3, 1.6, 0.5, 1) })}deg`,
-          scale: interpolate(frame, [81, 93], [0, 1], {
+          rotate: `${interpolate(frame, [108, 120], [-40, 10], { ...clamp, easing: Easing.bezier(0.3, 1.6, 0.5, 1) })}deg`,
+          scale: interpolate(frame, [108, 120], [0, 1], {
             ...clamp,
             easing: Easing.bezier(0.3, 1.6, 0.5, 1),
             output: "perceptual-scale",
@@ -119,7 +129,7 @@ export const PackIntroScene: React.FC = () => {
             lineHeight: 1,
           }}
         >
-          3
+          5
         </div>
         <div
           style={{

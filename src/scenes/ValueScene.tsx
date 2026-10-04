@@ -5,7 +5,7 @@ import { ProductImage, type ProductKey } from "../components/ProductImage";
 import { PRICES, VALUE_TOTAL } from "../config";
 import { bodyFont, colors, displayFont } from "../theme";
 
-// 20–24s · VALUE STACK — what's in the pack and what it would cost separately
+// 28–32s · VALUE STACK — what's in the pack and what it would cost separately
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 const Row: React.FC<{
@@ -25,8 +25,8 @@ const Row: React.FC<{
         background: colors.white,
         borderRadius: 26,
         padding: "0 34px",
-        height: 130,
-        width: 860,
+        height: 104,
+        width: 880,
         boxShadow: "0 14px 30px rgba(46,11,36,0.25)",
         opacity: interpolate(frame, [at, at + 5], [0, 1], clamp),
         translate: interpolate(
@@ -40,7 +40,7 @@ const Row: React.FC<{
         ),
       }}
     >
-      <div style={{ width: 150, display: "flex", justifyContent: "center" }}>
+      <div style={{ width: 130, display: "flex", justifyContent: "center" }}>
         <ProductImage product={product} height={height} shadow={false} />
       </div>
       <div
@@ -48,7 +48,7 @@ const Row: React.FC<{
           flex: 1,
           fontFamily: bodyFont,
           fontWeight: 900,
-          fontSize: 46,
+          fontSize: 40,
           color: colors.plum,
           marginRight: 20,
         }}
@@ -59,7 +59,7 @@ const Row: React.FC<{
         style={{
           fontFamily: bodyFont,
           fontWeight: 900,
-          fontSize: 46,
+          fontSize: 40,
           color: colors.roseDeep,
         }}
       >
@@ -79,11 +79,11 @@ export const ValueScene: React.FC = () => {
       }}
     >
       <TilePattern color={colors.rose} opacity={0.1} drift={-frame * 0.5} />
-      <AbsoluteFill style={{ alignItems: "center", paddingTop: 90, gap: 22 }}>
+      <AbsoluteFill style={{ alignItems: "center", paddingTop: 60, gap: 14 }}>
         <div
           style={{
             fontFamily: displayFont,
-            fontSize: 96,
+            fontSize: 88,
             color: colors.white,
             direction: "rtl",
             marginBottom: 16,
@@ -100,34 +100,48 @@ export const ValueScene: React.FC = () => {
         <Row
           at={21}
           product="dermaRoller"
-          height={80}
+          height={60}
           label="ديرما رولر 540 إبرة"
           price={PRICES.dermaRoller}
         />
         <Row
-          at={36}
+          at={33}
+          product="rosemaryOil"
+          height={92}
+          label="زيت إكليل الجبل"
+          price={PRICES.rosemaryOil}
+        />
+        <Row
+          at={45}
           product="bottlePink"
-          height={112}
+          height={92}
           label="قارورة بمشط للجذور"
           price={PRICES.applicator}
         />
         <Row
-          at={51}
+          at={57}
+          product="sidr"
+          height={88}
+          label="سدر طبيعي"
+          price={PRICES.sidr}
+        />
+        <Row
+          at={69}
           product="brushPink"
-          height={100}
+          height={78}
           label="فرشة تدليك الراس"
           price={PRICES.brush}
         />
         <div
           style={{
-            marginTop: 26,
+            marginTop: 18,
             fontFamily: bodyFont,
             fontWeight: 900,
             fontSize: 56,
             color: colors.goldLight,
             direction: "rtl",
-            opacity: interpolate(frame, [75, 81], [0, 1], clamp),
-            scale: interpolate(frame, [75, 87], [1.6, 1], {
+            opacity: interpolate(frame, [87, 93], [0, 1], clamp),
+            scale: interpolate(frame, [87, 99], [1.6, 1], {
               ...clamp,
               easing: Easing.bezier(0.2, 1.4, 0.4, 1),
               output: "perceptual-scale",

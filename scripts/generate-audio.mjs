@@ -292,7 +292,6 @@ const CHORDS = {
 	Bb: {root: 34, pad: [46, 50, 53]},
 	A: {root: 33, pad: [49, 52, 57]},
 };
-const progression = ['Dm', 'A', 'Dm', 'C', 'Bb', 'A', 'Dm', 'C', 'Bb', 'A', 'Dm', 'C', 'Bb', 'A', 'Dm'];
 
 // [beatOffsetInBar, durationBeats, midi]
 const PHRASE_HOOK = [
@@ -320,11 +319,84 @@ const PHRASE_B = [
 	seq([[0.5, 64], [0.5, 65], [0.5, 67], [0.5, 69], [0.25, 70], [0.25, 69], [0.25, 67], [0.25, 65], [0.5, 64], [0.5, 61]]),
 ];
 
-const melodyForBar = (bar) => {
-	if (bar <= 1) return PHRASE_HOOK[bar];
-	if (bar >= 14) return [[0, 3, 62]];
-	if (bar >= 6 && bar <= 9) return PHRASE_B[(bar - 6) % 4];
-	return PHRASE_A[(bar - 2) % 4];
+// Arrangement for any length (in 2s bars): 2 hook bars, groove, a lighter "break"
+// 4 bars before the end, handclaps from there, a riser into the final hit on the last bar.
+const buildMusic = (bars) => {
+	const final = bars - 1;
+	const breakBars = [final - 4, final - 3];
+	const progression = ['Dm', 'A'];
+	for (let b = 2; b < final; b++) progression.push(['Dm', 'C', 'Bb', 'A'][(b - 2) % 4]);
+	progression.push('Dm');
+
+	const melodyForBar = (bar) => {
+		if (bar <= 1) return PHRASE_HOOK[bar];
+		if (bar >= final) return [[0, 3, 62]];
+		const pos = (bar - 2) % 8;
+		return pos >= 4 ? PHRASE_B[pos - 4] : PHRASE_A[pos];
+	};
+	const isB = (bar) => bar > 1 && bar < final && (bar - 2) % 8 >= 4;
+
+	const music = makeBuffer(bars * BAR + 1);
+	for (let bar = 0; bar < progression.length; bar++) {
+		const t0 = bar * BAR;
+		const chord = CHORDS[progression[bar]];
+		const isHook = bar <= 1;
+		const isBreak = breakBars.includes(bar);
+		const isFinal = bar >= final;
+
+		// Pad
+		add(music, t0, pad(chord.pad, isFinal ? 2 : BAR + 0.05, isHook ? 0.22 : 0.14), 1, 0);
+
+		// Melody (oud), slightly panned left, octave double on the B phrase
+		for (const [b, d, m] of melodyForBar(bar)) {
+			add(music, t0 + b * BEAT, oud(m, d * BEAT, isHook ? 0.75 : 0.6), 1, -0.25);
+			if (isB(bar)) add(music, t0 + b * BEAT + 0.012, oud(m - 12, d * BEAT, 0.3), 1, 0.3);
+		}
+
+		if (isFinal) {
+			add(music, t0, impact(0.9));
+			add(music, t0, bass(chord.root, 1.5, 0.7));
+			continue;
+		}
+
+		if (isHook) {
+			// Sparse, tense intro
+			add(music, t0, dum(0.8));
+			add(music, t0 + 3.5 * BEAT, tek(0.45), 1, 0.2);
+			if (bar === 1) add(music, t0, riser(BAR, 0.35));
+			continue;
+		}
+
+		// Bass: root – root – fifth – octave
+		add(music, t0, bass(chord.root, 0.7, 0.55));
+		add(music, t0 + 1.5 * BEAT, bass(chord.root, 0.25, 0.45));
+		add(music, t0 + 2 * BEAT, bass(chord.root + 7, 0.45, 0.45));
+		add(music, t0 + 3 * BEAT, bass(chord.root + 12, 0.45, 0.4));
+
+		// Darbuka maqsum
+		for (const [b, h] of MAQSUM) {
+			if (h === 'D') add(music, t0 + b * BEAT, dum(isBreak ? 0.6 : 0.95));
+			else add(music, t0 + b * BEAT, tek(isBreak ? 0.35 : 0.55), 1, 0.15);
+		}
+		// "ka" fills on sixteenths (lighter), denser from bar 4
+		if (bar >= 4 && !isBreak) {
+			for (const b of [1, 1.25, 2.75, 3.5, 3.75]) add(music, t0 + b * BEAT, tek(0.22, 1.3), 1, -0.2);
+		}
+		// Riq shimmer on offbeats from the product reveal
+		if (bar >= 4) {
+			for (let s = 0; s < 8; s++) add(music, t0 + (s * 0.5 + 0.25) * BEAT, riq(isBreak ? 0.12 : 0.18), 1, 0.45);
+		}
+		// Handclaps ("tasfiq") on 2 & 4 in the last section
+		if (bar >= breakBars[0]) {
+			add(music, t0 + 1 * BEAT, clap(0.5), 1, -0.1);
+			add(music, t0 + 3 * BEAT, clap(0.5), 1, 0.1);
+		}
+		// Drop hits
+		if (bar === 2 || bar === 4) add(music, t0, impact(0.55));
+		// Build into the final hit
+		if (bar === final - 1) add(music, t0, riser(BAR, 0.3));
+	}
+	return music;
 };
 
 // Maqsum in eighths: D T . T D . T .
@@ -336,67 +408,7 @@ const MAQSUM = [
 	[3, 'T'],
 ];
 
-const music = makeBuffer(DURATION + 1);
-
-for (let bar = 0; bar < progression.length; bar++) {
-	const t0 = bar * BAR;
-	const chord = CHORDS[progression[bar]];
-	const isHook = bar <= 1;
-	const isBreak = bar === 10 || bar === 11;
-	const isFinal = bar >= 14;
-
-	// Pad
-	add(music, t0, pad(chord.pad, isFinal ? 2 : BAR + 0.05, isHook ? 0.22 : 0.14), 1, 0);
-
-	// Melody (oud), slightly panned left, octave double on the B phrase
-	for (const [b, d, m] of melodyForBar(bar)) {
-		add(music, t0 + b * BEAT, oud(m, d * BEAT, isHook ? 0.75 : 0.6), 1, -0.25);
-		if (bar >= 6 && bar <= 9) add(music, t0 + b * BEAT + 0.012, oud(m - 12, d * BEAT, 0.3), 1, 0.3);
-	}
-
-	if (isFinal) {
-		add(music, t0, impact(0.9));
-		add(music, t0, bass(chord.root, 1.5, 0.7));
-		continue;
-	}
-
-	if (isHook) {
-		// Sparse, tense intro
-		add(music, t0, dum(0.8));
-		add(music, t0 + 3.5 * BEAT, tek(0.45), 1, 0.2);
-		if (bar === 1) add(music, t0, riser(BAR, 0.35));
-		continue;
-	}
-
-	// Bass: root – root – fifth – octave
-	add(music, t0, bass(chord.root, 0.7, 0.55));
-	add(music, t0 + 1.5 * BEAT, bass(chord.root, 0.25, 0.45));
-	add(music, t0 + 2 * BEAT, bass(chord.root + 7, 0.45, 0.45));
-	add(music, t0 + 3 * BEAT, bass(chord.root + 12, 0.45, 0.4));
-
-	// Darbuka maqsum
-	for (const [b, h] of MAQSUM) {
-		if (h === 'D') add(music, t0 + b * BEAT, dum(isBreak ? 0.6 : 0.95));
-		else add(music, t0 + b * BEAT, tek(isBreak ? 0.35 : 0.55), 1, 0.15);
-	}
-	// "ka" fills on sixteenths (lighter), denser from bar 4
-	if (bar >= 4 && !isBreak) {
-		for (const b of [1, 1.25, 2.75, 3.5, 3.75]) add(music, t0 + b * BEAT, tek(0.22, 1.3), 1, -0.2);
-	}
-	// Riq shimmer on offbeats from the product reveal
-	if (bar >= 4) {
-		for (let s = 0; s < 8; s++) add(music, t0 + (s * 0.5 + 0.25) * BEAT, riq(isBreak ? 0.12 : 0.18), 1, 0.45);
-	}
-	// Handclaps ("tasfiq") on 2 & 4 in the social-proof + CTA sections
-	if (bar >= 10) {
-		add(music, t0 + 1 * BEAT, clap(0.5), 1, -0.1);
-		add(music, t0 + 3 * BEAT, clap(0.5), 1, 0.1);
-	}
-	// Drop hits
-	if (bar === 2 || bar === 4) add(music, t0, impact(0.55));
-	// Build into the final hit
-	if (bar === 13) add(music, t0, riser(BAR, 0.3));
-}
+const music = buildMusic(15);
 
 // ---------- Master: soft-clip, normalize, fade ----------
 const master = (buf, seconds) => {
@@ -456,6 +468,8 @@ const outputs = {
 	riser: master(mono(riser(1.5, 1)), 1.5),
 	click: master(mono(click()), 0.06),
 };
+// 38s version (19 bars) for the 5-piece pack ad — generated last so the files above stay identical
+outputs['music-38s'] = master(buildMusic(19), 38);
 
 const hasFfmpeg = spawnSync('ffmpeg', ['-version']).status === 0;
 for (const [name, buf] of Object.entries(outputs)) {
