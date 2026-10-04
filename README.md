@@ -1,9 +1,9 @@
-# Pack Pousse des Cheveux 5 en 1 (AURA BIO) — Pubs vidéo 38s (Remotion)
+# Pack Pousse des Cheveux 5 en 1 à 49 DT (AURA BIO) — Pubs vidéo 34s (Remotion)
 
-Pub de **38 secondes** en **derja tunisienne** pour le pack **Derma Roller 540 + huile de romarin + flacon applicateur + poudre de sidr + brosse de massage**, à partir des photos des produits. Deux formats :
+Pub de **34 secondes** avec un hook promo (« عرض استثنائي! 5 قطع بـ 49 د.ت ») en **derja tunisienne** pour le pack **Derma Roller 540 + huile de romarin + flacon applicateur + poudre de sidr + brosse de massage**, à partir des photos des produits. Deux formats :
 
-- ▶️ **1:1 (fil Facebook / Instagram)** : [`renders/pack-cheveux-5en1-38s-1080x1080.mp4`](renders/pack-cheveux-5en1-38s-1080x1080.mp4)
-- ▶️ **9:16 (Reels / TikTok / Stories)**, avec sous-titres arabes mot par mot : [`renders/pack-cheveux-5en1-38s-9x16.mp4`](renders/pack-cheveux-5en1-38s-9x16.mp4)
+- ▶️ **1:1 (fil Facebook / Instagram)** : [`renders/pack-cheveux-5en1-49dt-1080x1080.mp4`](renders/pack-cheveux-5en1-49dt-1080x1080.mp4)
+- ▶️ **9:16 (Reels / TikTok / Stories)**, avec sous-titres arabes mot par mot : [`renders/pack-cheveux-5en1-49dt-9x16.mp4`](renders/pack-cheveux-5en1-49dt-9x16.mp4)
 
 📈 Stratégie (analyse produits, prix, lancement des pubs, opérations) : **[PLAN-MARKETING.md](PLAN-MARKETING.md)**
 
@@ -33,7 +33,7 @@ src/
   HairPackReel.tsx      # Version 9:16 : en-tête + pub carrée + sous-titres
   config.ts             # Prix, nom de boutique, contact
   theme.ts              # Couleurs, polices, durée des transitions
-  scenes/               # Hook, PackIntro, Step (×5), Value, Cta
+  scenes/               # OfferHook, Hook, PackIntro, Step (×3), Value, Cta
   components/           # ProductImage / PackGroup, Captions (sous-titres), motifs, cheveux animés…
 public/
   products/             # Produits détourés

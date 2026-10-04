@@ -39,7 +39,7 @@ export const PackIntroScene: React.FC = () => {
             opacity: interpolate(frame, [6, 12], [0, 1], clamp),
           }}
         >
-          ما تقلقيش… الحل موجود
+          الحل؟ باك فيه 5 قطع
         </div>
         <div
           style={{
@@ -56,7 +56,7 @@ export const PackIntroScene: React.FC = () => {
             }),
           }}
         >
-          روتين كامل في باك واحد
+          روتين طبيعي في 3 خطوات
         </div>
       </AbsoluteFill>
 

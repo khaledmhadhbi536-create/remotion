@@ -9,7 +9,7 @@ export const PRICES = {
   applicator: 15,
   sidr: 15,
   brush: 20,
-  pack: 79,
+  pack: 49,
 };
 export const PACK_PIECES = 5;
 export const VALUE_TOTAL =

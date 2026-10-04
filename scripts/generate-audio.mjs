@@ -468,8 +468,8 @@ const outputs = {
 	riser: master(mono(riser(1.5, 1)), 1.5),
 	click: master(mono(click()), 0.06),
 };
-// 38s version (19 bars) for the 5-piece pack ad — generated last so the files above stay identical
-outputs['music-38s'] = master(buildMusic(19), 38);
+// Longer versions for the 5-piece pack ads — generated last so the files above stay identical
+outputs['music-34s'] = master(buildMusic(17), 34);
 
 const hasFfmpeg = spawnSync('ffmpeg', ['-version']).status === 0;
 for (const [name, buf] of Object.entries(outputs)) {

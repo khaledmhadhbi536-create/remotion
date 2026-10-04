@@ -3,7 +3,7 @@ import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
 import { CaptionTrack, type CaptionPhrase } from "./components/Captions";
 import { TilePattern } from "./components/Decor";
 import { PACK_PIECES, PRICES, STORE_NAME, VALUE_TOTAL } from "./config";
-import { HairPackAd, PACK_AD_FRAMES } from "./HairPackAd";
+import { CTA_START, HairPackAd, PACK_AD_FRAMES } from "./HairPackAd";
 import { bodyFont, brandFont, colors } from "./theme";
 
 // 9:16 version for Reels / TikTok / Stories: the square ad in the middle,
@@ -12,63 +12,52 @@ export const PACK_REEL_FRAMES = PACK_AD_FRAMES;
 
 // Narration captions (seconds of the 38s timeline, aligned with the scenes)
 export const PACK_CAPTIONS: CaptionPhrase[] = [
-  { start: 0.2, end: 1.9, text: "الشعر يطيح؟", emphasis: ["يطيح؟"] },
-  { start: 1.9, end: 3.8, text: "خفيف و ما يطولش؟", emphasis: ["خفيف"] },
+  { start: 0.2, end: 2.0, text: "عرض استثنائي!", emphasis: ["استثنائي!"] },
   {
-    start: 4.1,
-    end: 6.0,
-    text: `عملنالك باك فيه ${PACK_PIECES} قطع`,
-    emphasis: [`${PACK_PIECES}`],
+    start: 2.0,
+    end: 3.8,
+    text: `${PACK_PIECES} قطع بـ ${PRICES.pack} دينار برك`,
+    emphasis: [`${PRICES.pack}`],
   },
-  {
-    start: 6.0,
-    end: 7.8,
-    text: "روتين كامل للعناية بالشعر",
-    emphasis: ["روتين"],
-  },
+  { start: 4.2, end: 6.0, text: "الشعر يطيح؟", emphasis: ["يطيح؟"] },
+  { start: 6.0, end: 7.8, text: "خفيف و ما يطولش؟", emphasis: ["خفيف"] },
   {
     start: 8.2,
-    end: 11.6,
-    text: "الأولى: ديرما رولر ينشّط فروة الراس",
-    emphasis: ["ديرما", "رولر"],
+    end: 11.8,
+    text: "الحل: روتين طبيعي في 3 خطوات",
+    emphasis: ["روتين", "طبيعي"],
   },
   {
     start: 12.2,
-    end: 15.6,
-    text: "الثانية: زيت إكليل الجبل يغذّي الجذور",
-    emphasis: ["إكليل", "الجبل"],
+    end: 15.8,
+    text: "اغسلي بالسدر البيو و مشط الجذور يوصّلو للجذور",
+    emphasis: ["بالسدر", "الجذور"],
   },
   {
     start: 16.2,
-    end: 19.6,
-    text: "الثالثة: قارورة بمشط توصّل الزيت للجذور",
-    emphasis: ["قارورة"],
+    end: 19.8,
+    text: "ديرما رولر مرّتين في الجمعة و بعدو قطرات إكليل الجبل",
+    emphasis: ["ديرما", "رولر", "إكليل"],
   },
   {
     start: 20.2,
-    end: 23.6,
-    text: "الرابعة: السدر يغسل و ينظّف بلا كيمياء",
-    emphasis: ["السدر"],
-  },
-  {
-    start: 24.2,
-    end: 27.6,
-    text: "الخامسة: الفرشة تدلّك و تنشّط الراس",
+    end: 23.8,
+    text: "و الفرشة تنشّط الدورة الدموية",
     emphasis: ["الفرشة"],
   },
   {
-    start: 28.2,
-    end: 31.6,
+    start: 24.2,
+    end: 27.8,
     text: `كل وحدة وحدها بـ ${VALUE_TOTAL} دينار`,
     emphasis: [`${VALUE_TOTAL}`],
   },
   {
-    start: 32.2,
-    end: 35.8,
-    text: `اليوم الباك الكامل بـ ${PRICES.pack} دينار برك`,
+    start: 28.2,
+    end: 31.8,
+    text: `اليوم الخمسة بـ ${PRICES.pack} دينار برك`,
     emphasis: [`${PRICES.pack}`],
   },
-  { start: 36.0, end: 37.9, text: "اطلبي توّا!", emphasis: ["توّا!"] },
+  { start: 32.0, end: 33.9, text: "اطلبي توّا!", emphasis: ["توّا!"] },
 ];
 
 const SQUARE_TOP = 400;
@@ -117,11 +106,16 @@ export const HairPackReel: React.FC = () => {
               padding: "0 24px 6px",
               fontSize: 48,
               scale: String(
-                interpolate(frame, [960, 972], [1, 1.25], {
-                  extrapolateLeft: "clamp",
-                  extrapolateRight: "clamp",
-                  easing: Easing.bezier(0.3, 1.6, 0.5, 1),
-                }),
+                interpolate(
+                  frame,
+                  [CTA_START + 36, CTA_START + 48],
+                  [1, 1.25],
+                  {
+                    extrapolateLeft: "clamp",
+                    extrapolateRight: "clamp",
+                    easing: Easing.bezier(0.3, 1.6, 0.5, 1),
+                  },
+                ),
               ),
             }}
           >

@@ -133,7 +133,7 @@ export const CtaScene: React.FC = () => {
               opacity: interpolate(frame, [6, 9], [0, 1], clamp),
             }}
           >
-            عرض محدود!
+            عرض استثنائي!
           </div>
         </AbsoluteFill>
 

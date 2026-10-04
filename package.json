@@ -25,11 +25,11 @@
   "scripts": {
     "dev": "remotion studio",
     "audio": "node scripts/generate-audio.mjs",
-    "render": "remotion render HairPackAd renders/pack-cheveux-5en1-38s-1080x1080.mp4 --codec=h264 --crf=20",
-    "still": "remotion still HairPackAd renders/thumbnail.jpg --frame=1010",
+    "render": "remotion render HairPackAd renders/pack-cheveux-5en1-49dt-1080x1080.mp4 --codec=h264 --crf=20",
+    "still": "remotion still HairPackAd renders/thumbnail.jpg --frame=60",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc",
-    "render:reel": "remotion render HairPackReel renders/pack-cheveux-5en1-38s-9x16.mp4 --codec=h264 --crf=20"
+    "render:reel": "remotion render HairPackReel renders/pack-cheveux-5en1-49dt-9x16.mp4 --codec=h264 --crf=20"
   }
 }

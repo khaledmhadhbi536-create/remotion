@@ -16,9 +16,12 @@
 
 **Nom :** « باك نموّ الشعر 5 في 1 » / *Pack Pousse des Cheveux 5 en 1*
 
-**Contenu :** Derma Roller 540 + huile de romarin 30 ml + flacon applicateur (rose ou noir) + poudre de sidr + brosse de massage.
+**Contenu :** Derma Roller 540 + huile de romarin 30 ml + flacon applicateur « مشط الجذور » (rose ou noir) + poudre de sidr bio + brosse de massage.
 
-**Promesse (sans affirmation médicale) :** « روتين كامل للعناية بالشعر » (une routine complète pour prendre soin des cheveux).
+**La routine (3 étapes, celle des vidéos) :**
+1. **Laver au sidr bio** : mélanger le sidr à l'eau dans le flacon « مشط الجذور » pour l'appliquer directement sur les racines, puis rincer.
+2. **Derma Roller 2 fois par semaine**, suivi de quelques gouttes d'huile de romarin.
+3. **Brosse de massage** : activer la circulation sanguine du cuir chevelu (2 minutes sous la douche).
 
 **Bonus fidélisation :** l'huile et le sidr sont des **consommables**. Proposez une **recharge « huile + sidr » à 35 DT** après 4 à 6 semaines (relance WhatsApp) : c'est là que se fait la marge récurrente.
 
@@ -32,49 +35,56 @@
 | Poudre de sidr | 15 DT |
 | Brosse de massage | 20 DT |
 | **Valeur totale (ancrage)** | **110 DT** |
-| **Prix du pack** | **79 DT**, livraison gratuite, paiement à la livraison |
+| **Prix promo du pack** | **49 DT** (−55 %), livraison gratuite, paiement à la livraison |
 | Recharge huile + sidr (relance) | 35 DT |
 
-**Pourquoi 79 DT :**
-- On reste **sous la barre des 80 DT**.
-- L'ancrage à 110 DT donne **−28 %** : l'économie est visible et crédible.
-- Avec deux soins de marque dans le pack, 79 DT reste un prix d'impulsion pour un « coffret routine ».
-- Si le taux de conversion est faible après le test, descendez à **69 DT** avant de toucher à la pub.
+**Pourquoi 49 DT fonctionne en hook :** « 5 قطع بـ 49 د.ت » est une offre choc. 5 produits pour moins de 50 DT, c'est moins de 10 DT par pièce, et la remise de −55 % se voit tout de suite.
 
-**Rentabilité (estimations à remplacer par vos vrais coûts) :**
+**⚠️ Mais la marge est serrée (estimations à remplacer par vos vrais coûts) :**
 
 | Poste | DT / commande |
 |---|---|
-| Prix de vente | 79 |
+| Prix de vente | 49 |
 | Coût d'achat des 5 produits + emballage (estimation) | −24 |
 | Livraison (société de livraison, estimation) | −7 |
-| **Marge avant publicité** | **48** → c'est votre CPA maximum (seuil de rentabilité) |
-| Objectif coût pub par commande **livrée** | ≤ 18 |
-| **Marge nette visée** | **≈ 25–30** |
+| **Marge avant publicité** | **18** → CPA maximum (seuil de rentabilité) |
+| Objectif coût pub par commande **livrée** | ≤ 8 |
+| **Marge nette visée** | **≈ 8–10** |
+
+Pour que 49 DT reste rentable :
+- **présentez-le comme une promo limitée** (c'est le cas dans la vidéo : « عرض استثنائي », « الكمية محدودة »), puis remontez à 59 ou 69 DT quand le stock promo est vendu ;
+- **gagnez sur la suite** : upsell à la confirmation (2ᵉ huile de romarin à 20 DT) et recharge huile + sidr à 35 DT ;
+- **surveillez les refus** de colis : à 49 DT, un colis refusé efface la marge de 2 commandes.
 
 > ⚠️ En paiement à la livraison, 15 à 25 % des colis peuvent être refusés. Calculez le CPA sur les commandes **livrées**, pas sur les commandes passées.
 
 Pour changer les prix dans les vidéos, modifiez `src/config.ts`, puis lancez `npm run render` et `npm run render:reel`.
 
-## 4. Les vidéos (38s)
+## 4. Les vidéos (34s)
 
 Deux formats, même montage :
-- **1:1** (`renders/pack-cheveux-5en1-38s-1080x1080.mp4`) pour le fil Facebook / Instagram ;
-- **9:16** (`renders/pack-cheveux-5en1-38s-9x16.mp4`) pour Reels / TikTok / Stories, avec en-tête AURA BIO + prix et **sous-titres arabes mot par mot** sous la vidéo.
+- **1:1** (`renders/pack-cheveux-5en1-49dt-1080x1080.mp4`) pour le fil Facebook / Instagram ;
+- **9:16** (`renders/pack-cheveux-5en1-49dt-9x16.mp4`) pour Reels / TikTok / Stories, avec en-tête AURA BIO + prix et **sous-titres arabes mot par mot** sous la vidéo.
 
 | Temps | Scène | Sous-titre (9:16) |
 |---|---|---|
-| 0–4s | « تساقط الشعر؟ » + خفيف / ضعيف / ما يطولش | الشعر يطيح؟ خفيف و ما يطولش؟ |
-| 4–8s | Les 5 produits tombent sur le beat, badge « 5 في 1 » | عملنالك باك فيه 5 قطع… روتين كامل |
-| 8–12s | Étape 1 : Derma Roller (mouvement de roulement) | الأولى: ديرما رولر ينشّط فروة الراس |
-| 12–16s | Étape 2 : huile de romarin | الثانية: زيت إكليل الجبل يغذّي الجذور |
-| 16–20s | Étape 3 : flacon applicateur (rose ou noir) | الثالثة: قارورة بمشط توصّل الزيت للجذور |
-| 20–24s | Étape 4 : sidr | الرابعة: السدر يغسل و ينظّف بلا كيمياء |
-| 24–28s | Étape 5 : brosse (mouvement de massage) | الخامسة: الفرشة تدلّك و تنشّط الراس |
-| 28–32s | « شنوّة فيه الباك؟ » : 5 lignes de prix, total 110 DT | كل وحدة وحدها بـ 110 دينار |
-| 32–38s | 110 → **79 DT**, livraison gratuite, paiement à la livraison, « اطلبي توّا » | اليوم الباك الكامل بـ 79 دينار برك |
+| 0–4s | **Hook promo** : flash, tampon « عرض استثنائي! », les 5 produits explosent à l'écran, prix géant **49 د.ت**, « بلاصة 110 » barré, « الكمية محدودة • توصيل مجاني » | عرض استثنائي! 5 قطع بـ 49 دينار برك |
+| 4–8s | Problème : « تساقط الشعر؟ » + خفيف / ضعيف / ما يطولش | الشعر يطيح؟ خفيف و ما يطولش؟ |
+| 8–12s | Les 5 produits tombent sur le beat : « روتين طبيعي في 3 خطوات » | الحل: روتين طبيعي في 3 خطوات |
+| 12–16s | Étape 1 : sidr bio + مشط الجذور | اغسلي بالسدر البيو و مشط الجذور يوصّلو للجذور |
+| 16–20s | Étape 2 : Derma Roller 2×/semaine + gouttes de romarin | ديرما رولر مرّتين في الجمعة و بعدو قطرات إكليل الجبل |
+| 20–24s | Étape 3 : brosse, circulation sanguine | و الفرشة تنشّط الدورة الدموية |
+| 24–28s | « شنوّة فيه الباك؟ » : 5 lignes de prix, total 110 DT | كل وحدة وحدها بـ 110 دينار |
+| 28–34s | 110 → **49 DT**, livraison gratuite, paiement à la livraison, « اطلبي توّا » | اليوم الخمسة بـ 49 دينار برك |
 
-**Sound design :** musique mezoued de 38s (chaque coupe sur une mesure), pop à chaque étiquette et à chaque produit qui tombe, whoosh à chaque coupe, clic à chaque bénéfice, scintillement (badge, total, fin), cloche sur le prix.
+**Sound design :**
+- **Hook :** flash et impact à l'ouverture, « pop » à chaque produit qui explose, impact et cloche quand le prix tombe, clic sur le prix barré.
+- **Reste de la vidéo :** whoosh à chaque coupe, clic à chaque bénéfice, scintillement sur le badge, le total et la fin.
+- **Musique :** mezoued de 34s, chaque coupe tombe sur une mesure.
+
+**Ligne DHT :** l'étape 2 affiche « الإكليل معروف ضد الـDHT ».
+- Quelques études suggèrent un effet de l'huile de romarin sur le DHT ; il n'y en a pas pour le sidr. La formulation reste donc sur « معروف » (connu pour) plutôt que « يبلوكي » (bloque).
+- Pour les **publicités payantes**, mettez `DHT_LINE = ""` dans `src/HairPackAd.tsx` : Meta refuse souvent les allégations de santé de ce type.
 
 **Règles respectées :**
 - La vidéo se comprend **sans le son**.
@@ -99,7 +109,7 @@ Deux formats, même montage :
 
 **Créatives à tester (3 par ensemble) :**
 1. Cette vidéo (hook problème).
-2. La même vidéo avec un hook prix : « باك 5 في 1 بـ 79 د.ت فقط » dès la 1ʳᵉ seconde.
+2. La même vidéo avec un hook prix : « 5 قطع بـ 49 د.ت فقط » (c'est maintenant le hook principal ; testez à la place un hook « problème » : « تساقط الشعر؟ ») dès la 1ʳᵉ seconde.
 3. Une vidéo **UGC** filmée au téléphone : déballage du pack + démonstration (souvent la plus performante en Tunisie).
 
 **À surveiller :**
