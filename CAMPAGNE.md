@@ -101,6 +101,21 @@ Pour refaire les rendus après une modification : `npm run campaign` (vidéos) e
 
 ## 7. Mise en place dans Meta (créée en pause)
 
+### Compte Akram Bdiri (`1530000945485232`), compte à utiliser
+
+Campagne `AURA_HAIR_5en1_49DT_Test-Angles` (`120251698952020152`), en pause : mêmes réglages et mêmes textes que sur NATURA.
+
+| Ensemble | ID | Pubs (vidéo + statique) |
+|---|---|---|
+| A · hommes 22–50 · 3 $/j | **à créer** | à créer |
+| B · hommes 20–32 · 3 $/j | **à créer** | à créer |
+| C · hommes 28–50 · 3 $/j | 120251698952730152 | 120251698956290152, 120251698956420152 |
+| D · femmes 25–55 · 3 $/j | 120251698953010152 | 120251698956510152, 120251698956620152 |
+
+Pour A et B : dans le Gestionnaire, dupliquez l'ensemble C, puis changez l'âge et remplacez les pubs par celles de l'angle A ou B.
+
+### Ancienne version : compte NATURA VASELINE TEST
+
 Compte publicitaire **NATURA VASELINE TEST** (`1984526072212989`), page **Aura Bio**, destination **Messenger**, budget en USD.
 
 | Élément | Nom | ID |
