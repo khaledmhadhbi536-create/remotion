@@ -2,9 +2,17 @@
 
 Les 4 visuels sont dans `renders/statics/`, chacun en **4:5** (fil Facebook / Instagram, 1080×1350) et en **9:16** (Stories, 1080×1920, contenu dans les zones sûres).
 
+**Même structure pour les 4 :**
+1. Le tampon rouge « عرض استثنائي! » en haut.
+2. Le titre de l'angle.
+3. Les **5 produits en cartes numérotées**, dans l'ordre de la routine : 1- سدر بيو، 2- ديرما رولر 540، 3- زيت إكليل الجبل، 4- مشط الجذور، 5- فرشة التدليك.
+4. « 5 قطع بـ 49 د.ت », « بلاصة 110 » barré, et le bouton.
+
+Seuls la couleur, le titre et le bouton changent d'une pub à l'autre : le test compare donc bien les **angles**, à visuel égal.
+
 | | Avatar | Angle | Hook visuel |
 |---|---|---|---|
-| **A · Deal** | Homme 22–50 sensible au prix, achète sur un coup de cœur | L'affaire : 5 pièces pour 49 DT, moins de 10 DT par pièce | « عرض استثنائي! 5 قطع بـ 49 د.ت », « بلاصة 110 » barré |
+| **A · Deal** | Homme 22–50 sensible au prix, achète sur un coup de cœur | L'affaire : 5 pièces pour 49 DT, moins de 10 DT par pièce | « باك نموّ الشعر للرجال • أقل من 10 د.ت للقطعة » |
 | **B · Début de chute** | Jeune homme 20–30 dont les cheveux commencent à s'affiner, inquiet pour son image | Agir maintenant, avant qu'il ne soit trop tard | « الشعر بدا يخفّ؟ ما تستنّاش لين يفوت الفوت » |
 | **C · Naturel** | Homme 28–50 méfiant envers les produits chimiques | Ingrédients naturels de marque : sidr bio + huile de romarin | « من الطبيعة لجذور شعرك » |
 | **D · Cadeau** | Femme 25–55 qui achète pour son mari, son père ou son frère | Cadeau utile pour un homme | « أحسن هدية لراجلك و إلا لبوك و خوك » |
