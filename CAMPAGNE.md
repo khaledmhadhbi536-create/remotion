@@ -98,3 +98,28 @@ Plan media buying prêt à lancer : **4 avatars × 2 créas (1 vidéo + 1 statiq
 | `PLAN-MARKETING.md` | Produits, prix, marge, opérations |
 
 Pour refaire les rendus après une modification : `npm run campaign` (vidéos) et `npm run statics` (visuels).
+
+## 7. Mise en place dans Meta (créée en pause)
+
+Compte publicitaire **NATURA VASELINE TEST** (`1984526072212989`), page **Aura Bio**, destination **Messenger**, budget en USD.
+
+| Élément | Nom | ID |
+|---|---|---|
+| Campagne (Ventes → conversations Messenger, budget par ensemble) | `AURA_HAIR_5en1_49DT_Test-Angles` | 120250835775190050 |
+| Ensemble A · hommes 22–50 · 3 $/j | `ADS_A-Deal_H22-50_TN` | 120250835780150050 |
+| Ensemble B · hommes 20–32 · 3 $/j | `ADS_B-Early_H20-32_TN` | 120250835780650050 |
+| Ensemble C · hommes 28–50 · 3 $/j | `ADS_C-Natural_H28-50_TN` | 120250835781290050 |
+| Ensemble D · femmes 25–55 · 3 $/j | `ADS_D-Gift_F25-55_TN` | 120250835781950050 |
+
+**Publicités créées : 7, toutes en pause.** A vidéo + statique, B vidéo + statique, C statique, D vidéo + statique.
+- Bouton « Envoyer un message ».
+- Texte en derja de `ADS-STATIQUES.md`.
+
+**Emplacements :** Facebook (fil, Stories, Reels, Marketplace, vidéos, profil). Audience Network, colonne de droite et Messenger sont exclus.
+
+**À faire dans le Gestionnaire de publicités avant d'activer :**
+1. **Pub C-Natural vidéo** : la vidéo `AURA_HAIR_V3-Natural_4x5` est déjà dans la bibliothèque, il reste à créer la pub dans l'ensemble C. Pour aller vite, dupliquez « AURA_HAIR_C-Natural_static » puis remplacez l'image par la vidéo.
+2. **9:16 pour Stories / Reels** : dans chaque pub, utilisez « Modifier le média par emplacement » et choisissez le fichier `…_9x16` déjà chargé.
+3. **Instagram** : aucun compte Instagram n'est relié à ce compte publicitaire. Reliez-le (Paramètres de la page → Comptes liés), puis ajoutez Instagram dans les emplacements.
+4. **Message pré-rempli** différent par angle (A / B / C / D), dans la partie « Modèle de message » de chaque pub.
+5. **Activer la campagne** quand tout est prêt.
