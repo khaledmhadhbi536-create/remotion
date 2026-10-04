@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import { LightRays, TilePattern } from "../components/Decor";
 import { ProductCard } from "../components/NumberedProducts";
-import { PACK_PIECES, PRICES, STORE_NAME, VALUE_TOTAL } from "../config";
+import { PACK_PIECES, PHONE, PRICES, STORE_NAME, VALUE_TOTAL } from "../config";
 import { bodyFont, brandFont, colors, displayFont } from "../theme";
 
 // Four static ads (1080×1350, 4:5 feed) — one per avatar / angle. See ADS-STATIQUES.md.
@@ -261,6 +261,12 @@ const Brand: React.FC<{ readonly color: string }> = ({ color }) => (
   </div>
 );
 
+const Phone: React.FC = () => (
+  <span>
+    ☎ <span style={{ direction: "ltr", unicodeBidi: "embed" }}>{PHONE}</span>
+  </span>
+);
+
 // ---------- A · Deal hunter ----------
 export const StaticDeal: React.FC = () => (
   <AbsoluteFill
@@ -286,7 +292,7 @@ export const StaticDeal: React.FC = () => (
     />
     <Footer bg={colors.charcoal} color={colors.white}>
       <Brand color={colors.goldLight} />•<span>الخلاص عند الاستلام</span>•
-      <span>الكمية محدودة</span>
+      <Phone />
     </Footer>
   </AbsoluteFill>
 );
@@ -314,7 +320,7 @@ export const StaticEarly: React.FC = () => (
       strikeColor="rgba(255,255,255,0.75)"
     />
     <Footer bg={colors.bronze} color={colors.charcoal}>
-      <Brand color={colors.charcoal} />•<span>الخلاص عند الاستلام</span>
+      <Brand color={colors.charcoal} />•<span>الخلاص عند الاستلام</span>•<Phone />
     </Footer>
   </AbsoluteFill>
 );
@@ -343,7 +349,7 @@ export const StaticNatural: React.FC = () => (
       ctaBg={NATURE}
     />
     <Footer bg={NATURE} color={colors.white}>
-      <Brand color={colors.goldLight} />•<span>الخلاص عند الاستلام</span>
+      <Brand color={colors.goldLight} />•<span>الخلاص عند الاستلام</span>•<Phone />
     </Footer>
   </AbsoluteFill>
 );
@@ -394,7 +400,7 @@ export const StaticGift: React.FC = () => (
       strikeColor="rgba(255,255,255,0.75)"
     />
     <Footer bg={colors.bronze} color={colors.charcoal}>
-      <Brand color={colors.charcoal} />•<span>الخلاص عند الاستلام</span>
+      <Brand color={colors.charcoal} />•<span>الخلاص عند الاستلام</span>•<Phone />
     </Footer>
   </AbsoluteFill>
 );

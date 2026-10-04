@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
 import { LightRays, TilePattern } from "../components/Decor";
 import { PackGroup } from "../components/ProductImage";
-import { PRICES, STORE_NAME, VALUE_TOTAL, WEBSITE } from "../config";
+import { PHONE, PRICES, STORE_NAME, VALUE_TOTAL, WEBSITE } from "../config";
 import { bodyFont, brandFont, colors, displayFont } from "../theme";
 
 // 24–30s · OFFER + CTA — price anchor, Tunisian e-commerce reassurances
@@ -310,6 +310,21 @@ export const CtaScene: React.FC<{ readonly cta?: string }> = ({
           }}
         >
           {WEBSITE || "ابعثلنا ميساج على الصفحة"}
+        </div>
+        <div
+          style={{
+            fontFamily: bodyFont,
+            fontWeight: 900,
+            fontSize: 50,
+            color: colors.white,
+            background: colors.charcoal,
+            padding: "2px 34px 8px",
+            borderRadius: 999,
+            marginTop: 16,
+            direction: "rtl",
+          }}
+        >
+          للطلب: <span style={{ direction: "ltr", unicodeBidi: "embed" }}>{PHONE}</span>
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

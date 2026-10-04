@@ -1,6 +1,7 @@
 // Everything a marketer would want to change without touching the animation code.
 export const STORE_NAME = "AURA BIO"; // brand on the products — replace if your page has another name
 export const WEBSITE = ""; // ← your page, site or WhatsApp number (empty = "send us a message")
+export const PHONE = "50 500 051"; // order line shown on every creative
 
 // 5-piece pack pricing (TND). See PLAN-MARKETING.md for the reasoning.
 export const PRICES = {
