@@ -27,10 +27,22 @@ import { PackIntroScene } from "./scenes/PackIntroScene";
 import { StepScene } from "./scenes/StepScene";
 import { ValueScene } from "./scenes/ValueScene";
 import { colors } from "./theme";
+import { DURATION_FRAMES, FPS, HEIGHT, WIDTH } from "./noura/config";
+import { NouraAd } from "./noura/NouraAd";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* NOURA · Huile Éclat — 30s Meta ad, 1:1 (src/noura/) */}
+      <Composition
+        id="NouraAd"
+        component={NouraAd}
+        durationInFrames={DURATION_FRAMES}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+      />
+
       {/* 5-piece hair pack: 38s, 1080×1080 (1:1 feed) + 9:16 reel with captions */}
       <Composition
         id="HairPackAd"

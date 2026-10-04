@@ -1,3 +1,5 @@
+> 🆕 **NOURA · Huile Éclat** : pub Meta 30 s en 1:1 (soins capillaires femmes, Derja). Concept, script, storyboard, code et commandes dans **[NOURA.md](NOURA.md)**. Vidéo : [`renders/noura/noura-huile-eclat-30s-1x1.mp4`](renders/noura/noura-huile-eclat-30s-1x1.mp4) · composition `NouraAd` · `npm run noura:dev` / `npm run noura:render`.
+
 # Pack Pousse des Cheveux 5 en 1 pour hommes à 49 DT (AURA BIO) — Pubs vidéo 34s (Remotion)
 
 Pub de **34 secondes** avec un hook promo (« عرض استثنائي! 5 قطع بـ 49 د.ت ») en **derja tunisienne** pour le pack **Derma Roller 540 + huile de romarin + flacon applicateur + poudre de sidr + brosse de massage**, à partir des photos des produits. Deux formats :
