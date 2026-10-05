@@ -109,8 +109,10 @@ Campagne `AURA_HAIR_5en1_49DT_Test-Angles` (`120251698952020152`), en pause : m�
 |---|---|---|
 | A · hommes 22–50 · 3 $/j | **à créer** | à créer |
 | B · hommes 20–32 · 3 $/j | **à créer** | à créer |
-| C · hommes 28–50 · 3 $/j | 120251698952730152 | 120251698956290152, 120251698956420152 |
-| D · femmes 25–55 · 3 $/j | 120251698953010152 | 120251698956510152, 120251698956620152 |
+| C · hommes 28–50 · 3 $/j | 120251698952730152 | 120251699017390152, 120251699017490152 |
+| D · femmes 25–55 · 3 $/j | 120251698953010152 | 120251699017680152, 120251699017910152 |
+
+Toutes les créas (vidéos, statiques, textes) portent le numéro de commande **50 500 051**. Les pubs C et D sans numéro sont archivées.
 
 Pour A et B : dans le Gestionnaire, dupliquez l'ensemble C, puis changez l'âge et remplacez les pubs par celles de l'angle A ou B.
 
