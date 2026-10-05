@@ -46,3 +46,5 @@ En bas de `index.html`, dans le bloc `CONFIG` :
 ## Mise en ligne
 
 Il suffit d'héberger le dossier `landing/` tel quel. Le plus simple : le glisser sur Netlify Drop, ou passer par GitHub Pages ou Cloudflare Pages. Mettez ensuite le lien dans les pubs, avec le bouton **Acheter** ou **En savoir plus** à la place de « Envoyer un message ».
+
+Après la mise en ligne, remplacez `img/og.jpg` dans la balise `og:image` de `index.html` par l'adresse complète (ex. `https://votre-site.netlify.app/img/og.jpg`) : Facebook et WhatsApp n'affichent pas l'image d'aperçu avec un chemin relatif.
