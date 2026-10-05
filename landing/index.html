@@ -51,6 +51,7 @@
   .hero h1 .gold { color: var(--gold-light); }
   .hero .sub { text-align: center; color: #D5DBE2; margin: 0 0 16px; font-size: 17px; }
   .center { text-align: center; }
+  .num { direction: ltr; unicode-bidi: isolate; white-space: nowrap; }
   .video { border-radius: 16px; overflow: hidden; box-shadow: 0 18px 40px rgba(0,0,0,.45); aspect-ratio: 4/5; background: #000; }
   .video video { width: 100%; height: 100%; object-fit: cover; }
 
@@ -280,11 +281,11 @@
         <p class="lead">كان واتساب ما تحلّش، ابعث الطلب بالزرّ هذا و إلا اتصل بينا.</p>
         <a class="btn" id="wa-again" href="#" target="_blank" rel="noopener">ابعث الطلب على واتساب</a>
         <p></p>
-        <a class="btn btn-call" href="tel:+21650500051">📞 50 500 051</a>
+        <a class="btn btn-call" href="tel:+21650500051">📞 <span class="num">50 500 051</span></a>
       </div>
     </div>
     <p></p>
-    <a class="btn btn-call" href="tel:+21650500051" data-cta="call">📞 تحب تطلب بالتليفون؟ 50 500 051</a>
+    <a class="btn btn-call" href="tel:+21650500051" data-cta="call">📞 تحب تطلب بالتليفون؟ <span class="num">50 500 051</span></a>
   </section>
 
   <section id="faq">
@@ -301,7 +302,7 @@
 <footer>
   <div style="font-family:Georgia,serif;letter-spacing:.2em;direction:ltr">AURA BIO</div>
   منتجات عناية، موش دواء. النتيجة تختلف من شخص لآخر.<br>
-  📞 50 500 051
+  📞 <span class="num">50 500 051</span>
 </footer>
 
 <div class="sticky" id="sticky">
