@@ -112,10 +112,11 @@ Campagne `AURA_HAIR_5en1_49DT_Test-Angles` (`120251698952020152`), en pause : m�
 | B · hommes 20–32 · 3 $/j | 120251699264930152 | 120251699267160152, 120251699267290152 |
 | C · hommes 28–50 · 3 $/j | 120251698952730152 | 120251699017390152, 120251699017490152 |
 | D · femmes 25–55 · 3 $/j | 120251698953010152 | 120251699017680152, 120251699017910152 |
+| **SITE** · hommes 22–50 · 3 $/j · site web, achats (pixel Aura Bio), bouton « Commander » → https://aura-bio-store.vercel.app/produits/pack-cheveux-sidr-romarin | 120251713512290152 | 120251713515900152, 120251713516880152 |
 
 Toutes les créas (vidéos, statiques, textes) portent le numéro de commande **50 500 051**. Les pubs C et D sans numéro sont archivées.
 
-Les 4 angles sont en place : 4 ensembles, 8 pubs, tout en pause. Emplacements : Facebook (fil, vidéos, Marketplace, Stories, Reels, profil) + **Instagram** (fil, Stories, Reels, Explorer, profil). Identité Instagram à choisir dans chaque pub : le compte Akram Bdiri est personnel (hors business naturaglow), l'API ne voit donc pas le compte Instagram Aura Bio.
+Les 4 angles Messenger + 1 ensemble site web sont en place : 5 ensembles, 10 pubs, tout en pause. Emplacements : Facebook (fil, vidéos, Marketplace, Stories, Reels, profil) + **Instagram** (fil, Stories, Reels, Explorer, profil). Identité Instagram à choisir dans chaque pub : le compte Akram Bdiri est personnel (hors business naturaglow), l'API ne voit donc pas le compte Instagram Aura Bio.
 
 ### Ancienne version : compte NATURA VASELINE TEST
 
