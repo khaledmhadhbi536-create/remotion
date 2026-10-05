@@ -96,7 +96,7 @@ Plan media buying prêt à lancer : **4 avatars × 2 créas (1 vidéo + 1 statiq
 | `renders/statics/` | 8 visuels (4 angles × 4:5 et 9:16) |
 | `ADS-STATIQUES.md` | Textes, titres, boutons et ciblage par angle |
 | `PLAN-MARKETING.md` | Produits, prix, marge, opérations |
-| `landing/` | Landing page de l'offre (49 DT, commande via WhatsApp, un lien `?a=A…D` par angle) : voir `landing/README.md` |
+| `landing/` | Landing page de l'offre, en ligne sur https://aura-bio-store.vercel.app/ (49 DT, commande via WhatsApp, un lien `?a=A…D` par angle) : voir `landing/README.md` |
 
 Pour refaire les rendus après une modification : `npm run campaign` (vidéos) et `npm run statics` (visuels).
 

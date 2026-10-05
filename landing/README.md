@@ -4,6 +4,19 @@ Page de vente en derja, une seule page (`index.html` + `img/`, moins de 1 Mo), p
 
 **Contenu :** l'offre (5 pièces, 110 DT barré, **49 DT**, −55 %), la vidéo V1-Deal, le détail des 5 produits avec leur prix, la routine en 3 étapes, le formulaire de commande, une FAQ et une barre « اطلب توّا » fixée en bas de l'écran.
 
+## En ligne
+
+**https://aura-bio-store.vercel.app/**
+
+Lien à mettre dans chaque pub (la lettre sert à savoir quelle pub a vendu) :
+
+| Pub | Lien |
+|---|---|
+| A · Deal | https://aura-bio-store.vercel.app/?a=A |
+| B · Début de chute | https://aura-bio-store.vercel.app/?a=B |
+| C · Naturel | https://aura-bio-store.vercel.app/?a=C |
+| D · Cadeau | https://aura-bio-store.vercel.app/?a=D |
+
 ## Commande
 
 1. Le client remplit le formulaire : nom, téléphone (8 chiffres, vérifié), gouvernorat, adresse.
