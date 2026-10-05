@@ -115,7 +115,7 @@ Campagne `AURA_HAIR_5en1_49DT_Test-Angles` (`120251698952020152`), en pause : m�
 
 Toutes les créas (vidéos, statiques, textes) portent le numéro de commande **50 500 051**. Les pubs C et D sans numéro sont archivées.
 
-Les 4 angles sont en place : 4 ensembles, 8 pubs, tout en pause.
+Les 4 angles sont en place : 4 ensembles, 8 pubs, tout en pause. Emplacements : Facebook (fil, vidéos, Marketplace, Stories, Reels, profil) + **Instagram** (fil, Stories, Reels, Explorer, profil). Identité Instagram à choisir dans chaque pub : le compte Akram Bdiri est personnel (hors business naturaglow), l'API ne voit donc pas le compte Instagram Aura Bio.
 
 ### Ancienne version : compte NATURA VASELINE TEST
 
