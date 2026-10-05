@@ -108,14 +108,14 @@ Campagne `AURA_HAIR_5en1_49DT_Test-Angles` (`120251698952020152`), en pause : m�
 
 | Ensemble | ID | Pubs (vidéo + statique) |
 |---|---|---|
-| A · hommes 22–50 · 3 $/j | **à créer** | à créer |
-| B · hommes 20–32 · 3 $/j | **à créer** | à créer |
+| A · hommes 22–50 · 3 $/j | 120251699264610152 | 120251699266930152, 120251699267110152 |
+| B · hommes 20–32 · 3 $/j | 120251699264930152 | 120251699267160152, 120251699267290152 |
 | C · hommes 28–50 · 3 $/j | 120251698952730152 | 120251699017390152, 120251699017490152 |
 | D · femmes 25–55 · 3 $/j | 120251698953010152 | 120251699017680152, 120251699017910152 |
 
 Toutes les créas (vidéos, statiques, textes) portent le numéro de commande **50 500 051**. Les pubs C et D sans numéro sont archivées.
 
-Pour A et B : dans le Gestionnaire, dupliquez l'ensemble C, puis changez l'âge et remplacez les pubs par celles de l'angle A ou B.
+Les 4 angles sont en place : 4 ensembles, 8 pubs, tout en pause.
 
 ### Ancienne version : compte NATURA VASELINE TEST
 
