@@ -10,20 +10,21 @@
 //   12–16s  climax: run of half-beat cuts, a freeze-frame accent
 //   16–20s  hero shot + offer
 //
-// To use the real footage: put the 5 Flamme Noble clips in public/flamme-noble/clips/
-// and point CLIPS at them. Each shot below says which clip, where in it (seconds) and how
-// it enters. The current CLIPS are STAND-INS so the edit can be checked.
+// Footage: the 5 clips in public/flamme-noble/clips/ (see CLIPS). Each shot says which
+// clip, where in it (seconds), how it is framed (zoom/focus) and how it enters.
 
 export const FPS = 30;
 // one beat = 15 frames
 export const BEAT = 15;
 
+// The 5 Flamme Noble sources (from the client's Drive, transcoded to 1080x1920 / 30 fps).
+// Photos were turned into 6s clips with a slow push-in so every shot moves.
 export const CLIPS = {
-  c1: "footage/presentation.mp4",
-  c2: "footage/presentation.mp4",
-  c3: "footage/presentation.mp4",
-  c4: "footage/presentation.mp4",
-  c5: "footage/presentation.mp4",
+  c1: "flamme-noble/clips/c1-buste.mp4", // veiled bust candle (photo) — hook + hero
+  c2: "flamme-noble/clips/c2-plateaux.mp4", // trays, candle bowl, rose dish (video 6.8s)
+  c3: "flamme-noble/clips/c3-famille.mp4", // family figure candles (photo)
+  c4: "flamme-noble/clips/c4-dragees.mp4", // personalised favour box in hand (video 4s)
+  c5: "flamme-noble/clips/c5-collection.mp4", // full collection on the table (photo)
 } as const;
 export type ClipId = keyof typeof CLIPS;
 
@@ -44,7 +45,9 @@ export type Shot = {
   readonly entry: Entry;
   readonly ramp?: Ramp; // in: fast → normal · out: normal → fast · slow: slow motion
   readonly freeze?: boolean; // hold the last frames as a freeze-frame accent
-  readonly focusY?: number; // vertical crop 0 → 100
+  readonly zoom?: number; // reframe: 1 = full frame, 1.5–2 = close-up / detail
+  readonly focusX?: number; // zoom centre, 0 → 100
+  readonly focusY?: number; // zoom centre, 0 → 100
   readonly caption?: string;
 };
 
@@ -52,68 +55,157 @@ export const SHOTS: Shot[] = [
   // 0–8s · hook + drop
   {
     clip: "c1",
-    at: 9.5,
+    at: 0,
     beats: 2,
     entry: "slices",
     ramp: "in",
-    caption: "فلام نوبل",
+    caption: "شموع فنية",
   },
-  { clip: "c2", at: 3.0, beats: 1, entry: "cut" },
-  { clip: "c3", at: 16.0, beats: 1, entry: "whip" },
-  { clip: "c4", at: 24.0, beats: 1, entry: "punchOut" },
-  { clip: "c5", at: 33.0, beats: 1, entry: "cut", caption: "الفخامة" },
-  { clip: "c1", at: 12.0, beats: 0.5, entry: "cut" },
-  { clip: "c3", at: 19.0, beats: 0.5, entry: "cut" },
-  { clip: "c2", at: 6.0, beats: 1, entry: "flash" },
-  { clip: "c4", at: 27.5, beats: 1, entry: "whip", ramp: "out" },
-  { clip: "c5", at: 36.0, beats: 1, entry: "glitch" },
-  { clip: "c1", at: 1.0, beats: 1, entry: "cut", caption: "في كل تفصيلة" },
-  { clip: "c3", at: 21.0, beats: 1, entry: "punchOut" },
-  { clip: "c2", at: 8.0, beats: 1, entry: "cut" },
-  { clip: "c5", at: 35.0, beats: 1, entry: "whip" },
-  { clip: "c1", at: 13.0, beats: 1, entry: "cut" },
-  { clip: "c4", at: 26.0, beats: 1, entry: "punchOut", ramp: "out" },
+  {
+    clip: "c2",
+    at: 0.3,
+    beats: 1,
+    entry: "cut",
+    zoom: 1.4,
+    focusX: 25,
+    focusY: 60,
+  },
+  { clip: "c3", at: 0, beats: 1, entry: "whip" },
+  { clip: "c4", at: 0.5, beats: 1, entry: "punchOut" },
+  { clip: "c5", at: 0, beats: 1, entry: "cut" },
+  { clip: "c1", at: 2, beats: 0.5, entry: "cut", zoom: 1.9, focusY: 35 },
+  {
+    clip: "c2",
+    at: 4.2,
+    beats: 0.5,
+    entry: "cut",
+    zoom: 1.5,
+    focusX: 60,
+    focusY: 70,
+  },
+  {
+    clip: "c5",
+    at: 1,
+    beats: 1,
+    entry: "flash",
+    zoom: 1.7,
+    focusX: 45,
+    focusY: 70,
+  },
+  {
+    clip: "c3",
+    at: 2,
+    beats: 1,
+    entry: "whip",
+    ramp: "out",
+    zoom: 1.4,
+    focusX: 30,
+    focusY: 45,
+  },
+  { clip: "c4", at: 2, beats: 1, entry: "glitch" },
+  { clip: "c2", at: 1.6, beats: 1, entry: "cut" },
+  { clip: "c1", at: 3, beats: 1, entry: "punchOut", zoom: 1.4, focusY: 80 },
+  {
+    clip: "c5",
+    at: 2,
+    beats: 1,
+    entry: "cut",
+    zoom: 1.9,
+    focusX: 40,
+    focusY: 30,
+  },
+  { clip: "c2", at: 3.2, beats: 1, entry: "whip" },
+  {
+    clip: "c3",
+    at: 3,
+    beats: 1,
+    entry: "cut",
+    zoom: 1.8,
+    focusX: 85,
+    focusY: 25,
+  },
+  { clip: "c4", at: 1.2, beats: 1, entry: "punchOut", ramp: "out" },
   // 8–10s · break: held, slow motion
   {
-    clip: "c4",
-    at: 30.0,
+    clip: "c1",
+    at: 1,
     beats: 4,
     entry: "flash",
     ramp: "slow",
-    caption: "جودة عالية",
+    zoom: 1.1,
+    caption: "مصنوعة باليد",
   },
   // 10–12s · build
-  { clip: "c5", at: 38.0, beats: 1, entry: "cut" },
-  { clip: "c1", at: 14.0, beats: 1, entry: "whip" },
-  { clip: "c3", at: 17.5, beats: 1, entry: "punchOut" },
-  { clip: "c2", at: 4.5, beats: 1, entry: "glitch" },
+  { clip: "c2", at: 5, beats: 1, entry: "cut" },
+  { clip: "c5", at: 3, beats: 1, entry: "whip", zoom: 1.3, focusX: 60 },
+  { clip: "c3", at: 4, beats: 1, entry: "punchOut", zoom: 1.2 },
+  { clip: "c4", at: 3, beats: 1, entry: "glitch" },
   // 12–16s · climax
-  { clip: "c4", at: 25.0, beats: 0.5, entry: "slices" },
-  { clip: "c5", at: 34.5, beats: 0.5, entry: "cut" },
-  { clip: "c1", at: 10.5, beats: 0.5, entry: "cut" },
-  { clip: "c3", at: 22.5, beats: 0.5, entry: "cut" },
+  { clip: "c1", at: 4, beats: 0.5, entry: "slices", zoom: 1.6, focusY: 30 },
   {
     clip: "c2",
-    at: 7.0,
+    at: 0.8,
+    beats: 0.5,
+    entry: "cut",
+    zoom: 1.4,
+    focusX: 30,
+    focusY: 40,
+  },
+  {
+    clip: "c5",
+    at: 4,
+    beats: 0.5,
+    entry: "cut",
+    zoom: 1.6,
+    focusX: 70,
+    focusY: 55,
+  },
+  {
+    clip: "c3",
+    at: 1,
+    beats: 0.5,
+    entry: "cut",
+    zoom: 1.7,
+    focusX: 25,
+    focusY: 60,
+  },
+  {
+    clip: "c4",
+    at: 0.2,
     beats: 1,
     entry: "flash",
     freeze: true,
-    caption: "سوم مدروس",
+    caption: "توزيعات أفراح",
   },
-  { clip: "c4", at: 28.5, beats: 0.5, entry: "glitch" },
-  { clip: "c5", at: 37.0, beats: 0.5, entry: "cut" },
-  { clip: "c1", at: 2.5, beats: 0.5, entry: "cut" },
-  { clip: "c3", at: 18.5, beats: 0.5, entry: "whip" },
-  { clip: "c1", at: 11.5, beats: 1, entry: "glitch" },
-  { clip: "c4", at: 29.0, beats: 0.5, entry: "cut" },
-  { clip: "c5", at: 39.0, beats: 0.5, entry: "slices" },
-  { clip: "c2", at: 5.5, beats: 1, entry: "punchOut", ramp: "out" },
+  {
+    clip: "c2",
+    at: 4.6,
+    beats: 1,
+    entry: "glitch",
+    zoom: 1.3,
+    focusX: 60,
+    focusY: 70,
+  },
+  { clip: "c1", at: 4.5, beats: 0.5, entry: "cut", zoom: 2, focusY: 25 },
+  { clip: "c5", at: 5, beats: 0.5, entry: "cut", zoom: 1.3 },
+  {
+    clip: "c3",
+    at: 4.5,
+    beats: 0.5,
+    entry: "cut",
+    zoom: 1.3,
+    focusX: 70,
+    focusY: 40,
+  },
+  { clip: "c2", at: 5.6, beats: 0.5, entry: "slices" },
+  { clip: "c5", at: 2.5, beats: 1, entry: "cut", caption: "هدية تبهر" },
+  { clip: "c4", at: 2.5, beats: 1, entry: "punchOut", ramp: "out" },
 ];
 
 // 16–20s · hero shot under the offer
 export const HERO: Shot = {
   clip: "c1",
-  at: 9.0,
+  at: 0,
   beats: 8,
   entry: "flash",
   ramp: "slow",

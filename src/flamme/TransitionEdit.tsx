@@ -78,29 +78,36 @@ const sourceFrame = (s: Shot, f: number) => {
   return Math.round(s.at * FPS + t);
 };
 
-// One video frame of a shot, cropped to fill the frame
+// One video frame of a shot, cropped to fill the frame. `zoom` + focus reframe the
+// clip (close-up / extreme close-up out of the same footage).
 const Clip: React.FC<{
   readonly shot: Shot;
   readonly f: number; // local frame of the shot
   readonly style?: React.CSSProperties;
 }> = ({ shot, f, style }) => (
   <AbsoluteFill style={{ overflow: "hidden" }}>
-    <Freeze frame={sourceFrame(shot, f)}>
-      <OffthreadVideo
-        src={staticFile(CLIPS[shot.clip])}
-        muted
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: `50% ${shot.focusY ?? 50}%`,
-          filter: GRADE,
-          ...style,
-        }}
-      />
-    </Freeze>
+    <AbsoluteFill
+      style={{
+        transform: `scale(${shot.zoom ?? 1})`,
+        transformOrigin: `${shot.focusX ?? 50}% ${shot.focusY ?? 50}%`,
+      }}
+    >
+      <Freeze frame={sourceFrame(shot, f)}>
+        <OffthreadVideo
+          src={staticFile(CLIPS[shot.clip])}
+          muted
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            filter: GRADE,
+            ...style,
+          }}
+        />
+      </Freeze>
+    </AbsoluteFill>
   </AbsoluteFill>
 );
 
