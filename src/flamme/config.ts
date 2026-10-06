@@ -211,13 +211,14 @@ export const HERO: Shot = {
   ramp: "slow",
 };
 
-// PLACEHOLDERS until the real prices are confirmed
+// Leave `price` empty to show the call to action in its place
 export const OFFER = {
   brand: "FLAMME NOBLE",
   headline: "اطلب توا",
-  price: "?? د.ت",
+  price: "",
   note: "الخلاص عند الاستلام",
-  phone: "50 500 051",
+  phoneLabel: "للطلب",
+  phone: "23 424 978", // +216 23 424 978
 };
 
 const cumBeats = SHOTS.reduce((acc, s) => acc + s.beats, 0);

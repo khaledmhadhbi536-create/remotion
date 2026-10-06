@@ -384,7 +384,7 @@ const Hero: React.FC = () => {
             ...rise(BEAT),
           }}
         >
-          {OFFER.price}
+          {OFFER.price || OFFER.headline}
         </div>
         <div
           style={{
@@ -412,7 +412,7 @@ const Hero: React.FC = () => {
             ...rise(BEAT * 3),
           }}
         >
-          {OFFER.headline} ·{" "}
+          {OFFER.price ? OFFER.headline : OFFER.phoneLabel} ·{" "}
           <span style={{ direction: "ltr", unicodeBidi: "isolate" }}>
             {OFFER.phone}
           </span>
