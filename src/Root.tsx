@@ -27,6 +27,8 @@ import { PackIntroScene } from "./scenes/PackIntroScene";
 import { StepScene } from "./scenes/StepScene";
 import { ValueScene } from "./scenes/ValueScene";
 import { colors } from "./theme";
+import { TOTAL_FRAMES as FN_FRAMES } from "./flamme/config";
+import { FlammeTransitionEdit } from "./flamme/TransitionEdit";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -284,6 +286,25 @@ export const RemotionRoot: React.FC = () => {
           fps={30}
           width={1080}
           height={1080}
+        />
+      </Folder>
+      {/* Flamme Noble — transition-edit ad (beat-cut, whip, glitch, flash), 9:16 + 4:5 */}
+      <Folder name="FlammeNoble">
+        <Composition
+          id="FN-Transition-9x16"
+          component={FlammeTransitionEdit}
+          durationInFrames={FN_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="FN-Transition-4x5"
+          component={FlammeTransitionEdit}
+          durationInFrames={FN_FRAMES}
+          fps={30}
+          width={1080}
+          height={1350}
         />
       </Folder>
     </>
