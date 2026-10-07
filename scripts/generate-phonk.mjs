@@ -8,7 +8,10 @@
 //   bars 6-7  climax: full beat, 32nd hat rolls, double cowbell
 //   bars 8-9  final hit, half-time groove under the hero shot + offer
 //
-// Usage: node scripts/generate-phonk.mjs   → public/audio/phonk-20s.mp3 (needs ffmpeg)
+// 30s version (Instagram reel), same sounds, sections extended — no new pattern:
+//   bars 0-3 drop · 4 break · 5-7 drop again · 8 build · 9-12 climax · 13-14 final
+//
+// Usage: node scripts/generate-phonk.mjs [20|30]   → public/audio/phonk-<n>s.mp3 (needs ffmpeg)
 
 import { writeFileSync, unlinkSync } from "node:fs";
 import { spawnSync } from "node:child_process";
@@ -18,7 +21,9 @@ const SR = 44100;
 const BPM = 120;
 const BEAT = 60 / BPM;
 const BAR = BEAT * 4;
-const SECONDS = 20;
+const SECONDS = Number(process.argv[2] ?? 20);
+if (SECONDS !== 20 && SECONDS !== 30)
+  throw new Error("duration must be 20 or 30");
 
 let seed = 4242;
 const rand = () => {
@@ -192,37 +197,55 @@ const riffBar = (t0, { double = false, v = 1 } = {}) => {
 };
 
 const bar = (i) => i * BAR;
-add(0, impact(0.8)); // hits on frame 0 — the hook
-for (let i = 0; i < 4; i++) {
+const drop = (i) => {
   drumsBar(bar(i));
   bassBar(bar(i));
   riffBar(bar(i));
-}
+};
 // break: half-time, cowbell filtered later by the low volume
-drumsBar(bar(4), { halfTime: true, v: 0.8 });
-add(bar(4), sub808(41, BAR, lastBass, 0.7));
-riffBar(bar(4), { v: 0.45 });
-// build
-drumsBar(bar(5), { rolls: true, v: 0.9 });
-bassBar(bar(5), 0.8);
-for (let r = 0; r < 16; r++)
-  add(bar(5) + BAR / 2 + (r * BAR) / 32, clap(0.15 + r * 0.03), 1, 0);
-add(bar(5), riser(BAR, 0.5));
-// climax
-for (const i of [6, 7]) {
-  add(bar(i), impact(i === 6 ? 0.7 : 0.4));
+const brk = (i) => {
+  drumsBar(bar(i), { halfTime: true, v: 0.8 });
+  add(bar(i), sub808(41, BAR, lastBass, 0.7));
+  riffBar(bar(i), { v: 0.45 });
+};
+const build = (i) => {
+  drumsBar(bar(i), { rolls: true, v: 0.9 });
+  bassBar(bar(i), 0.8);
+  for (let r = 0; r < 16; r++)
+    add(bar(i) + BAR / 2 + (r * BAR) / 32, clap(0.15 + r * 0.03), 1, 0);
+  add(bar(i), riser(BAR, 0.5));
+};
+const climax = (i, first) => {
+  add(bar(i), impact(first ? 0.7 : 0.4));
   drumsBar(bar(i), { rolls: true });
   bassBar(bar(i));
   riffBar(bar(i), { double: true });
+};
+// final hit + tail (2 bars)
+const final = (i) => {
+  add(bar(i), impact(0.9));
+  add(bar(i), sub808(41, 1.8, lastBass, 0.8));
+  add(bar(i), cowbell(77, 0.3));
+  drumsBar(bar(i), { halfTime: true, v: 0.55 });
+  drumsBar(bar(i + 1), { halfTime: true, v: 0.5 });
+  add(bar(i + 1), sub808(41, 1.6, 41, 0.6));
+  riffBar(bar(i + 1), { v: 0.35 });
+};
+
+add(0, impact(0.8)); // hits on frame 0 — the hook
+for (let i = 0; i < 4; i++) drop(i);
+brk(4);
+if (SECONDS === 20) {
+  build(5);
+  climax(6, true);
+  climax(7, false);
+  final(8);
+} else {
+  for (const i of [5, 6, 7]) drop(i);
+  build(8);
+  for (const i of [9, 10, 11, 12]) climax(i, i === 9 || i === 11);
+  final(13);
 }
-// final hit + tail
-add(bar(8), impact(0.9));
-add(bar(8), sub808(41, 1.8, lastBass, 0.8));
-add(bar(8), cowbell(77, 0.3));
-drumsBar(bar(8), { halfTime: true, v: 0.55 });
-drumsBar(bar(9), { halfTime: true, v: 0.5 });
-add(bar(9), sub808(41, 1.6, 41, 0.6));
-riffBar(bar(9), { v: 0.35 });
 
 // master: gentle glue + limiter, fade the last 0.8s
 let peak = 0;
@@ -256,7 +279,7 @@ for (let i = 0; i < L.length; i++) {
   wav.writeInt16LE(Math.round(L[i] * 32767), 44 + i * 4);
   wav.writeInt16LE(Math.round(R[i] * 32767), 46 + i * 4);
 }
-const out = path.join(process.cwd(), "public", "audio", "phonk-20s");
+const out = path.join(process.cwd(), "public", "audio", `phonk-${SECONDS}s`);
 writeFileSync(`${out}.wav`, wav);
 spawnSync("ffmpeg", [
   "-y",
@@ -269,4 +292,4 @@ spawnSync("ffmpeg", [
   `${out}.mp3`,
 ]);
 unlinkSync(`${out}.wav`);
-console.log("✓ public/audio/phonk-20s.mp3");
+console.log(`✓ public/audio/phonk-${SECONDS}s.mp3`);

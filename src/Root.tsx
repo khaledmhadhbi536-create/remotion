@@ -27,8 +27,10 @@ import { PackIntroScene } from "./scenes/PackIntroScene";
 import { StepScene } from "./scenes/StepScene";
 import { ValueScene } from "./scenes/ValueScene";
 import { colors } from "./theme";
-import { TOTAL_FRAMES as FN_FRAMES } from "./flamme/config";
-import { FlammeTransitionEdit } from "./flamme/TransitionEdit";
+import {
+  FlammeTransitionEdit,
+  flammeEditFrames,
+} from "./flamme/TransitionEdit";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -288,23 +290,45 @@ export const RemotionRoot: React.FC = () => {
           height={1080}
         />
       </Folder>
-      {/* Flamme Noble — transition-edit ad (beat-cut, whip, glitch, flash), 9:16 + 4:5 */}
+      {/* Flamme Noble — 20s ad (beat-cut, whip, glitch, flash), 9:16 + 4:5,
+          and the 30s Instagram reel (golden look, mosaic blocks, silhouettes) */}
       <Folder name="FlammeNoble">
         <Composition
           id="FN-Transition-9x16"
           component={FlammeTransitionEdit}
-          durationInFrames={FN_FRAMES}
+          durationInFrames={flammeEditFrames("reel20")}
           fps={30}
           width={1080}
           height={1920}
+          defaultProps={{ spec: "reel20" as const, withMusic: true }}
         />
         <Composition
           id="FN-Transition-4x5"
           component={FlammeTransitionEdit}
-          durationInFrames={FN_FRAMES}
+          durationInFrames={flammeEditFrames("reel20")}
           fps={30}
           width={1080}
           height={1350}
+          defaultProps={{ spec: "reel20" as const, withMusic: true }}
+        />
+        <Composition
+          id="FN-Reel30-9x16"
+          component={FlammeTransitionEdit}
+          durationInFrames={flammeEditFrames("reel30")}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ spec: "reel30" as const, withMusic: true }}
+        />
+        {/* same reel, sound effects only: the "salesman funk" sound is added in Instagram */}
+        <Composition
+          id="FN-Reel30-9x16-nomusic"
+          component={FlammeTransitionEdit}
+          durationInFrames={flammeEditFrames("reel30")}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ spec: "reel30" as const, withMusic: false }}
         />
       </Folder>
     </>
