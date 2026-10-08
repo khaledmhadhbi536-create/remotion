@@ -7,6 +7,7 @@ import {
   staticFile,
   useCurrentFrame,
 } from "remotion";
+import { PackGroup } from "../components/ProductImage";
 import { PHONE } from "../config";
 import { P } from "../presentation/Overlays";
 import { bodyFont, brandFont, displayFont } from "../theme";
@@ -324,6 +325,88 @@ export const Flash: React.FC<{ readonly at: number }> = ({ at }) => {
   return <AbsoluteFill style={{ background: P.white, opacity: o }} />;
 };
 
+// ---------- The 5-piece pack "photo": same shot as a flash hook and on the end card ----------
+export const PackPhoto: React.FC<{ readonly size: number }> = ({ size }) => (
+  <div
+    style={{
+      width: size,
+      height: size,
+      borderRadius: size * 0.07,
+      background: `radial-gradient(circle at 50% 40%, #FFFFFF 0%, #FBF4E8 55%, #E3EFD9 100%)`,
+      border: `${Math.round(size * 0.012)}px solid ${P.white}`,
+      boxShadow: "0 24px 60px rgba(0,0,0,0.5)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      position: "relative",
+      overflow: "hidden",
+    }}
+  >
+    <PackGroup scale={(size * 0.82) / 520} />
+    <div
+      style={{
+        position: "absolute",
+        top: size * 0.04,
+        right: size * 0.05,
+        fontFamily: displayFont,
+        fontSize: size * 0.09,
+        color: P.white,
+        background: P.red,
+        padding: `0 ${size * 0.035}px ${size * 0.015}px`,
+        borderRadius: size * 0.03,
+        direction: "rtl",
+        rotate: "4deg",
+      }}
+    >
+      5 قطع
+    </div>
+  </div>
+);
+
+// ---------- Photo flash hook: white flash, the pack slams in, flash back to the footage ----------
+export const PackFlash: React.FC<{
+  readonly at: number;
+  readonly len: number;
+}> = ({ at, len }) => {
+  const frame = useCurrentFrame();
+  const t = frame - at;
+  if (t < -2 || t > len + 6) return null;
+  const flashIn = interpolate(t, [-2, 0, 5], [0, 1, 0], clamp);
+  const flashOut = interpolate(t, [len - 2, len, len + 6], [0, 0.9, 0], clamp);
+  const shown = t >= 0 && t < len;
+  return (
+    <>
+      {shown ? (
+        <AbsoluteFill
+          style={{
+            background: `radial-gradient(circle at 50% 45%, ${P.green} 0%, ${P.greenDeep} 75%)`,
+            alignItems: "center",
+            justifyContent: "flex-start",
+            paddingTop: 330,
+          }}
+        >
+          <div
+            style={{
+              scale: String(
+                interpolate(t, [0, 7], [1.35, 1], {
+                  ...clamp,
+                  easing: springy,
+                }) + interpolate(t, [7, len], [0, 0.04], clamp),
+              ),
+              rotate: `${interpolate(t, [0, 7], [-6, -2], clamp)}deg`,
+            }}
+          >
+            <PackPhoto size={860} />
+          </div>
+        </AbsoluteFill>
+      ) : null}
+      <AbsoluteFill
+        style={{ background: P.white, opacity: Math.max(flashIn, flashOut) }}
+      />
+    </>
+  );
+};
+
 // ---------- End card: pack + price + CTA button with a bouncing arrow ----------
 export const EndCard: React.FC = () => {
   const frame = useCurrentFrame();
@@ -357,8 +440,8 @@ export const EndCard: React.FC = () => {
           alignItems: "center",
           justifyContent: "center",
           direction: "rtl",
-          gap: 28,
-          padding: "0 70px",
+          gap: 22,
+          padding: "150px 70px 0",
         }}
       >
         <div
@@ -389,10 +472,13 @@ export const EndCard: React.FC = () => {
         >
           باك عناية الشعر 5 في 1
         </div>
+        <div style={{ ...pop(10), rotate: "-2deg" }}>
+          <PackPhoto size={600} />
+        </div>
         <div
           style={{
             fontFamily: displayFont,
-            fontSize: 140,
+            fontSize: 112,
             color: P.greenDeep,
             background: P.yellow,
             padding: "0 54px 18px",
@@ -404,8 +490,8 @@ export const EndCard: React.FC = () => {
         </div>
         {/* Bouncing arrow pointing at the CTA */}
         <svg
-          width="150"
-          height="150"
+          width="110"
+          height="110"
           viewBox="0 0 100 100"
           style={{
             ...pop(26),

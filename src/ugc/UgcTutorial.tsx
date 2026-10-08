@@ -14,7 +14,16 @@ import {
   ProductCard,
   ProgressBar,
 } from "../presentation/Overlays";
-import { EndCard, Flash, Hook, Logo, PhoneBadge, Promo, Steps } from "./Brand";
+import {
+  EndCard,
+  Flash,
+  Hook,
+  Logo,
+  PackFlash,
+  PhoneBadge,
+  Promo,
+  Steps,
+} from "./Brand";
 import {
   clips,
   MOMENTS,
@@ -53,6 +62,9 @@ const Clip: React.FC<{
     </AbsoluteFill>
   );
 };
+
+const PACK_FLASH_AT = 60;
+const PACK_FLASH_LEN = 40;
 
 const phrases: CaptionPhrase[] = PHRASES.map((p) => ({
   start: srcToOut(p.start),
@@ -108,6 +120,8 @@ export const UgcTutorial: React.FC = () => {
 
       {/* ---------- Graphics ---------- */}
       <Hook end={f(MOMENTS.hookEnd)} />
+      {/* Photo flash of the 5 products at 2s (same photo as the end card) */}
+      <PackFlash at={PACK_FLASH_AT} len={PACK_FLASH_LEN} />
       <ProductCard
         from={f(MOMENTS.sidr)}
         to={f(MOMENTS.sidrEnd)}
@@ -201,6 +215,27 @@ export const UgcTutorial: React.FC = () => {
       <Audio
         name="Impact · hook"
         src={staticFile("audio/impact.mp3")}
+        volume={0.3}
+        premountFor={fps}
+      />
+      <Audio
+        name="Impact · pack flash"
+        from={PACK_FLASH_AT - 2}
+        src={staticFile("audio/impact.mp3")}
+        volume={0.3}
+        premountFor={fps}
+      />
+      <Audio
+        name="Shimmer · pack flash"
+        from={PACK_FLASH_AT + 4}
+        src={staticFile("audio/shimmer.mp3")}
+        volume={0.25}
+        premountFor={fps}
+      />
+      <Audio
+        name="Whoosh · back to footage"
+        from={PACK_FLASH_AT + PACK_FLASH_LEN - 6}
+        src={staticFile("audio/whoosh.mp3")}
         volume={0.3}
         premountFor={fps}
       />
