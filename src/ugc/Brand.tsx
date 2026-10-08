@@ -387,7 +387,7 @@ export const EndCard: React.FC = () => {
             ...pop(8),
           }}
         >
-          باك تطويل الشعر 5 في 1
+          باك عناية الشعر 5 في 1
         </div>
         <div
           style={{
