@@ -108,13 +108,13 @@ ffmpeg -i source.mp4 -filter_complex "[0:v]vidstabtransform=input=t.trf:smoothin
 
 Montage de la vidéo UGC du vendeur (Drive `Ugc/20261008_002339.mp4`, 8K, 77s) au format **Reels / TikTok / Stories 1080×1920** :
 
-▶️ [`renders/ugc-tuto-pack-5en1-9x16.mp4`](renders/ugc-tuto-pack-5en1-9x16.mp4) (61,8s) · couverture `renders/cover-ugc-tuto-9x16.jpg` · composition Remotion `UgcTutorial`
+▶️ [`renders/ugc-tuto-pack-5en1-9x16.mp4`](renders/ugc-tuto-pack-5en1-9x16.mp4) (59,5s) · couverture `renders/cover-ugc-tuto-9x16.jpg` · composition Remotion `UgcTutorial`
 
 | Étape | Ce qui a été fait |
 |---|---|
 | Image | 8K → 1080×1920, stabilisation (vidstab 2 passes), étalonnage (luminosité, contraste, saturation), netteté |
 | Son voix | Passe-haut, débruitage, compression, normalisation à −16 LUFS (standard réseaux sociaux) |
-| Montage | 77s → 57,8s de parole : silences coupés, faux départ « نحطو… اه » supprimé, phrases répétées supprimées (« بش نستعملو » ×2, « هذي يوزع », « هذي هذي »). Points de coupe calés sur le creux d'énergie audio le plus proche. Zoom alterné 1.0 / 1.1 pour masquer les coupes, léger push-in |
+| Montage | 77s → 55,5s de parole : silences coupés, faux départ « نحطو… اه » supprimé, phrases répétées supprimées (« بش نستعملو » ×2, « نستعملو الابليكاتور على الراس », « هذي يوزع », « هذي هذي »). Points de coupe calés sur le creux d'énergie audio le plus proche. Zoom alterné 1.0 / 1.1 pour masquer les coupes, léger push-in |
 | Sous-titres | Derja en arabe, 1 à 3 mots, mot prononcé surligné en vert, mots-clés en jaune avec un « pop » |
 | Marque | Logo **aura bio** en haut et numéro **50 500 051** en bas pendant toute la vidéo (au-dessus de l'interface Reels/TikTok) |
 | Graphismes | Hook « كيفاش تستعمل الباك؟ », cartes produit (سدر، أبليكاتور، ديرما رولر 540، زيت إكليل الجبل، فرشاة المساج), étapes de mélange, puces des bénéfices, bannière « 5 قطع / 49 د.ت », flashs sur les changements d'étape, barre de progression |

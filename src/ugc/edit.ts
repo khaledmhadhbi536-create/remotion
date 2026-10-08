@@ -5,14 +5,14 @@
 export const FPS = 30;
 
 // Ranges of the source to KEEP. Removed: dead air, the false start « نحطو… اه »,
-// and the repeated phrases « بش نستعملو » (×2), « هذي يوزع » and « هذي هذي ».
+// and the repeated phrases « بش نستعملو » (×2), « نستعملو الابليكاتور على الراس »,
+// « هذي يوزع » and « هذي هذي ».
 // Cut points are snapped to the quietest 10ms of audio near each phrase boundary.
 export const KEEP: readonly [number, number][] = [
   [0.47, 5.09],
   [7.52, 15.25],
   [15.89, 20.2],
   [22.85, 31.32],
-  [35.5, 37.73],
   [39.92, 50.7],
   [50.96, 55.91],
   [58.24, 60.67],
@@ -113,12 +113,6 @@ export const PHRASES: Phrase[] = [
     text: "نزيدوها ماء و نخلطوها",
     emphasis: ["ماء"],
     check: true,
-  },
-  {
-    start: 35.5,
-    end: 37.7,
-    text: "نستعملو الأبليكاتور على الراس",
-    emphasis: ["الراس"],
   },
   {
     start: 39.95,
