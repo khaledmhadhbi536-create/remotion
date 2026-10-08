@@ -439,7 +439,7 @@ export const EndCard: React.FC = () => {
             ),
           }}
         >
-          اطلب توّا
+          ابعثلنا ميساج
         </div>
         <div
           style={{

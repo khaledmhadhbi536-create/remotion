@@ -118,7 +118,7 @@ Montage de la vidéo UGC du vendeur (Drive `Ugc/20261008_002339.mp4`, 8K, 77s) a
 | Sous-titres | Derja en arabe, 1 à 3 mots, mot prononcé surligné en vert, mots-clés en jaune avec un « pop » |
 | Marque | Logo **aura bio** en haut et numéro **50 500 051** en bas pendant toute la vidéo (au-dessus de l'interface Reels/TikTok) |
 | Graphismes | Hook « كيفاش تستعمل الباك؟ », cartes produit (سدر، أبليكاتور، ديرما رولر 540، زيت إكليل الجبل، فرشاة المساج), étapes de mélange, puces des bénéfices, bannière « 5 قطع / 49 د.ت », flashs sur les changements d'étape, barre de progression |
-| Fin (4s) | Carte finale : logo, « باك عناية الشعر 5 في 1 », 49 د.ت, **flèche animée** qui pointe sur le bouton « اطلب توّا », numéro |
+| Fin (4s) | Carte finale : logo, « باك عناية الشعر 5 في 1 », 49 د.ت, **flèche animée** qui pointe sur le bouton « ابعثلنا ميساج », numéro |
 | Sound design | Impact, whoosh (cartes produit), pop, clics (étapes), scintillement (huile), cloche (prix), riser, musique à **6 %** sous la voix puis en avant sur la carte finale |
 
 **Corriger un sous-titre :** `PHRASES` dans `src/ugc/edit.ts` (temps en secondes de la vidéo source ; `check: true` = audio peu clair). Les coupes sont dans `KEEP`, les moments des graphismes dans `MOMENTS`.
