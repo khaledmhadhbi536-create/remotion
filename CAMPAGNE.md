@@ -145,4 +145,4 @@ Compte publicitaire **NATURA VASELINE TEST** (`1984526072212989`), page **Aura B
 ### Mise à jour du 8 octobre
 
 - **C · Naturel mis en pause** (0,99 $ par conversation, le moins bon des angles actifs).
-- **Nouvel ensemble `ADS_UGC-Tuto_H25-40_TN`** (`120251758823100152`), en pause : hommes 25–40, 3 $/jour, Messenger. WhatsApp est à ajouter dans le Gestionnaire. La pub sera la vidéo UGC « tuto » une fois corrigée (« تطويل » → « نموّ »).
+- **Nouvel ensemble `ADS_UGC-Tuto_H25-40_TN`** (`120251758823100152`), en pause : hommes 25–40, 3 $/jour, destination automatique (Messenger + WhatsApp + Instagram Direct, Meta choisit). La pub sera la vidéo UGC « tuto » une fois corrigée (« تطويل » → « نموّ »).
