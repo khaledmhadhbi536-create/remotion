@@ -146,3 +146,5 @@ Compte publicitaire **NATURA VASELINE TEST** (`1984526072212989`), page **Aura B
 
 - **C · Naturel mis en pause** (0,99 $ par conversation, le moins bon des angles actifs).
 - **Nouvel ensemble `ADS_UGC-Tuto_H25-40_TN`** (`120251758823100152`), en pause : hommes 25–40, 3 $/jour, Messenger (à passer en automatique Messenger + WhatsApp + Instagram dans le Gestionnaire). Pub `AURA_HAIR_UGC-Tuto_video` (`120251758897730152`) : vidéo UGC corrigée (`renders/ugc-tuto-pack-5en1-9x16.mp4`, branche ccr-d9e3a397-96h4pe), en pause.
+
+- **Numéro dans le texte des pubs : `50500051` sans espaces.** Avec des espaces, l'affichage arabe (droite à gauche) inverse les blocs (« 051 500 50 »). Pub UGC refaite (`AURA_HAIR_UGC-Tuto_video_v2`, `120251758967600152`) ; les pubs A et B (ensembles passés en Messenger + WhatsApp) sont à corriger dans le Gestionnaire.

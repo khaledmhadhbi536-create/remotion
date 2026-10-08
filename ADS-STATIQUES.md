@@ -34,7 +34,7 @@ Pour changer un prix, le nom de la marque ou un texte : `src/config.ts` et `src/
 ✅ فرشة تدليك الراس
 الخلاص عند الاستلام • الكمية محدودة
 👇 ابعثلنا ميساج و اطلب توّا
-📞 و إلا اتصل: 50 500 051
+📞 و إلا اتصل: 50500051
 ```
 **Titre :** 5 قطع بـ 49 د.ت برك
 **Bouton :** Envoyer un message (ou Acheter si vous avez un site)
@@ -51,7 +51,7 @@ Pour changer un prix, le nom de la marque ou un texte : `src/config.ts` et `src/
 3️⃣ فرشة التدليك باش تنشّط الدورة الدموية
 الباك الكامل (5 قطع) بـ 49 د.ت • الخلاص عند الاستلام
 👇 ابدا توّا، ابعثلنا ميساج
-📞 و إلا اتصل: 50 500 051
+📞 و إلا اتصل: 50500051
 ```
 **Titre :** ابدا الروتين قبل ما يفوت الفوت
 **Bouton :** Envoyer un message
@@ -67,7 +67,7 @@ Pour changer un prix, le nom de la marque ou un texte : `src/config.ts` et `src/
 + ديرما رولر، قارورة مشط الجذور و فرشة التدليك
 الباك الكامل 5 قطع بـ 49 د.ت • الخلاص عند الاستلام
 👇 اطلب توّا
-📞 و إلا اتصل: 50 500 051
+📞 و إلا اتصل: 50500051
 ```
 **Titre :** روتين طبيعي للشعر • 5 قطع بـ 49 د.ت
 **Bouton :** Envoyer un message
@@ -82,7 +82,7 @@ Pour changer un prix, le nom de la marque ou un texte : `src/config.ts` et `src/
 ديرما رولر • زيت إكليل الجبل • سدر بيو • قارورة مشط الجذور • فرشة تدليك
 بـ 49 د.ت برك • الخلاص عند الاستلام
 👇 ابعثيلنا ميساج و اطلبيه توّا
-📞 و إلا اتصلي: 50 500 051
+📞 و إلا اتصلي: 50500051
 ```
 **Titre :** أحسن هدية لراجلك
 **Bouton :** Envoyer un message
