@@ -96,6 +96,7 @@ Plan media buying prêt à lancer : **4 avatars × 2 créas (1 vidéo + 1 statiq
 | `renders/statics/` | 8 visuels (4 angles × 4:5 et 9:16) |
 | `ADS-STATIQUES.md` | Textes, titres, boutons et ciblage par angle |
 | `PLAN-MARKETING.md` | Produits, prix, marge, opérations |
+| `landing/` | Landing page de l'offre, en ligne sur https://aura-bio-store.vercel.app/ (49 DT, commande via WhatsApp, un lien `?a=A…D` par angle) : voir `landing/README.md` |
 
 Pour refaire les rendus après une modification : `npm run campaign` (vidéos) et `npm run statics` (visuels).
 
@@ -107,14 +108,15 @@ Campagne `AURA_HAIR_5en1_49DT_Test-Angles` (`120251698952020152`), en pause : m�
 
 | Ensemble | ID | Pubs (vidéo + statique) |
 |---|---|---|
-| A · hommes 22–50 · 3 $/j | **à créer** | à créer |
-| B · hommes 20–32 · 3 $/j | **à créer** | à créer |
+| A · hommes 22–50 · 3 $/j | 120251699264610152 | 120251699266930152, 120251699267110152 |
+| B · hommes 20–32 · 3 $/j | 120251699264930152 | 120251699267160152, 120251699267290152 |
 | C · hommes 28–50 · 3 $/j | 120251698952730152 | 120251699017390152, 120251699017490152 |
 | D · femmes 25–55 · 3 $/j | 120251698953010152 | 120251699017680152, 120251699017910152 |
+| **SITE** · hommes 22–50 · 3 $/j · site web, achats (pixel Aura Bio), bouton « Commander » → https://aura-bio-store.vercel.app/produits/pack-cheveux-sidr-romarin | 120251713512290152 | 120251713515900152, 120251713516880152 |
 
 Toutes les créas (vidéos, statiques, textes) portent le numéro de commande **50 500 051**. Les pubs C et D sans numéro sont archivées.
 
-Pour A et B : dans le Gestionnaire, dupliquez l'ensemble C, puis changez l'âge et remplacez les pubs par celles de l'angle A ou B.
+Les 4 angles Messenger + 1 ensemble site web sont en place : 5 ensembles, 10 pubs, tout en pause. Emplacements : Facebook (fil, vidéos, Marketplace, Stories, Reels, profil) + **Instagram** (fil, Stories, Reels, Explorer, profil). Identité Instagram à choisir dans chaque pub : le compte Akram Bdiri est personnel (hors business naturaglow), l'API ne voit donc pas le compte Instagram Aura Bio.
 
 ### Ancienne version : compte NATURA VASELINE TEST
 
@@ -139,3 +141,11 @@ Compte publicitaire **NATURA VASELINE TEST** (`1984526072212989`), page **Aura B
 2. **Instagram** : le compte Instagram est relié à la page, mais pas au compte publicitaire. Dans Paramètres du business (naturaglow) → Comptes → Comptes Instagram → Aura Bio → Éléments connectés, ajoutez NATURA VASELINE TEST. Ensuite, les pubs seront recréées avec l'identité Instagram et les emplacements Instagram seront ajoutés.
 3. **Message pré-rempli** différent par angle (A / B / C / D), dans la partie « Modèle de message » de chaque pub.
 4. **Activer la campagne** quand tout est prêt.
+
+### Mise à jour du 8 octobre
+
+- **C · Naturel mis en pause** (0,99 $ par conversation, le moins bon des angles actifs).
+- **Nouvel ensemble `ADS_UGC-Tuto_H25-40_TN`** (`120251758823100152`), en pause : hommes 25–40, 3 $/jour, Messenger (à passer en automatique Messenger + WhatsApp + Instagram dans le Gestionnaire). Pub `AURA_HAIR_UGC-Tuto_video` (`120251758897730152`) : vidéo UGC corrigée (`renders/ugc-tuto-pack-5en1-9x16.mp4`, branche ccr-d9e3a397-96h4pe), en pause.
+
+- **Numéro dans le texte des pubs : `50500051` sans espaces.** Avec des espaces, l'affichage arabe (droite à gauche) inverse les blocs (« 051 500 50 »). Pub UGC refaite (`AURA_HAIR_UGC-Tuto_video_v2`, `120251758967600152`) ; les pubs A et B (ensembles passés en Messenger + WhatsApp) sont à corriger dans le Gestionnaire.
+- **A et B remis en Messenger seul** (le mode Messenger + WhatsApp bloquait les images : « missing DOF spec »). Images recréées avec 50500051 : `AURA_HAIR_A-Deal_static_v2` (`120251772913880152`) et `AURA_HAIR_B-Early_static_v2` (`120251772914240152`), actives ; les anciennes images sont en pause.
