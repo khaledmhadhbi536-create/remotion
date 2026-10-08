@@ -141,3 +141,8 @@ Compte publicitaire **NATURA VASELINE TEST** (`1984526072212989`), page **Aura B
 2. **Instagram** : le compte Instagram est relié à la page, mais pas au compte publicitaire. Dans Paramètres du business (naturaglow) → Comptes → Comptes Instagram → Aura Bio → Éléments connectés, ajoutez NATURA VASELINE TEST. Ensuite, les pubs seront recréées avec l'identité Instagram et les emplacements Instagram seront ajoutés.
 3. **Message pré-rempli** différent par angle (A / B / C / D), dans la partie « Modèle de message » de chaque pub.
 4. **Activer la campagne** quand tout est prêt.
+
+### Mise à jour du 8 octobre
+
+- **C · Naturel mis en pause** (0,99 $ par conversation, le moins bon des angles actifs).
+- **Nouvel ensemble `ADS_UGC-Tuto_H20-32_TN`** (`120251758823100152`), en pause : même audience que B (hommes 20–32), 3 $/jour, Messenger. WhatsApp est à ajouter dans le Gestionnaire. La pub sera la vidéo UGC « tuto » une fois corrigée (« تطويل » → « نموّ »).
