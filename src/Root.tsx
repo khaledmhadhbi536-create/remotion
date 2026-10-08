@@ -21,6 +21,8 @@ import { HairPackAd, PACK_AD_FRAMES } from "./HairPackAd";
 import { FEED_45_LAYOUT, HairPackReel, REEL_LAYOUT } from "./HairPackReel";
 import { TOTAL_FRAMES } from "./presentation/edit";
 import { ProductPresentation } from "./presentation/ProductPresentation";
+import { UgcTutorial } from "./ugc/UgcTutorial";
+import { TOTAL_FRAMES as UGC_FRAMES } from "./ugc/edit";
 import { CtaScene } from "./scenes/CtaScene";
 import { HookScene } from "./scenes/HookScene";
 import { PackIntroScene } from "./scenes/PackIntroScene";
@@ -65,6 +67,16 @@ export const RemotionRoot: React.FC = () => {
         id="ProductPresentation"
         component={ProductPresentation}
         durationInFrames={TOTAL_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      {/* UGC tutorial (9:16): how to use the 5-in-1 pack, cut from the seller's own footage */}
+      <Composition
+        id="UgcTutorial"
+        component={UgcTutorial}
+        durationInFrames={UGC_FRAMES}
         fps={30}
         width={1080}
         height={1920}

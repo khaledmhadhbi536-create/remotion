@@ -101,3 +101,36 @@ Pré-traitement de la vidéo source (déjà fait, résultat dans `public/footage
 ffmpeg -i source.mp4 -vf vidstabdetect=shakiness=6:accuracy=12:result=t.trf -f null -
 ffmpeg -i source.mp4 -filter_complex "[0:v]vidstabtransform=input=t.trf:smoothing=18:zoom=4,scale=1080:1920:flags=lanczos,eq=brightness=0.035:contrast=1.12:saturation=1.28:gamma=1.05,unsharp=5:5:0.6[v];[0:a]highpass=f=90,lowpass=f=9000,afftdn=nf=-28,acompressor=threshold=-24dB:ratio=3:makeup=4,loudnorm=I=-16:TP=-1.5[a]" -map "[v]" -map "[a]" -c:v libx264 -crf 21 public/footage/presentation.mp4
 ```
+
+---
+
+# Tuto UGC « comment utiliser le pack 5 en 1 » (9:16) — AURA BIO
+
+Montage de la vidéo UGC du vendeur (Drive `Ugc/20261008_002339.mp4`, 8K, 77s) au format **Reels / TikTok / Stories 1080×1920** :
+
+▶️ [`renders/ugc-tuto-pack-5en1-9x16.mp4`](renders/ugc-tuto-pack-5en1-9x16.mp4) (61,8s) · couverture `renders/cover-ugc-tuto-9x16.jpg` · composition Remotion `UgcTutorial`
+
+| Étape | Ce qui a été fait |
+|---|---|
+| Image | 8K → 1080×1920, stabilisation (vidstab 2 passes), étalonnage (luminosité, contraste, saturation), netteté |
+| Son voix | Passe-haut, débruitage, compression, normalisation à −16 LUFS (standard réseaux sociaux) |
+| Montage | 77s → 57,8s de parole : silences coupés, faux départ « نحطو… اه » supprimé, phrases répétées supprimées (« بش نستعملو » ×2, « هذي يوزع », « هذي هذي »). Points de coupe calés sur le creux d'énergie audio le plus proche. Zoom alterné 1.0 / 1.1 pour masquer les coupes, léger push-in |
+| Sous-titres | Derja en arabe, 1 à 3 mots, mot prononcé surligné en vert, mots-clés en jaune avec un « pop » |
+| Marque | Logo **aura bio** en haut et numéro **50 500 051** en bas pendant toute la vidéo (au-dessus de l'interface Reels/TikTok) |
+| Graphismes | Hook « كيفاش تستعمل الباك؟ », cartes produit (سدر، أبليكاتور، ديرما رولر 540، زيت إكليل الجبل، فرشاة المساج), étapes de mélange, puces des bénéfices, bannière « 5 قطع / 49 د.ت », flashs sur les changements d'étape, barre de progression |
+| Fin (4s) | Carte finale : logo, « باك تطويل الشعر 5 في 1 », 49 د.ت, **flèche animée** qui pointe sur le bouton « اطلب توّا », numéro |
+| Sound design | Impact, whoosh (cartes produit), pop, clics (étapes), scintillement (huile), cloche (prix), riser, musique à **6 %** sous la voix puis en avant sur la carte finale |
+
+**Corriger un sous-titre :** `PHRASES` dans `src/ugc/edit.ts` (temps en secondes de la vidéo source ; `check: true` = audio peu clair). Les coupes sont dans `KEEP`, les moments des graphismes dans `MOMENTS`.
+
+```console
+npx remotion render UgcTutorial renders/ugc-tuto-pack-5en1-9x16.mp4 --crf=22
+```
+
+Pré-traitement de la vidéo source (résultat dans `public/footage/ugc.mp4`, recompressé en CRF 23 pour le dépôt) :
+
+```console
+ffmpeg -i source.mp4 -vf scale=1080:1920:flags=lanczos -c:v libx264 -crf 16 -c:a aac proxy.mp4
+ffmpeg -i proxy.mp4 -vf vidstabdetect=shakiness=6:accuracy=12:result=t.trf -f null -
+ffmpeg -i proxy.mp4 -filter_complex "[0:v]vidstabtransform=input=t.trf:smoothing=14:zoom=3,eq=brightness=0.04:contrast=1.1:saturation=1.18:gamma=1.04,unsharp=5:5:0.5[v];[0:a]highpass=f=90,lowpass=f=10000,afftdn=nf=-28,acompressor=threshold=-24dB:ratio=3:makeup=4,loudnorm=I=-16:TP=-1.5:LRA=7[a]" -map "[v]" -map "[a]" -c:v libx264 -crf 19 public/footage/ugc.mp4
+```
