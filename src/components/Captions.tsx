@@ -11,13 +11,18 @@ export type CaptionPhrase = {
   text: string;
   emphasis?: string[];
 };
-type Word = { text: string; start: number; end: number; emphasis: boolean };
-type Page = { words: Word[]; start: number; end: number };
+export type Word = {
+  text: string;
+  start: number;
+  end: number;
+  emphasis: boolean;
+};
+export type Page = { words: Word[]; start: number; end: number };
 
 const MAX_WORDS = 3;
 const MAX_CHARS = 18;
 
-const buildPages = (
+export const buildPages = (
   phrases: CaptionPhrase[],
   fps: number,
   maxWords: number,

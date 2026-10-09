@@ -31,7 +31,7 @@ export const UGC_CUTS: UgcCut[] = [
     srcEnd: 3.62,
     start: 0.85,
     end: 2.5,
-    zoom: 1.06,
+    zoom: 1.15,
   },
   // « الكل تسعة وأربعين… »
   { src: "hook", srcStart: 3.85, srcEnd: 5.3, start: 2.5, end: 3.85, zoom: 1 },
@@ -42,7 +42,7 @@ export const UGC_CUTS: UgcCut[] = [
     srcEnd: 6.4,
     start: 3.85,
     end: 4.55,
-    zoom: 1.06,
+    zoom: 1.15,
   },
   // CTA — the clip only comes in on « انزل اللوطة »: « باش تعدّي الكوموند » plays over the
   // pack shot (voice only, no face)
@@ -53,7 +53,7 @@ export const UGC_CUTS: UgcCut[] = [
     srcEnd: 3.4,
     start: 36.15,
     end: 37.05,
-    zoom: 1.1,
+    zoom: 1.22,
   },
   // the pointing-down gesture, kept whole (src 4–7 = finger pointing at the button)
   {

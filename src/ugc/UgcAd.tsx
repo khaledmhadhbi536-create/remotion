@@ -9,7 +9,6 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { CaptionTrack } from "../components/Captions";
 import { LightRays } from "../components/Decor";
 import {
   PackGroup,
@@ -18,6 +17,13 @@ import {
 } from "../components/ProductImage";
 import { PRICES } from "../config";
 import { bodyFont, colors, displayFont } from "../theme";
+import {
+  CutTransitions,
+  type CutFx,
+  NeonWord,
+  RefCaptions,
+  TitleCard,
+} from "./RefStyle";
 import {
   CAPTIONS,
   CTA_START,
@@ -83,16 +89,7 @@ const Chip: React.FC<{
   readonly size?: number;
   readonly tilt?: number;
   readonly icon?: React.ReactNode;
-}> = ({
-  at,
-  text,
-  top,
-  color = GREEN,
-  textColor = "#fff",
-  size = 84,
-  tilt = -2,
-  icon,
-}) => {
+}> = ({ at, text, top, color = GREEN, size = 84, tilt = -2, icon }) => {
   const frame = useCurrentFrame();
   const s = interpolate(frame, [at, at + 7], [0, 1], { ...clamp, easing: pop });
   if (frame < at) return null;
@@ -105,15 +102,15 @@ const Chip: React.FC<{
           gap: 18,
           direction: "rtl",
           fontFamily: displayFont,
-          fontSize: size,
+          fontSize: size * 0.85,
           lineHeight: 1.1,
-          color: textColor,
-          background: color,
-          padding: "8px 40px 20px",
-          borderRadius: 24,
+          // Reference-style label: no box, coloured or white text with a black outline
+          color: color === YELLOW || color === colors.red ? color : "#fff",
+          WebkitTextStroke: "9px #000",
+          paintOrder: "stroke fill",
+          textShadow: "0 6px 16px rgba(0,0,0,0.45)",
           rotate: `${tilt}deg`,
           scale: String(s),
-          boxShadow: "0 16px 40px rgba(0,0,0,0.4)",
           whiteSpace: "nowrap",
         }}
       >
@@ -706,37 +703,14 @@ const pack =
     </>
   );
 
-// « تابعني نفسرلك » — the reference video's retention line, stacked yellow / red
-const FollowMe: React.FC = () => {
-  const frame = useCurrentFrame();
-  const line = (at: number) =>
-    interpolate(frame, [at, at + 6], [0, 1], { ...clamp, easing: pop });
-  const style = (color: string, at: number): React.CSSProperties => ({
-    fontFamily: displayFont,
-    fontSize: 118,
-    lineHeight: 1.05,
-    color,
-    WebkitTextStroke: "10px #000",
-    paintOrder: "stroke fill",
-    rotate: "-4deg",
-    scale: String(line(at)),
-    direction: "rtl",
-    textShadow: "0 10px 24px rgba(0,0,0,0.45)",
-  });
-  return (
-    <AbsoluteFill style={{ alignItems: "center", top: 170 }}>
-      <div style={style(YELLOW, 0)}>تابعني</div>
-      <div style={style(colors.red, 5)}>نفسرلك الروتين</div>
-    </AbsoluteFill>
-  );
-};
-
 const SHOTS: Shot[] = [
   {
     name: "Pack reveal",
     start: HOOK_END,
     end: 5.95,
-    render: pack("in", () => <FollowMe />),
+    render: () => (
+      <TitleCard line1="تابعني نفسرلك" line2="الروتين" big="كيفاش" />
+    ),
   },
   {
     name: "Sidr",
@@ -1151,51 +1125,81 @@ const MockupWatermark: React.FC = () => (
 );
 
 // ---------------------------------------------------------------------------
+// Reference-style editing (see RefStyle.tsx): caption look per section, cut transitions,
+// giant neon key words
+const CAPTION_SECTIONS = [
+  { from: 0, to: 12.25, look: "band" as const },
+  { from: 12.25, to: 22.56, look: "glow" as const },
+  { from: 22.56, to: 99, look: "neon" as const },
+];
+
+const CUT_FX: CutFx[] = [
+  { at: 2.5, kind: "leak" },
+  { at: HOOK_END, kind: "leak" },
+  { at: 9.1, kind: "glitch" },
+  { at: 12.25, kind: "zoomBlur" },
+  { at: 15.95, kind: "glitch" },
+  { at: 22.75, kind: "zoomBlur" },
+  { at: 25.95, kind: "glitch" },
+  { at: 29.65, kind: "zoomBlur" },
+  { at: CTA_START, kind: "leak" },
+];
+
+const NEON_WORDS = [
+  { text: "السدر", at: 6.02, top: 780 },
+  { text: "مرتين", at: 18.78, top: 960 },
+  { text: "طبيعي", at: 24.7, top: 780 },
+  { text: "مساج", at: 30.2, top: 780 },
+];
+
+// ---------------------------------------------------------------------------
 export const UgcAd: React.FC<{ readonly mockup?: boolean }> = ({
   mockup = false,
 }) => {
   const { fps } = useVideoConfig();
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
-      {UGC_CUTS.map((cut, i) => (
-        <Sequence
-          key={`ugc${i}`}
-          name={`UGC ${cut.src} ${i + 1}`}
-          from={f(cut.start)}
-          durationInFrames={f(cut.end) - f(cut.start)}
-          premountFor={fps}
-        >
-          <UgcClip cut={cut} />
-        </Sequence>
-      ))}
-
-      <JumpCuts>
-        {SHOTS.map((s) => (
+      <CutTransitions cuts={CUT_FX}>
+        {UGC_CUTS.map((cut, i) => (
           <Sequence
-            key={s.name}
-            name={s.name}
-            from={f(s.start)}
-            durationInFrames={f(s.end) - f(s.start)}
+            key={`ugc${i}`}
+            name={`UGC ${cut.src} ${i + 1}`}
+            from={f(cut.start)}
+            durationInFrames={f(cut.end) - f(cut.start)}
             premountFor={fps}
           >
-            {s.render(f(s.end) - f(s.start))}
+            <UgcClip cut={cut} />
           </Sequence>
         ))}
-      </JumpCuts>
 
-      {mockup
-        ? BROLL.map((b) => (
+        <JumpCuts>
+          {SHOTS.map((s) => (
             <Sequence
-              key={b.name}
-              name={`Mock-up: ${b.name}`}
-              from={f(b.start)}
-              durationInFrames={f(b.end) - f(b.start)}
+              key={s.name}
+              name={s.name}
+              from={f(s.start)}
+              durationInFrames={f(s.end) - f(s.start)}
               premountFor={fps}
             >
-              <BrollClip b={b} duration={f(b.end) - f(b.start)} />
+              {s.render(f(s.end) - f(s.start))}
             </Sequence>
-          ))
-        : null}
+          ))}
+        </JumpCuts>
+
+        {mockup
+          ? BROLL.map((b) => (
+              <Sequence
+                key={b.name}
+                name={`Mock-up: ${b.name}`}
+                from={f(b.start)}
+                durationInFrames={f(b.end) - f(b.start)}
+                premountFor={fps}
+              >
+                <BrollClip b={b} duration={f(b.end) - f(b.start)} />
+              </Sequence>
+            ))
+          : null}
+      </CutTransitions>
 
       {/* Bottom gradient for subtitle legibility */}
       <AbsoluteFill
@@ -1212,13 +1216,14 @@ export const UgcAd: React.FC<{ readonly mockup?: boolean }> = ({
         <CtaOverlay />
       </Sequence>
 
-      <CaptionTrack
+      {NEON_WORDS.map((w) => (
+        <NeonWord key={w.text} text={w.text} at={f(w.at)} top={w.top} />
+      ))}
+
+      <RefCaptions
         phrases={CAPTIONS}
+        sections={CAPTION_SECTIONS}
         top={CAPTION_TOP}
-        fontSize={86}
-        maxWords={2}
-        activeColor="transparent"
-        emphasisBackground={GREEN}
       />
 
       {mockup ? <MockupWatermark /> : null}
