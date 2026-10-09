@@ -791,6 +791,8 @@ const demo =
 
 const OIL_CLIP = { file: "oil-massage.mp4", srcW: 480, srcH: 854 };
 const BRUSH_CLIP = { file: "brush-anim.mp4", srcW: 788, srcH: 720 };
+const SIDR_CLIP = { file: "sidr-mix.mp4", srcW: 480, srcH: 854 };
+const APPLICATOR_CLIP = { file: "applicator.mp4", srcW: 480, srcH: 854 };
 
 const SHOTS: Shot[] = [
   {
@@ -816,29 +818,54 @@ const SHOTS: Shot[] = [
   {
     name: "Sidr",
     start: 10.25,
-    end: 14.4,
+    end: 11.6,
     render: product("sidr", 720, "out", () => (
-      <>
-        <Chip at={f(0.57)} text="سدر طبيعي" top={330} />
+      <Chip at={f(0.57)} text="سدر طبيعي" top={330} />
+    )),
+  },
+  {
+    name: "Sidr in the bowl",
+    start: 11.6,
+    end: 14.4,
+    // spoonful of sidr into the bowl (crop leaves out the source's caption at the top)
+    render: demo(
+      {
+        ...SIDR_CLIP,
+        srcStart: 1.8,
+        crop: { x: 0, y: 0.3, w: 1, h: 0.68 },
+        cardW: 700,
+      },
+      300,
+      () => (
         <Chip
-          at={f(14.04 - 10.25)}
+          at={f(14.04 - 11.6)}
           text="+ ميّة"
-          top={470}
+          top={1150}
           color="#1E88E5"
           tilt={3}
           size={72}
           icon={<Drop size={54} />}
         />
-      </>
-    )),
+      ),
+    ),
   },
   {
     name: "Into the applicator",
     start: 14.4,
     end: 15.65,
-    render: product("bottleBlack", 730, "in", () => (
-      <Chip at={f(0.58)} text="في الأبليكاتور" top={330} color={YELLOW} />
-    )),
+    // applicator bottle in hand (crop leaves out the source's caption)
+    render: demo(
+      {
+        ...APPLICATOR_CLIP,
+        srcStart: 0.6,
+        crop: { x: 0, y: 0.31, w: 1, h: 0.64 },
+        cardW: 640,
+      },
+      420,
+      () => (
+        <Chip at={f(0.58)} text="في الأبليكاتور" top={300} color={YELLOW} />
+      ),
+    ),
   },
   {
     name: "Wash",
@@ -860,9 +887,17 @@ const SHOTS: Shot[] = [
     name: "Applicator comb",
     start: 17.1,
     end: 18.9,
-    render: product("bottleBlack", 1300, "out", () => (
-      <Chip at={2} text="الأبليكاتور" top={330} />
-    )),
+    // comb tips laying the product on the roots (crop leaves out caption and "lien en bio")
+    render: demo(
+      {
+        ...APPLICATOR_CLIP,
+        srcStart: 4.3,
+        crop: { x: 0, y: 0.36, w: 1, h: 0.62 },
+        cardW: 680,
+      },
+      420,
+      () => <Chip at={2} text="الأبليكاتور" top={300} />,
+    ),
   },
   {
     name: "To the roots",
