@@ -44,42 +44,8 @@ export const UGC_CUTS: UgcCut[] = [
     end: 4.55,
     zoom: 1.06,
   },
-  // CTA — « باش تعدّي »
-  {
-    src: "cta",
-    srcStart: 0,
-    srcEnd: 0.58,
-    start: 33.95,
-    end: 34.75,
-    zoom: 1.1,
-  },
-  // pause in the voice-over: the clip barely moves
-  {
-    src: "cta",
-    srcStart: 0.58,
-    srcEnd: 0.7,
-    start: 34.75,
-    end: 35.3,
-    zoom: 1.1,
-  },
-  // « الكوموند »
-  {
-    src: "cta",
-    srcStart: 0.7,
-    srcEnd: 1.25,
-    start: 35.3,
-    end: 35.8,
-    zoom: 1.1,
-  },
-  // pause
-  {
-    src: "cta",
-    srcStart: 1.25,
-    srcEnd: 1.8,
-    start: 35.8,
-    end: 36.15,
-    zoom: 1.1,
-  },
+  // CTA — the clip only comes in on « انزل اللوطة »: « باش تعدّي الكوموند » plays over the
+  // pack shot (voice only, no face)
   // « انزل اللوطة »
   {
     src: "cta",
@@ -103,7 +69,7 @@ export const UGC_CUTS: UgcCut[] = [
 export const TOTAL_SECONDS = 40.5;
 export const TOTAL_FRAMES = f(TOTAL_SECONDS);
 export const HOOK_END = 4.55;
-export const CTA_START = 33.95;
+export const CTA_START = 36.15;
 
 // ---------------------------------------------------------------------------
 // Subtitles — Tunisian derja, exactly as spoken (numbers written as digits).
