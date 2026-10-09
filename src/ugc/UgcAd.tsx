@@ -157,10 +157,7 @@ const PhotoLens: React.FC<{
       ...style,
     }}
   >
-    <Img
-      src={PHOTO}
-      style={framingStyle(spot, size, size)}
-    />
+    <Img src={PHOTO} style={framingStyle(spot, size, size)} />
   </div>
 );
 
@@ -939,7 +936,182 @@ const CtaOverlay: React.FC = () => {
 };
 
 // ---------------------------------------------------------------------------
-export const UgcAd: React.FC = () => {
+// MOCK-UP ONLY: usage footage borrowed from other creators (other brands, logos, a real person),
+// to judge the pacing before the seller films the same shots with the real pack.
+// Never run this version as an ad — the "MAQUETTE" watermark is there to make that obvious.
+type Broll = {
+  readonly name: string;
+  readonly file: string; // public/ugc/broll
+  readonly srcStart: number; // src seconds
+  readonly start: number; // output seconds
+  readonly end: number;
+  readonly zoom?: number;
+  readonly origin?: string; // where the zoom is anchored (moves burnt-in text out of frame)
+  readonly overlay?: React.ReactNode;
+};
+
+const BROLL: Broll[] = [
+  {
+    name: "Sidr in the bowl",
+    file: "sidr-mix.mp4",
+    srcStart: 3.2,
+    start: 5.95,
+    end: 6.75,
+    zoom: 1.15,
+    overlay: <Chip at={1} text="سدر طبيعي" top={330} />,
+  },
+  {
+    name: "Water",
+    file: "sidr-mix.mp4",
+    srcStart: 7.9,
+    start: 6.75,
+    end: 7.55,
+    zoom: 1.15,
+    overlay: (
+      <Chip
+        at={1}
+        text="+ ميّة"
+        top={330}
+        color="#1E88E5"
+        icon={<Drop size={54} />}
+      />
+    ),
+  },
+  {
+    name: "Applicator in hand",
+    file: "applicator.mp4",
+    srcStart: 1.2,
+    start: 7.55,
+    end: 9.1,
+    zoom: 1.6,
+    origin: "100% 90%",
+    overlay: (
+      <Chip
+        at={f(0.63)}
+        text="في الأبليكاتور"
+        top={330}
+        color={YELLOW}
+        textColor={colors.charcoal}
+      />
+    ),
+  },
+  {
+    name: "Applicator on the roots",
+    file: "applicator.mp4",
+    srcStart: 4.0,
+    start: 9.1,
+    end: 10.95,
+    zoom: 1.6,
+    origin: "100% 100%",
+    overlay: <Chip at={2} text="نغسلو شعرنا" top={330} />,
+  },
+  {
+    name: "Applicator comb",
+    file: "applicator.mp4",
+    srcStart: 6.0,
+    start: 10.95,
+    end: 12.25,
+    zoom: 1.5,
+    origin: "0% 60%",
+    overlay: <Chip at={f(0.59)} text="الأبليكاتور" top={330} />,
+  },
+  {
+    name: "Derma roller needles",
+    file: "derma.mp4",
+    srcStart: 20.5,
+    start: 15.95,
+    end: 17.95,
+    zoom: 1.25,
+    origin: "50% 0%",
+    overlay: (
+      <Chip
+        at={f(1.27)}
+        text="ديرما رولر 540"
+        top={330}
+        color={colors.magenta}
+      />
+    ),
+  },
+  {
+    name: "Oil on the scalp",
+    file: "rosemary.mp4",
+    srcStart: 6.0,
+    start: 22.75,
+    end: 24.25,
+    zoom: 1.3,
+    origin: "50% 100%",
+    overlay: <Chip at={f(0.55)} text="زيت إكليل الجبل" top={330} />,
+  },
+  {
+    name: "Brush in hand",
+    file: "brush.mp4",
+    srcStart: 3.0,
+    start: 25.95,
+    end: 27.9,
+    zoom: 1.15,
+    overlay: <Chip at={f(0.89)} text="البروس" top={330} />,
+  },
+];
+
+const BrollClip: React.FC<{ readonly b: Broll; readonly duration: number }> = ({
+  b,
+  duration,
+}) => {
+  const frame = useCurrentFrame();
+  const punch = interpolate(frame, [0, 7], [1.06, 1], {
+    ...clamp,
+    easing: Easing.out(Easing.cubic),
+  });
+  const push = interpolate(frame, [0, duration], [0, 0.04], clamp);
+  return (
+    <AbsoluteFill style={{ backgroundColor: "black" }}>
+      <AbsoluteFill
+        style={{
+          scale: String((b.zoom ?? 1) * punch + push),
+          transformOrigin: b.origin ?? "50% 50%",
+        }}
+      >
+        <Video
+          src={staticFile(`ugc/broll/${b.file}`)}
+          trimBefore={f(b.srcStart)}
+          muted
+          objectFit="cover"
+          style={{ width: "100%", height: "100%" }}
+        />
+      </AbsoluteFill>
+      {b.overlay}
+    </AbsoluteFill>
+  );
+};
+
+const MockupWatermark: React.FC = () => (
+  <AbsoluteFill
+    style={{
+      alignItems: "center",
+      justifyContent: "center",
+      pointerEvents: "none",
+    }}
+  >
+    <div
+      style={{
+        rotate: "-30deg",
+        fontFamily: bodyFont,
+        fontWeight: 900,
+        fontSize: 170,
+        letterSpacing: 10,
+        color: "rgba(255,255,255,0.16)",
+        WebkitTextStroke: "3px rgba(230,57,70,0.35)",
+      }}
+    >
+      MAQUETTE
+    </div>
+  </AbsoluteFill>
+);
+
+// ---------------------------------------------------------------------------
+export const UgcAd: React.FC<{ readonly mockup?: boolean }> = ({
+  mockup = false,
+}) => {
   const { fps } = useVideoConfig();
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
@@ -967,6 +1139,20 @@ export const UgcAd: React.FC = () => {
         </Sequence>
       ))}
 
+      {mockup
+        ? BROLL.map((b) => (
+            <Sequence
+              key={b.name}
+              name={`Mock-up: ${b.name}`}
+              from={f(b.start)}
+              durationInFrames={f(b.end) - f(b.start)}
+              premountFor={fps}
+            >
+              <BrollClip b={b} duration={f(b.end) - f(b.start)} />
+            </Sequence>
+          ))
+        : null}
+
       {/* Bottom gradient for subtitle legibility */}
       <AbsoluteFill
         style={{
@@ -983,6 +1169,8 @@ export const UgcAd: React.FC = () => {
       </Sequence>
 
       <CaptionTrack phrases={CAPTIONS} top={CAPTION_TOP} fontSize={80} />
+
+      {mockup ? <MockupWatermark /> : null}
 
       <Audio src={VOICE} volume={1} />
       <Audio

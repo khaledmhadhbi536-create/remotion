@@ -71,6 +71,16 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {/* Same ad with borrowed usage footage — mock-up to validate pacing, never to run */}
+      <Composition
+        id="UgcAd-Maquette-9x16"
+        component={UgcAd}
+        durationInFrames={UGC_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ mockup: true }}
+      />
 
       {/* Seller's footage, re-edited: 9:16 with Arabic subtitles and sound design */}
       <Composition
