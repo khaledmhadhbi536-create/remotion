@@ -335,36 +335,6 @@ const Scalp: React.FC<{
   );
 };
 
-const WashShot: React.FC<{ readonly duration: number }> = ({ duration }) => {
-  const frame = useCurrentFrame();
-  // Catalogue applicator turning comb-down over the hair, like when it is used
-  const tilt = interpolate(frame, [0, 16], [20, 150], {
-    ...clamp,
-    easing: smooth,
-  });
-  const sway = Math.sin(frame / 7) * 30;
-  return (
-    <GraphicStage duration={duration}>
-      <AbsoluteFill style={{ alignItems: "center", top: 560 }}>
-        <Scalp dropsFrom={10} rootsGlow={-1} cleanAt={-1} pulseAt={-1} />
-      </AbsoluteFill>
-      <ProductImage
-        product="bottleBlack"
-        height={430}
-        shadow={false}
-        style={{
-          position: "absolute",
-          top: 330,
-          left: 600 + (frame > 16 ? sway : 0),
-          rotate: `${tilt}deg`,
-          filter: "drop-shadow(0 18px 30px rgba(0,0,0,0.45))",
-        }}
-      />
-      <Chip at={2} text="نغسلو شعرنا" top={330} tilt={2} />
-    </GraphicStage>
-  );
-};
-
 // « كان شعرك بدا يطيح ويفرغ… » — strands come loose and fall, then the "tried everything" beat
 const HairFallShot: React.FC<{
   readonly duration: number;
@@ -475,48 +445,6 @@ const RootsShot: React.FC<{
     />
   </GraphicStage>
 );
-
-const MassageShot: React.FC<{
-  readonly duration: number;
-  readonly pulseAt: number;
-}> = ({ duration, pulseAt }) => {
-  const frame = useCurrentFrame();
-  const a = frame / 6;
-  return (
-    <GraphicStage duration={duration}>
-      <AbsoluteFill style={{ alignItems: "center", top: 560 }}>
-        <Scalp
-          dropsFrom={100000}
-          rootsGlow={-1}
-          cleanAt={-1}
-          pulseAt={pulseAt}
-        />
-      </AbsoluteFill>
-      {/* Brush massaging in small circles */}
-      <ProductImage
-        product="brushPink"
-        height={280}
-        shadow={false}
-        style={{
-          position: "absolute",
-          top: 620 + Math.sin(a) * 30,
-          left: 400 + Math.cos(a) * 60,
-          rotate: `${Math.sin(a) * 8}deg`,
-          filter: "drop-shadow(0 18px 30px rgba(0,0,0,0.45))",
-        }}
-      />
-      <Chip at={2} text="مساج على فروة الراس" top={300} size={74} />
-      <Chip
-        at={pulseAt}
-        text="تنشّط الدورة الدموية"
-        top={420}
-        color={colors.red}
-        tilt={2}
-        size={74}
-      />
-    </GraphicStage>
-  );
-};
 
 const TwiceAWeekShot: React.FC<{
   readonly duration: number;
@@ -792,6 +720,78 @@ const pack =
     </>
   );
 
+// Demo footage in a rounded card that pops up with a blur (the reference's image cards).
+// `crop` is the part of the source kept, in fractions of its width / height: it leaves out the
+// source's own captions, badges and logos.
+type Crop = { x: number; y: number; w: number; h: number };
+const DemoCard: React.FC<{
+  readonly file: string; // public/ugc/demo
+  readonly srcW: number;
+  readonly srcH: number;
+  readonly srcStart: number; // seconds
+  readonly crop: Crop;
+  readonly cardW: number;
+  readonly top: number;
+}> = ({ file, srcW, srcH, srcStart, crop, cardW, top }) => {
+  const frame = useCurrentFrame();
+  const enter = interpolate(frame, [0, 9], [0, 1], {
+    ...clamp,
+    easing: Easing.out(Easing.cubic),
+  });
+  const cardH = (cardW * crop.h * srcH) / (crop.w * srcW);
+  const vw = cardW / crop.w;
+  const vh = (vw * srcH) / srcW;
+  return (
+    <AbsoluteFill style={{ alignItems: "center", top }}>
+      <div
+        style={{
+          position: "relative",
+          width: cardW,
+          height: cardH,
+          borderRadius: 36,
+          overflow: "hidden",
+          border: "6px solid #fff",
+          boxShadow: "0 24px 60px rgba(0,0,0,0.5)",
+          opacity: enter,
+          translate: `0 ${(1 - enter) * 140}px`,
+          scale: String(0.9 + 0.1 * enter),
+          filter: `blur(${(1 - enter) * 16}px)`,
+        }}
+      >
+        <Video
+          src={staticFile(`ugc/demo/${file}`)}
+          trimBefore={f(srcStart)}
+          muted
+          style={{
+            position: "absolute",
+            width: vw,
+            height: vh,
+            left: -crop.x * vw,
+            top: -crop.y * vh,
+          }}
+        />
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const demo =
+  (
+    card: Omit<React.ComponentProps<typeof DemoCard>, "top">,
+    top: number,
+    overlay?: () => React.ReactNode,
+  ) =>
+  () => (
+    <>
+      <GoldBackdrop />
+      <DemoCard {...card} top={top} />
+      {overlay ? overlay() : null}
+    </>
+  );
+
+const OIL_CLIP = { file: "oil-massage.mp4", srcW: 480, srcH: 854 };
+const BRUSH_CLIP = { file: "brush-anim.mp4", srcW: 788, srcH: 720 };
+
 const SHOTS: Shot[] = [
   {
     name: "Hair falling",
@@ -844,7 +844,17 @@ const SHOTS: Shot[] = [
     name: "Wash",
     start: 15.65,
     end: 17.1,
-    render: (d) => <WashShot duration={d} />,
+    // hands massaging the back of the head (crop leaves out the source's sticker and caption)
+    render: demo(
+      {
+        ...OIL_CLIP,
+        srcStart: 5.3,
+        crop: { x: 0, y: 0.345, w: 1, h: 0.32 },
+        cardW: 960,
+      },
+      520,
+      () => <Chip at={2} text="نغسلو شعرنا" top={330} />,
+    ),
   },
   {
     name: "Applicator comb",
@@ -898,14 +908,30 @@ const SHOTS: Shot[] = [
     render: (d) => <ThenOilShot duration={d} />,
   },
   {
-    name: "Rosemary oil",
+    name: "Oil drops",
     start: 26.1,
+    end: 27.2,
+    // dropper on the hairline (crop leaves out the source's sticker and caption)
+    render: demo(
+      {
+        ...OIL_CLIP,
+        srcStart: 2.2,
+        crop: { x: 0.02, y: 0.22, w: 0.58, h: 0.445 },
+        cardW: 620,
+      },
+      360,
+      () => <Chip at={2} text="قطرات" top={230} color={YELLOW} />,
+    ),
+  },
+  {
+    name: "Rosemary oil",
+    start: 27.2,
     end: 29.0,
     render: product("rosemaryOil", 730, "out", () => (
       <>
-        <Chip at={f(27.22 - 26.1)} text="زيت إكليل الجبل" top={330} />
+        <Chip at={f(27.22 - 27.2)} text="زيت إكليل الجبل" top={330} />
         <Chip
-          at={f(28.32 - 26.1)}
+          at={f(28.32 - 27.2)}
           text="طبيعي"
           top={470}
           color={YELLOW}
@@ -926,7 +952,30 @@ const SHOTS: Shot[] = [
     name: "Massage + circulation",
     start: 30.95,
     end: 34.25,
-    render: (d) => <MassageShot duration={d} pulseAt={f(32.52 - 30.95)} />,
+    // brush massaging a skin cross-section with blood vessels (crop leaves out badges,
+    // captions and the brand name on the brush)
+    render: demo(
+      {
+        ...BRUSH_CLIP,
+        srcStart: 29.85,
+        crop: { x: 0, y: 0.12, w: 1, h: 0.78 },
+        cardW: 960,
+      },
+      470,
+      () => (
+        <>
+          <Chip at={2} text="مساج على فروة الراس" top={300} size={74} />
+          <Chip
+            at={f(32.52 - 30.95)}
+            text="تنشّط الدورة الدموية"
+            top={385}
+            color={colors.red}
+            tilt={2}
+            size={74}
+          />
+        </>
+      ),
+    ),
   },
   {
     name: "Offer",
