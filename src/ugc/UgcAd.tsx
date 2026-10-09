@@ -747,15 +747,15 @@ const SHOTS: Shot[] = [
   {
     name: "Sidr",
     start: 10.25,
-    end: 11.6,
+    end: 11.3,
     render: product("sidr", 720, "out", () => (
       <Chip at={f(0.57)} text="سدر طبيعي" top={330} />
     )),
   },
   {
     name: "Sidr in the bowl",
-    start: 11.6,
-    end: 14.4,
+    start: 11.3,
+    end: 12.37,
     render: full(
       {
         file: "demo/sidr-mix.mp4",
@@ -765,7 +765,7 @@ const SHOTS: Shot[] = [
       },
       () => (
         <Chip
-          at={f(14.04 - 11.6)}
+          at={f(12.04 - 11.3)}
           text="+ ميّة"
           top={300}
           color="#1E88E5"
@@ -777,8 +777,8 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Into the applicator",
-    start: 14.4,
-    end: 15.65,
+    start: 12.37,
+    end: 13.62,
     render: full(
       {
         file: "demo/applicator.mp4",
@@ -793,8 +793,8 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Wash",
-    start: 15.65,
-    end: 17.1,
+    start: 13.62,
+    end: 15.07,
     // hands massaging the back of the head (crop leaves out the source's sticker and caption)
     render: demo(
       {
@@ -809,8 +809,8 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Applicator comb",
-    start: 17.1,
-    end: 18.9,
+    start: 15.07,
+    end: 16.87,
     render: full(
       {
         file: "demo/applicator.mp4",
@@ -823,20 +823,20 @@ const SHOTS: Shot[] = [
   },
   {
     name: "To the roots",
-    start: 18.9,
-    end: 21.1,
+    start: 16.87,
+    end: 19.07,
     render: (d) => (
       <RootsShot
         duration={d}
-        rootsAt={f(18.96 - 18.9)}
-        cleanAt={f(19.66 - 18.9)}
+        rootsAt={f(16.93 - 16.87)}
+        cleanAt={f(17.63 - 16.87)}
       />
     ),
   },
   {
     name: "Derma roller",
-    start: 21.1,
-    end: 22.85,
+    start: 19.07,
+    end: 20.82,
     render: full({ file: "broll/derma.mp4", srcStart: 22.0 }, () => (
       <Chip
         at={f(0.74)}
@@ -848,13 +848,13 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Twice a week",
-    start: 22.85,
-    end: 24.7,
+    start: 20.82,
+    end: 22.67,
     render: (d) => (
       <TwiceAWeekShot
         duration={d}
-        litAt={[f(22.88 - 22.85), f(23.3 - 22.85)]}
-        stampAt={f(23.9 - 22.85)}
+        litAt={[f(20.85 - 20.82), f(21.27 - 20.82)]}
+        stampAt={f(21.87 - 20.82)}
         footage={
           <FullClip file="broll/derma.mp4" srcStart={38.6} duration={d} />
         }
@@ -863,8 +863,8 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Then the oil",
-    start: 24.7,
-    end: 26.1,
+    start: 22.67,
+    end: 24.07,
     render: full(
       {
         file: "broll/rosemary.mp4",
@@ -877,8 +877,8 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Oil drops",
-    start: 26.1,
-    end: 27.2,
+    start: 24.07,
+    end: 25.17,
     render: full(
       {
         file: "broll/rosemary.mp4",
@@ -891,13 +891,13 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Rosemary oil",
-    start: 27.2,
-    end: 29.0,
+    start: 25.17,
+    end: 26.97,
     render: product("rosemaryOil", 730, "out", () => (
       <>
-        <Chip at={f(27.22 - 27.2)} text="زيت إكليل الجبل" top={330} />
+        <Chip at={f(25.19 - 25.17)} text="زيت إكليل الجبل" top={330} />
         <Chip
-          at={f(28.32 - 27.2)}
+          at={f(26.29 - 25.17)}
           text="طبيعي"
           top={470}
           color={YELLOW}
@@ -908,16 +908,16 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Brush",
-    start: 29.0,
-    end: 30.95,
+    start: 26.97,
+    end: 28.92,
     render: full({ file: "broll/brush.mp4", srcStart: 3.0 }, () => (
-      <Chip at={f(29.68 - 29.0)} text="البروس" top={300} />
+      <Chip at={f(27.65 - 26.97)} text="البروس" top={300} />
     )),
   },
   {
     name: "Massage + circulation",
-    start: 30.95,
-    end: 34.25,
+    start: 28.92,
+    end: 32.22,
     // brush massaging a skin cross-section with blood vessels (crop leaves out badges,
     // captions and the brand name on the brush)
     render: demo(
@@ -932,7 +932,7 @@ const SHOTS: Shot[] = [
         <>
           <Chip at={2} text="مساج على فروة الراس" top={300} size={74} />
           <Chip
-            at={f(32.52 - 30.95)}
+            at={f(30.49 - 28.92)}
             text="تنشّط الدورة الدموية"
             top={385}
             color={colors.red}
@@ -945,13 +945,13 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Offer",
-    start: 34.25,
-    end: 38.8,
+    start: 32.22,
+    end: 36.77,
     render: pack("in", () => (
       <>
-        <PriceSticker at={f(35.98 - 34.25)} top={190} scale={0.85} />
+        <PriceSticker at={f(33.95 - 32.22)} top={190} scale={0.85} />
         <Chip
-          at={f(37.52 - 34.25)}
+          at={f(35.49 - 32.22)}
           text="الخلاص عند الاستلام"
           top={1185}
           color={YELLOW}
@@ -962,16 +962,14 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Pack recap",
-    start: 38.8,
+    start: 36.77,
     end: CTA_START,
     render: pack("out", () => <PriceSticker at={0} top={190} scale={0.85} />),
   },
 ];
 
 // Jump cuts: on these words the B-roll punches in (1.0 ↔ 1.12) like a cut, every 2–3 s
-const PUNCHES = [
-  5.72, 6.98, 12.28, 14.04, 19.66, 23.9, 27.22, 32.52, 35.98, 37.52,
-];
+const PUNCHES = [5.72, 6.98, 12.01, 17.63, 21.87, 25.19, 30.49, 33.95, 35.49];
 
 const JumpCuts: React.FC<{ readonly children: React.ReactNode }> = ({
   children,
@@ -1085,9 +1083,9 @@ const CtaOverlay: React.FC = () => {
 // Reference-style editing (see RefStyle.tsx): caption look per section, cut transitions,
 // giant neon key words
 const CAPTION_SECTIONS = [
-  { from: 0, to: 14.4, look: "band" as const },
-  { from: 14.4, to: 24.7, look: "glow" as const },
-  { from: 24.7, to: 99, look: "neon" as const },
+  { from: 0, to: 12.37, look: "band" as const },
+  { from: 12.37, to: 22.67, look: "glow" as const },
+  { from: 22.67, to: 99, look: "neon" as const },
 ];
 
 const CUT_FX: CutFx[] = [
@@ -1095,21 +1093,21 @@ const CUT_FX: CutFx[] = [
   { at: HOOK_END, kind: "leak" },
   { at: 8.0, kind: "glitch" },
   { at: 10.25, kind: "zoomBlur" },
-  { at: 15.65, kind: "glitch" },
-  { at: 18.9, kind: "zoomBlur" },
-  { at: 21.1, kind: "glitch" },
-  { at: 26.1, kind: "zoomBlur" },
-  { at: 29.0, kind: "glitch" },
-  { at: 34.25, kind: "zoomBlur" },
+  { at: 13.62, kind: "glitch" },
+  { at: 16.87, kind: "zoomBlur" },
+  { at: 19.07, kind: "glitch" },
+  { at: 24.07, kind: "zoomBlur" },
+  { at: 26.97, kind: "glitch" },
+  { at: 32.22, kind: "zoomBlur" },
   { at: CTA_START, kind: "leak" },
 ];
 
 const NEON_WORDS = [
-  { text: "السدر", at: 10.82, top: 780 },
-  { text: "مرتين", at: 22.88, top: 960 },
-  { text: "طبيعي", at: 28.32, top: 780 },
-  { text: "مساج", at: 31.04, top: 780 },
-  { text: "49 د.ت", at: 35.98, top: 780 },
+  { text: "السدر", at: 10.76, top: 780 },
+  { text: "مرتين", at: 20.85, top: 960 },
+  { text: "طبيعي", at: 26.29, top: 780 },
+  { text: "مساج", at: 29.01, top: 780 },
+  { text: "49 د.ت", at: 33.95, top: 780 },
 ];
 
 // ---------------------------------------------------------------------------
