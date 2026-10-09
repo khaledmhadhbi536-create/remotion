@@ -1,5 +1,5 @@
-// Edit decision list for the UGC ad (public/ugc). The voice-over (voice.m4a, 37.9s; loudness-normalised
-// copy voice-master.m4a) is the
+// Edit decision list for the UGC ad (public/ugc). The voice-over is the seller's own recording
+// (voice-v2.m4a), pauses tightened and processed into voice-v2-master.m4a (41.2s). It is the
 // master clock: every time below is in SECONDS OF THE OUTPUT TIMELINE unless it says "src".
 // Word timings come from Whisper large-v3 on the voice-over, checked against its loudness envelope.
 
@@ -22,135 +22,146 @@ export type UgcCut = {
 export const UGC_CUTS: UgcCut[] = [
   // Mapping measured by DTW alignment (MFCC) of each clip's own audio — which is in sync with
   // the lips — against the voice-over, then simplified to one segment per spoken group.
-  // Hook — « اليوم عنّا »
-  { src: "hook", srcStart: 0.2, srcEnd: 1.25, start: 0, end: 0.85, zoom: 1 },
-  // « باك في خمسة حاجات » (jump cut over the clip's pause at src 1.25–1.85)
+  // Hook — « اليوم معانا باك »
+  { src: "hook", srcStart: 0.35, srcEnd: 1.8, start: 0, end: 1.05, zoom: 1 },
+  // « فيه خمسة حاجات » (jump cut over the clip's pause)
   {
     src: "hook",
-    srcStart: 1.85,
-    srcEnd: 3.62,
-    start: 0.85,
-    end: 2.5,
+    srcStart: 2.25,
+    srcEnd: 3.55,
+    start: 1.05,
+    end: 2.25,
     zoom: 1.15,
   },
-  // « الكل تسعة وأربعين… »
-  { src: "hook", srcStart: 3.85, srcEnd: 5.3, start: 2.5, end: 3.85, zoom: 1 },
-  // « …دينار » (skips the clip's repeated « واربعين » at src 5.3–5.7)
+  // « الكل 49… »
+  { src: "hook", srcStart: 4.0, srcEnd: 5.42, start: 2.25, end: 3.45, zoom: 1 },
+  // « …دينار » (skips the clip's repeated « واربعين »)
   {
     src: "hook",
     srcStart: 5.7,
     srcEnd: 6.4,
-    start: 3.85,
-    end: 4.55,
+    start: 3.45,
+    end: 4.05,
     zoom: 1.15,
   },
-  // CTA — the clip only comes in on « انزل اللوطة »: « باش تعدّي الكوموند » plays over the
-  // pack shot (voice only, no face)
-  // « انزل اللوطة »
+  // CTA — the face only comes back on « انزل اللوطة »; « باش تعدّي الكوموند » plays over
+  // the pack shot (voice only)
   {
     src: "cta",
-    srcStart: 1.8,
-    srcEnd: 3.4,
-    start: 36.15,
-    end: 37.05,
+    srcStart: 1.89,
+    srcEnd: 2.29,
+    start: 40.1,
+    end: 40.5,
+    zoom: 1.22,
+  },
+  {
+    src: "cta",
+    srcStart: 2.44,
+    srcEnd: 3.44,
+    start: 40.5,
+    end: 41.1,
     zoom: 1.22,
   },
   // the pointing-down gesture, kept whole (src 4–7 = finger pointing at the button)
   {
     src: "cta",
-    srcStart: 3.4,
-    srcEnd: 6.85,
-    start: 37.05,
-    end: 40.5,
+    srcStart: 3.44,
+    srcEnd: 6.84,
+    start: 41.1,
+    end: 44.5,
     zoom: 1.1,
   },
 ];
 
-export const TOTAL_SECONDS = 40.5;
+export const TOTAL_SECONDS = 44.5;
 export const TOTAL_FRAMES = f(TOTAL_SECONDS);
-export const HOOK_END = 4.55;
-export const CTA_START = 36.15;
+export const HOOK_END = 4.05;
+export const CTA_START = 40.1;
 
 // ---------------------------------------------------------------------------
 // Subtitles — Tunisian derja, exactly as spoken (numbers written as digits).
 export const CAPTIONS = [
-  { start: 0.4, end: 1.25, text: "اليوم عنّا باك", emphasis: ["باك"] },
-  { start: 1.25, end: 2.4, text: "في خمسة حاجات", emphasis: ["خمسة"] },
-  { start: 2.7, end: 4.3, text: "الكل 49 دينار", emphasis: ["49"] },
-  { start: 5.18, end: 6.45, text: "عنّا السدر", emphasis: ["السدر"] },
-  { start: 6.48, end: 7.58, text: "باش نزيدوه ميّة", emphasis: ["ميّة"] },
+  { start: 0.0, end: 1.05, text: "اليوم معانا باك", emphasis: ["باك"] },
+  { start: 1.05, end: 2.0, text: "فيه خمسة حاجات", emphasis: ["خمسة"] },
+  { start: 2.02, end: 3.9, text: "الكل 49 دينار", emphasis: ["49"] },
+  { start: 4.1, end: 5.6, text: "كان شعرك بدا يطيح ويفرغ", emphasis: ["يطيح"] },
+  { start: 5.72, end: 6.95, text: "وجرّبت برشا حاجات", emphasis: ["برشا"] },
+  { start: 6.98, end: 7.95, text: "وما لقيتش نتيجة", emphasis: ["نتيجة"] },
   {
-    start: 7.6,
-    end: 9.1,
-    text: "ونحطّوه في الأبليكاتور",
+    start: 8.06,
+    end: 10.2,
+    text: "تبّعني نفسرلك الروتين كامل",
+    emphasis: ["الروتين"],
+  },
+  { start: 10.28, end: 11.6, text: "أوّلا السدر", emphasis: ["السدر"] },
+  { start: 11.62, end: 14.4, text: "نزيدوه شويّة ميّة", emphasis: ["ميّة"] },
+  {
+    start: 14.42,
+    end: 15.65,
+    text: "نحطّوه في الأبليكاتور",
     emphasis: ["الأبليكاتور"],
   },
-  { start: 9.18, end: 10.9, text: "نغسلو بيه شعرنا", emphasis: ["شعرنا"] },
+  { start: 15.68, end: 17.1, text: "ونغسلو بيه شعرنا", emphasis: ["شعرنا"] },
   {
-    start: 10.96,
-    end: 12.22,
-    text: "باش نستعملو الأبليكاتور",
-    emphasis: ["الأبليكاتور"],
+    start: 17.14,
+    end: 18.9,
+    text: "الأبليكاتور يخلّي السدر يوصل",
+    emphasis: ["السدر"],
   },
+  { start: 18.96, end: 19.6, text: "للجذور", emphasis: ["للجذور"] },
+  { start: 19.66, end: 21.1, text: "ينظّف فروة الراس", emphasis: ["ينظّف"] },
   {
-    start: 12.26,
-    end: 14.4,
-    text: "باش السدر يوصل للجذور",
-    emphasis: ["للجذور"],
+    start: 21.14,
+    end: 22.85,
+    text: "ثانيا الديرما رولر",
+    emphasis: ["الديرما"],
   },
-  { start: 14.44, end: 15.95, text: "وينظّف فروة الراس", emphasis: ["وينظّف"] },
+  { start: 22.88, end: 23.85, text: "مرتين في الجمعة", emphasis: ["مرتين"] },
+  { start: 23.9, end: 24.7, text: "ما أكثرش", emphasis: ["أكثرش"] },
   {
-    start: 16.38,
-    end: 17.98,
-    text: "عنّا ديرما رولر",
-    emphasis: ["ديرما", "رولر"],
-  },
-  {
-    start: 18.0,
-    end: 20.15,
-    text: "باش نستعملوها مرتين في الجمعة",
-    emphasis: ["مرتين"],
-  },
-  { start: 20.2, end: 20.95, text: "ما أكثرش", emphasis: ["أكثرش"] },
-  {
-    start: 20.98,
-    end: 22.52,
-    text: "بعد الديرما بالضبط",
+    start: 24.76,
+    end: 26.1,
+    text: "وبعد الديرما بالضبط",
     emphasis: ["بالضبط"],
   },
-  { start: 22.56, end: 23.7, text: "باش نستعملو زيت", emphasis: ["زيت"] },
+  { start: 26.16, end: 27.2, text: "نحطّو قطرات من", emphasis: ["قطرات"] },
   {
-    start: 23.72,
-    end: 25.3,
-    text: "إكليل الجبل الطبيعي",
+    start: 27.22,
+    end: 29.0,
+    text: "زيت إكليل الجبل الطبيعي",
     emphasis: ["إكليل", "الجبل"],
   },
-  { start: 26.0, end: 27.5, text: "بالنسبة للبروس", emphasis: ["للبروس"] },
-  // Spoken: « باش نحطّوها [?] في الليل » — one word is unclear in the recording and is left
-  // out of the subtitle rather than guessed. Add it here once confirmed.
+  { start: 29.04, end: 30.25, text: "بالنسبة للبروس", emphasis: ["للبروس"] },
   {
-    start: 27.56,
-    end: 29.7,
-    text: "باش نحطّوها في الليل",
-    emphasis: ["الليل"],
-  },
-  {
-    start: 29.76,
-    end: 31.45,
-    text: "باش تعمل مساج على فروة الراس",
+    start: 30.28,
+    end: 32.5,
+    text: "تعمل بيها مساج على فروة الراس",
     emphasis: ["مساج"],
   },
   {
-    start: 31.56,
-    end: 33.1,
+    start: 32.52,
+    end: 34.25,
     text: "باش تنشّط الدورة الدموية",
     emphasis: ["الدموية"],
   },
   {
-    start: 34.0,
-    end: 35.8,
+    start: 34.3,
+    end: 35.95,
+    text: "الخمسة برودويات متاعنا",
+    emphasis: ["الخمسة"],
+  },
+  { start: 35.98, end: 37.45, text: "بـ 49 دينار كهو", emphasis: ["49"] },
+  {
+    start: 37.52,
+    end: 38.8,
+    text: "والخلاص عند الاستلام",
+    emphasis: ["الاستلام"],
+  },
+  {
+    start: 38.82,
+    end: 40.0,
     text: "باش تعدّي الكوموند",
     emphasis: ["الكوموند"],
   },
-  { start: 36.15, end: 37.0, text: "انزل اللوطة", emphasis: ["اللوطة"] },
+  { start: 40.15, end: 41.1, text: "انزل اللوطة", emphasis: ["اللوطة"] },
 ];

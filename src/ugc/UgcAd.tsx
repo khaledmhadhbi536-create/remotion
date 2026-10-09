@@ -37,7 +37,7 @@ import {
 // 9:16 UGC ad (Reels / Stories): UGC hook → B-roll of the real pack → UGC call to action.
 // The voice-over drives the whole edit — see edit.ts for every timing.
 
-const VOICE = staticFile("ugc/voice-master.m4a");
+const VOICE = staticFile("ugc/voice-v2-master.m4a");
 const CLIPS = {
   hook: staticFile("ugc/ugc-hook.mp4"),
   cta: staticFile("ugc/ugc-cta.mp4"),
@@ -132,12 +132,6 @@ const Drop: React.FC<{ readonly size: number; readonly color?: string }> = ({
       stroke="#fff"
       strokeWidth={1.6}
     />
-  </svg>
-);
-
-const Moon: React.FC<{ readonly size: number }> = ({ size }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24">
-    <path d="M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z" fill={YELLOW} />
   </svg>
 );
 
@@ -371,14 +365,107 @@ const WashShot: React.FC<{ readonly duration: number }> = ({ duration }) => {
   );
 };
 
-const RootsShot: React.FC<{ readonly duration: number }> = ({ duration }) => (
+// « كان شعرك بدا يطيح ويفرغ… » — strands come loose and fall, then the "tried everything" beat
+const HairFallShot: React.FC<{
+  readonly duration: number;
+  readonly triedAt: number; // frame of « وجرّبت برشا حاجات »
+  readonly noResultAt: number; // frame of « وما لقيتش نتيجة »
+}> = ({ duration, triedAt, noResultAt }) => {
+  const frame = useCurrentFrame();
+  const W = 940;
+  const H = 620;
+  const skinY = 430;
+  const strands = new Array(11).fill(true).map((_, i) => 70 + i * 80);
+  // Every other strand falls, one after the other
+  const fall = (i: number) =>
+    i % 2 === 1
+      ? interpolate(frame, [6 + i * 4, 30 + i * 4], [0, 1], {
+          ...clamp,
+          easing: Easing.in(Easing.quad),
+        })
+      : 0;
+  return (
+    <GraphicStage duration={duration}>
+      <AbsoluteFill style={{ alignItems: "center", top: 560 }}>
+        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+          <rect
+            x={0}
+            y={0}
+            width={W}
+            height={H}
+            rx={40}
+            fill="rgba(255,255,255,0.93)"
+          />
+          <rect
+            x={20}
+            y={skinY}
+            width={W - 40}
+            height={H - skinY - 20}
+            rx={24}
+            fill="#E8B48F"
+          />
+          {strands.map((x, i) => {
+            const k = fall(i);
+            return (
+              <g
+                key={i}
+                transform={`translate(${k * (i % 4 === 1 ? 60 : -50)} ${k * 520}) rotate(${k * (i % 4 === 1 ? 70 : -60)} ${x} ${skinY})`}
+                opacity={1 - k * 0.8}
+              >
+                <ellipse
+                  cx={x}
+                  cy={skinY + 50}
+                  rx={14}
+                  ry={22}
+                  fill="#5B3A29"
+                />
+                <path
+                  d={`M ${x} ${skinY + 40} C ${x - 10} ${skinY - 120}, ${x + 14} ${skinY - 260}, ${x - 6} 40`}
+                  stroke="#2B1B12"
+                  strokeWidth={9}
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </g>
+            );
+          })}
+        </svg>
+      </AbsoluteFill>
+      <Chip at={2} text="شعرك يطيح؟" top={300} color={colors.red} />
+      {frame < noResultAt ? (
+        <Chip
+          at={triedAt}
+          text="جرّبت برشا حاجات"
+          top={430}
+          size={72}
+          tilt={2}
+        />
+      ) : (
+        <Chip
+          at={noResultAt}
+          text="✗ ما لقيتش نتيجة"
+          top={430}
+          color={colors.red}
+          size={80}
+          tilt={-3}
+        />
+      )}
+    </GraphicStage>
+  );
+};
+
+const RootsShot: React.FC<{
+  readonly duration: number;
+  readonly rootsAt: number; // frame of « للجذور »
+  readonly cleanAt: number; // frame of « ينظّف »
+}> = ({ duration, rootsAt, cleanAt }) => (
   <GraphicStage duration={duration}>
     <AbsoluteFill style={{ alignItems: "center", top: 520 }}>
-      <Scalp dropsFrom={0} rootsGlow={f(1.21)} cleanAt={f(2.19)} pulseAt={-1} />
+      <Scalp dropsFrom={0} rootsGlow={rootsAt} cleanAt={cleanAt} pulseAt={-1} />
     </AbsoluteFill>
-    <Chip at={f(1.21)} text="يوصل للجذور" top={270} />
+    <Chip at={rootsAt} text="يوصل للجذور" top={270} />
     <Chip
-      at={f(2.19)}
+      at={cleanAt}
       text="ينظّف فروة الراس"
       top={400}
       color={YELLOW}
@@ -431,11 +518,13 @@ const MassageShot: React.FC<{
   );
 };
 
-const TwiceAWeekShot: React.FC<{ readonly duration: number }> = ({
-  duration,
-}) => {
+const TwiceAWeekShot: React.FC<{
+  readonly duration: number;
+  readonly litAt: [number, number]; // frames of « مرتين » … « في الجمعة »
+  readonly stampAt: number; // frame of « ما أكثرش »
+}> = ({ duration, litAt, stampAt }) => {
   const frame = useCurrentFrame();
-  const lit = [f(0.83), f(1.3)]; // « مرتين » … « في الجمعة »
+  const lit = litAt;
   const roll = interpolate(frame, [0, duration], [-260, 260]);
   return (
     <GraphicStage duration={duration}>
@@ -513,7 +602,7 @@ const TwiceAWeekShot: React.FC<{ readonly duration: number }> = ({
         </div>
       </AbsoluteFill>
       <Chip
-        at={f(2.25)}
+        at={stampAt}
         text="ما أكثرش!"
         top={1000}
         color={colors.red}
@@ -705,22 +794,34 @@ const pack =
 
 const SHOTS: Shot[] = [
   {
-    name: "Pack reveal",
+    name: "Hair falling",
     start: HOOK_END,
-    end: 5.95,
+    end: 8.0,
+    render: (d) => (
+      <HairFallShot
+        duration={d}
+        triedAt={f(5.72 - HOOK_END)}
+        noResultAt={f(6.98 - HOOK_END)}
+      />
+    ),
+  },
+  {
+    name: "Title card",
+    start: 8.0,
+    end: 10.25,
     render: () => (
-      <TitleCard line1="تابعني نفسرلك" line2="الروتين" big="كيفاش" />
+      <TitleCard line1="تبّعني نفسرلك" line2="الروتين" big="كامل" />
     ),
   },
   {
     name: "Sidr",
-    start: 5.95,
-    end: 7.55,
+    start: 10.25,
+    end: 14.4,
     render: product("sidr", 720, "out", () => (
       <>
-        <Chip at={2} text="سدر طبيعي" top={330} />
+        <Chip at={f(0.57)} text="سدر طبيعي" top={330} />
         <Chip
-          at={f(0.81)}
+          at={f(14.04 - 10.25)}
           text="+ ميّة"
           top={470}
           color="#1E88E5"
@@ -733,45 +834,45 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Into the applicator",
-    start: 7.55,
-    end: 9.1,
+    start: 14.4,
+    end: 15.65,
     render: product("bottleBlack", 730, "in", () => (
-      <Chip
-        at={f(0.63)}
-        text="في الأبليكاتور"
-        top={330}
-        color={YELLOW}
-        textColor={colors.charcoal}
-      />
+      <Chip at={f(0.58)} text="في الأبليكاتور" top={330} color={YELLOW} />
     )),
   },
   {
     name: "Wash",
-    start: 9.1,
-    end: 10.95,
+    start: 15.65,
+    end: 17.1,
     render: (d) => <WashShot duration={d} />,
   },
   {
     name: "Applicator comb",
-    start: 10.95,
-    end: 12.25,
+    start: 17.1,
+    end: 18.9,
     render: product("bottleBlack", 1300, "out", () => (
-      <Chip at={f(0.59)} text="الأبليكاتور" top={330} />
+      <Chip at={2} text="الأبليكاتور" top={330} />
     )),
   },
   {
     name: "To the roots",
-    start: 12.25,
-    end: 15.95,
-    render: (d) => <RootsShot duration={d} />,
+    start: 18.9,
+    end: 21.1,
+    render: (d) => (
+      <RootsShot
+        duration={d}
+        rootsAt={f(18.96 - 18.9)}
+        cleanAt={f(19.66 - 18.9)}
+      />
+    ),
   },
   {
     name: "Derma roller",
-    start: 15.95,
-    end: 17.95,
+    start: 21.1,
+    end: 22.85,
     render: product("dermaRoller", 480, "in", () => (
       <Chip
-        at={f(1.27)}
+        at={f(0.74)}
         text="ديرما رولر 540"
         top={330}
         color={colors.magenta}
@@ -780,29 +881,34 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Twice a week",
-    start: 17.95,
-    end: 20.95,
-    render: (d) => <TwiceAWeekShot duration={d} />,
+    start: 22.85,
+    end: 24.7,
+    render: (d) => (
+      <TwiceAWeekShot
+        duration={d}
+        litAt={[f(22.88 - 22.85), f(23.3 - 22.85)]}
+        stampAt={f(23.9 - 22.85)}
+      />
+    ),
   },
   {
     name: "Then the oil",
-    start: 20.95,
-    end: 22.75,
+    start: 24.7,
+    end: 26.1,
     render: (d) => <ThenOilShot duration={d} />,
   },
   {
     name: "Rosemary oil",
-    start: 22.75,
-    end: 25.95,
+    start: 26.1,
+    end: 29.0,
     render: product("rosemaryOil", 730, "out", () => (
       <>
-        <Chip at={f(0.55)} text="زيت إكليل الجبل" top={330} />
+        <Chip at={f(27.22 - 26.1)} text="زيت إكليل الجبل" top={330} />
         <Chip
-          at={f(1.95)}
+          at={f(28.32 - 26.1)}
           text="طبيعي"
           top={470}
           color={YELLOW}
-          textColor={colors.charcoal}
           tilt={4}
         />
       </>
@@ -810,38 +916,47 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Brush",
-    start: 25.95,
-    end: 29.65,
+    start: 29.0,
+    end: 30.95,
     render: product("brushPink", 560, "in", () => (
+      <Chip at={f(29.68 - 29.0)} text="البروس" top={330} />
+    )),
+  },
+  {
+    name: "Massage + circulation",
+    start: 30.95,
+    end: 34.25,
+    render: (d) => <MassageShot duration={d} pulseAt={f(32.52 - 30.95)} />,
+  },
+  {
+    name: "Offer",
+    start: 34.25,
+    end: 38.8,
+    render: pack("in", () => (
       <>
-        <Chip at={f(0.89)} text="البروس" top={330} />
+        <PriceSticker at={f(35.98 - 34.25)} top={190} scale={0.85} />
         <Chip
-          at={f(3.21)}
-          text="في الليل"
-          top={470}
-          color={colors.navy}
-          tilt={3}
-          icon={<Moon size={70} />}
+          at={f(37.52 - 34.25)}
+          text="الخلاص عند الاستلام"
+          top={1185}
+          color={YELLOW}
+          size={80}
         />
       </>
     )),
   },
   {
-    name: "Massage + circulation",
-    start: 29.65,
-    end: 33.2,
-    render: (d) => <MassageShot duration={d} pulseAt={f(1.91)} />,
-  },
-  {
     name: "Pack recap",
-    start: 33.2,
+    start: 38.8,
     end: CTA_START,
     render: pack("out", () => <PriceSticker at={0} top={190} scale={0.85} />),
   },
 ];
 
 // Jump cuts: on these words the B-roll punches in (1.0 ↔ 1.12) like a cut, every 2–3 s
-const PUNCHES = [6.48, 14.44, 20.2, 23.72, 27.56, 31.56, 34.0];
+const PUNCHES = [
+  5.72, 6.98, 12.28, 14.04, 19.66, 23.9, 27.22, 32.52, 35.98, 37.52,
+];
 
 const JumpCuts: React.FC<{ readonly children: React.ReactNode }> = ({
   children,
@@ -894,14 +1009,14 @@ const HookOverlay: React.FC = () => {
         </div>
       </AbsoluteFill>
       {/* « خمسة حاجات » then « 49 دينار » land as stickers on the chest, clear of the face */}
-      <PriceSticker at={f(2.75)} top={840} left={600} scale={0.8} />
+      <PriceSticker at={f(2.3)} top={840} left={600} scale={0.8} />
     </AbsoluteFill>
   );
 };
 
 const CtaOverlay: React.FC = () => {
   const frame = useCurrentFrame();
-  const btnAt = f(36.15 - CTA_START); // « انزل »
+  const btnAt = 2; // « انزل » opens the CTA clip
   const s = interpolate(frame, [btnAt, btnAt + 8], [0, 1], {
     ...clamp,
     easing: pop,
@@ -952,210 +1067,38 @@ const CtaOverlay: React.FC = () => {
 };
 
 // ---------------------------------------------------------------------------
-// MOCK-UP ONLY: usage footage borrowed from other creators (other brands, logos, a real person),
-// to judge the pacing before the seller films the same shots with the real pack.
-// Never run this version as an ad — the "MAQUETTE" watermark is there to make that obvious.
-type Broll = {
-  readonly name: string;
-  readonly file: string; // public/ugc/broll
-  readonly srcStart: number; // src seconds
-  readonly start: number; // output seconds
-  readonly end: number;
-  readonly zoom?: number;
-  readonly origin?: string; // where the zoom is anchored (moves burnt-in text out of frame)
-  readonly overlay?: React.ReactNode;
-};
-
-const BROLL: Broll[] = [
-  {
-    name: "Sidr in the bowl",
-    file: "sidr-mix.mp4",
-    srcStart: 3.2,
-    start: 5.95,
-    end: 6.75,
-    zoom: 1.15,
-    overlay: <Chip at={1} text="سدر طبيعي" top={330} />,
-  },
-  {
-    name: "Water",
-    file: "sidr-mix.mp4",
-    srcStart: 7.9,
-    start: 6.75,
-    end: 7.55,
-    zoom: 1.15,
-    overlay: (
-      <Chip
-        at={1}
-        text="+ ميّة"
-        top={330}
-        color="#1E88E5"
-        icon={<Drop size={54} />}
-      />
-    ),
-  },
-  {
-    name: "Applicator in hand",
-    file: "applicator.mp4",
-    srcStart: 1.2,
-    start: 7.55,
-    end: 9.1,
-    zoom: 1.6,
-    origin: "100% 90%",
-    overlay: (
-      <Chip
-        at={f(0.63)}
-        text="في الأبليكاتور"
-        top={330}
-        color={YELLOW}
-        textColor={colors.charcoal}
-      />
-    ),
-  },
-  {
-    name: "Applicator on the roots",
-    file: "applicator.mp4",
-    srcStart: 4.0,
-    start: 9.1,
-    end: 10.95,
-    zoom: 1.6,
-    origin: "100% 100%",
-    overlay: <Chip at={2} text="نغسلو شعرنا" top={330} />,
-  },
-  {
-    name: "Applicator comb",
-    file: "applicator.mp4",
-    srcStart: 6.0,
-    start: 10.95,
-    end: 12.25,
-    zoom: 1.5,
-    origin: "0% 60%",
-    overlay: <Chip at={f(0.59)} text="الأبليكاتور" top={330} />,
-  },
-  {
-    name: "Derma roller needles",
-    file: "derma.mp4",
-    srcStart: 20.5,
-    start: 15.95,
-    end: 17.95,
-    zoom: 1.25,
-    origin: "50% 0%",
-    overlay: (
-      <Chip
-        at={f(1.27)}
-        text="ديرما رولر 540"
-        top={330}
-        color={colors.magenta}
-      />
-    ),
-  },
-  {
-    name: "Oil on the scalp",
-    file: "rosemary.mp4",
-    srcStart: 6.0,
-    start: 22.75,
-    end: 24.25,
-    zoom: 1.3,
-    origin: "50% 100%",
-    overlay: <Chip at={f(0.55)} text="زيت إكليل الجبل" top={330} />,
-  },
-  {
-    name: "Brush in hand",
-    file: "brush.mp4",
-    srcStart: 3.0,
-    start: 25.95,
-    end: 27.9,
-    zoom: 1.15,
-    overlay: <Chip at={f(0.89)} text="البروس" top={330} />,
-  },
-];
-
-const BrollClip: React.FC<{ readonly b: Broll; readonly duration: number }> = ({
-  b,
-  duration,
-}) => {
-  const frame = useCurrentFrame();
-  const punch = interpolate(frame, [0, 7], [1.06, 1], {
-    ...clamp,
-    easing: Easing.out(Easing.cubic),
-  });
-  const push = interpolate(frame, [0, duration], [0, 0.04], clamp);
-  return (
-    <AbsoluteFill style={{ backgroundColor: "black" }}>
-      <AbsoluteFill
-        style={{
-          scale: String((b.zoom ?? 1) * punch + push),
-          transformOrigin: b.origin ?? "50% 50%",
-        }}
-      >
-        <Video
-          src={staticFile(`ugc/broll/${b.file}`)}
-          trimBefore={f(b.srcStart)}
-          muted
-          objectFit="cover"
-          style={{ width: "100%", height: "100%" }}
-        />
-      </AbsoluteFill>
-      {b.overlay}
-    </AbsoluteFill>
-  );
-};
-
-const MockupWatermark: React.FC = () => (
-  <AbsoluteFill
-    style={{
-      alignItems: "center",
-      justifyContent: "center",
-      pointerEvents: "none",
-    }}
-  >
-    <div
-      style={{
-        rotate: "-30deg",
-        fontFamily: bodyFont,
-        fontWeight: 900,
-        fontSize: 170,
-        letterSpacing: 10,
-        color: "rgba(255,255,255,0.16)",
-        WebkitTextStroke: "3px rgba(230,57,70,0.35)",
-      }}
-    >
-      MAQUETTE
-    </div>
-  </AbsoluteFill>
-);
-
-// ---------------------------------------------------------------------------
 // Reference-style editing (see RefStyle.tsx): caption look per section, cut transitions,
 // giant neon key words
 const CAPTION_SECTIONS = [
-  { from: 0, to: 12.25, look: "band" as const },
-  { from: 12.25, to: 22.56, look: "glow" as const },
-  { from: 22.56, to: 99, look: "neon" as const },
+  { from: 0, to: 14.4, look: "band" as const },
+  { from: 14.4, to: 24.7, look: "glow" as const },
+  { from: 24.7, to: 99, look: "neon" as const },
 ];
 
 const CUT_FX: CutFx[] = [
-  { at: 2.5, kind: "leak" },
+  { at: 2.25, kind: "leak" },
   { at: HOOK_END, kind: "leak" },
-  { at: 9.1, kind: "glitch" },
-  { at: 12.25, kind: "zoomBlur" },
-  { at: 15.95, kind: "glitch" },
-  { at: 22.75, kind: "zoomBlur" },
-  { at: 25.95, kind: "glitch" },
-  { at: 29.65, kind: "zoomBlur" },
+  { at: 8.0, kind: "glitch" },
+  { at: 10.25, kind: "zoomBlur" },
+  { at: 15.65, kind: "glitch" },
+  { at: 18.9, kind: "zoomBlur" },
+  { at: 21.1, kind: "glitch" },
+  { at: 26.1, kind: "zoomBlur" },
+  { at: 29.0, kind: "glitch" },
+  { at: 34.25, kind: "zoomBlur" },
   { at: CTA_START, kind: "leak" },
 ];
 
 const NEON_WORDS = [
-  { text: "السدر", at: 6.02, top: 780 },
-  { text: "مرتين", at: 18.78, top: 960 },
-  { text: "طبيعي", at: 24.7, top: 780 },
-  { text: "مساج", at: 30.2, top: 780 },
+  { text: "السدر", at: 10.82, top: 780 },
+  { text: "مرتين", at: 22.88, top: 960 },
+  { text: "طبيعي", at: 28.32, top: 780 },
+  { text: "مساج", at: 31.04, top: 780 },
+  { text: "49 د.ت", at: 35.98, top: 780 },
 ];
 
 // ---------------------------------------------------------------------------
-export const UgcAd: React.FC<{ readonly mockup?: boolean }> = ({
-  mockup = false,
-}) => {
+export const UgcAd: React.FC = () => {
   const { fps } = useVideoConfig();
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
@@ -1185,20 +1128,6 @@ export const UgcAd: React.FC<{ readonly mockup?: boolean }> = ({
             </Sequence>
           ))}
         </JumpCuts>
-
-        {mockup
-          ? BROLL.map((b) => (
-              <Sequence
-                key={b.name}
-                name={`Mock-up: ${b.name}`}
-                from={f(b.start)}
-                durationInFrames={f(b.end) - f(b.start)}
-                premountFor={fps}
-              >
-                <BrollClip b={b} duration={f(b.end) - f(b.start)} />
-              </Sequence>
-            ))
-          : null}
       </CutTransitions>
 
       {/* Bottom gradient for subtitle legibility */}
@@ -1225,8 +1154,6 @@ export const UgcAd: React.FC<{ readonly mockup?: boolean }> = ({
         sections={CAPTION_SECTIONS}
         top={CAPTION_TOP}
       />
-
-      {mockup ? <MockupWatermark /> : null}
 
       <Audio src={VOICE} volume={1} />
       <Audio
