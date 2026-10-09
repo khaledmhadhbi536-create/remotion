@@ -3,7 +3,6 @@ import { Audio, Video } from "@remotion/media";
 import {
   AbsoluteFill,
   Easing,
-  Img,
   interpolate,
   Sequence,
   staticFile,
@@ -23,9 +22,7 @@ import {
   CAPTIONS,
   CTA_START,
   f,
-  type Framing,
   HOOK_END,
-  SPOTS,
   TOTAL_FRAMES,
   UGC_CUTS,
   type UgcCut,
@@ -35,9 +32,6 @@ import {
 // The voice-over drives the whole edit — see edit.ts for every timing.
 
 const VOICE = staticFile("ugc/voice-master.m4a");
-const PHOTO = staticFile("ugc/pack-photo.jpg");
-const PHOTO_W = 1126;
-const PHOTO_H = 2000;
 const CLIPS = {
   hook: staticFile("ugc/ugc-hook.mp4"),
   cta: staticFile("ugc/ugc-cta.mp4"),
@@ -77,94 +71,6 @@ const UgcClip: React.FC<{ readonly cut: UgcCut }> = ({ cut }) => {
     </AbsoluteFill>
   );
 };
-
-// ---------------------------------------------------------------------------
-// B-roll from the real photo of the pack: a framed crop that drifts like a handheld phone
-const framingStyle = (
-  { cx, cy, zoom }: Framing,
-  width: number,
-  height: number,
-): React.CSSProperties => {
-  const s = Math.max(width / PHOTO_W, height / PHOTO_H) * zoom;
-  const w = PHOTO_W * s;
-  const h = PHOTO_H * s;
-  const x = Math.min(0, Math.max(width - w, width / 2 - cx * s));
-  const y = Math.min(0, Math.max(height - h, height / 2 - cy * s));
-  return { position: "absolute", left: x, top: y, width: w, height: h };
-};
-
-const lerpFraming = (a: Framing, b: Framing, t: number): Framing => ({
-  cx: a.cx + (b.cx - a.cx) * t,
-  cy: a.cy + (b.cy - a.cy) * t,
-  zoom: a.zoom + (b.zoom - a.zoom) * t,
-});
-
-const PhotoShot: React.FC<{
-  readonly from: Framing;
-  readonly to: Framing;
-  readonly duration: number;
-  readonly blur?: boolean;
-}> = ({ from, to, duration, blur = false }) => {
-  const frame = useCurrentFrame();
-  const { width, height } = useVideoConfig();
-  const t = interpolate(frame, [0, duration], [0, 1], {
-    ...clamp,
-    easing: smooth,
-  });
-  // Cut-in punch: the first frames land 6% tighter, then settle
-  const punch = interpolate(frame, [0, 7], [1.06, 1], {
-    ...clamp,
-    easing: Easing.out(Easing.cubic),
-  });
-  const shakeX = Math.sin(frame / 9) * 5 + Math.sin(frame / 3.7) * 1.5;
-  const shakeY = Math.cos(frame / 11) * 5 + Math.sin(frame / 4.3) * 1.5;
-  return (
-    <AbsoluteFill
-      style={{
-        overflow: "hidden",
-        backgroundColor: colors.charcoal,
-      }}
-    >
-      <AbsoluteFill
-        style={{
-          scale: String(punch * 1.03),
-          translate: `${shakeX}px ${shakeY}px`,
-          rotate: `${Math.sin(frame / 13) * 0.4}deg`,
-          filter: blur
-            ? "blur(26px) brightness(0.55)"
-            : "contrast(1.06) saturate(1.08)",
-        }}
-      >
-        <Img
-          src={PHOTO}
-          style={framingStyle(lerpFraming(from, to, t), width, height)}
-        />
-      </AbsoluteFill>
-    </AbsoluteFill>
-  );
-};
-
-// A round "lens" on part of the photo, used inside the graphic shots
-const PhotoLens: React.FC<{
-  readonly spot: Framing;
-  readonly size: number;
-  readonly style?: React.CSSProperties;
-}> = ({ spot, size, style }) => (
-  <div
-    style={{
-      position: "relative",
-      width: size,
-      height: size,
-      borderRadius: "50%",
-      overflow: "hidden",
-      border: "8px solid #fff",
-      boxShadow: "0 18px 40px rgba(0,0,0,0.45)",
-      ...style,
-    }}
-  >
-    <Img src={PHOTO} style={framingStyle(spot, size, size)} />
-  </div>
-);
 
 // ---------------------------------------------------------------------------
 // On-screen keywords
@@ -283,12 +189,25 @@ const PriceSticker: React.FC<{
 
 // ---------------------------------------------------------------------------
 // Graphic shots (on a blurred background of the same photo)
+// Gold sunburst, as on the static ads
+const GoldBackdrop: React.FC = () => (
+  <AbsoluteFill
+    style={{
+      background:
+        "radial-gradient(circle at 50% 45%, #E9B949 0%, #B8862B 45%, #5C3F10 100%)",
+      overflow: "hidden",
+    }}
+  >
+    <LightRays color="rgba(255,236,170,0.35)" style={{ top: "45%" }} />
+  </AbsoluteFill>
+);
+
 const GraphicStage: React.FC<{
   readonly duration: number;
   readonly children: React.ReactNode;
-}> = ({ duration, children }) => (
+}> = ({ children }) => (
   <AbsoluteFill>
-    <PhotoShot from={SPOTS.sidrBag} to={SPOTS.whole} duration={duration} blur />
+    <GoldBackdrop />
     {children}
   </AbsoluteFill>
 );
@@ -490,13 +409,16 @@ const MassageShot: React.FC<{
         />
       </AbsoluteFill>
       {/* Brush massaging in small circles */}
-      <PhotoLens
-        spot={SPOTS.brush}
-        size={300}
+      <ProductImage
+        product="brushPink"
+        height={280}
+        shadow={false}
         style={{
           position: "absolute",
-          top: 640 + Math.sin(a) * 30,
-          left: 390 + Math.cos(a) * 60,
+          top: 620 + Math.sin(a) * 30,
+          left: 400 + Math.cos(a) * 60,
+          rotate: `${Math.sin(a) * 8}deg`,
+          filter: "drop-shadow(0 18px 30px rgba(0,0,0,0.45))",
         }}
       />
       <Chip at={2} text="مساج على فروة الراس" top={300} size={74} />
@@ -691,7 +613,21 @@ const ThenOilShot: React.FC<{ readonly duration: number }> = ({ duration }) => {
           />
         </svg>
         <div style={{ position: "relative", scale: String(oil) }}>
-          <PhotoLens spot={SPOTS.oil} size={380} />
+          <div
+            style={{
+              width: 380,
+              height: 380,
+              borderRadius: "50%",
+              background: "#fff",
+              border: "8px solid #fff",
+              boxShadow: "0 18px 40px rgba(0,0,0,0.45)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <ProductImage product="rosemaryOil" height={300} shadow={false} />
+          </div>
           {badge(2)}
         </div>
       </AbsoluteFill>
@@ -727,14 +663,8 @@ const ProductZoom: React.FC<{
   });
   const z = zoom === "in" ? 1 + 0.2 * t : 1.2 - 0.2 * t;
   return (
-    <AbsoluteFill
-      style={{
-        background:
-          "radial-gradient(circle at 50% 45%, #E9B949 0%, #B8862B 45%, #5C3F10 100%)",
-        overflow: "hidden",
-      }}
-    >
-      <LightRays color="rgba(255,236,170,0.35)" style={{ top: "45%" }} />
+    <AbsoluteFill>
+      <GoldBackdrop />
       <AbsoluteFill
         style={{
           alignItems: "center",

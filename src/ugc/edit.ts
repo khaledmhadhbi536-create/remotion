@@ -69,29 +69,6 @@ export const HOOK_END = 4.55;
 export const CTA_START = 33.95;
 
 // ---------------------------------------------------------------------------
-// B-roll shots of the real pack photo (public/ugc/pack-photo.jpg, 1126×2000).
-// cx / cy = point of the photo kept at the centre of the frame, zoom = × "cover" scale.
-// Each shot moves from `from` to `to` like a handheld push-in / pan.
-export type Framing = {
-  readonly cx: number;
-  readonly cy: number;
-  readonly zoom: number;
-};
-
-export const SPOTS = {
-  whole: { cx: 563, cy: 900, zoom: 1 },
-  sidrLabel: { cx: 815, cy: 1370, zoom: 2.6 },
-  sidrBag: { cx: 780, cy: 1250, zoom: 1.25 },
-  applicator: { cx: 350, cy: 1150, zoom: 1.45 },
-  combTip: { cx: 430, cy: 860, zoom: 2.5 },
-  dermaBox: { cx: 140, cy: 1010, zoom: 1.35 },
-  oil: { cx: 855, cy: 560, zoom: 1.9 },
-  oilLabel: { cx: 850, cy: 650, zoom: 2.6 },
-  brush: { cx: 590, cy: 590, zoom: 1.8 },
-  brushTop: { cx: 560, cy: 520, zoom: 2.4 },
-} satisfies Record<string, Framing>;
-
-// ---------------------------------------------------------------------------
 // Subtitles — Tunisian derja, exactly as spoken (numbers written as digits).
 export const CAPTIONS = [
   { start: 0.4, end: 1.25, text: "اليوم عنّا باك", emphasis: ["باك"] },
