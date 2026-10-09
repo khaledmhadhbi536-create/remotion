@@ -875,7 +875,7 @@ const HookOverlay: React.FC = () => {
 
 const CtaOverlay: React.FC = () => {
   const frame = useCurrentFrame();
-  const btnAt = f(35.3 - CTA_START); // « انزل »
+  const btnAt = f(36.15 - CTA_START); // « انزل »
   const s = interpolate(frame, [btnAt, btnAt + 8], [0, 1], {
     ...clamp,
     easing: pop,

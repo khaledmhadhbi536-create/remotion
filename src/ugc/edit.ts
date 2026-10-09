@@ -20,44 +20,81 @@ export type UgcCut = {
 };
 
 export const UGC_CUTS: UgcCut[] = [
-  // Hook — « اليوم عنّا باك في خمسة حاجات »  (src 0.6–3.3 → VO 0.4–2.2)
-  { src: "hook", srcStart: 0.2, srcEnd: 3.4, start: 0, end: 2.4, zoom: 1 },
-  // « الكل… »  (src onset 4.0 → VO 2.7)
+  // Mapping measured by DTW alignment (MFCC) of each clip's own audio — which is in sync with
+  // the lips — against the voice-over, then simplified to one segment per spoken group.
+  // Hook — « اليوم عنّا »
+  { src: "hook", srcStart: 0.2, srcEnd: 1.25, start: 0, end: 0.85, zoom: 1 },
+  // « باك في خمسة حاجات » (jump cut over the clip's pause at src 1.25–1.85)
   {
     src: "hook",
-    srcStart: 3.65,
-    srcEnd: 4.35,
-    start: 2.4,
-    end: 3.0,
-    zoom: 1.1,
+    srcStart: 1.85,
+    srcEnd: 3.62,
+    start: 0.85,
+    end: 2.5,
+    zoom: 1.06,
   },
-  // « …تسعة وأربعين دينار » — the clip's second, cleaner take (src 7.6–8.6 → VO 3.0–4.2).
-  // Stops at src 8.95: from 9.0 the camera app's interface is burnt into the clip.
+  // « الكل تسعة وأربعين… »
+  { src: "hook", srcStart: 3.85, srcEnd: 5.3, start: 2.5, end: 3.85, zoom: 1 },
+  // « …دينار » (skips the clip's repeated « واربعين » at src 5.3–5.7)
   {
     src: "hook",
-    srcStart: 7.55,
-    srcEnd: 8.95,
-    start: 3.0,
+    srcStart: 5.7,
+    srcEnd: 6.4,
+    start: 3.85,
     end: 4.55,
-    zoom: 1.02,
+    zoom: 1.06,
   },
-  // CTA — « باش تعدّي الكوموند »  (src 0–1.75 → VO 34.0–35.3)
-  { src: "cta", srcStart: 0, srcEnd: 1.75, start: 33.95, end: 35.3, zoom: 1.1 },
-  // « انزل »
+  // CTA — « باش تعدّي »
   {
     src: "cta",
-    srcStart: 1.75,
-    srcEnd: 2.85,
-    start: 35.3,
-    end: 36.2,
+    srcStart: 0,
+    srcEnd: 0.58,
+    start: 33.95,
+    end: 34.75,
     zoom: 1.1,
   },
-  // « اللوطة » + the pointing-down gesture, kept whole (src 4–7 = finger pointing at the button)
+  // pause in the voice-over: the clip barely moves
   {
     src: "cta",
-    srcStart: 2.85,
-    srcEnd: 7.15,
-    start: 36.2,
+    srcStart: 0.58,
+    srcEnd: 0.7,
+    start: 34.75,
+    end: 35.3,
+    zoom: 1.1,
+  },
+  // « الكوموند »
+  {
+    src: "cta",
+    srcStart: 0.7,
+    srcEnd: 1.25,
+    start: 35.3,
+    end: 35.8,
+    zoom: 1.1,
+  },
+  // pause
+  {
+    src: "cta",
+    srcStart: 1.25,
+    srcEnd: 1.8,
+    start: 35.8,
+    end: 36.15,
+    zoom: 1.1,
+  },
+  // « انزل اللوطة »
+  {
+    src: "cta",
+    srcStart: 1.8,
+    srcEnd: 3.4,
+    start: 36.15,
+    end: 37.05,
+    zoom: 1.1,
+  },
+  // the pointing-down gesture, kept whole (src 4–7 = finger pointing at the button)
+  {
+    src: "cta",
+    srcStart: 3.4,
+    srcEnd: 6.85,
+    start: 37.05,
     end: 40.5,
     zoom: 1.1,
   },
@@ -145,9 +182,9 @@ export const CAPTIONS = [
   },
   {
     start: 34.0,
-    end: 35.25,
+    end: 35.8,
     text: "باش تعدّي الكوموند",
     emphasis: ["الكوموند"],
   },
-  { start: 35.3, end: 36.9, text: "انزل اللوطة", emphasis: ["اللوطة"] },
+  { start: 36.15, end: 37.0, text: "انزل اللوطة", emphasis: ["اللوطة"] },
 ];
