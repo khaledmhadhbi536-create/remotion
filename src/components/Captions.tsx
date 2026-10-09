@@ -17,7 +17,11 @@ type Page = { words: Word[]; start: number; end: number };
 const MAX_WORDS = 3;
 const MAX_CHARS = 18;
 
-const buildPages = (phrases: CaptionPhrase[], fps: number): Page[] => {
+const buildPages = (
+  phrases: CaptionPhrase[],
+  fps: number,
+  maxWords: number,
+): Page[] => {
   const pages: Page[] = [];
   for (const p of phrases) {
     const start = p.start * fps;
@@ -57,7 +61,7 @@ const buildPages = (phrases: CaptionPhrase[], fps: number): Page[] => {
       if (
         cur.length &&
         !lastIsConnector &&
-        (cur.length >= MAX_WORDS || chars + w.text.length > MAX_CHARS)
+        (cur.length >= maxWords || chars + w.text.length > MAX_CHARS)
       ) {
         flush();
       }
@@ -79,16 +83,24 @@ export const CaptionTrack: React.FC<{
   readonly activeColor?: string;
   readonly emphasisColor?: string;
   readonly fontSize?: number;
+  readonly maxWords?: number;
+  // Set → key words sit in a box of this colour (white text) instead of being recoloured
+  readonly emphasisBackground?: string;
 }> = ({
   phrases,
   top,
   activeColor = "rgba(46,170,90,0.95)",
   emphasisColor = "#FFE14D",
   fontSize = 84,
+  maxWords = MAX_WORDS,
+  emphasisBackground,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const pages = useMemo(() => buildPages(phrases, fps), [phrases, fps]);
+  const pages = useMemo(
+    () => buildPages(phrases, fps, maxWords),
+    [phrases, fps, maxWords],
+  );
   const page = pages.find((p) => frame >= p.start && frame < p.end);
   if (!page) return null;
 
@@ -136,13 +148,19 @@ export const CaptionTrack: React.FC<{
               fontWeight: 900,
               fontSize,
               lineHeight: 1.25,
-              color: w.emphasis ? emphasisColor : "#FFFFFF",
+              color:
+                w.emphasis && !emphasisBackground ? emphasisColor : "#FFFFFF",
               WebkitTextStroke: "14px #000",
               paintOrder: "stroke fill",
               textShadow: "0 8px 18px rgba(0,0,0,0.55)",
               padding: "0 14px 6px",
               borderRadius: 18,
-              background: active ? activeColor : "transparent",
+              background:
+                w.emphasis && emphasisBackground
+                  ? emphasisBackground
+                  : active
+                    ? activeColor
+                    : "transparent",
               scale: String(pop),
               display: "inline-block",
             }}

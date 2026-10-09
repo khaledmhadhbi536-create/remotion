@@ -706,12 +706,37 @@ const pack =
     </>
   );
 
+// « تابعني نفسرلك » — the reference video's retention line, stacked yellow / red
+const FollowMe: React.FC = () => {
+  const frame = useCurrentFrame();
+  const line = (at: number) =>
+    interpolate(frame, [at, at + 6], [0, 1], { ...clamp, easing: pop });
+  const style = (color: string, at: number): React.CSSProperties => ({
+    fontFamily: displayFont,
+    fontSize: 118,
+    lineHeight: 1.05,
+    color,
+    WebkitTextStroke: "10px #000",
+    paintOrder: "stroke fill",
+    rotate: "-4deg",
+    scale: String(line(at)),
+    direction: "rtl",
+    textShadow: "0 10px 24px rgba(0,0,0,0.45)",
+  });
+  return (
+    <AbsoluteFill style={{ alignItems: "center", top: 170 }}>
+      <div style={style(YELLOW, 0)}>تابعني</div>
+      <div style={style(colors.red, 5)}>نفسرلك الروتين</div>
+    </AbsoluteFill>
+  );
+};
+
 const SHOTS: Shot[] = [
   {
     name: "Pack reveal",
     start: HOOK_END,
     end: 5.95,
-    render: pack("in", () => <PriceSticker at={2} top={190} scale={0.85} />),
+    render: pack("in", () => <FollowMe />),
   },
   {
     name: "Sidr",
@@ -841,6 +866,29 @@ const SHOTS: Shot[] = [
   },
 ];
 
+// Jump cuts: on these words the B-roll punches in (1.0 ↔ 1.12) like a cut, every 2–3 s
+const PUNCHES = [6.48, 14.44, 20.2, 23.72, 27.56, 31.56, 34.0];
+
+const JumpCuts: React.FC<{ readonly children: React.ReactNode }> = ({
+  children,
+}) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const shot = SHOTS.find((s) => t >= s.start && t < s.end);
+  const n = shot ? PUNCHES.filter((p) => p > shot.start && p <= t).length : 0;
+  return (
+    <AbsoluteFill
+      style={{
+        scale: String(n % 2 === 1 ? 1.12 : 1),
+        transformOrigin: "50% 40%",
+      }}
+    >
+      {children}
+    </AbsoluteFill>
+  );
+};
+
 // ---------------------------------------------------------------------------
 // Hook and CTA overlays
 const HookOverlay: React.FC = () => {
@@ -848,25 +896,29 @@ const HookOverlay: React.FC = () => {
   const badge = interpolate(frame, [0, 6], [0, 1], { ...clamp, easing: pop });
   return (
     <AbsoluteFill>
-      <div
-        style={{
-          position: "absolute",
-          top: 240,
-          right: 60,
-          scale: String(badge),
-          rotate: "4deg",
-          background: YELLOW,
-          color: colors.charcoal,
-          fontFamily: displayFont,
-          fontSize: 70,
-          padding: "4px 34px 16px",
-          borderRadius: 22,
-          direction: "rtl",
-          boxShadow: "0 14px 34px rgba(0,0,0,0.4)",
-        }}
-      >
-        عرض استثنائي!
-      </div>
+      {/* Pain-point question + "watch to the end", as in the reference video */}
+      <AbsoluteFill style={{ alignItems: "center", top: 210 }}>
+        <div
+          style={{
+            scale: String(badge),
+            background: "#fff",
+            color: "#000",
+            fontFamily: bodyFont,
+            fontWeight: 900,
+            fontSize: 58,
+            lineHeight: 1.25,
+            textAlign: "center",
+            padding: "10px 34px 16px",
+            borderRadius: 22,
+            direction: "rtl",
+            boxShadow: "0 14px 34px rgba(0,0,0,0.35)",
+          }}
+        >
+          كان شعرك بدا يطيح و يفرغ
+          <br />
+          تبّع الفيديو للآخر
+        </div>
+      </AbsoluteFill>
       {/* « خمسة حاجات » then « 49 دينار » land as stickers on the chest, clear of the face */}
       <PriceSticker at={f(2.75)} top={840} left={600} scale={0.8} />
     </AbsoluteFill>
@@ -1117,17 +1169,19 @@ export const UgcAd: React.FC<{ readonly mockup?: boolean }> = ({
         </Sequence>
       ))}
 
-      {SHOTS.map((s) => (
-        <Sequence
-          key={s.name}
-          name={s.name}
-          from={f(s.start)}
-          durationInFrames={f(s.end) - f(s.start)}
-          premountFor={fps}
-        >
-          {s.render(f(s.end) - f(s.start))}
-        </Sequence>
-      ))}
+      <JumpCuts>
+        {SHOTS.map((s) => (
+          <Sequence
+            key={s.name}
+            name={s.name}
+            from={f(s.start)}
+            durationInFrames={f(s.end) - f(s.start)}
+            premountFor={fps}
+          >
+            {s.render(f(s.end) - f(s.start))}
+          </Sequence>
+        ))}
+      </JumpCuts>
 
       {mockup
         ? BROLL.map((b) => (
@@ -1158,7 +1212,14 @@ export const UgcAd: React.FC<{ readonly mockup?: boolean }> = ({
         <CtaOverlay />
       </Sequence>
 
-      <CaptionTrack phrases={CAPTIONS} top={CAPTION_TOP} fontSize={80} />
+      <CaptionTrack
+        phrases={CAPTIONS}
+        top={CAPTION_TOP}
+        fontSize={86}
+        maxWords={2}
+        activeColor="transparent"
+        emphasisBackground={GREEN}
+      />
 
       {mockup ? <MockupWatermark /> : null}
 
