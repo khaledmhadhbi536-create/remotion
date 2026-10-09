@@ -450,23 +450,14 @@ const TwiceAWeekShot: React.FC<{
   readonly duration: number;
   readonly litAt: [number, number]; // frames of « مرتين » … « في الجمعة »
   readonly stampAt: number; // frame of « ما أكثرش »
-}> = ({ duration, litAt, stampAt }) => {
+  readonly footage: React.ReactNode; // the roller in use, full frame behind the calendar
+}> = ({ litAt, stampAt, footage }) => {
   const frame = useCurrentFrame();
   const lit = litAt;
-  const roll = interpolate(frame, [0, duration], [-260, 260]);
   return (
-    <GraphicStage duration={duration}>
-      <AbsoluteFill style={{ alignItems: "center", top: 280 }}>
-        <ProductImage
-          product="dermaRoller"
-          height={260}
-          style={{
-            translate: `${roll}px 0`,
-            rotate: `${Math.sin(frame / 5) * 3}deg`,
-          }}
-        />
-      </AbsoluteFill>
-      <AbsoluteFill style={{ alignItems: "center", top: 640 }}>
+    <AbsoluteFill>
+      {footage}
+      <AbsoluteFill style={{ alignItems: "center", top: 260, scale: "0.82" }}>
         <div
           style={{
             background: "rgba(255,255,255,0.95)",
@@ -532,120 +523,12 @@ const TwiceAWeekShot: React.FC<{
       <Chip
         at={stampAt}
         text="ما أكثرش!"
-        top={1000}
+        top={720}
         color={colors.red}
         tilt={-5}
         size={96}
       />
-    </GraphicStage>
-  );
-};
-
-const ThenOilShot: React.FC<{ readonly duration: number }> = ({ duration }) => {
-  const frame = useCurrentFrame();
-  const arrow = interpolate(frame, [8, 20], [0, 1], {
-    ...clamp,
-    easing: smooth,
-  });
-  const oil = interpolate(frame, [18, 26], [0, 1], { ...clamp, easing: pop });
-  const badge = (n: number) => (
-    <div
-      style={{
-        position: "absolute",
-        top: -10,
-        right: -10,
-        width: 90,
-        height: 90,
-        borderRadius: "50%",
-        background: GREEN,
-        border: "6px solid #fff",
-        color: "#fff",
-        fontFamily: displayFont,
-        fontSize: 60,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {n}
-    </div>
-  );
-  return (
-    <GraphicStage duration={duration}>
-      <Chip
-        at={0}
-        text="بعد الديرما بالضبط"
-        top={300}
-        color={YELLOW}
-        textColor={colors.charcoal}
-      />
-      <AbsoluteFill
-        style={{
-          top: 560,
-          flexDirection: "row-reverse",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          gap: 30,
-        }}
-      >
-        <div
-          style={{
-            position: "relative",
-            width: 380,
-            height: 380,
-            borderRadius: "50%",
-            background: "#fff",
-            border: "8px solid #fff",
-            boxShadow: "0 18px 40px rgba(0,0,0,0.45)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <ProductImage product="dermaRoller" height={200} shadow={false} />
-          {badge(1)}
-        </div>
-        <svg
-          width={120}
-          height={380}
-          viewBox="0 0 120 380"
-          style={{ opacity: arrow }}
-        >
-          <path
-            d={`M 110 190 L ${110 - 90 * arrow} 190`}
-            stroke="#fff"
-            strokeWidth={16}
-            strokeLinecap="round"
-          />
-          <path
-            d="M 40 150 L 0 190 L 40 230"
-            stroke="#fff"
-            strokeWidth={16}
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <div style={{ position: "relative", scale: String(oil) }}>
-          <div
-            style={{
-              width: 380,
-              height: 380,
-              borderRadius: "50%",
-              background: "#fff",
-              border: "8px solid #fff",
-              boxShadow: "0 18px 40px rgba(0,0,0,0.45)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <ProductImage product="rosemaryOil" height={300} shadow={false} />
-          </div>
-          {badge(2)}
-        </div>
-      </AbsoluteFill>
-    </GraphicStage>
+    </AbsoluteFill>
   );
 };
 
@@ -720,6 +603,54 @@ const pack =
     </>
   );
 
+// Real footage, full frame like the reference's B-roll. `zoom` + `origin` push the source's own
+// captions / stickers out of frame (e.g. origin "50% 100%" crops the top).
+const FullClip: React.FC<{
+  readonly file: string; // under public/ugc
+  readonly srcStart: number; // seconds
+  readonly duration: number; // frames
+  readonly zoom?: number;
+  readonly origin?: string;
+}> = ({ file, srcStart, duration, zoom = 1, origin = "50% 50%" }) => {
+  const frame = useCurrentFrame();
+  const push = interpolate(frame, [0, duration], [0, 0.05], clamp);
+  const punch = interpolate(frame, [0, 6], [1.07, 1], {
+    ...clamp,
+    easing: Easing.out(Easing.cubic),
+  });
+  return (
+    <AbsoluteFill style={{ backgroundColor: "black", overflow: "hidden" }}>
+      <AbsoluteFill
+        style={{
+          scale: String(zoom * punch + push),
+          transformOrigin: origin,
+          filter: "contrast(1.06) saturate(1.08)",
+        }}
+      >
+        <Video
+          src={staticFile(`ugc/${file}`)}
+          trimBefore={f(srcStart)}
+          muted
+          objectFit="cover"
+          style={{ width: "100%", height: "100%" }}
+        />
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
+const full =
+  (
+    clip: Omit<React.ComponentProps<typeof FullClip>, "duration">,
+    overlay?: () => React.ReactNode,
+  ) =>
+  (duration: number) => (
+    <>
+      <FullClip {...clip} duration={duration} />
+      {overlay ? overlay() : null}
+    </>
+  );
+
 // Demo footage in a rounded card that pops up with a blur (the reference's image cards).
 // `crop` is the part of the source kept, in fractions of its width / height: it leaves out the
 // source's own captions, badges and logos.
@@ -791,8 +722,6 @@ const demo =
 
 const OIL_CLIP = { file: "oil-massage.mp4", srcW: 480, srcH: 854 };
 const BRUSH_CLIP = { file: "brush-anim.mp4", srcW: 788, srcH: 720 };
-const SIDR_CLIP = { file: "sidr-mix.mp4", srcW: 480, srcH: 854 };
-const APPLICATOR_CLIP = { file: "applicator.mp4", srcW: 480, srcH: 854 };
 
 const SHOTS: Shot[] = [
   {
@@ -827,23 +756,20 @@ const SHOTS: Shot[] = [
     name: "Sidr in the bowl",
     start: 11.6,
     end: 14.4,
-    // spoonful of sidr into the bowl (crop leaves out the source's caption at the top)
-    render: demo(
+    render: full(
       {
-        ...SIDR_CLIP,
+        file: "demo/sidr-mix.mp4",
         srcStart: 1.8,
-        crop: { x: 0, y: 0.3, w: 1, h: 0.68 },
-        cardW: 700,
+        zoom: 1.38,
+        origin: "50% 100%",
       },
-      300,
       () => (
         <Chip
           at={f(14.04 - 11.6)}
           text="+ ميّة"
-          top={1150}
+          top={300}
           color="#1E88E5"
           tilt={3}
-          size={72}
           icon={<Drop size={54} />}
         />
       ),
@@ -853,15 +779,13 @@ const SHOTS: Shot[] = [
     name: "Into the applicator",
     start: 14.4,
     end: 15.65,
-    // applicator bottle in hand (crop leaves out the source's caption)
-    render: demo(
+    render: full(
       {
-        ...APPLICATOR_CLIP,
+        file: "demo/applicator.mp4",
         srcStart: 0.6,
-        crop: { x: 0, y: 0.31, w: 1, h: 0.64 },
-        cardW: 640,
+        zoom: 1.45,
+        origin: "50% 100%",
       },
-      420,
       () => (
         <Chip at={f(0.58)} text="في الأبليكاتور" top={300} color={YELLOW} />
       ),
@@ -887,15 +811,13 @@ const SHOTS: Shot[] = [
     name: "Applicator comb",
     start: 17.1,
     end: 18.9,
-    // comb tips laying the product on the roots (crop leaves out caption and "lien en bio")
-    render: demo(
+    render: full(
       {
-        ...APPLICATOR_CLIP,
+        file: "demo/applicator.mp4",
         srcStart: 4.3,
-        crop: { x: 0, y: 0.36, w: 1, h: 0.62 },
-        cardW: 680,
+        zoom: 1.5,
+        origin: "50% 100%",
       },
-      420,
       () => <Chip at={2} text="الأبليكاتور" top={300} />,
     ),
   },
@@ -915,11 +837,11 @@ const SHOTS: Shot[] = [
     name: "Derma roller",
     start: 21.1,
     end: 22.85,
-    render: product("dermaRoller", 480, "in", () => (
+    render: full({ file: "broll/derma.mp4", srcStart: 22.0 }, () => (
       <Chip
         at={f(0.74)}
         text="ديرما رولر 540"
-        top={330}
+        top={300}
         color={colors.magenta}
       />
     )),
@@ -933,6 +855,9 @@ const SHOTS: Shot[] = [
         duration={d}
         litAt={[f(22.88 - 22.85), f(23.3 - 22.85)]}
         stampAt={f(23.9 - 22.85)}
+        footage={
+          <FullClip file="broll/derma.mp4" srcStart={38.6} duration={d} />
+        }
       />
     ),
   },
@@ -940,22 +865,28 @@ const SHOTS: Shot[] = [
     name: "Then the oil",
     start: 24.7,
     end: 26.1,
-    render: (d) => <ThenOilShot duration={d} />,
+    render: full(
+      {
+        file: "broll/rosemary.mp4",
+        srcStart: 4.0,
+        zoom: 1.42,
+        origin: "50% 100%",
+      },
+      () => <Chip at={2} text="بعد الديرما بالضبط" top={300} color={YELLOW} />,
+    ),
   },
   {
     name: "Oil drops",
     start: 26.1,
     end: 27.2,
-    // dropper on the hairline (crop leaves out the source's sticker and caption)
-    render: demo(
+    render: full(
       {
-        ...OIL_CLIP,
-        srcStart: 2.2,
-        crop: { x: 0.02, y: 0.22, w: 0.58, h: 0.445 },
-        cardW: 620,
+        file: "broll/rosemary.mp4",
+        srcStart: 6.0,
+        zoom: 1.42,
+        origin: "50% 100%",
       },
-      360,
-      () => <Chip at={2} text="قطرات" top={230} color={YELLOW} />,
+      () => <Chip at={2} text="قطرات" top={300} color={YELLOW} />,
     ),
   },
   {
@@ -979,8 +910,8 @@ const SHOTS: Shot[] = [
     name: "Brush",
     start: 29.0,
     end: 30.95,
-    render: product("brushPink", 560, "in", () => (
-      <Chip at={f(29.68 - 29.0)} text="البروس" top={330} />
+    render: full({ file: "broll/brush.mp4", srcStart: 3.0 }, () => (
+      <Chip at={f(29.68 - 29.0)} text="البروس" top={300} />
     )),
   },
   {
