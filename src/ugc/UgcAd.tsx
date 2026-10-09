@@ -427,23 +427,27 @@ const Scalp: React.FC<{
 
 const WashShot: React.FC<{ readonly duration: number }> = ({ duration }) => {
   const frame = useCurrentFrame();
-  const tilt = interpolate(frame, [0, 14], [0, -38], {
+  // Catalogue applicator turning comb-down over the hair, like when it is used
+  const tilt = interpolate(frame, [0, 16], [20, 150], {
     ...clamp,
     easing: smooth,
   });
+  const sway = Math.sin(frame / 7) * 30;
   return (
     <GraphicStage duration={duration}>
       <AbsoluteFill style={{ alignItems: "center", top: 560 }}>
         <Scalp dropsFrom={10} rootsGlow={-1} cleanAt={-1} pulseAt={-1} />
       </AbsoluteFill>
-      <PhotoLens
-        spot={SPOTS.applicator}
-        size={330}
+      <ProductImage
+        product="bottleBlack"
+        height={430}
+        shadow={false}
         style={{
           position: "absolute",
-          top: 300,
-          left: 640,
+          top: 330,
+          left: 600 + (frame > 16 ? sway : 0),
           rotate: `${tilt}deg`,
+          filter: "drop-shadow(0 18px 30px rgba(0,0,0,0.45))",
         }}
       />
       <Chip at={2} text="نغسلو شعرنا" top={330} tilt={2} />
