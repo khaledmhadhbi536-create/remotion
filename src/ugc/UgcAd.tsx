@@ -11,7 +11,12 @@ import {
   useVideoConfig,
 } from "remotion";
 import { CaptionTrack } from "../components/Captions";
-import { ProductImage } from "../components/ProductImage";
+import { LightRays } from "../components/Decor";
+import {
+  PackGroup,
+  ProductImage,
+  type ProductKey,
+} from "../components/ProductImage";
 import { PRICES } from "../config";
 import { bodyFont, colors, displayFont } from "../theme";
 import {
@@ -699,15 +704,70 @@ type Shot = {
   readonly render: (duration: number) => React.ReactNode;
 };
 
-const photo =
+// Catalogue shot (same visuals as the static ads): one product on the gold sunburst,
+// with an alternating zoom in / zoom out.
+const ProductZoom: React.FC<{
+  readonly duration: number;
+  readonly zoom: "in" | "out";
+  readonly children: React.ReactNode;
+  readonly top?: number;
+}> = ({ duration, zoom, children, top = 500 }) => {
+  const frame = useCurrentFrame();
+  const enter = interpolate(frame, [0, 8], [0.75, 1], {
+    ...clamp,
+    easing: pop,
+  });
+  const t = interpolate(frame, [0, duration], [0, 1], {
+    ...clamp,
+    easing: smooth,
+  });
+  const z = zoom === "in" ? 1 + 0.2 * t : 1.2 - 0.2 * t;
+  return (
+    <AbsoluteFill
+      style={{
+        background:
+          "radial-gradient(circle at 50% 45%, #E9B949 0%, #B8862B 45%, #5C3F10 100%)",
+        overflow: "hidden",
+      }}
+    >
+      <LightRays color="rgba(255,236,170,0.35)" style={{ top: "45%" }} />
+      <AbsoluteFill
+        style={{
+          alignItems: "center",
+          top,
+          scale: String(enter * z),
+          transformOrigin: "50% 30%",
+        }}
+      >
+        {children}
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
+const product =
   (
-    from: Framing,
-    to: Framing,
+    key: ProductKey,
+    height: number,
+    zoom: "in" | "out",
     overlay?: (duration: number) => React.ReactNode,
   ) =>
   (duration: number) => (
     <>
-      <PhotoShot from={from} to={to} duration={duration} />
+      <ProductZoom duration={duration} zoom={zoom}>
+        <ProductImage product={key} height={height} />
+      </ProductZoom>
+      {overlay ? overlay(duration) : null}
+    </>
+  );
+
+const pack =
+  (zoom: "in" | "out", overlay?: (duration: number) => React.ReactNode) =>
+  (duration: number) => (
+    <>
+      <ProductZoom duration={duration} zoom={zoom} top={470}>
+        <PackGroup scale={1.35} />
+      </ProductZoom>
       {overlay ? overlay(duration) : null}
     </>
   );
@@ -717,15 +777,13 @@ const SHOTS: Shot[] = [
     name: "Pack reveal",
     start: HOOK_END,
     end: 5.95,
-    render: photo({ ...SPOTS.whole, zoom: 1.3 }, SPOTS.whole, () => (
-      <PriceSticker at={2} top={760} />
-    )),
+    render: pack("in", () => <PriceSticker at={2} top={190} scale={0.85} />),
   },
   {
     name: "Sidr",
     start: 5.95,
     end: 7.55,
-    render: photo(SPOTS.sidrBag, SPOTS.sidrLabel, () => (
+    render: product("sidr", 720, "out", () => (
       <>
         <Chip at={2} text="سدر طبيعي" top={330} />
         <Chip
@@ -744,7 +802,7 @@ const SHOTS: Shot[] = [
     name: "Into the applicator",
     start: 7.55,
     end: 9.1,
-    render: photo({ ...SPOTS.applicator, zoom: 1.25 }, SPOTS.applicator, () => (
+    render: product("bottleBlack", 730, "in", () => (
       <Chip
         at={f(0.63)}
         text="في الأبليكاتور"
@@ -764,7 +822,7 @@ const SHOTS: Shot[] = [
     name: "Applicator comb",
     start: 10.95,
     end: 12.25,
-    render: photo({ ...SPOTS.combTip, zoom: 2.1 }, SPOTS.combTip, () => (
+    render: product("bottleBlack", 1300, "out", () => (
       <Chip at={f(0.59)} text="الأبليكاتور" top={330} />
     )),
   },
@@ -778,7 +836,7 @@ const SHOTS: Shot[] = [
     name: "Derma roller",
     start: 15.95,
     end: 17.95,
-    render: photo({ ...SPOTS.dermaBox, zoom: 1.15 }, SPOTS.dermaBox, () => (
+    render: product("dermaRoller", 480, "in", () => (
       <Chip
         at={f(1.27)}
         text="ديرما رولر 540"
@@ -803,7 +861,7 @@ const SHOTS: Shot[] = [
     name: "Rosemary oil",
     start: 22.75,
     end: 25.95,
-    render: photo(SPOTS.oil, SPOTS.oilLabel, () => (
+    render: product("rosemaryOil", 730, "out", () => (
       <>
         <Chip at={f(0.55)} text="زيت إكليل الجبل" top={330} />
         <Chip
@@ -821,7 +879,7 @@ const SHOTS: Shot[] = [
     name: "Brush",
     start: 25.95,
     end: 29.65,
-    render: photo({ ...SPOTS.brush, zoom: 1.5 }, SPOTS.brushTop, () => (
+    render: product("brushPink", 560, "in", () => (
       <>
         <Chip at={f(0.89)} text="البروس" top={330} />
         <Chip
@@ -845,9 +903,7 @@ const SHOTS: Shot[] = [
     name: "Pack recap",
     start: 33.2,
     end: CTA_START,
-    render: photo(SPOTS.whole, { ...SPOTS.whole, zoom: 1.12 }, () => (
-      <PriceSticker at={0} top={760} />
-    )),
+    render: pack("out", () => <PriceSticker at={0} top={190} scale={0.85} />),
   },
 ];
 
