@@ -37,7 +37,7 @@ import {
 // 9:16 UGC ad (Reels / Stories): UGC hook → B-roll of the real pack → UGC call to action.
 // The voice-over drives the whole edit — see edit.ts for every timing.
 
-const VOICE = staticFile("ugc/voice-v2-master.m4a");
+const VOICE = staticFile("ugc/voice-puck-master.m4a");
 const CLIPS = {
   hook: staticFile("ugc/ugc-hook.mp4"),
   cta: staticFile("ugc/ugc-cta.mp4"),
@@ -727,7 +727,7 @@ const SHOTS: Shot[] = [
   {
     name: "Hair falling",
     start: HOOK_END,
-    end: 8.0,
+    end: 7.51,
     render: (d) => (
       <HairFallShot
         duration={d}
@@ -738,24 +738,24 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Title card",
-    start: 8.0,
-    end: 10.25,
+    start: 7.51,
+    end: 9.64,
     render: () => (
       <TitleCard line1="تبّعني نفسرلك" line2="الروتين" big="كامل" />
     ),
   },
   {
     name: "Sidr",
-    start: 10.25,
-    end: 11.3,
+    start: 9.64,
+    end: 10.94,
     render: product("sidr", 720, "out", () => (
       <Chip at={f(0.57)} text="سدر طبيعي" top={330} />
     )),
   },
   {
     name: "Sidr in the bowl",
-    start: 11.3,
-    end: 12.37,
+    start: 10.94,
+    end: 11.93,
     render: full(
       {
         file: "demo/sidr-mix.mp4",
@@ -765,7 +765,7 @@ const SHOTS: Shot[] = [
       },
       () => (
         <Chip
-          at={f(12.04 - 11.3)}
+          at={f(11.66 - 10.94)}
           text="+ ميّة"
           top={300}
           color="#1E88E5"
@@ -777,8 +777,8 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Into the applicator",
-    start: 12.37,
-    end: 13.62,
+    start: 11.93,
+    end: 12.97,
     render: full(
       {
         file: "demo/applicator.mp4",
@@ -793,8 +793,8 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Wash",
-    start: 13.62,
-    end: 15.07,
+    start: 12.97,
+    end: 14.35,
     // hands massaging the back of the head (crop leaves out the source's sticker and caption)
     render: demo(
       {
@@ -809,8 +809,8 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Applicator comb",
-    start: 15.07,
-    end: 16.87,
+    start: 14.35,
+    end: 16.24,
     render: full(
       {
         file: "demo/applicator.mp4",
@@ -823,20 +823,20 @@ const SHOTS: Shot[] = [
   },
   {
     name: "To the roots",
-    start: 16.87,
-    end: 19.07,
+    start: 16.24,
+    end: 18.11,
     render: (d) => (
       <RootsShot
         duration={d}
-        rootsAt={f(16.93 - 16.87)}
-        cleanAt={f(17.63 - 16.87)}
+        rootsAt={f(16.24 - 16.24)}
+        cleanAt={f(16.77 - 16.24)}
       />
     ),
   },
   {
     name: "Derma roller",
-    start: 19.07,
-    end: 20.82,
+    start: 18.11,
+    end: 19.58,
     render: full({ file: "broll/derma.mp4", srcStart: 22.0 }, () => (
       <Chip
         at={f(0.74)}
@@ -848,13 +848,13 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Twice a week",
-    start: 20.82,
-    end: 22.67,
+    start: 19.58,
+    end: 21.37,
     render: (d) => (
       <TwiceAWeekShot
         duration={d}
-        litAt={[f(20.85 - 20.82), f(21.27 - 20.82)]}
-        stampAt={f(21.87 - 20.82)}
+        litAt={[f(19.58 - 19.58), f(20.01 - 19.58)]}
+        stampAt={f(20.57 - 19.58)}
         footage={
           <FullClip file="broll/derma.mp4" srcStart={38.6} duration={d} />
         }
@@ -863,8 +863,8 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Then the oil",
-    start: 22.67,
-    end: 24.07,
+    start: 21.37,
+    end: 22.96,
     render: full(
       {
         file: "broll/rosemary.mp4",
@@ -877,8 +877,8 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Oil drops",
-    start: 24.07,
-    end: 25.17,
+    start: 22.96,
+    end: 24.05,
     render: full(
       {
         file: "broll/rosemary.mp4",
@@ -891,13 +891,13 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Rosemary oil",
-    start: 25.17,
-    end: 26.97,
+    start: 24.05,
+    end: 25.26,
     render: product("rosemaryOil", 730, "out", () => (
       <>
-        <Chip at={f(25.19 - 25.17)} text="زيت إكليل الجبل" top={330} />
+        <Chip at={f(24.05 - 24.05)} text="زيت إكليل الجبل" top={330} />
         <Chip
-          at={f(26.29 - 25.17)}
+          at={f(24.8 - 24.05)}
           text="طبيعي"
           top={470}
           color={YELLOW}
@@ -908,16 +908,16 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Brush",
-    start: 26.97,
-    end: 28.92,
+    start: 25.26,
+    end: 27.16,
     render: full({ file: "broll/brush.mp4", srcStart: 3.0 }, () => (
-      <Chip at={f(27.65 - 26.97)} text="البروس" top={300} />
+      <Chip at={f(26.23 - 25.26)} text="البروس" top={300} />
     )),
   },
   {
     name: "Massage + circulation",
-    start: 28.92,
-    end: 32.22,
+    start: 27.16,
+    end: 29.97,
     // brush massaging a skin cross-section with blood vessels (crop leaves out badges,
     // captions and the brand name on the brush)
     render: demo(
@@ -932,7 +932,7 @@ const SHOTS: Shot[] = [
         <>
           <Chip at={2} text="مساج على فروة الراس" top={300} size={74} />
           <Chip
-            at={f(30.49 - 28.92)}
+            at={f(28.49 - 27.16)}
             text="تنشّط الدورة الدموية"
             top={385}
             color={colors.red}
@@ -945,13 +945,13 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Offer",
-    start: 32.22,
-    end: 36.77,
+    start: 29.97,
+    end: 34.27,
     render: pack("in", () => (
       <>
-        <PriceSticker at={f(33.95 - 32.22)} top={190} scale={0.85} />
+        <PriceSticker at={f(31.75 - 29.97)} top={190} scale={0.85} />
         <Chip
-          at={f(35.49 - 32.22)}
+          at={f(33.01 - 29.97)}
           text="الخلاص عند الاستلام"
           top={1185}
           color={YELLOW}
@@ -962,14 +962,14 @@ const SHOTS: Shot[] = [
   },
   {
     name: "Pack recap",
-    start: 36.77,
+    start: 34.27,
     end: CTA_START,
     render: pack("out", () => <PriceSticker at={0} top={190} scale={0.85} />),
   },
 ];
 
 // Jump cuts: on these words the B-roll punches in (1.0 ↔ 1.12) like a cut, every 2–3 s
-const PUNCHES = [5.72, 6.98, 12.01, 17.63, 21.87, 25.19, 30.49, 33.95, 35.49];
+const PUNCHES = [5.19, 6.59, 11.64, 16.77, 20.57, 24.05, 28.49, 31.75, 33.01];
 
 const JumpCuts: React.FC<{ readonly children: React.ReactNode }> = ({
   children,
@@ -1022,7 +1022,7 @@ const HookOverlay: React.FC = () => {
         </div>
       </AbsoluteFill>
       {/* « خمسة حاجات » then « 49 دينار » land as stickers on the chest, clear of the face */}
-      <PriceSticker at={f(2.3)} top={840} left={600} scale={0.8} />
+      <PriceSticker at={f(2.36)} top={840} left={600} scale={0.8} />
     </AbsoluteFill>
   );
 };
@@ -1083,31 +1083,31 @@ const CtaOverlay: React.FC = () => {
 // Reference-style editing (see RefStyle.tsx): caption look per section, cut transitions,
 // giant neon key words
 const CAPTION_SECTIONS = [
-  { from: 0, to: 12.37, look: "band" as const },
-  { from: 12.37, to: 22.67, look: "glow" as const },
-  { from: 22.67, to: 99, look: "neon" as const },
+  { from: 0, to: 11.93, look: "band" as const },
+  { from: 11.93, to: 21.37, look: "glow" as const },
+  { from: 21.37, to: 99, look: "neon" as const },
 ];
 
 const CUT_FX: CutFx[] = [
-  { at: 2.25, kind: "leak" },
+  { at: 2.32, kind: "leak" },
   { at: HOOK_END, kind: "leak" },
-  { at: 8.0, kind: "glitch" },
-  { at: 10.25, kind: "zoomBlur" },
-  { at: 13.62, kind: "glitch" },
-  { at: 16.87, kind: "zoomBlur" },
-  { at: 19.07, kind: "glitch" },
-  { at: 24.07, kind: "zoomBlur" },
-  { at: 26.97, kind: "glitch" },
-  { at: 32.22, kind: "zoomBlur" },
+  { at: 7.51, kind: "glitch" },
+  { at: 9.64, kind: "zoomBlur" },
+  { at: 12.97, kind: "glitch" },
+  { at: 16.24, kind: "zoomBlur" },
+  { at: 18.11, kind: "glitch" },
+  { at: 22.96, kind: "zoomBlur" },
+  { at: 25.26, kind: "glitch" },
+  { at: 29.97, kind: "zoomBlur" },
   { at: CTA_START, kind: "leak" },
 ];
 
 const NEON_WORDS = [
-  { text: "السدر", at: 10.76, top: 780 },
-  { text: "مرتين", at: 20.85, top: 960 },
-  { text: "طبيعي", at: 26.29, top: 780 },
-  { text: "مساج", at: 29.01, top: 780 },
-  { text: "49 د.ت", at: 33.95, top: 780 },
+  { text: "السدر", at: 10.2, top: 780 },
+  { text: "مرتين", at: 19.58, top: 960 },
+  { text: "طبيعي", at: 24.8, top: 780 },
+  { text: "مساج", at: 27.24, top: 780 },
+  { text: "49 د.ت", at: 31.75, top: 780 },
 ];
 
 // ---------------------------------------------------------------------------
