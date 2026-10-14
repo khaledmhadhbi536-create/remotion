@@ -139,3 +139,19 @@ Compte publicitaire **NATURA VASELINE TEST** (`1984526072212989`), page **Aura B
 2. **Instagram** : le compte Instagram est relié à la page, mais pas au compte publicitaire. Dans Paramètres du business (naturaglow) → Comptes → Comptes Instagram → Aura Bio → Éléments connectés, ajoutez NATURA VASELINE TEST. Ensuite, les pubs seront recréées avec l'identité Instagram et les emplacements Instagram seront ajoutés.
 3. **Message pré-rempli** différent par angle (A / B / C / D), dans la partie « Modèle de message » de chaque pub.
 4. **Activer la campagne** quand tout est prêt.
+
+## 8. Campagne Site → Purchase (compte Akram Bdiri, créée en pause le 14/10)
+
+Campagne `AURA_HAIR_SITE_Purchase_Test` (`120251854479190152`) : Ventes, **CBO 6 $/jour**, sans date de fin.
+
+| Élément | Réglage | ID |
+|---|---|---|
+| Ensemble `SITE_H20-50_GrandTunis` | Purchase (pixel Aura Bio `1471739124847033`), hommes 20–50, rayon 20 km autour de Tunis, emplacements automatiques | 120251854479910152 |
+| Pub `AURA_HAIR_SITE_A-Deal_static` | statique A 4:5, `utm_content=A` | 120251854745040152 |
+| Pub `AURA_HAIR_SITE_B-Early_video` | vidéo B 4:5, `utm_content=B` | 120251854757020152 |
+| Pub `AURA_HAIR_SITE_UGC-Puck_video` | pub UGC voix Puck 4:5 (fin statique A + Commander), `utm_content=UGC`, **déclarée contenu IA** | 120251854766720152 |
+
+- Lien : https://aura-bio-store.vercel.app/produits/pack-cheveux-sidr-romarin · bouton « Commander » · identité Instagram @aurabio.tn.
+- Le 9:16 est déjà chargé dans le compte (statique A `5d55c27fe26d7c8be112af26663a0e32`, vidéo B `4623530774557287`, UGC `1388057293309932`). À ajouter à la main dans chaque pub : « Modifier le média par emplacement » → Stories et Reels.
+- Achat test du 14/10 (commande AB-199307) bien remonté dans le pixel : PageView, ViewContent, InitiateCheckout, Purchase.
+- Règles : ne rien toucher les jours 1 à 3 ; jour 4, couper une pub à plus de 6 $ sans achat ; bilan au jour 7. Coût par achat < 2,5 $ très bon, 2,5–6 $ à garder, > 6 $ on revient aux Messages.
