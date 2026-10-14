@@ -17,6 +17,8 @@ Dans le Gestionnaire de publicités, chargez le **4:5** et le **9:16** dans la m
 
 🖼️ **4 publicités statiques** (4 avatars / angles, en 4:5 et 9:16) : `renders/statics/`, avec textes et ciblage dans **[ADS-STATIQUES.md](ADS-STATIQUES.md)**. Rendu : `npm run statics`.
 
+🎬 **Pub UGC 40s (9:16)** : [`renders/ugc/pub-ugc-pack-49dt-9x16.mp4`](renders/ugc/pub-ugc-pack-49dt-9x16.mp4) : hook UGC face caméra (0–4,5s), B-roll de la vraie photo du pack (4,5–34s), CTA UGC avec le geste vers le bas (34–40,5s), sur la voix off d'origine. Les clips UGC sont recalés pour que les lèvres suivent la voix. Timings et sous-titres : `src/ugc/edit.ts`. Rendu : `npm run render:ugc`.
+
 ## Modifier rapidement
 
 - **Prix, nom de la marque, contact :** `src/config.ts`

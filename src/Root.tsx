@@ -27,6 +27,8 @@ import { PackIntroScene } from "./scenes/PackIntroScene";
 import { StepScene } from "./scenes/StepScene";
 import { ValueScene } from "./scenes/ValueScene";
 import { colors } from "./theme";
+import { TOTAL_FRAMES as UGC_FRAMES } from "./ugc/edit";
+import { UgcAd } from "./ugc/UgcAd";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -58,6 +60,16 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1350}
         defaultProps={FEED_45_LAYOUT}
+      />
+
+      {/* UGC ad: UGC hook → B-roll of the real pack → UGC call to action, on the voice-over */}
+      <Composition
+        id="UgcAd-9x16"
+        component={UgcAd}
+        durationInFrames={UGC_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
       />
 
       {/* Seller's footage, re-edited: 9:16 with Arabic subtitles and sound design */}

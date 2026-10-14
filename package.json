@@ -1,7 +1,7 @@
 {
   "name": "nawar-promo",
   "version": "1.0.0",
-  "description": "Pack Pousse des Cheveux 3 en 1 \u2014 30s Tunisian promo video (1080x1080) built with Remotion",
+  "description": "Pack Pousse des Cheveux 3 en 1 — 30s Tunisian promo video (1080x1080) built with Remotion",
   "repository": {},
   "license": "UNLICENSED",
   "private": true,
@@ -34,6 +34,7 @@
     "render:all": "npm run render && npm run render:feed && npm run render:reel && npm run covers",
     "covers": "remotion still HairPackAd renders/cover-1x1.jpg --frame=60 && remotion still HairPackFeed45 renders/cover-4x5.jpg --frame=60 && remotion still HairPackReel renders/cover-9x16.jpg --frame=60",
     "statics": "for id in A-Deal B-Early C-Natural D-Gift; do for f in 4x5 9x16; do remotion still Static-$id-$f renders/statics/static-$id-$f.jpg --jpeg-quality=95 || exit 1; done; done",
-    "campaign": "bash scripts/render-campaign.sh"
+    "campaign": "bash scripts/render-campaign.sh",
+    "render:ugc": "remotion render UgcAd-9x16 renders/ugc/pub-ugc-pack-49dt-9x16.mp4 --codec=h264 --crf=20 && remotion still UgcAd-9x16 renders/ugc/cover-ugc-9x16.jpg --frame=90 --jpeg-quality=92"
   }
 }

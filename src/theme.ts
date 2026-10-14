@@ -8,6 +8,8 @@ export const displayFont = "Lalezar";
 export const bodyFont = "Cairo";
 // Playfair Display (variable): brand wordmark
 export const brandFont = "Playfair Display";
+// Aref Ruqaa Bold: calligraphy for big title words (UGC ad section card)
+export const calligraphyFont = "Aref Ruqaa";
 
 loadFont({
   family: displayFont,
@@ -18,6 +20,11 @@ loadFont({
   family: bodyFont,
   url: staticFile("fonts/Cairo.ttf"),
   weight: "200 1000",
+});
+loadFont({
+  family: calligraphyFont,
+  url: staticFile("fonts/ArefRuqaa-Bold.ttf"),
+  weight: "700",
 });
 loadFont({
   family: brandFont,
