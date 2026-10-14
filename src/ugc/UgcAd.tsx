@@ -16,6 +16,7 @@ import {
   type ProductKey,
 } from "../components/ProductImage";
 import { PRICES } from "../config";
+import { StaticDeal } from "../statics/StaticAds";
 import { bodyFont, colors, displayFont } from "../theme";
 import {
   CutTransitions,
@@ -35,7 +36,7 @@ import {
   type UgcCut,
 } from "./edit";
 
-// 9:16 UGC ad (Reels / Stories): UGC hook → B-roll of the real pack → pack end card with the order button.
+// 9:16 UGC ad (Reels / Stories): UGC hook → B-roll of the real pack → static A-Deal end card with the order button.
 // The voice-over drives the whole edit — see edit.ts for every timing.
 
 const VOICE = staticFile("ugc/voice-puck-master.m4a");
@@ -577,6 +578,53 @@ const ProductZoom: React.FC<{
   );
 };
 
+// End card: the static A-Deal ad (4:5) on the dark Stories background, with a slow push-in
+const END_CARD_SCALE = 0.76;
+const StaticEndCard: React.FC<{ readonly duration: number }> = ({
+  duration,
+}) => {
+  const frame = useCurrentFrame();
+  const enter = interpolate(frame, [0, 8], [0.85, 1], {
+    ...clamp,
+    easing: pop,
+  });
+  const push = interpolate(frame, [0, duration], [1, 1.04], clamp);
+  return (
+    <AbsoluteFill
+      style={{
+        background: `linear-gradient(180deg, ${colors.charcoalSoft} 0%, ${colors.charcoal} 100%)`,
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          left: (1080 - 1080 * END_CARD_SCALE) / 2,
+          top: 150,
+          width: 1080 * END_CARD_SCALE,
+          height: 1350 * END_CARD_SCALE,
+          borderRadius: 30,
+          overflow: "hidden",
+          boxShadow: "0 24px 70px rgba(0,0,0,0.55)",
+          scale: String(enter * push),
+          transformOrigin: "50% 50%",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            width: 1080,
+            height: 1350,
+            scale: String(END_CARD_SCALE),
+            transformOrigin: "0 0",
+          }}
+        >
+          <StaticDeal />
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 const product =
   (
     key: ProductKey,
@@ -972,12 +1020,8 @@ const SHOTS: Shot[] = [
     name: "Pack CTA",
     start: CTA_START,
     end: TOTAL_SECONDS,
-    // pack a bit smaller and higher, leaving room for the order button underneath
-    render: (duration) => (
-      <ProductZoom duration={duration} zoom="in" top={390}>
-        <PackGroup scale={1.1} />
-      </ProductZoom>
-    ),
+    // the static A-Deal ad, smaller and higher, leaving room for the order button underneath
+    render: (duration) => <StaticEndCard duration={duration} />,
   },
 ];
 
@@ -1056,8 +1100,7 @@ const CtaOverlay: React.FC = () => {
   const bounce = Math.abs(Math.sin(frame / 6)) * 26;
   return (
     <AbsoluteFill>
-      <PriceSticker at={0} top={190} scale={0.85} />
-      <AbsoluteFill style={{ alignItems: "center", top: 1090 }}>
+      <AbsoluteFill style={{ alignItems: "center", top: 1205 }}>
         <div
           style={{
             scale: String(line),
