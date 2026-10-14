@@ -146,7 +146,7 @@ Campagne `AURA_HAIR_SITE_Purchase_Test` (`120251854479190152`) : Ventes, **CBO 6
 
 | Élément | Réglage | ID |
 |---|---|---|
-| Ensemble `SITE_H20-50_GrandTunis` | Purchase (pixel Aura Bio `1471739124847033`), hommes 20–50, rayon 20 km autour de Tunis, emplacements automatiques | 120251854479910152 |
+| Ensemble `SITE_H20-50_GrandTunis` | Purchase (pixel Aura Bio `1471739124847033`), hommes 20–50, rayon 20 km autour de Tunis, Facebook + Instagram seulement (tous leurs emplacements) | 120251854479910152 |
 | Pub `AURA_HAIR_SITE_A-Deal_static` | statique A 4:5, `utm_content=A` | 120251854745040152 |
 | Pub `AURA_HAIR_SITE_B-Early_video` | vidéo B 4:5, `utm_content=B` | 120251854757020152 |
 | Pub `AURA_HAIR_SITE_UGC-Puck_video` | pub UGC voix Puck 4:5 (fin statique A + Commander), `utm_content=UGC`, **déclarée contenu IA** | 120251854766720152 |
