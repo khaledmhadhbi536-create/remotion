@@ -45,6 +45,11 @@ const CLIPS = {
   cta: staticFile("ugc/ugc-cta.mp4"),
 };
 
+// 4:5 feed version: the 9:16 frame is cropped to y 150–1500 (see UgcAd4x5), so the end card
+// and its CTA sit a little lower / smaller there to stay inside the crop.
+const FEED_CROP_TOP = 150;
+const FeedLayout = React.createContext(false);
+
 const GREEN = "#2EAA5A";
 const YELLOW = "#FFE14D";
 const CAPTION_TOP = 1260;
@@ -579,11 +584,12 @@ const ProductZoom: React.FC<{
 };
 
 // End card: the static A-Deal ad (4:5) on the dark Stories background, with a slow push-in
-const END_CARD_SCALE = 0.76;
 const StaticEndCard: React.FC<{ readonly duration: number }> = ({
   duration,
 }) => {
   const frame = useCurrentFrame();
+  const feed = React.useContext(FeedLayout);
+  const END_CARD_SCALE = feed ? 0.62 : 0.76;
   const enter = interpolate(frame, [0, 8], [0.85, 1], {
     ...clamp,
     easing: pop,
@@ -599,7 +605,7 @@ const StaticEndCard: React.FC<{ readonly duration: number }> = ({
         style={{
           position: "absolute",
           left: (1080 - 1080 * END_CARD_SCALE) / 2,
-          top: 150,
+          top: feed ? FEED_CROP_TOP + 25 : 150,
           width: 1080 * END_CARD_SCALE,
           height: 1350 * END_CARD_SCALE,
           borderRadius: 30,
@@ -1086,6 +1092,7 @@ const HookOverlay: React.FC = () => {
 
 const CtaOverlay: React.FC = () => {
   const frame = useCurrentFrame();
+  const feed = React.useContext(FeedLayout);
   const lineAt = 0; // « انزل » lands as the end card opens
   const btnAt = 6;
   const line = interpolate(frame, [lineAt, lineAt + 8], [0, 1], {
@@ -1100,7 +1107,9 @@ const CtaOverlay: React.FC = () => {
   const bounce = Math.abs(Math.sin(frame / 6)) * 26;
   return (
     <AbsoluteFill>
-      <AbsoluteFill style={{ alignItems: "center", top: 1205 }}>
+      <AbsoluteFill
+        style={{ alignItems: "center", top: feed ? FEED_CROP_TOP + 880 : 1205 }}
+      >
         <div
           style={{
             scale: String(line),
@@ -1136,21 +1145,24 @@ const CtaOverlay: React.FC = () => {
         >
           Commander
         </div>
-        <svg
-          width={90}
-          height={110}
-          viewBox="0 0 90 110"
-          style={{ marginTop: 8 + bounce, opacity: s }}
-        >
-          <path
-            d="M45 0 V80 M10 50 L45 90 L80 50"
-            stroke="#fff"
-            strokeWidth={16}
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        {feed ? null : (
+          // no room for the arrow under the button in the 4:5 crop
+          <svg
+            width={90}
+            height={110}
+            viewBox="0 0 90 110"
+            style={{ marginTop: 8 + bounce, opacity: s }}
+          >
+            <path
+              d="M45 0 V80 M10 50 L45 90 L80 50"
+              stroke="#fff"
+              strokeWidth={16}
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        )}
       </AbsoluteFill>
     </AbsoluteFill>
   );
@@ -1262,3 +1274,15 @@ export const UgcAd: React.FC = () => {
     </AbsoluteFill>
   );
 };
+
+// 4:5 feed version (Facebook / Instagram feed): the same edit, cropped to y 150–1500 of the
+// 9:16 frame, with the end card laid out for that crop.
+export const UgcAd4x5: React.FC = () => (
+  <AbsoluteFill style={{ backgroundColor: "black", overflow: "hidden" }}>
+    <AbsoluteFill style={{ top: -FEED_CROP_TOP, height: 1920 }}>
+      <FeedLayout.Provider value>
+        <UgcAd />
+      </FeedLayout.Provider>
+    </AbsoluteFill>
+  </AbsoluteFill>
+);

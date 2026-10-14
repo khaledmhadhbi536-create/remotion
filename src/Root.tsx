@@ -28,7 +28,7 @@ import { StepScene } from "./scenes/StepScene";
 import { ValueScene } from "./scenes/ValueScene";
 import { colors } from "./theme";
 import { TOTAL_FRAMES as UGC_FRAMES } from "./ugc/edit";
-import { UgcAd } from "./ugc/UgcAd";
+import { UgcAd, UgcAd4x5 } from "./ugc/UgcAd";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -70,6 +70,14 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
+      />
+      <Composition
+        id="UgcAd-4x5"
+        component={UgcAd4x5}
+        durationInFrames={UGC_FRAMES}
+        fps={30}
+        width={1080}
+        height={1350}
       />
 
       {/* Seller's footage, re-edited: 9:16 with Arabic subtitles and sound design */}
