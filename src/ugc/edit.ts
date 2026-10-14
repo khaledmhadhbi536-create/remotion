@@ -51,33 +51,8 @@ export const UGC_CUTS: UgcCut[] = [
     end: 3.75,
     zoom: 1.15,
   },
-  // CTA — the face only comes back on « انزل اللوطة »; « باش تعدّي الكوموند » plays over
-  // the pack shot (voice only)
-  {
-    src: "cta",
-    srcStart: 1.75,
-    srcEnd: 2.3,
-    start: 35.35,
-    end: 35.85,
-    zoom: 1.22,
-  },
-  {
-    src: "cta",
-    srcStart: 2.45,
-    srcEnd: 3.4,
-    start: 35.85,
-    end: 36.35,
-    zoom: 1.22,
-  },
-  // the pointing-down gesture, kept whole (src 4–7 = finger pointing at the button)
-  {
-    src: "cta",
-    srcStart: 3.4,
-    srcEnd: 6.8,
-    start: 36.35,
-    end: 39.75,
-    zoom: 1.1,
-  },
+  // The talking-head CTA was replaced by the pack shot with an order button (see UgcAd.tsx):
+  // « باش تعدّي الكوموند · انزل اللوطة » now plays over the pack.
 ];
 
 export const TOTAL_SECONDS = 39.75;
@@ -175,5 +150,5 @@ export const CAPTIONS = [
     text: "باش تعدّي الكوموند",
     emphasis: ["الكوموند"],
   },
-  { start: 35.38, end: 36.12, text: "انزل اللوطة", emphasis: ["اللوطة"] },
+  // « انزل اللوطة » is not subtitled: the end card shows « انزل على » + the order button
 ];

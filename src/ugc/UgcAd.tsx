@@ -30,11 +30,12 @@ import {
   f,
   HOOK_END,
   TOTAL_FRAMES,
+  TOTAL_SECONDS,
   UGC_CUTS,
   type UgcCut,
 } from "./edit";
 
-// 9:16 UGC ad (Reels / Stories): UGC hook → B-roll of the real pack → UGC call to action.
+// 9:16 UGC ad (Reels / Stories): UGC hook → B-roll of the real pack → pack end card with the order button.
 // The voice-over drives the whole edit — see edit.ts for every timing.
 
 const VOICE = staticFile("ugc/voice-puck-master.m4a");
@@ -966,6 +967,18 @@ const SHOTS: Shot[] = [
     end: CTA_START,
     render: pack("out", () => <PriceSticker at={0} top={190} scale={0.85} />),
   },
+  {
+    // End card: the 5-piece pack with the order button, until the end of the ad
+    name: "Pack CTA",
+    start: CTA_START,
+    end: TOTAL_SECONDS,
+    // pack a bit smaller and higher, leaving room for the order button underneath
+    render: (duration) => (
+      <ProductZoom duration={duration} zoom="in" top={390}>
+        <PackGroup scale={1.1} />
+      </ProductZoom>
+    ),
+  },
 ];
 
 // Jump cuts: on these words the B-roll punches in (1.0 ↔ 1.12) like a cut, every 2–3 s
@@ -1029,7 +1042,12 @@ const HookOverlay: React.FC = () => {
 
 const CtaOverlay: React.FC = () => {
   const frame = useCurrentFrame();
-  const btnAt = 2; // « انزل » opens the CTA clip
+  const lineAt = 0; // « انزل » lands as the end card opens
+  const btnAt = 6;
+  const line = interpolate(frame, [lineAt, lineAt + 8], [0, 1], {
+    ...clamp,
+    easing: pop,
+  });
   const s = interpolate(frame, [btnAt, btnAt + 8], [0, 1], {
     ...clamp,
     easing: pop,
@@ -1038,43 +1056,59 @@ const CtaOverlay: React.FC = () => {
   const bounce = Math.abs(Math.sin(frame / 6)) * 26;
   return (
     <AbsoluteFill>
-      <PriceSticker at={4} top={230} left={60} scale={0.7} />
-      {frame >= btnAt ? (
-        <AbsoluteFill style={{ alignItems: "center", top: 960 }}>
-          <div
-            style={{
-              scale: String(s * breathe),
-              background: GREEN,
-              color: "#fff",
-              fontFamily: displayFont,
-              fontSize: 100,
-              padding: "6px 70px 26px",
-              borderRadius: 999,
-              border: "7px solid #fff",
-              direction: "rtl",
-              boxShadow: "0 18px 46px rgba(0,0,0,0.5)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            اطلب توّا
-          </div>
-          <svg
-            width={90}
-            height={110}
-            viewBox="0 0 90 110"
-            style={{ marginTop: 8 + bounce, opacity: s }}
-          >
-            <path
-              d="M45 0 V80 M10 50 L45 90 L80 50"
-              stroke="#fff"
-              strokeWidth={16}
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </AbsoluteFill>
-      ) : null}
+      <PriceSticker at={0} top={190} scale={0.85} />
+      <AbsoluteFill style={{ alignItems: "center", top: 1090 }}>
+        <div
+          style={{
+            scale: String(line),
+            background: "#fff",
+            color: "#000",
+            fontFamily: bodyFont,
+            fontWeight: 900,
+            fontSize: 64,
+            padding: "6px 40px 14px",
+            borderRadius: 22,
+            direction: "rtl",
+            boxShadow: "0 14px 34px rgba(0,0,0,0.35)",
+            whiteSpace: "nowrap",
+          }}
+        >
+          انزل على 👇
+        </div>
+        <div
+          style={{
+            marginTop: 28,
+            scale: String(s * breathe),
+            background: GREEN,
+            color: "#fff",
+            fontFamily: bodyFont,
+            fontWeight: 900,
+            fontSize: 96,
+            padding: "10px 80px 22px",
+            borderRadius: 999,
+            border: "7px solid #fff",
+            boxShadow: "0 18px 46px rgba(0,0,0,0.5)",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Commander
+        </div>
+        <svg
+          width={90}
+          height={110}
+          viewBox="0 0 90 110"
+          style={{ marginTop: 8 + bounce, opacity: s }}
+        >
+          <path
+            d="M45 0 V80 M10 50 L45 90 L80 50"
+            stroke="#fff"
+            strokeWidth={16}
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
