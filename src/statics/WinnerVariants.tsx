@@ -2,16 +2,20 @@ import React from "react";
 import { AbsoluteFill, Img, staticFile } from "remotion";
 import { LightRays, TilePattern } from "../components/Decor";
 import { PIECES, ProductCard } from "../components/NumberedProducts";
-import { PRODUCTS, ProductImage } from "../components/ProductImage";
+import {
+  PRODUCTS,
+  ProductImage,
+  type ProductKey,
+} from "../components/ProductImage";
 import { PHONE, PRICES, STORE_NAME, VALUE_TOTAL } from "../config";
 import { bodyFont, brandFont, colors, displayFont } from "../theme";
 
 // Variants of the winning static (gold background, red stamp, numbered product cards).
 // The price block copies the "PROMO 1 بدينار" reference: a giant red number on a yellow brush
 // stroke with red spark lines. Two variants push the autumn angle (« الخريف دخل »), two carry a
-// before / after panel. The before / after slots only show photos passed in `photos`: they must be
-// REAL photos of a customer who used the pack and agreed to be shown. Without them the slots render
-// as labelled placeholders, so a preview can never pass off someone else's result as ours.
+// « before / routine » panel: the problem (drawn) next to the 5-step routine — no result is shown or
+// promised. Once REAL photos of a customer who used the pack (and agreed to be shown) exist, pass
+// them in `photos` and the same ads switch to a true before / after.
 
 export type WinnerVariant = "autumn1" | "autumn2" | "ba1" | "ba2";
 export type BeforeAfterPhotos = {
@@ -346,9 +350,7 @@ const BigPrice: React.FC<{
           </div>
         </div>
       </div>
-      <Sparks
-        style={{ position: "absolute", right: -70 * k, top: -10 * k }}
-      />
+      <Sparks style={{ position: "absolute", right: -70 * k, top: -10 * k }} />
       <Sparks
         style={{
           position: "absolute",
@@ -633,6 +635,244 @@ const BeforeAfter: React.FC<{
   </div>
 );
 
+// ---------- Problem → routine panel (no result claim) ----------
+const ThinningHead: React.FC<{ readonly size: number }> = ({ size }) => (
+  // Top-down view of a head with a thinning crown and a few falling hairs — a drawing, not a photo
+  <svg width={size} height={size} viewBox="0 0 400 400">
+    <defs>
+      <radialGradient id="crown" cx="50%" cy="42%" r="34%">
+        <stop offset="0%" stopColor="#D9A07A" stopOpacity={1} />
+        <stop offset="55%" stopColor="#C98F6A" stopOpacity={0.75} />
+        <stop offset="100%" stopColor="#C98F6A" stopOpacity={0} />
+      </radialGradient>
+      <radialGradient id="front" cx="50%" cy="75%" r="60%">
+        <stop offset="0%" stopColor="#D9A07A" stopOpacity={1} />
+        <stop offset="60%" stopColor="#D2996F" stopOpacity={0.9} />
+        <stop offset="100%" stopColor="#C98F6A" stopOpacity={0} />
+      </radialGradient>
+      <radialGradient id="hair" cx="50%" cy="45%" r="60%">
+        <stop offset="0%" stopColor="#3A2A1E" />
+        <stop offset="100%" stopColor="#1C140E" />
+      </radialGradient>
+    </defs>
+    <ellipse cx={200} cy={190} rx={145} ry={160} fill="url(#hair)" />
+    {/* Receding front + thinning crown */}
+    <ellipse cx={200} cy={322} rx={120} ry={60} fill="url(#front)" />
+    <ellipse cx={200} cy={165} rx={110} ry={105} fill="url(#crown)" />
+    {/* Sparse strands across the thin area */}
+    {Array.from({ length: 40 }).map((_, i) => {
+      const a = (i * 137.5 * Math.PI) / 180;
+      const r = 20 + ((i * 53) % 90);
+      const x = 200 + Math.cos(a) * r;
+      const y = 165 + Math.sin(a) * r * 0.95;
+      return (
+        <line
+          key={i}
+          x1={x}
+          y1={y}
+          x2={x + Math.cos(a + 1.2) * 10}
+          y2={y + Math.sin(a + 1.2) * 10}
+          stroke="#2B1F16"
+          strokeWidth={2.2}
+          strokeLinecap="round"
+          opacity={0.75}
+        />
+      );
+    })}
+    {/* Falling hairs */}
+    {[
+      [40, 250, 0],
+      [345, 230, 1],
+      [70, 340, 2],
+      [330, 330, 3],
+      [20, 150, 4],
+    ].map(([x, y, k]) => (
+      <path
+        key={k}
+        d={`M ${x} ${y} q 12 18 0 34 q -12 16 4 30`}
+        stroke="#2B1F16"
+        strokeWidth={3}
+        fill="none"
+        strokeLinecap="round"
+        opacity={0.85}
+      />
+    ))}
+  </svg>
+);
+
+const PanelCard: React.FC<{
+  readonly label: string;
+  readonly labelBg: string;
+  readonly bg: string;
+  readonly w: number;
+  readonly h: number;
+  readonly children: React.ReactNode;
+}> = ({ label, labelBg, bg, w, h, children }) => (
+  <div
+    style={{
+      position: "relative",
+      width: w,
+      height: h,
+      borderRadius: 26,
+      overflow: "hidden",
+      border: "6px solid #fff",
+      boxShadow: "0 14px 30px rgba(0,0,0,0.35)",
+      background: bg,
+    }}
+  >
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 70,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {children}
+    </div>
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        height: 70,
+        background: labelBg,
+        color: "#fff",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontFamily: displayFont,
+        fontSize: 50,
+        paddingTop: 8,
+      }}
+    >
+      {label}
+    </div>
+  </div>
+);
+
+const ROUTINE: { product: ProductKey; text: string }[] = [
+  { product: "sidrBowl", text: "السدر بالأبليكاتور" },
+  { product: "dermaRoller", text: "الديرما مرتين في الجمعة" },
+  { product: "rosemaryOil", text: "قطرات زيت إكليل الجبل" },
+  { product: "brushTerracotta", text: "مساج بالبروس" },
+];
+
+const ProblemRoutine: React.FC<{
+  readonly top: number;
+  readonly w: number;
+  readonly h: number;
+}> = ({ top, w, h }) => (
+  <div
+    style={{
+      position: "absolute",
+      top,
+      left: 0,
+      right: 0,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: 18,
+      direction: "rtl",
+    }}
+  >
+    <PanelCard label="قبل" labelBg={colors.charcoal} bg="#2A2F36" w={w} h={h}>
+      <ThinningHead size={w * 0.78} />
+      <div
+        style={{
+          marginTop: 4,
+          fontFamily: bodyFont,
+          fontWeight: 900,
+          fontSize: 34,
+          lineHeight: 1.3,
+          color: "#fff",
+          textAlign: "center",
+          direction: "rtl",
+          padding: "0 20px",
+        }}
+      >
+        الشعر يطيح و يفرغ
+        <br />
+        <span style={{ color: colors.goldLight, fontSize: 30 }}>
+          جرّبت برشا حاجات و ما نفعش
+        </span>
+      </div>
+    </PanelCard>
+    <ArrowRight size={90} />
+    <PanelCard label="الروتين" labelBg={colors.red} bg="#fff" w={w} h={h}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 20,
+          width: w - 40,
+          direction: "rtl",
+        }}
+      >
+        {ROUTINE.map(({ product, text }, i) => {
+          const ih = 112;
+          const iw = 140;
+          const ph = Math.min(ih, iw / PRODUCTS[product].ratio);
+          return (
+            <div
+              key={product}
+              style={{ display: "flex", alignItems: "center", gap: 12 }}
+            >
+              <div
+                style={{
+                  width: 46,
+                  height: 46,
+                  flexShrink: 0,
+                  borderRadius: "50%",
+                  background: colors.red,
+                  color: "#fff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontFamily: displayFont,
+                  fontSize: 28,
+                  paddingTop: 4,
+                }}
+              >
+                {i + 1}
+              </div>
+              <div
+                style={{
+                  width: iw,
+                  height: ih,
+                  flexShrink: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <ProductImage product={product} height={ph} shadow={false} />
+              </div>
+              <div
+                style={{
+                  fontFamily: bodyFont,
+                  fontWeight: 900,
+                  fontSize: 30,
+                  lineHeight: 1.2,
+                  color: colors.charcoal,
+                }}
+              >
+                {text}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </PanelCard>
+  </div>
+);
+
 // ---------- The 4 variants (1080×1350) ----------
 const Autumn1: React.FC = () => (
   <GoldBackground>
@@ -714,12 +954,24 @@ const Autumn2: React.FC = () => (
   </GoldBackground>
 );
 
+// Real before / after when photos exist, otherwise the problem → routine panel
+const Comparison: React.FC<{ readonly photos?: BeforeAfterPhotos }> = ({
+  photos,
+}) =>
+  photos ? (
+    <>
+      <BeforeAfter photos={photos} top={270} w={430} h={460} />
+      <MiniRow top={765} w={176} />
+    </>
+  ) : (
+    <ProblemRoutine top={270} w={460} h={690} />
+  );
+
 const Ba1: React.FC<{ readonly photos?: BeforeAfterPhotos }> = ({ photos }) => (
   <GoldBackground>
     <Stamp text="عرض استثنائي!" />
     <Headline title="باك نموّ الشعر للرجال" top={160} size={72} />
-    <BeforeAfter photos={photos} top={270} w={430} h={460} />
-    <MiniRow top={765} w={176} />
+    <Comparison photos={photos} />
     <OfferRow top={995} h={220} />
     <Footer />
   </GoldBackground>
@@ -734,9 +986,12 @@ const Ba2: React.FC<{ readonly photos?: BeforeAfterPhotos }> = ({ photos }) => (
       ]}
     />
     <Stamp text="الخريف دخل!" bg={AUTUMN} />
-    <Headline title="قبل و بعد الروتين" top={160} size={72} />
-    <BeforeAfter photos={photos} top={270} w={430} h={460} />
-    <MiniRow top={765} w={176} />
+    <Headline
+      title={photos ? "قبل و بعد الروتين" : "شعرك يطيح؟ هاو الروتين"}
+      top={160}
+      size={72}
+    />
+    <Comparison photos={photos} />
     <OfferRow top={995} h={220} />
     <Footer />
   </GoldBackground>
