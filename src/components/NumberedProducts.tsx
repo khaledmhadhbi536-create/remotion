@@ -3,8 +3,9 @@ import { PRODUCTS, ProductImage, type ProductKey } from "./ProductImage";
 import { bodyFont, colors } from "../theme";
 
 // The 5 pieces, in routine order — shown as numbered cards in statics and videos
-export const PIECES: { product: ProductKey; name: string }[] = [
-  { product: "sidr", name: "سدر بيو" },
+// `zoom` lets a narrow item (the sidr pouch) grow past its slot and pop out of the card top
+export const PIECES: { product: ProductKey; name: string; zoom?: number }[] = [
+  { product: "sidr", name: "سدر بيو", zoom: 1.35 },
   { product: "dermaRoller", name: "ديرما رولر 540" },
   { product: "rosemaryOil", name: "زيت إكليل الجبل" },
   { product: "bottleBlack", name: "مشط الجذور" },
@@ -22,8 +23,8 @@ export const ProductCard: React.FC<{
   readonly accent: string;
   readonly style?: React.CSSProperties;
 }> = ({ index, accent, style }) => {
-  const { product, name } = PIECES[index];
-  const height = Math.min(IMG_H, IMG_W / PRODUCTS[product].ratio);
+  const { product, name, zoom = 1 } = PIECES[index];
+  const height = Math.min(IMG_H, IMG_W / PRODUCTS[product].ratio) * zoom;
   return (
     <div
       style={{

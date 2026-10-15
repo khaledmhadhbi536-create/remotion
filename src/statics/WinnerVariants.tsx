@@ -144,10 +144,10 @@ const MiniCard: React.FC<{ readonly index: number; readonly w: number }> = ({
   index,
   w,
 }) => {
-  const { product, name } = PIECES[index];
+  const { product, name, zoom = 1 } = PIECES[index];
   const imgW = w * 0.82;
   const imgH = w * 0.7;
-  const h = Math.min(imgH, imgW / PRODUCTS[product].ratio);
+  const h = Math.min(imgH, imgW / PRODUCTS[product].ratio) * zoom;
   return (
     <div
       style={{
