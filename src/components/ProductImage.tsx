@@ -10,6 +10,8 @@ export const PRODUCTS = {
   brushTerracotta: { src: "products/brush-terracotta.png", ratio: 604 / 548 },
   rosemaryOil: { src: "products/rosemary-oil.png", ratio: 400 / 1020 },
   sidr: { src: "products/sidr-powder.png", ratio: 384 / 612 },
+  // pouch + bowl of powder, rendered by the Asset-SidrBowl still
+  sidrBowl: { src: "products/sidr-bowl.png", ratio: 600 / 640 },
 } as const;
 
 export type ProductKey = keyof typeof PRODUCTS;

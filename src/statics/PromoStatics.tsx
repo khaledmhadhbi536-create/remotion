@@ -334,7 +334,7 @@ const ProductsOnTable: React.FC = () => (
   // Board coordinates; the table starts at y = 990 → bottom 360 of a 1350 board
   <>
     <Product src="products/rosemary-oil.png" x={120} bottom={205} h={300} />
-    <Product src="products/sidr-powder.png" x={255} bottom={200} h={270} />
+    <Product src="products/sidr-bowl.png" x={215} bottom={185} h={300} />
     <Product src="products/bottle-black.png" x={690} bottom={205} h={310} />
     <Product
       src="products/brush-terracotta.png"

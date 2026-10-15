@@ -3,9 +3,9 @@ import { PRODUCTS, ProductImage, type ProductKey } from "./ProductImage";
 import { bodyFont, colors } from "../theme";
 
 // The 5 pieces, in routine order — shown as numbered cards in statics and videos
-// `zoom` lets a narrow item (the sidr pouch) grow past its slot and pop out of the card top
+// `zoom` lets an item grow past its slot and pop out of the card top
 export const PIECES: { product: ProductKey; name: string; zoom?: number }[] = [
-  { product: "sidr", name: "سدر بيو", zoom: 1.35 },
+  { product: "sidrBowl", name: "سدر بيو", zoom: 1.2 },
   { product: "dermaRoller", name: "ديرما رولر 540" },
   { product: "rosemaryOil", name: "زيت إكليل الجبل" },
   { product: "bottleBlack", name: "مشط الجذور" },

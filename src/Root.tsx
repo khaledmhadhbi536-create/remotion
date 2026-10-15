@@ -1,3 +1,4 @@
+import { SIDR_BOWL_SIZE, SidrBowl } from "./assets/SidrBowl";
 import { WinnerFeed, WinnerStory } from "./statics/WinnerVariants";
 import { PromoFeed, PromoStory } from "./statics/PromoStatics";
 import { Composition, Folder, Still } from "remotion";
@@ -191,6 +192,14 @@ export const RemotionRoot: React.FC = () => {
           defaultProps={{ format: "social916" as const }}
         />
       </Folder>
+
+      {/* Asset generator: sidr pouch + bowl cut-out (transparent PNG) */}
+      <Still
+        id="Asset-SidrBowl"
+        component={SidrBowl}
+        width={SIDR_BOWL_SIZE.width}
+        height={SIDR_BOWL_SIZE.height}
+      />
 
       {/* Variants of the winning gold static (autumn + before/after) */}
       <Folder name="WinnerVariants">
