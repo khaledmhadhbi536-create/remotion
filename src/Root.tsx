@@ -1,3 +1,4 @@
+import { WinnerFeed, WinnerStory } from "./statics/WinnerVariants";
 import { PromoFeed, PromoStory } from "./statics/PromoStatics";
 import { Composition, Folder, Still } from "remotion";
 import {
@@ -188,6 +189,66 @@ export const RemotionRoot: React.FC = () => {
           width={1080}
           height={1920}
           defaultProps={{ format: "social916" as const }}
+        />
+      </Folder>
+
+      {/* Variants of the winning gold static (autumn + before/after) */}
+      <Folder name="WinnerVariants">
+        <Still
+          id="Winner-Autumn1-4x5"
+          component={WinnerFeed}
+          width={1080}
+          height={1350}
+          defaultProps={{ variant: "autumn1" as const }}
+        />
+        <Still
+          id="Winner-Autumn2-4x5"
+          component={WinnerFeed}
+          width={1080}
+          height={1350}
+          defaultProps={{ variant: "autumn2" as const }}
+        />
+        <Still
+          id="Winner-BeforeAfter1-4x5"
+          component={WinnerFeed}
+          width={1080}
+          height={1350}
+          defaultProps={{ variant: "ba1" as const }}
+        />
+        <Still
+          id="Winner-BeforeAfter2-4x5"
+          component={WinnerFeed}
+          width={1080}
+          height={1350}
+          defaultProps={{ variant: "ba2" as const }}
+        />
+        <Still
+          id="Winner-Autumn1-9x16"
+          component={WinnerStory}
+          width={1080}
+          height={1920}
+          defaultProps={{ variant: "autumn1" as const }}
+        />
+        <Still
+          id="Winner-Autumn2-9x16"
+          component={WinnerStory}
+          width={1080}
+          height={1920}
+          defaultProps={{ variant: "autumn2" as const }}
+        />
+        <Still
+          id="Winner-BeforeAfter1-9x16"
+          component={WinnerStory}
+          width={1080}
+          height={1920}
+          defaultProps={{ variant: "ba1" as const }}
+        />
+        <Still
+          id="Winner-BeforeAfter2-9x16"
+          component={WinnerStory}
+          width={1080}
+          height={1920}
+          defaultProps={{ variant: "ba2" as const }}
         />
       </Folder>
 
