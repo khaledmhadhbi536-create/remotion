@@ -1,3 +1,4 @@
+import { PromoFeed, PromoStory } from "./statics/PromoStatics";
 import { Composition, Folder, Still } from "remotion";
 import {
   CAMPAIGN,
@@ -187,6 +188,66 @@ export const RemotionRoot: React.FC = () => {
           width={1080}
           height={1920}
           defaultProps={{ format: "social916" as const }}
+        />
+      </Folder>
+
+      {/* Same 4 angles in the shop "PROMO" reference style */}
+      <Folder name="PromoStatics">
+        <Still
+          id="Promo-A-Deal-4x5"
+          component={PromoFeed}
+          width={1080}
+          height={1350}
+          defaultProps={{ angle: "deal" as const }}
+        />
+        <Still
+          id="Promo-B-Early-4x5"
+          component={PromoFeed}
+          width={1080}
+          height={1350}
+          defaultProps={{ angle: "early" as const }}
+        />
+        <Still
+          id="Promo-C-Natural-4x5"
+          component={PromoFeed}
+          width={1080}
+          height={1350}
+          defaultProps={{ angle: "natural" as const }}
+        />
+        <Still
+          id="Promo-D-Gift-4x5"
+          component={PromoFeed}
+          width={1080}
+          height={1350}
+          defaultProps={{ angle: "gift" as const }}
+        />
+        <Still
+          id="Promo-A-Deal-9x16"
+          component={PromoStory}
+          width={1080}
+          height={1920}
+          defaultProps={{ angle: "deal" as const }}
+        />
+        <Still
+          id="Promo-B-Early-9x16"
+          component={PromoStory}
+          width={1080}
+          height={1920}
+          defaultProps={{ angle: "early" as const }}
+        />
+        <Still
+          id="Promo-C-Natural-9x16"
+          component={PromoStory}
+          width={1080}
+          height={1920}
+          defaultProps={{ angle: "natural" as const }}
+        />
+        <Still
+          id="Promo-D-Gift-9x16"
+          component={PromoStory}
+          width={1080}
+          height={1920}
+          defaultProps={{ angle: "gift" as const }}
         />
       </Folder>
 
