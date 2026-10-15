@@ -758,7 +758,8 @@ const PanelCard: React.FC<{
 );
 
 const ROUTINE: { product: ProductKey; text: string }[] = [
-  { product: "sidrBowl", text: "السدر بالأبليكاتور" },
+  { product: "sidrBowl", text: "السدر بشويّة ماء" },
+  { product: "bottleBlack", text: "بالأبليكاتور للجذور" },
   { product: "dermaRoller", text: "الديرما مرتين في الجمعة" },
   { product: "rosemaryOil", text: "قطرات زيت إكليل الجبل" },
   { product: "brushTerracotta", text: "مساج بالبروس" },
@@ -810,13 +811,13 @@ const ProblemRoutine: React.FC<{
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: 20,
+          gap: 12,
           width: w - 40,
           direction: "rtl",
         }}
       >
         {ROUTINE.map(({ product, text }, i) => {
-          const ih = 112;
+          const ih = 96;
           const iw = 140;
           const ph = Math.min(ih, iw / PRODUCTS[product].ratio);
           return (
