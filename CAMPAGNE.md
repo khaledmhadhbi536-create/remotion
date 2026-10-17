@@ -155,3 +155,8 @@ Campagne `AURA_HAIR_SITE_Purchase_Test` (`120251854479190152`) : Ventes, **CBO 6
 - Le 9:16 est déjà chargé dans le compte (statique A `5d55c27fe26d7c8be112af26663a0e32`, vidéo B `4623530774557287`, UGC `1388057293309932`). À ajouter à la main dans chaque pub : « Modifier le média par emplacement » → Stories et Reels.
 - Achat test du 14/10 (commande AB-199307) bien remonté dans le pixel : PageView, ViewContent, InitiateCheckout, Purchase.
 - Règles : ne rien toucher les jours 1 à 3 ; jour 4, couper une pub à plus de 6 $ sans achat ; bilan au jour 7. Coût par achat < 2,5 $ très bon, 2,5–6 $ à garder, > 6 $ on revient aux Messages.
+
+### Changements du 17/10 (jour 4)
+- Pub `AURA_HAIR_SITE_B-Early_video` mise en pause (0 achat pour 2,20 $).
+- Ajout de 2 variantes de la statique A, même texte, même lien et même bouton : `AURA_HAIR_SITE_Automne1_static` (`120251909366580152`, `utm_content=AUTOMNE1`) et `AURA_HAIR_SITE_Automne2_static` (`120251909366670152`, `utm_content=AUTOMNE2`), visuels `renders/statics/gagnant/gagnant-Autumn1/2-4x5.jpg`.
+- Bilan jours 1 à 3 : 12 achats (12 commandes reçues) pour 19,45 $, soit 1,62 $ par achat ; la statique A en fait 11.
