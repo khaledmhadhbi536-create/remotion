@@ -143,7 +143,7 @@ const Drop: React.FC<{ readonly size: number; readonly color?: string }> = ({
 );
 
 // "5 حاجات • 49 د.ت" sticker
-const PriceSticker: React.FC<{
+export const PriceSticker: React.FC<{
   readonly at: number;
   readonly top: number;
   readonly left?: number;

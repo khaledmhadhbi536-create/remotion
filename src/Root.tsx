@@ -29,6 +29,7 @@ import { ValueScene } from "./scenes/ValueScene";
 import { colors } from "./theme";
 import { TOTAL_FRAMES as UGC_FRAMES } from "./ugc/edit";
 import { UgcAd, UgcAd4x5 } from "./ugc/UgcAd";
+import { SHORT_FRAMES, UgcShort4x5, UgcShort9x16 } from "./ugc/UgcShort";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -75,6 +76,23 @@ export const RemotionRoot: React.FC = () => {
         id="UgcAd-4x5"
         component={UgcAd4x5}
         durationInFrames={UGC_FRAMES}
+        fps={30}
+        width={1080}
+        height={1350}
+      />
+      {/* ~21 s cut: new hook (pain question + 49 DT from frame 0) */}
+      <Composition
+        id="UgcShort-9x16"
+        component={UgcShort9x16}
+        durationInFrames={SHORT_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="UgcShort-4x5"
+        component={UgcShort4x5}
+        durationInFrames={SHORT_FRAMES}
         fps={30}
         width={1080}
         height={1350}
