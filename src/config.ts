@@ -19,3 +19,9 @@ export const VALUE_TOTAL =
   PRICES.applicator +
   PRICES.sidr +
   PRICES.brush; // 110
+
+// Sevich temporary hair colour wax (13 colours). Selling price is a placeholder — set your own.
+export const WAX = {
+  price: 25, // TND
+  colors: 13,
+};

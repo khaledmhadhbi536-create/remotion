@@ -27,10 +27,21 @@ import { PackIntroScene } from "./scenes/PackIntroScene";
 import { StepScene } from "./scenes/StepScene";
 import { ValueScene } from "./scenes/ValueScene";
 import { colors } from "./theme";
+import { ColorWaxReel, WAX_FRAMES } from "./wax/ColorWaxReel";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* Sevich temporary colour wax: 18s, 9:16 (Reels, Stories, TikTok) */}
+      <Composition
+        id="ColorWaxReel"
+        component={ColorWaxReel}
+        durationInFrames={WAX_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
       {/* 5-piece hair pack: 38s, 1080×1080 (1:1 feed) + 9:16 reel with captions */}
       <Composition
         id="HairPackAd"
