@@ -160,3 +160,7 @@ Campagne `AURA_HAIR_SITE_Purchase_Test` (`120251854479190152`) : Ventes, **CBO 6
 - Pub `AURA_HAIR_SITE_B-Early_video` mise en pause (0 achat pour 2,20 $).
 - Ajout de 2 variantes de la statique A, même texte, même lien et même bouton : `AURA_HAIR_SITE_Automne1_static` (`120251909366580152`, `utm_content=AUTOMNE1`) et `AURA_HAIR_SITE_Automne2_static` (`120251909366670152`, `utm_content=AUTOMNE2`), visuels `renders/statics/gagnant/gagnant-Autumn1/2-4x5.jpg`.
 - Bilan jours 1 à 3 : 12 achats (12 commandes reçues) pour 19,45 $, soit 1,62 $ par achat ; la statique A en fait 11.
+
+### Changement du 19/10 (jour 6)
+- Bilan jours 1 à 6 : 23 achats Meta pour ~38 $, soit ~1,65 $ par achat. A v3 porte la campagne (9 achats à 1,40 $). UGC en pause, vidéo `Pack5_montage` ajoutée le 18.
+- Budget passé de 6 $ à **8 $ par jour** (option A validée). Étape suivante : 10 $ vers le 21/10 si le coût par achat reste sous 2,5 $, après nouveau « oui ».
