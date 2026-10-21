@@ -14,6 +14,13 @@ export const PRODUCTS = {
   brushGreen: { src: "products/brush-green.png", ratio: 676 / 700 },
   applicatorWhite: { src: "products/applicator-white.png", ratio: 255 / 900 },
   rosemaryReal: { src: "products/rosemary-real.png", ratio: 400 / 1020 },
+  // Real photos (cut out from the store's / reference photos)
+  sidrPhoto: { src: "products/photo/sidr-pouch.png", ratio: 453 / 606 },
+  oilPhoto: { src: "products/photo/oil-amber.png", ratio: 198 / 552 },
+  applicatorPhoto: { src: "products/photo/applicator.png", ratio: 234 / 840 },
+  brushPhoto: { src: "products/photo/brush-green.png", ratio: 359 / 333 },
+  spoonPhoto: { src: "products/photo/sidr-spoon.png", ratio: 182 / 83 },
+  leavesPhoto: { src: "products/photo/sidr-leaves.png", ratio: 279 / 158 },
 } as const;
 
 export type ProductKey = keyof typeof PRODUCTS;

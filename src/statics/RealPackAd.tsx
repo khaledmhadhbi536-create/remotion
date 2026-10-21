@@ -1,8 +1,6 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { TilePattern } from "../components/Decor";
-import { RosemaryBottle } from "../components/RosemaryBottle";
-import { SidrPouch } from "../components/SidrPouch";
 import { ProductImage, type ProductKey } from "../components/ProductImage";
 import { PHONE, PRICES, STORE_NAME, VALUE_TOTAL } from "../config";
 import { bodyFont, brandFont, colors, displayFont } from "../theme";
@@ -164,35 +162,48 @@ const Packshot: React.FC = () => (
           "radial-gradient(closest-side, rgba(70,45,10,0.30), rgba(70,45,10,0))",
       }}
     />
-    {/* supporting pieces behind / around */}
+    {/* supporting pieces behind / around (real photos) */}
     <ProductImage
-      product="applicatorWhite"
-      height={300}
-      style={{ position: "absolute", left: 0, top: 130 }}
+      product="applicatorPhoto"
+      height={340}
+      style={{ position: "absolute", left: 22, top: 80 }}
     />
-    <RosemaryBottle
+    <ProductImage
+      product="leavesPhoto"
+      height={110}
+      shadow={false}
+      style={{ position: "absolute", left: 60, top: 330, rotate: "-12deg" }}
+    />
+    {/* hero: sidr pouch, front and centre */}
+    <ProductImage
+      product="sidrPhoto"
+      height={430}
+      style={{ position: "absolute", left: 120, top: 20 }}
+    />
+    <ProductImage
+      product="oilPhoto"
       height={250}
-      style={{ position: "absolute", left: 70, top: 250 }}
+      style={{ position: "absolute", left: 75, top: 250 }}
     />
-    {/* hero: sidr pouch + bowl, front and centre */}
-    <SidrPouch
-      height={420}
-      style={{ position: "absolute", left: 130, top: 30 }}
+    <ProductImage
+      product="spoonPhoto"
+      height={78}
+      style={{ position: "absolute", left: 335, top: 395 }}
     />
     <ProductImage
       product="dermaRoller"
       height={150}
       style={{
         position: "absolute",
-        left: -10,
-        top: 430,
+        left: -6,
+        top: 425,
         rotate: "-6deg",
       }}
     />
     <ProductImage
-      product="brushGreen"
-      height={130}
-      style={{ position: "absolute", left: 215, top: 470, rotate: "8deg" }}
+      product="brushPhoto"
+      height={140}
+      style={{ position: "absolute", left: 250, top: 455 }}
     />
     {/* "star of the pack" tag */}
     <div
@@ -220,11 +231,11 @@ const Packshot: React.FC = () => (
 
 // ---------- Routine bar ----------
 const ROUTINE: { product: ProductKey; label: string }[] = [
-  { product: "sidr", label: "سدر طبيعي ⭐" },
+  { product: "sidrPhoto", label: "سدر طبيعي ⭐" },
   { product: "dermaRoller", label: "ديرما رولر 540" },
-  { product: "rosemaryReal", label: "زيت إكليل" },
-  { product: "applicatorWhite", label: "مشط الجذور" },
-  { product: "brushGreen", label: "فرشة تدليك" },
+  { product: "oilPhoto", label: "زيت إكليل" },
+  { product: "applicatorPhoto", label: "مشط الجذور" },
+  { product: "brushPhoto", label: "فرشة تدليك" },
 ];
 
 const RoutineBar: React.FC = () => (
@@ -270,30 +281,32 @@ const RoutineBar: React.FC = () => (
           >
             <div
               style={{
-                width: r.product === "sidr" ? 118 : 100,
-                height: r.product === "sidr" ? 118 : 100,
+                width: r.product === "sidrPhoto" ? 118 : 100,
+                height: r.product === "sidrPhoto" ? 118 : 100,
                 borderRadius: "50%",
-                background: r.product === "sidr" ? "#FFF6D8" : colors.white,
-                border: `${r.product === "sidr" ? 6 : 3}px solid ${GOLD_LIGHT}`,
+                background: r.product === "sidrPhoto" ? "#FFF6D8" : colors.white,
+                border: `${r.product === "sidrPhoto" ? 6 : 3}px solid ${GOLD_LIGHT}`,
                 boxShadow:
-                  r.product === "sidr" ? `0 0 22px ${GOLD_LIGHT}` : "none",
+                  r.product === "sidrPhoto" ? `0 0 22px ${GOLD_LIGHT}` : "none",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
               }}
             >
-              {r.product === "sidr" ? (
-                <SidrPouch height={100} withBowl={false} />
-              ) : r.product === "rosemaryReal" ? (
-                <RosemaryBottle height={84} shadow={false} />
-              ) : (
-                <ProductImage
-                  product={r.product}
-                  height={r.product === "dermaRoller" ? 48 : 84}
-                  shadow={false}
-                />
-              )}
+              <ProductImage
+                product={r.product}
+                height={
+                  r.product === "dermaRoller"
+                    ? 48
+                    : r.product === "brushPhoto"
+                      ? 66
+                      : r.product === "sidrPhoto"
+                        ? 96
+                        : 84
+                }
+                shadow={false}
+              />
             </div>
             <div
               style={{
