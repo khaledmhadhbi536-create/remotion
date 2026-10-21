@@ -1,6 +1,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { TilePattern } from "../components/Decor";
+import { RosemaryBottle } from "../components/RosemaryBottle";
 import { SidrPouch } from "../components/SidrPouch";
 import { ProductImage, type ProductKey } from "../components/ProductImage";
 import { PHONE, PRICES, STORE_NAME, VALUE_TOTAL } from "../config";
@@ -165,12 +166,11 @@ const Packshot: React.FC = () => (
     />
     {/* supporting pieces behind / around */}
     <ProductImage
-      product="bottleBlack"
+      product="applicatorWhite"
       height={300}
       style={{ position: "absolute", left: 0, top: 130 }}
     />
-    <ProductImage
-      product="rosemaryOil"
+    <RosemaryBottle
       height={250}
       style={{ position: "absolute", left: 70, top: 250 }}
     />
@@ -190,7 +190,7 @@ const Packshot: React.FC = () => (
       }}
     />
     <ProductImage
-      product="brushPink"
+      product="brushGreen"
       height={130}
       style={{ position: "absolute", left: 215, top: 470, rotate: "8deg" }}
     />
@@ -222,9 +222,9 @@ const Packshot: React.FC = () => (
 const ROUTINE: { product: ProductKey; label: string }[] = [
   { product: "sidr", label: "سدر طبيعي ⭐" },
   { product: "dermaRoller", label: "ديرما رولر 540" },
-  { product: "rosemaryOil", label: "زيت إكليل" },
-  { product: "bottleBlack", label: "مشط الجذور" },
-  { product: "brushPink", label: "فرشة تدليك" },
+  { product: "rosemaryReal", label: "زيت إكليل" },
+  { product: "applicatorWhite", label: "مشط الجذور" },
+  { product: "brushGreen", label: "فرشة تدليك" },
 ];
 
 const RoutineBar: React.FC = () => (
@@ -285,6 +285,8 @@ const RoutineBar: React.FC = () => (
             >
               {r.product === "sidr" ? (
                 <SidrPouch height={100} withBowl={false} />
+              ) : r.product === "rosemaryReal" ? (
+                <RosemaryBottle height={84} shadow={false} />
               ) : (
                 <ProductImage
                   product={r.product}

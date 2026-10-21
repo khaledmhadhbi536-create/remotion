@@ -10,6 +10,10 @@ export const PRODUCTS = {
   brushTerracotta: { src: "products/brush-terracotta.png", ratio: 604 / 548 },
   rosemaryOil: { src: "products/rosemary-oil.png", ratio: 400 / 1020 },
   sidr: { src: "products/sidr-powder.png", ratio: 384 / 612 },
+  // Recoloured to match the real pack: green brush, white dotted applicator, olive oil bottle
+  brushGreen: { src: "products/brush-green.png", ratio: 676 / 700 },
+  applicatorWhite: { src: "products/applicator-white.png", ratio: 255 / 900 },
+  rosemaryReal: { src: "products/rosemary-real.png", ratio: 400 / 1020 },
 } as const;
 
 export type ProductKey = keyof typeof PRODUCTS;
