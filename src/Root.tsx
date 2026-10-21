@@ -289,6 +289,20 @@ export const RemotionRoot: React.FC = () => {
           height={1920}
           defaultProps={{ format: "9x16" as const }}
         />
+        <Still
+          id="Real-Kit-4x5"
+          component={RealPackAd}
+          width={1080}
+          height={1350}
+          defaultProps={{ format: "4x5" as const, variant: "flatlay" as const }}
+        />
+        <Still
+          id="Real-Kit-9x16"
+          component={RealPackAd}
+          width={1080}
+          height={1920}
+          defaultProps={{ format: "9x16" as const, variant: "flatlay" as const }}
+        />
       </Folder>
 
       <Folder name="Scenes">

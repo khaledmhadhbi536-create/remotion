@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Img, staticFile } from "remotion";
 import { TilePattern } from "../components/Decor";
 import { ProductImage, type ProductKey } from "../components/ProductImage";
 import { PHONE, PRICES, STORE_NAME, VALUE_TOTAL } from "../config";
@@ -436,7 +436,76 @@ const PriceRow: React.FC = () => (
 );
 
 // ---------- Full 4:5 card (1080×1350) ----------
-const Card: React.FC = () => (
+// ---------- Flat-lay variant: one big photo of the whole kit ----------
+const KitPhoto: React.FC = () => (
+  <div
+    style={{
+      position: "relative",
+      margin: "0 40px",
+      height: 585,
+      borderRadius: 30,
+      overflow: "hidden",
+      border: `5px solid ${colors.white}`,
+      boxShadow: "0 18px 40px rgba(14,33,64,0.28)",
+    }}
+  >
+    <Img
+      src={staticFile("products/photo/kit-flatlay.jpg")}
+      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+    />
+    <div
+      style={{
+        position: "absolute",
+        left: 360,
+        top: 14,
+        rotate: "-4deg",
+        background: GREEN,
+        color: colors.white,
+        border: `3px solid ${GOLD_LIGHT}`,
+        borderRadius: 40,
+        padding: "4px 20px 10px",
+        fontFamily: displayFont,
+        fontSize: 34,
+        direction: "rtl",
+        whiteSpace: "nowrap",
+        boxShadow: "0 8px 18px rgba(0,0,0,0.25)",
+      }}
+    >
+      ⭐ نجم الباك: السدر
+    </div>
+  </div>
+);
+
+const BenefitGrid: React.FC = () => (
+  <div
+    style={{
+      margin: "0 40px",
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      columnGap: 24,
+      rowGap: 18,
+      direction: "rtl",
+    }}
+  >
+    {BENEFITS.slice(0, 4).map((b) => (
+      <div key={b.icon} style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <Icon name={b.icon} size={70} />
+        <div>
+          <div style={{ fontFamily: bodyFont, fontWeight: 900, fontSize: 31, lineHeight: 1.15, color: NAVY }}>
+            {b.title}
+          </div>
+          <div style={{ fontFamily: bodyFont, fontWeight: 600, fontSize: 20, lineHeight: 1.25, color: "#4A5568" }}>
+            {b.sub}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+type Variant = "packshot" | "flatlay";
+
+const Card: React.FC<{ readonly variant: Variant }> = ({ variant }) => (
   <div style={{ position: "relative", width: 1080, height: 1350 }}>
     {/* Header */}
     <div
@@ -487,13 +556,26 @@ const Card: React.FC = () => (
       </div>
     </div>
 
-    {/* Benefits (right, read first) + packshot (left) */}
-    <div style={{ position: "absolute", top: 300, right: 40, width: 520 }}>
-      <BenefitList />
-    </div>
-    <div style={{ position: "absolute", top: 275, left: 10 }}>
-      <Packshot />
-    </div>
+    {variant === "packshot" ? (
+      <>
+        {/* Benefits (right, read first) + packshot (left) */}
+        <div style={{ position: "absolute", top: 300, right: 40, width: 520 }}>
+          <BenefitList />
+        </div>
+        <div style={{ position: "absolute", top: 275, left: 10 }}>
+          <Packshot />
+        </div>
+      </>
+    ) : (
+      <>
+        <div style={{ position: "absolute", top: 305, left: 0, right: 0 }}>
+          <KitPhoto />
+        </div>
+        <div style={{ position: "absolute", top: 915, left: 0, right: 0 }}>
+          <BenefitGrid />
+        </div>
+      </>
+    )}
 
     {/* Seal */}
     <div
@@ -537,9 +619,11 @@ const Card: React.FC = () => (
       </div>
     </div>
 
-    <div style={{ position: "absolute", top: 868, left: 0, right: 0 }}>
-      <RoutineBar />
-    </div>
+    {variant === "packshot" ? (
+      <div style={{ position: "absolute", top: 868, left: 0, right: 0 }}>
+        <RoutineBar />
+      </div>
+    ) : null}
     <div style={{ position: "absolute", top: 1116, left: 0, right: 0 }}>
       <Badges />
     </div>
@@ -590,14 +674,15 @@ const Background: React.FC = () => (
   </>
 );
 
-export const RealPackAd: React.FC<{ readonly format: "4x5" | "9x16" }> = ({
-  format,
-}) => {
+export const RealPackAd: React.FC<{
+  readonly format: "4x5" | "9x16";
+  readonly variant?: Variant;
+}> = ({ format, variant = "packshot" }) => {
   if (format === "4x5") {
     return (
       <AbsoluteFill>
         <Background />
-        <Card />
+        <Card variant={variant} />
         <Footer bottom={6} />
       </AbsoluteFill>
     );
@@ -607,7 +692,7 @@ export const RealPackAd: React.FC<{ readonly format: "4x5" | "9x16" }> = ({
     <AbsoluteFill>
       <Background />
       <div style={{ position: "absolute", top: 250, left: 0 }}>
-        <Card />
+        <Card variant={variant} />
       </div>
       <Footer bottom={300} />
     </AbsoluteFill>
