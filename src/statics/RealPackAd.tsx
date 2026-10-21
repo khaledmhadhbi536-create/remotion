@@ -87,11 +87,11 @@ const Icon: React.FC<{ readonly name: string; readonly size: number }> = ({
 );
 
 const BENEFITS: { icon: string; title: string; sub: string }[] = [
+  { icon: "drop", title: "سرّ السدر الطبيعي", sub: "ينظّف الفروة و ينحّي القشرة" },
   { icon: "root", title: "يقلّل طيحان الشعر", sub: "يقوّي الجذور و البصيلات" },
   { icon: "roller", title: "يفيّق البصيلات", sub: "الديرما رولر يدخّل الزيت للجذور" },
   { icon: "dense", title: "يزيد في الكثافة", sub: "شعر أكثف و فيه حياة" },
-  { icon: "drop", title: "ينظّف فروة الراس", sub: "السدر ينحّي القشرة و الدهون" },
-  { icon: "leaf", title: "مكوّنات طبيعية", sub: "زيت إكليل الجبل + سدر بيو" },
+  { icon: "leaf", title: "مكوّنات طبيعية", sub: "سدر طبيعي + زيت إكليل الجبل" },
 ];
 
 const BenefitList: React.FC = () => (
@@ -163,41 +163,64 @@ const Packshot: React.FC = () => (
           "radial-gradient(closest-side, rgba(70,45,10,0.30), rgba(70,45,10,0))",
       }}
     />
-    <SidrPouch
-      height={380}
-      style={{ position: "absolute", left: 170, top: 10 }}
-    />
+    {/* supporting pieces behind / around */}
     <ProductImage
       product="bottleBlack"
-      height={380}
-      style={{ position: "absolute", left: 40, top: 90 }}
+      height={300}
+      style={{ position: "absolute", left: 0, top: 130 }}
     />
     <ProductImage
       product="rosemaryOil"
-      height={330}
-      style={{ position: "absolute", left: 115, top: 170 }}
+      height={250}
+      style={{ position: "absolute", left: 70, top: 250 }}
+    />
+    {/* hero: sidr pouch + bowl, front and centre */}
+    <SidrPouch
+      height={420}
+      style={{ position: "absolute", left: 130, top: 30 }}
     />
     <ProductImage
       product="dermaRoller"
-      height={190}
+      height={150}
       style={{
         position: "absolute",
-        left: 20,
-        top: 405,
+        left: -10,
+        top: 430,
         rotate: "-6deg",
       }}
     />
     <ProductImage
       product="brushPink"
-      height={180}
-      style={{ position: "absolute", left: 310, top: 415, rotate: "8deg" }}
+      height={130}
+      style={{ position: "absolute", left: 215, top: 470, rotate: "8deg" }}
     />
+    {/* "star of the pack" tag */}
+    <div
+      style={{
+        position: "absolute",
+        left: 300,
+        top: 40,
+        rotate: "7deg",
+        background: GREEN,
+        color: colors.white,
+        border: `3px solid ${GOLD_LIGHT}`,
+        borderRadius: 40,
+        padding: "4px 20px 10px",
+        fontFamily: displayFont,
+        fontSize: 34,
+        direction: "rtl",
+        whiteSpace: "nowrap",
+        boxShadow: "0 8px 18px rgba(0,0,0,0.25)",
+      }}
+    >
+      ⭐ نجم الباك: السدر
+    </div>
   </div>
 );
 
 // ---------- Routine bar ----------
 const ROUTINE: { product: ProductKey; label: string }[] = [
-  { product: "sidr", label: "سدر بيو" },
+  { product: "sidr", label: "سدر طبيعي ⭐" },
   { product: "dermaRoller", label: "ديرما رولر 540" },
   { product: "rosemaryOil", label: "زيت إكليل" },
   { product: "bottleBlack", label: "مشط الجذور" },
@@ -247,11 +270,13 @@ const RoutineBar: React.FC = () => (
           >
             <div
               style={{
-                width: 100,
-                height: 100,
+                width: r.product === "sidr" ? 118 : 100,
+                height: r.product === "sidr" ? 118 : 100,
                 borderRadius: "50%",
-                background: colors.white,
-                border: `3px solid ${GOLD_LIGHT}`,
+                background: r.product === "sidr" ? "#FFF6D8" : colors.white,
+                border: `${r.product === "sidr" ? 6 : 3}px solid ${GOLD_LIGHT}`,
+                boxShadow:
+                  r.product === "sidr" ? `0 0 22px ${GOLD_LIGHT}` : "none",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -259,7 +284,7 @@ const RoutineBar: React.FC = () => (
               }}
             >
               {r.product === "sidr" ? (
-                <SidrPouch height={84} withBowl={false} />
+                <SidrPouch height={100} withBowl={false} />
               ) : (
                 <ProductImage
                   product={r.product}
@@ -443,7 +468,7 @@ const Card: React.FC = () => (
           transform: "rotate(-1.5deg)",
         }}
       >
-        باك نموّ الشعر للرجال · مكوّنات طبيعية
+        باك نموّ الشعر للرجال · بالسدر الطبيعي
       </div>
     </div>
 

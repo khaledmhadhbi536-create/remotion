@@ -17,7 +17,7 @@ const Powder: React.FC<{ readonly id: string; readonly base: string }> = ({
     <filter id={id} x="0" y="0" width="100%" height="100%">
       <feTurbulence
         type="fractalNoise"
-        baseFrequency="1.4"
+        baseFrequency="0.75"
         numOctaves="2"
         seed="7"
         result="n"
@@ -25,7 +25,7 @@ const Powder: React.FC<{ readonly id: string; readonly base: string }> = ({
       <feColorMatrix
         in="n"
         type="matrix"
-        values="0 0 0 0 0.18  0 0 0 0 0.22  0 0 0 0 0.05  0 0 0 0.55 0"
+        values="0 0 0 0 0.18  0 0 0 0 0.22  0 0 0 0 0.05  0 0 0 0.9 0"
         result="grain"
       />
       <feFlood floodColor={base} result="base" />
