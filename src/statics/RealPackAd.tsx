@@ -205,27 +205,6 @@ const Packshot: React.FC = () => (
       height={140}
       style={{ position: "absolute", left: 250, top: 455 }}
     />
-    {/* "star of the pack" tag */}
-    <div
-      style={{
-        position: "absolute",
-        left: 300,
-        top: 40,
-        rotate: "7deg",
-        background: GREEN,
-        color: colors.white,
-        border: `3px solid ${GOLD_LIGHT}`,
-        borderRadius: 40,
-        padding: "4px 20px 10px",
-        fontFamily: displayFont,
-        fontSize: 34,
-        direction: "rtl",
-        whiteSpace: "nowrap",
-        boxShadow: "0 8px 18px rgba(0,0,0,0.25)",
-      }}
-    >
-      ⭐ نجم الباك: السدر
-    </div>
   </div>
 );
 
@@ -453,26 +432,6 @@ const KitPhoto: React.FC = () => (
       src={staticFile("products/photo/kit-flatlay.jpg")}
       style={{ width: "100%", height: "100%", objectFit: "cover" }}
     />
-    <div
-      style={{
-        position: "absolute",
-        left: 360,
-        top: 14,
-        rotate: "-4deg",
-        background: GREEN,
-        color: colors.white,
-        border: `3px solid ${GOLD_LIGHT}`,
-        borderRadius: 40,
-        padding: "4px 20px 10px",
-        fontFamily: displayFont,
-        fontSize: 34,
-        direction: "rtl",
-        whiteSpace: "nowrap",
-        boxShadow: "0 8px 18px rgba(0,0,0,0.25)",
-      }}
-    >
-      ⭐ نجم الباك: السدر
-    </div>
   </div>
 );
 
