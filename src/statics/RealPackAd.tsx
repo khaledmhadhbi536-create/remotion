@@ -1,0 +1,575 @@
+import React from "react";
+import { AbsoluteFill } from "remotion";
+import { TilePattern } from "../components/Decor";
+import { SidrPouch } from "../components/SidrPouch";
+import { ProductImage, type ProductKey } from "../components/ProductImage";
+import { PHONE, PRICES, STORE_NAME, VALUE_TOTAL } from "../config";
+import { bodyFont, brandFont, colors, displayFont } from "../theme";
+
+// "Realistic" infographic static, modelled on the competitor format that works in Tunisia:
+// light tiled background + grouped product packshot + benefit list with icons
+// + "routine" bar + trust badges + price. Uses only the real product cut-outs.
+
+const NAVY = "#0E2140";
+const GOLD = "#B8862B";
+const GOLD_LIGHT = "#E9C46A";
+const GREEN = "#2F7D4A";
+
+// ---------- Icons (simple line glyphs, navy disc) ----------
+const iconPaths: Record<string, React.ReactNode> = {
+  root: (
+    <>
+      <path d="M32 10v26" />
+      <path d="M32 36c-6 4-10 10-10 18M32 36c6 4 10 10 10 18M32 36v18" />
+      <path d="M20 20l6 4M44 20l-6 4" />
+    </>
+  ),
+  roller: (
+    <>
+      <rect x="14" y="16" width="22" height="14" rx="5" />
+      <path d="M18 23h14M36 23h4l8 22" />
+      <circle cx="18" cy="23" r="1" />
+      <circle cx="25" cy="23" r="1" />
+      <circle cx="32" cy="23" r="1" />
+    </>
+  ),
+  dense: (
+    <>
+      <path d="M16 52c0-14 2-28 6-38M26 52c0-14 1-28 3-38M36 52c0-14-1-28-3-38M46 52c0-14-2-28-6-38" />
+      <path d="M12 52h40" />
+    </>
+  ),
+  drop: (
+    <>
+      <path d="M32 10c8 12 14 20 14 28a14 14 0 0 1-28 0c0-8 6-16 14-28z" />
+      <path d="M26 40a6 6 0 0 0 6 6" />
+    </>
+  ),
+  leaf: (
+    <>
+      <path d="M14 50C14 26 30 14 52 14c0 22-12 36-36 36z" />
+      <path d="M14 50L38 28" />
+    </>
+  ),
+};
+
+const Icon: React.FC<{ readonly name: string; readonly size: number }> = ({
+  name,
+  size,
+}) => (
+  <div
+    style={{
+      width: size,
+      height: size,
+      borderRadius: "50%",
+      background: NAVY,
+      border: `4px solid ${GOLD_LIGHT}`,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
+      boxShadow: "0 6px 14px rgba(14,33,64,0.25)",
+    }}
+  >
+    <svg
+      width={size * 0.62}
+      height={size * 0.62}
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke={colors.white}
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {iconPaths[name]}
+    </svg>
+  </div>
+);
+
+const BENEFITS: { icon: string; title: string; sub: string }[] = [
+  { icon: "root", title: "يقلّل طيحان الشعر", sub: "يقوّي الجذور و البصيلات" },
+  { icon: "roller", title: "يفيّق البصيلات", sub: "الديرما رولر يدخّل الزيت للجذور" },
+  { icon: "dense", title: "يزيد في الكثافة", sub: "شعر أكثف و فيه حياة" },
+  { icon: "drop", title: "ينظّف فروة الراس", sub: "السدر ينحّي القشرة و الدهون" },
+  { icon: "leaf", title: "مكوّنات طبيعية", sub: "زيت إكليل الجبل + سدر بيو" },
+];
+
+const BenefitList: React.FC = () => (
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: 14,
+      direction: "rtl",
+    }}
+  >
+    {BENEFITS.map((b, i) => (
+      <div key={b.icon}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <Icon name={b.icon} size={78} />
+          <div>
+            <div
+              style={{
+                fontFamily: bodyFont,
+                fontWeight: 900,
+                fontSize: 34,
+                lineHeight: 1.15,
+                color: NAVY,
+              }}
+            >
+              {b.title}
+            </div>
+            <div
+              style={{
+                fontFamily: bodyFont,
+                fontWeight: 600,
+                fontSize: 23,
+                lineHeight: 1.25,
+                color: "#4A5568",
+              }}
+            >
+              {b.sub}
+            </div>
+          </div>
+        </div>
+        {i < BENEFITS.length - 1 ? (
+          <div
+            style={{
+              marginTop: 12,
+              marginRight: 94,
+              borderTop: `2px dotted ${GOLD}`,
+              opacity: 0.6,
+            }}
+          />
+        ) : null}
+      </div>
+    ))}
+  </div>
+);
+
+// ---------- Grouped packshot ----------
+const Packshot: React.FC = () => (
+  <div style={{ position: "relative", width: 500, height: 600 }}>
+    {/* soft floor glow + shared shadow so the items sit on one surface */}
+    <div
+      style={{
+        position: "absolute",
+        left: -20,
+        right: -20,
+        bottom: 6,
+        height: 110,
+        borderRadius: "50%",
+        background:
+          "radial-gradient(closest-side, rgba(70,45,10,0.30), rgba(70,45,10,0))",
+      }}
+    />
+    <SidrPouch
+      height={380}
+      style={{ position: "absolute", left: 170, top: 10 }}
+    />
+    <ProductImage
+      product="bottleBlack"
+      height={380}
+      style={{ position: "absolute", left: 40, top: 90 }}
+    />
+    <ProductImage
+      product="rosemaryOil"
+      height={330}
+      style={{ position: "absolute", left: 115, top: 170 }}
+    />
+    <ProductImage
+      product="dermaRoller"
+      height={190}
+      style={{
+        position: "absolute",
+        left: 20,
+        top: 405,
+        rotate: "-6deg",
+      }}
+    />
+    <ProductImage
+      product="brushPink"
+      height={180}
+      style={{ position: "absolute", left: 310, top: 415, rotate: "8deg" }}
+    />
+  </div>
+);
+
+// ---------- Routine bar ----------
+const ROUTINE: { product: ProductKey; label: string }[] = [
+  { product: "sidr", label: "سدر بيو" },
+  { product: "dermaRoller", label: "ديرما رولر 540" },
+  { product: "rosemaryOil", label: "زيت إكليل" },
+  { product: "bottleBlack", label: "مشط الجذور" },
+  { product: "brushPink", label: "فرشة تدليك" },
+];
+
+const RoutineBar: React.FC = () => (
+  <div
+    style={{
+      margin: "0 36px",
+      background: NAVY,
+      borderRadius: 28,
+      border: `3px solid ${GOLD_LIGHT}`,
+      padding: "10px 18px 12px",
+      direction: "rtl",
+      boxShadow: "0 12px 28px rgba(14,33,64,0.3)",
+    }}
+  >
+    <div
+      style={{
+        textAlign: "center",
+        fontFamily: displayFont,
+        fontSize: 40,
+        lineHeight: 1.1,
+        color: GOLD_LIGHT,
+      }}
+    >
+      5 قطع ... روتين كامل في الدار
+    </div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginTop: 10,
+      }}
+    >
+      {ROUTINE.map((r, i) => (
+        <React.Fragment key={r.product}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: 150,
+            }}
+          >
+            <div
+              style={{
+                width: 100,
+                height: 100,
+                borderRadius: "50%",
+                background: colors.white,
+                border: `3px solid ${GOLD_LIGHT}`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+              }}
+            >
+              {r.product === "sidr" ? (
+                <SidrPouch height={84} withBowl={false} />
+              ) : (
+                <ProductImage
+                  product={r.product}
+                  height={r.product === "dermaRoller" ? 48 : 84}
+                  shadow={false}
+                />
+              )}
+            </div>
+            <div
+              style={{
+                marginTop: 6,
+                fontFamily: bodyFont,
+                fontWeight: 800,
+                fontSize: 22,
+                color: colors.white,
+                whiteSpace: "nowrap",
+              }}
+            >
+              {r.label}
+            </div>
+          </div>
+          {i < ROUTINE.length - 1 ? (
+            <div
+              style={{
+                fontFamily: bodyFont,
+                fontWeight: 900,
+                fontSize: 40,
+                color: GOLD_LIGHT,
+                marginBottom: 30,
+              }}
+            >
+              +
+            </div>
+          ) : null}
+        </React.Fragment>
+      ))}
+    </div>
+  </div>
+);
+
+// ---------- Trust badges ----------
+const BADGES = ["الخلاص عند الاستلام", "آمن للاستعمال اليومي", "مكوّنات طبيعية"];
+
+const Badges: React.FC = () => (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      gap: 14,
+      direction: "rtl",
+      margin: "0 36px",
+    }}
+  >
+    {BADGES.map((b) => (
+      <div
+        key={b}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          padding: "8px 18px",
+          borderRadius: 40,
+          border: `2px solid ${GOLD}`,
+          background: "rgba(255,255,255,0.75)",
+          fontFamily: bodyFont,
+          fontWeight: 800,
+          fontSize: 24,
+          color: NAVY,
+          whiteSpace: "nowrap",
+        }}
+      >
+        <span style={{ color: GREEN, fontSize: 26 }}>✔</span>
+        {b}
+      </div>
+    ))}
+  </div>
+);
+
+// ---------- Price row ----------
+const PriceRow: React.FC = () => (
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      margin: "0 36px",
+      direction: "rtl",
+    }}
+  >
+    <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+      <div
+        style={{
+          background: colors.red,
+          color: colors.white,
+          fontFamily: displayFont,
+          fontSize: 70,
+          lineHeight: 1,
+          padding: "8px 28px 18px",
+          borderRadius: 22,
+          boxShadow: "0 10px 22px rgba(230,57,70,0.35)",
+        }}
+      >
+        {PRICES.pack} د.ت
+      </div>
+      <div
+        style={{
+          fontFamily: bodyFont,
+          fontWeight: 800,
+          fontSize: 34,
+          color: "#7A8796",
+          textDecoration: "line-through",
+          textDecorationColor: colors.red,
+          textDecorationThickness: 4,
+        }}
+      >
+        {VALUE_TOTAL} د.ت
+      </div>
+    </div>
+    <div
+      style={{
+        background: GREEN,
+        color: colors.white,
+        fontFamily: displayFont,
+        fontSize: 50,
+        lineHeight: 1,
+        padding: "14px 40px 24px",
+        borderRadius: 60,
+        boxShadow: "0 10px 22px rgba(47,125,74,0.35)",
+      }}
+    >
+      اطلب توّا
+    </div>
+  </div>
+);
+
+// ---------- Full 4:5 card (1080×1350) ----------
+const Card: React.FC = () => (
+  <div style={{ position: "relative", width: 1080, height: 1350 }}>
+    {/* Header */}
+    <div
+      style={{
+        position: "absolute",
+        top: 34,
+        left: 0,
+        right: 0,
+        textAlign: "center",
+        direction: "rtl",
+      }}
+    >
+      <div
+        style={{
+          fontFamily: displayFont,
+          fontSize: 92,
+          lineHeight: 1.05,
+          color: NAVY,
+        }}
+      >
+        شعرك يطيح و يفرغ؟
+      </div>
+      <div
+        style={{
+          fontFamily: displayFont,
+          fontSize: 76,
+          lineHeight: 1.1,
+          color: GOLD,
+        }}
+      >
+        رجّعلو كثافتو من الدار
+      </div>
+      <div
+        style={{
+          display: "inline-block",
+          marginTop: 10,
+          background: NAVY,
+          color: colors.white,
+          fontFamily: bodyFont,
+          fontWeight: 800,
+          fontSize: 28,
+          padding: "6px 30px 10px",
+          borderRadius: 40,
+          transform: "rotate(-1.5deg)",
+        }}
+      >
+        باك نموّ الشعر للرجال · مكوّنات طبيعية
+      </div>
+    </div>
+
+    {/* Benefits (right, read first) + packshot (left) */}
+    <div style={{ position: "absolute", top: 300, right: 40, width: 520 }}>
+      <BenefitList />
+    </div>
+    <div style={{ position: "absolute", top: 275, left: 10 }}>
+      <Packshot />
+    </div>
+
+    {/* Seal */}
+    <div
+      style={{
+        position: "absolute",
+        top: 120,
+        left: 34,
+        width: 150,
+        height: 150,
+        borderRadius: "50%",
+        background: `radial-gradient(circle at 35% 30%, ${GOLD_LIGHT}, ${GOLD})`,
+        border: `5px solid ${NAVY}`,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        rotate: "-10deg",
+        boxShadow: "0 10px 22px rgba(0,0,0,0.25)",
+        direction: "rtl",
+      }}
+    >
+      <div
+        style={{
+          fontFamily: displayFont,
+          fontSize: 60,
+          lineHeight: 0.9,
+          color: NAVY,
+        }}
+      >
+        5 قطع
+      </div>
+      <div
+        style={{
+          fontFamily: bodyFont,
+          fontWeight: 900,
+          fontSize: 22,
+          color: NAVY,
+        }}
+      >
+        في باك واحد
+      </div>
+    </div>
+
+    <div style={{ position: "absolute", top: 868, left: 0, right: 0 }}>
+      <RoutineBar />
+    </div>
+    <div style={{ position: "absolute", top: 1116, left: 0, right: 0 }}>
+      <Badges />
+    </div>
+    <div style={{ position: "absolute", top: 1192, left: 0, right: 0 }}>
+      <PriceRow />
+    </div>
+  </div>
+);
+
+const Footer: React.FC<{ readonly bottom: number }> = ({ bottom }) => (
+  <div
+    style={{
+      position: "absolute",
+      left: 0,
+      right: 0,
+      bottom,
+      textAlign: "center",
+      direction: "rtl",
+      fontFamily: bodyFont,
+      fontWeight: 800,
+      fontSize: 26,
+      color: NAVY,
+    }}
+  >
+    <span style={{ fontFamily: brandFont, fontWeight: 800, color: GOLD }}>
+      {STORE_NAME}
+    </span>
+    {"  ·  "}
+    ☎ {PHONE}
+  </div>
+);
+
+const Background: React.FC = () => (
+  <>
+    <AbsoluteFill
+      style={{
+        background:
+          "radial-gradient(ellipse at 50% 40%, #FFFDF8 0%, #F6EEDF 60%, #EADBC0 100%)",
+      }}
+    />
+    <TilePattern color="#5B7FA8" opacity={0.12} tile={140} />
+    <AbsoluteFill
+      style={{
+        background:
+          "radial-gradient(ellipse at 50% 45%, rgba(255,253,248,0.9) 0%, rgba(255,253,248,0) 65%)",
+      }}
+    />
+  </>
+);
+
+export const RealPackAd: React.FC<{ readonly format: "4x5" | "9x16" }> = ({
+  format,
+}) => {
+  if (format === "4x5") {
+    return (
+      <AbsoluteFill>
+        <Background />
+        <Card />
+        <Footer bottom={6} />
+      </AbsoluteFill>
+    );
+  }
+  // 9:16: same card, centred so the top and bottom story UI stay clear
+  return (
+    <AbsoluteFill>
+      <Background />
+      <div style={{ position: "absolute", top: 250, left: 0 }}>
+        <Card />
+      </div>
+      <Footer bottom={300} />
+    </AbsoluteFill>
+  );
+};

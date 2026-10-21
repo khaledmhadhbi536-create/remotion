@@ -1,4 +1,5 @@
 import { Composition, Folder, Still } from "remotion";
+import { RealPackAd } from "./statics/RealPackAd";
 import {
   CAMPAIGN,
   V1Deal,
@@ -269,6 +270,24 @@ export const RemotionRoot: React.FC = () => {
           width={1080}
           height={1920}
           defaultProps={{ ad: "gift" as const }}
+        />
+      </Folder>
+
+      {/* Realistic infographic static (competitor-style), 4:5 + 9:16 */}
+      <Folder name="RealStatics">
+        <Still
+          id="Real-Pack-4x5"
+          component={RealPackAd}
+          width={1080}
+          height={1350}
+          defaultProps={{ format: "4x5" as const }}
+        />
+        <Still
+          id="Real-Pack-9x16"
+          component={RealPackAd}
+          width={1080}
+          height={1920}
+          defaultProps={{ format: "9x16" as const }}
         />
       </Folder>
 
