@@ -445,8 +445,8 @@ const KitPhoto: React.FC = () => (
 
 // The 5 pieces: number, name, benefit, and where the number sits on the photo
 const KIT_ITEMS = [
-  { n: 1, name: "السدر البلدي", benefit: "ينظّف الفروة، ينحّي القشرة و يقوّي الشعر", x: 500, y: 52 },
-  { n: 2, name: "زيت إكليل الجبل", benefit: "يغذّي البصيلات و يقلّل الطيحان", x: 298, y: 392 },
+  { n: 1, name: "السدر البلدي", benefit: "يوقف التساقط، ينظّف الفروة و يقضي على القشرة، يعطي لمعان", x: 500, y: 52 },
+  { n: 2, name: "زيت إكليل الجبل", benefit: "يحفّز نمو الشعر و يكثّف الفراغات، يقوّي البصيلات و يمنع التساقط", x: 298, y: 392 },
   { n: 3, name: "ديرما رولر 540", benefit: "ينشّط الدورة الدموية و يدخّل الزيت للجذور", x: 678, y: 36 },
   { n: 4, name: "مشط الجذور", benefit: "يوصّل الزيت للجذور بلا تبذير", x: 797, y: 100 },
   { n: 5, name: "فرشة التدليك", benefit: "تدلّك الفروة و تفيّق البصيلات", x: 178, y: 40 },
@@ -513,9 +513,10 @@ const KitList: React.FC = () => (
           style={{
             fontFamily: bodyFont,
             fontWeight: 700,
-            fontSize: 24,
+            fontSize: 23,
+            lineHeight: 1.2,
             color: "#3D4A5C",
-            whiteSpace: "nowrap",
+            flex: 1,
           }}
         >
           {k.benefit}
