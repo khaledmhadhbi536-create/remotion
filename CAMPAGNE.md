@@ -164,3 +164,9 @@ Campagne `AURA_HAIR_SITE_Purchase_Test` (`120251854479190152`) : Ventes, **CBO 6
 ### Changement du 19/10 (jour 6)
 - Bilan jours 1 à 6 : 23 achats Meta pour ~38 $, soit ~1,65 $ par achat. A v3 porte la campagne (9 achats à 1,40 $). UGC en pause, vidéo `Pack5_montage` ajoutée le 18.
 - Budget passé de 6 $ à **8 $ par jour** (option A validée). Étape suivante : 10 $ vers le 21/10 si le coût par achat reste sous 2,5 $, après nouveau « oui ».
+
+### Changement du 22/10
+- A v3 fatigue (2 derniers jours : ~6,9 $ par achat, CTR 0,73–0,91 %).
+- Ajout de la pub `AURA_HAIR_SITE_Kit_static` (`120251979090930152`, créa `1814561993098115`, `utm_content=KIT`) dans l'ensemble Grand Tunis, visuel `renders/statics/reel/real-kit-4x5.jpg`. Même texte, lien et bouton que les autres. Rien d'autre modifié (budget 8 $/jour).
+- Bilan prévu le 24/10 : si le coût par achat reste au-dessus de 5 $, retour à 6 $/jour.
+- Campagne `AURA_HAIR_TEST_ABO` (hors Tunis, 2 × 5 $) créée hors de cette session le 19–20/10.
