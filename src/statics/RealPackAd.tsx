@@ -401,15 +401,16 @@ const PriceRow: React.FC = () => (
       style={{
         background: GREEN,
         color: colors.white,
-        fontFamily: displayFont,
-        fontSize: 50,
+        fontFamily: bodyFont,
+        fontWeight: 900,
+        fontSize: 46,
         lineHeight: 1,
-        padding: "14px 40px 24px",
+        padding: "20px 44px 24px",
         borderRadius: 60,
         boxShadow: "0 10px 22px rgba(47,125,74,0.35)",
       }}
     >
-      اطلب توّا
+      Commander
     </div>
   </div>
 );
@@ -469,7 +470,7 @@ const KIT_ITEMS = [
   {
     n: 4,
     name: "مشط الجذور",
-    benefits: ["يوصّل الزيت للجذور مباشرة", "بلا تبذير و بلا وسخ"],
+    benefits: ["يوصّل الزيت و السدر للجذور مباشرة", "بلا تبذير و بلا وسخ"],
     x: 797,
     y: 92,
   },
