@@ -86,11 +86,11 @@ const Icon: React.FC<{ readonly name: string; readonly size: number }> = ({
 );
 
 const BENEFITS: { icon: string; title: string; sub: string }[] = [
-  { icon: "drop", title: "سرّ السدر الطبيعي", sub: "ينظّف الفروة و ينحّي القشرة" },
+  { icon: "drop", title: "سرّ السدر البلدي", sub: "ينظّف الفروة و ينحّي القشرة" },
   { icon: "root", title: "يقلّل طيحان الشعر", sub: "يقوّي الجذور و البصيلات" },
   { icon: "roller", title: "يفيّق البصيلات", sub: "الديرما رولر يدخّل الزيت للجذور" },
   { icon: "dense", title: "يزيد في الكثافة", sub: "شعر أكثف و فيه حياة" },
-  { icon: "leaf", title: "مكوّنات طبيعية", sub: "سدر طبيعي + زيت إكليل الجبل" },
+  { icon: "leaf", title: "مكوّنات طبيعية", sub: "سدر بلدي + زيت إكليل الجبل" },
 ];
 
 const BenefitList: React.FC = () => (
@@ -210,9 +210,9 @@ const Packshot: React.FC = () => (
 
 // ---------- Routine bar ----------
 const ROUTINE: { product: ProductKey; label: string }[] = [
-  { product: "sidrPhoto", label: "سدر طبيعي ⭐" },
+  { product: "sidrPhoto", label: "السدر البلدي ⭐" },
   { product: "dermaRoller", label: "ديرما رولر 540" },
-  { product: "oilPhoto", label: "زيت إكليل" },
+  { product: "oilPhoto", label: "زيت إكليل الجبل" },
   { product: "applicatorPhoto", label: "مشط الجذور" },
   { product: "brushPhoto", label: "فرشة تدليك" },
 ];
@@ -416,6 +416,33 @@ const PriceRow: React.FC = () => (
 
 // ---------- Full 4:5 card (1080×1350) ----------
 // ---------- Flat-lay variant: one big photo of the whole kit ----------
+// Arabic name tag placed on the photo, centred on x
+const PhotoTag: React.FC<{
+  readonly text: string;
+  readonly x: number;
+  readonly y: number;
+}> = ({ text, x, y }) => (
+  <div
+    style={{
+      position: "absolute",
+      left: x,
+      top: y,
+      transform: "translateX(-50%)",
+      background: GREEN,
+      color: colors.white,
+      border: `3px solid ${GOLD_LIGHT}`,
+      borderRadius: 40,
+      padding: "2px 22px 8px",
+      fontFamily: displayFont,
+      fontSize: 34,
+      direction: "rtl",
+      whiteSpace: "nowrap",
+      boxShadow: "0 6px 14px rgba(0,0,0,0.3)",
+    }}
+  >
+    {text}
+  </div>
+);
 const KitPhoto: React.FC = () => (
   <div
     style={{
@@ -432,6 +459,8 @@ const KitPhoto: React.FC = () => (
       src={staticFile("products/photo/kit-flatlay.jpg")}
       style={{ width: "100%", height: "100%", objectFit: "cover" }}
     />
+    <PhotoTag text="زيت إكليل الجبل" x={298} y={418} />
+    <PhotoTag text="السدر البلدي" x={502} y={16} />
   </div>
 );
 
@@ -511,7 +540,7 @@ const Card: React.FC<{ readonly variant: Variant }> = ({ variant }) => (
           transform: "rotate(-1.5deg)",
         }}
       >
-        باك نموّ الشعر للرجال · بالسدر الطبيعي
+        باك نموّ الشعر للرجال · بالسدر البلدي
       </div>
     </div>
 
