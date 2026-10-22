@@ -416,39 +416,12 @@ const PriceRow: React.FC = () => (
 
 // ---------- Full 4:5 card (1080×1350) ----------
 // ---------- Flat-lay variant: one big photo of the whole kit ----------
-// Arabic name tag placed on the photo, centred on x
-const PhotoTag: React.FC<{
-  readonly text: string;
-  readonly x: number;
-  readonly y: number;
-}> = ({ text, x, y }) => (
-  <div
-    style={{
-      position: "absolute",
-      left: x,
-      top: y,
-      transform: "translateX(-50%)",
-      background: GREEN,
-      color: colors.white,
-      border: `3px solid ${GOLD_LIGHT}`,
-      borderRadius: 40,
-      padding: "2px 22px 8px",
-      fontFamily: displayFont,
-      fontSize: 34,
-      direction: "rtl",
-      whiteSpace: "nowrap",
-      boxShadow: "0 6px 14px rgba(0,0,0,0.3)",
-    }}
-  >
-    {text}
-  </div>
-);
 const KitPhoto: React.FC = () => (
   <div
     style={{
       position: "relative",
       margin: "0 40px",
-      height: 585,
+      height: 462,
       borderRadius: 30,
       overflow: "hidden",
       border: `5px solid ${colors.white}`,
@@ -457,34 +430,95 @@ const KitPhoto: React.FC = () => (
   >
     <Img
       src={staticFile("products/photo/kit-flatlay.jpg")}
-      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        objectPosition: "50% 18%",
+      }}
     />
-    <PhotoTag text="زيت إكليل الجبل" x={298} y={418} />
-    <PhotoTag text="السدر البلدي" x={502} y={16} />
+    {KIT_ITEMS.map((k) => (
+      <NumBadge key={k.n} n={k.n} x={k.x} y={k.y} size={56} />
+    ))}
   </div>
 );
 
-const BenefitGrid: React.FC = () => (
+// The 5 pieces: number, name, benefit, and where the number sits on the photo
+const KIT_ITEMS = [
+  { n: 1, name: "السدر البلدي", benefit: "ينظّف الفروة، ينحّي القشرة و يقوّي الشعر", x: 500, y: 52 },
+  { n: 2, name: "زيت إكليل الجبل", benefit: "يغذّي البصيلات و يقلّل الطيحان", x: 298, y: 392 },
+  { n: 3, name: "ديرما رولر 540", benefit: "ينشّط الدورة الدموية و يدخّل الزيت للجذور", x: 678, y: 36 },
+  { n: 4, name: "مشط الجذور", benefit: "يوصّل الزيت للجذور بلا تبذير", x: 797, y: 100 },
+  { n: 5, name: "فرشة التدليك", benefit: "تدلّك الفروة و تفيّق البصيلات", x: 860, y: 46 },
+];
+
+const NumBadge: React.FC<{
+  readonly n: number;
+  readonly x?: number;
+  readonly y?: number;
+  readonly size: number;
+}> = ({ n, x, y, size }) => (
   <div
     style={{
-      margin: "0 40px",
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-      columnGap: 24,
-      rowGap: 18,
+      ...(x !== undefined && y !== undefined
+        ? { position: "absolute" as const, left: x - size / 2, top: y - size / 2 }
+        : {}),
+      width: size,
+      height: size,
+      flexShrink: 0,
+      borderRadius: "50%",
+      background: colors.red,
+      border: `3px solid ${colors.white}`,
+      color: colors.white,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontFamily: bodyFont,
+      fontWeight: 900,
+      fontSize: size * 0.55,
+      lineHeight: 1,
+      boxShadow: "0 6px 14px rgba(0,0,0,0.3)",
+    }}
+  >
+    {n}
+  </div>
+);
+
+const KitList: React.FC = () => (
+  <div
+    style={{
+      margin: "0 44px",
+      display: "flex",
+      flexDirection: "column",
+      gap: 4,
       direction: "rtl",
     }}
   >
-    {BENEFITS.slice(0, 4).map((b) => (
-      <div key={b.icon} style={{ display: "flex", alignItems: "center", gap: 14 }}>
-        <Icon name={b.icon} size={70} />
-        <div>
-          <div style={{ fontFamily: bodyFont, fontWeight: 900, fontSize: 31, lineHeight: 1.15, color: NAVY }}>
-            {b.title}
-          </div>
-          <div style={{ fontFamily: bodyFont, fontWeight: 600, fontSize: 20, lineHeight: 1.25, color: "#4A5568" }}>
-            {b.sub}
-          </div>
+    {KIT_ITEMS.map((k) => (
+      <div key={k.n} style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <NumBadge n={k.n} size={46} />
+        <div
+          style={{
+            fontFamily: bodyFont,
+            fontWeight: 900,
+            fontSize: 30,
+            color: NAVY,
+            whiteSpace: "nowrap",
+          }}
+        >
+          {k.name}
+        </div>
+        <div style={{ color: GOLD, fontSize: 26, fontWeight: 900 }}>←</div>
+        <div
+          style={{
+            fontFamily: bodyFont,
+            fontWeight: 700,
+            fontSize: 24,
+            color: "#3D4A5C",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {k.benefit}
         </div>
       </div>
     ))}
@@ -559,8 +593,8 @@ const Card: React.FC<{ readonly variant: Variant }> = ({ variant }) => (
         <div style={{ position: "absolute", top: 305, left: 0, right: 0 }}>
           <KitPhoto />
         </div>
-        <div style={{ position: "absolute", top: 915, left: 0, right: 0 }}>
-          <BenefitGrid />
+        <div style={{ position: "absolute", top: 784, left: 0, right: 0 }}>
+          <KitList />
         </div>
       </>
     )}
