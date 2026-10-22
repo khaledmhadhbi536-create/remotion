@@ -421,7 +421,7 @@ const KitPhoto: React.FC = () => (
     style={{
       position: "relative",
       margin: "0 40px",
-      height: 462,
+      height: 450,
       borderRadius: 30,
       overflow: "hidden",
       border: `5px solid ${colors.white}`,
@@ -445,11 +445,41 @@ const KitPhoto: React.FC = () => (
 
 // The 5 pieces: number, name, benefit, and where the number sits on the photo
 const KIT_ITEMS = [
-  { n: 1, name: "السدر البلدي", benefit: "يوقف التساقط، ينظّف الفروة و يقضي على القشرة، يعطي لمعان", x: 500, y: 52 },
-  { n: 2, name: "زيت إكليل الجبل", benefit: "يحفّز نمو الشعر و يكثّف الفراغات، يقوّي البصيلات و يمنع التساقط", x: 298, y: 392 },
-  { n: 3, name: "ديرما رولر 540", benefit: "ينشّط الدورة الدموية و يدخّل الزيت للجذور", x: 678, y: 36 },
-  { n: 4, name: "مشط الجذور", benefit: "يوصّل الزيت للجذور بلا تبذير", x: 797, y: 100 },
-  { n: 5, name: "فرشة التدليك", benefit: "تدلّك الفروة و تفيّق البصيلات", x: 178, y: 40 },
+  {
+    n: 1,
+    name: "السدر البلدي",
+    benefits: ["يوقف التساقط و يعزّز النمو", "ينظّف الفروة بعمق و يقضي على القشرة", "يعطي لمعان و حيوية", "يمنح كثافة و قوة من الجذور"],
+    x: 500,
+    y: 44,
+  },
+  {
+    n: 2,
+    name: "زيت إكليل الجبل",
+    benefits: ["يحفّز نمو الشعر", "يكثّف الفراغات", "يقوّي البصيلات", "يمنع التساقط"],
+    x: 298,
+    y: 372,
+  },
+  {
+    n: 3,
+    name: "ديرما رولر 540",
+    benefits: ["ينشّط الدورة الدموية", "يدخّل الزيت للجذور", "يفيّق البصيلات النايمة"],
+    x: 678,
+    y: 30,
+  },
+  {
+    n: 4,
+    name: "مشط الجذور",
+    benefits: ["يوصّل الزيت للجذور مباشرة", "بلا تبذير و بلا وسخ"],
+    x: 797,
+    y: 92,
+  },
+  {
+    n: 5,
+    name: "فرشة التدليك",
+    benefits: ["تدلّك الفروة", "تنشّط الدورة الدموية", "تنحّي القشرة"],
+    x: 178,
+    y: 34,
+  },
 ];
 
 const NumBadge: React.FC<{
@@ -487,39 +517,50 @@ const NumBadge: React.FC<{
 const KitList: React.FC = () => (
   <div
     style={{
-      margin: "0 44px",
+      margin: "0 40px",
       display: "flex",
       flexDirection: "column",
-      gap: 4,
+      gap: 11,
       direction: "rtl",
     }}
   >
     {KIT_ITEMS.map((k) => (
-      <div key={k.n} style={{ display: "flex", alignItems: "center", gap: 14 }}>
-        <NumBadge n={k.n} size={46} />
+      <div key={k.n} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <NumBadge n={k.n} size={44} />
         <div
           style={{
+            width: 220,
+            flexShrink: 0,
             fontFamily: bodyFont,
             fontWeight: 900,
-            fontSize: 30,
+            fontSize: 29,
+            lineHeight: 1.1,
             color: NAVY,
             whiteSpace: "nowrap",
           }}
         >
           {k.name}
         </div>
-        <div style={{ color: GOLD, fontSize: 26, fontWeight: 900 }}>←</div>
         <div
           style={{
+            flex: 1,
+            display: "flex",
+            flexWrap: "wrap",
+            columnGap: 14,
+            rowGap: 0,
             fontFamily: bodyFont,
             fontWeight: 700,
-            fontSize: 23,
-            lineHeight: 1.2,
+            fontSize: 22,
+            lineHeight: 1.3,
             color: "#3D4A5C",
-            flex: 1,
           }}
         >
-          {k.benefit}
+          {k.benefits.map((b) => (
+            <span key={b} style={{ whiteSpace: "nowrap" }}>
+              <span style={{ color: GREEN, fontWeight: 900 }}>✓ </span>
+              {b}
+            </span>
+          ))}
         </div>
       </div>
     ))}
@@ -594,7 +635,7 @@ const Card: React.FC<{ readonly variant: Variant }> = ({ variant }) => (
         <div style={{ position: "absolute", top: 305, left: 0, right: 0 }}>
           <KitPhoto />
         </div>
-        <div style={{ position: "absolute", top: 784, left: 0, right: 0 }}>
+        <div style={{ position: "absolute", top: 772, left: 0, right: 0 }}>
           <KitList />
         </div>
       </>
