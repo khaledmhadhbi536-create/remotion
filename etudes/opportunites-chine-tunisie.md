@@ -118,7 +118,7 @@ Justifications courtes :
 - Batterie seule, relevé du 10 juin 2026 chez un revendeur : LiFePO4 48 V/100 Ah (≈ 5 kWh) à 6 270 DT TTC [E] ([ProTunisie](https://protunisie.com/energie-solaire/installation-photovoltaique/prix-batteries-panneaux-solaires-tunisie/)).
 - Comparaison Europe : batteries rack LFP de 155 à 230 €/kWh au détail [E] ([calcul-solaire.fr](https://calcul-solaire.fr/blog/batterie-stockage-solaire-2026/)) ; onduleur hybride Deye 10 kW triphasé à 2 810 € TTC au détail [F] ([Wattuneed](https://www.wattuneed.com/fr/onduleurs-hybrides/26950-onduleur-hybride-deye-tri-10-kw-sun-10k-sg04lp3-eu-0768563821059.html)).
 
-**Conclusion sur les prix :** le prix tunisien d'un kWh de batterie installé (≈ 1 300 DT TTC/kWh d'après le relevé ci-dessus, batterie seule) semble nettement supérieur au coût d'achat en Chine, même après taxes. Il y a de la place pour une marge, **à condition de confirmer les prix départ usine (FOB)**.
+**Conclusion sur les prix :** le prix tunisien d'un kWh de batterie (≈ 1 300 DT TTC/kWh d'après le relevé ci-dessus, batterie seule) semble nettement supérieur au coût d'achat en Chine, même après taxes. Il y a de la place pour une marge, **à condition de confirmer les prix départ usine (FOB)**.
 
 #### Concurrents
 
