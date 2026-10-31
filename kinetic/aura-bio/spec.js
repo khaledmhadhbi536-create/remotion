@@ -5,7 +5,7 @@ import { Words, Picture, Fly, Hero, Logo } from './blocks.js';
 
 export default {
   title: 'AURA BIO - Pack 5 en 1',
-  bpm: 160, beats: 54, fps: 60,
+  bpm: 160, beats: 54, fps: 30,
   palette: { bg: '#071A33', paper: '#FBF4E8', accent: '#D9A441', hot: '#B8621B', ink: '#071A33' },
   hud: 'AURA BIO  ·  PACK 5 EN 1', hudOut: [51, 53],
   // the drop of the track is beat 8 (3.0 s); the music stops dead on the logo hit
