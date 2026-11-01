@@ -5,7 +5,7 @@ os.makedirs('seg2', exist_ok=True); os.makedirs('out', exist_ok=True)
 
 # chapters in recipe order; each shot: (clip, in, out, speed). speed < 1 = slow motion.
 CH = [
-    ('intro',     [('01', 0, None, 1)]),                                   # full clip, never cut
+    ('intro',     [('01', 0, 18.7, 1)]),                                 # cut when the hand reaches for the phone (no sink)                                   # full clip, never cut
     ('ingredients', [('02', .3, 6.5, 1)]),
     ('prep',      [('03', 8, 20, 2), ('03', 46, 58, 2)]),
     ('boil',      [('04', 2, 9, 1), ('05', 4, 7, .8), ('05', 7, 11, 1)]),
@@ -95,15 +95,15 @@ for i in range(1, len(segs)):
 total = t
 json.dump({'total': total, 'intro': lens[0], 'chapters': list(zip([c[0] for c in CH], lens))}, open('out/timeline2.json', 'w'), indent=1)
 print('total', round(total, 2), 's', flush=True)
-M0 = lens[0] - 8 * 4 * BEAT
+M0 = lens[0] - 8 * 4 * BEAT   # music time at film 0 is -M0; a bar line lands on the cut after clip 01
 subprocess.run(['python3', '-I', 'music.py', f'{total - M0:.3f}', 'out/music2.wav'], check=True)
 # music: quiet under the spoken intro, then full; final 2.5 s fade on picture and sound
 it = lens[0]
-fc.append(f"[{len(segs)}:a]adelay={int(M0*1000)}:all=1,volume='if(lt(t,{it - 1.5:.2f}),0.32,if(lt(t,{it + .5:.2f}),0.32+0.68*(t-{it - 1.5:.2f})/2,1))':eval=frame[mus]")
+fc.append(f"[{len(segs)}:a]{(f'adelay={int(M0*1000)}:all=1,' if M0 >= 0 else f'atrim=start={-M0:.3f},asetpts=PTS-STARTPTS,')}volume='if(lt(t,{it - 1.5:.2f}),0.32,if(lt(t,{it + .5:.2f}),0.32+0.68*(t-{it - 1.5:.2f})/2,1))':eval=frame[mus]")
 fc.append(f'{a}[mus]amix=inputs=2:normalize=0:duration=first,loudnorm=I=-14:TP=-1:LRA=11[aout]')
 fc.append(f'{v}fade=t=out:st={total - 2.5:.3f}:d=2.5[vout]')
 subprocess.run(['ffmpeg', '-v', 'error', '-y', *inputs, '-i', 'out/music2.wav', '-filter_complex', ';'.join(fc),
                 '-map', '[vout]', '-map', '[aout]', '-c:v', 'libx264', '-preset', 'slow', '-crf', '17', '-profile:v', 'high',
                 '-level', '4.2', '-pix_fmt', 'yuv420p', '-r', str(FPS), '-c:a', 'aac', '-b:a', '256k', '-ar', '48000',
-                '-movflags', '+faststart', 'out/lasagne_9x16_v2.mp4'], check=True)
+                '-movflags', '+faststart', 'out/lasagne_9x16_v3.mp4'], check=True)
 print('done')
