@@ -1,4 +1,4 @@
-# AURA BIO, kinetic promo (pack 5 en 1, 49 DT)
+# AURA BIO, kinetic promo (pack 4 en 1, 39 DT + 8 DT livraison)
 
 A 20 s kinetic typography promo made with the `scenario-kinetic-film` skill (`.claude/skills/`).
 160 BPM, 54 beats, French copy, brand colours from `src/theme.ts`. Finished videos: `renders/kinetic/`.
