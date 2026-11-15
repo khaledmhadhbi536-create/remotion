@@ -27,10 +27,19 @@ import { PackIntroScene } from "./scenes/PackIntroScene";
 import { StepScene } from "./scenes/StepScene";
 import { ValueScene } from "./scenes/ValueScene";
 import { colors } from "./theme";
+import { ADS } from "./almozon/ads";
+import { FPS, INTRO, Plane3s, RouteAd, adFrames } from "./almozon/RouteAds";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* Al Mozon Academy — "votre route vers l'Allemagne" (9:16) */}
+      <Folder name="AlMozon">
+        <Composition id="AMZ-AVION-3s" component={Plane3s} durationInFrames={INTRO} fps={FPS} width={1080} height={1920} />
+        {ADS.map((a) => (
+          <Composition key={a.id} id={a.id} component={RouteAd} defaultProps={{ spec: a }} durationInFrames={adFrames(a)} fps={FPS} width={1080} height={1920} />
+        ))}
+      </Folder>
       {/* 5-piece hair pack: 38s, 1080×1080 (1:1 feed) + 9:16 reel with captions */}
       <Composition
         id="HairPackAd"
