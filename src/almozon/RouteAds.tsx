@@ -107,13 +107,13 @@ const TopCard: React.FC<{
     <div
       style={{
         position: "absolute",
-        left: 48,
-        right: 48,
+        left: 14,
+        right: 14,
         top,
         minHeight,
         background: C.white,
         borderRadius: 36,
-        padding: "40px 52px",
+        padding: "40px 70px",
         boxShadow: "0 18px 50px rgba(0,0,0,0.22)",
         display: "flex",
         flexDirection: "column",
