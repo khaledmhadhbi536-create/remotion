@@ -120,12 +120,11 @@ const TopCard: React.FC<{
         justifyContent: "center",
         gap: 14,
         fontFamily: bodyFont,
-        transform: `translateY(${(1 - s) * -40}px) scale(${0.94 + 0.06 * s})`,
-        opacity: Math.min(1, s * 1.4),
+        transform: `scale(${0.97 + 0.03 * s})`,
       }}
     >
       {tag ? (
-        <div>
+        <div style={{ opacity: s }}>
           <Pill>{tag}</Pill>
         </div>
       ) : null}
@@ -135,6 +134,8 @@ const TopCard: React.FC<{
           fontWeight: 900,
           lineHeight: 1.08,
           color: C.dark,
+          opacity: s,
+          transform: `translateY(${(1 - s) * 24}px)`,
         }}
       >
         {line1}
@@ -639,7 +640,7 @@ const ShotScene: React.FC<{ shot: Shot }> = ({ shot }) => {
         line1={shot.line1}
         line2={shot.line2}
         sub={shot.sub}
-        delay={2}
+        delay={0}
         minHeight={kind === "footage" ? 560 : 440}
       />
       <Audio src={staticFile("audio/pop.mp3")} volume={0.35} />
