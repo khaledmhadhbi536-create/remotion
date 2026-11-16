@@ -1,18 +1,18 @@
 {
  "fps": 30,
- "total": 49.323,
- "durationInFrames": 1480,
+ "total": 44.995,
+ "durationInFrames": 1350,
  "scenes": [
   {
    "start": 0.0,
-   "end": 12.265,
+   "end": 10.611,
    "title": "UN CADRE D'APPRENTISSAGE\nEXCEPTIONNEL.",
    "shots": [
     {
      "src": "almozon/clips/s0_0.mp4",
      "from_": 0,
      "start": 0.0,
-     "end": 3.445,
+     "end": 3.034,
      "rate": 1,
      "crop": 1.5,
      "source": [
@@ -24,8 +24,8 @@
     {
      "src": "almozon/clips/s0_1.mp4",
      "from_": 0,
-     "start": 3.045,
-     "end": 5.221,
+     "start": 2.634,
+     "end": 4.571,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -37,8 +37,8 @@
     {
      "src": "almozon/clips/s0_2.mp4",
      "from_": 0,
-     "start": 4.821,
-     "end": 6.575,
+     "start": 4.171,
+     "end": 5.742,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -50,8 +50,8 @@
     {
      "src": "almozon/clips/s0_3.mp4",
      "from_": 0,
-     "start": 6.175,
-     "end": 9.958,
+     "start": 5.342,
+     "end": 8.669,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -63,8 +63,8 @@
     {
      "src": "almozon/clips/s0_4.mp4",
      "from_": 0,
-     "start": 9.558,
-     "end": 12.665,
+     "start": 8.269,
+     "end": 11.011,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -76,15 +76,15 @@
    ]
   },
   {
-   "start": 12.265,
-   "end": 22.801,
+   "start": 10.611,
+   "end": 19.359,
    "title": "DES ENSEIGNANTS COMPÉTENTS\nET EXPÉRIMENTÉS.",
    "shots": [
     {
      "src": "almozon/clips/s1_0.mp4",
      "from_": 0,
-     "start": 12.265,
-     "end": 16.037,
+     "start": 10.611,
+     "end": 13.81,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -96,8 +96,8 @@
     {
      "src": "almozon/clips/s1_1.mp4",
      "from_": 0,
-     "start": 15.637,
-     "end": 18.565,
+     "start": 13.41,
+     "end": 15.91,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -109,8 +109,8 @@
     {
      "src": "almozon/clips/s1_2.mp4",
      "from_": 0,
-     "start": 18.165,
-     "end": 21.094,
+     "start": 15.51,
+     "end": 18.009,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -122,8 +122,8 @@
     {
      "src": "almozon/clips/s1_3.mp4",
      "from_": 0,
-     "start": 20.694,
-     "end": 23.201,
+     "start": 17.609,
+     "end": 19.759,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -135,15 +135,15 @@
    ]
   },
   {
-   "start": 22.801,
-   "end": 32.016,
+   "start": 19.359,
+   "end": 28.249,
    "title": "UN ESPACE UNIQUE\nÀ BEN AROUS.",
    "shots": [
     {
      "src": "almozon/clips/s2_0.mp4",
      "from_": 0,
-     "start": 22.801,
-     "end": 25.805,
+     "start": 19.359,
+     "end": 22.271,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -155,8 +155,8 @@
     {
      "src": "almozon/clips/s2_1.mp4",
      "from_": 0,
-     "start": 25.405,
-     "end": 28.209,
+     "start": 21.871,
+     "end": 24.591,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -168,8 +168,8 @@
     {
      "src": "almozon/clips/s2_2.mp4",
      "from_": 0,
-     "start": 27.809,
-     "end": 31.014,
+     "start": 24.191,
+     "end": 27.296,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -181,8 +181,8 @@
     {
      "src": "almozon/clips/s2_3.mp4",
      "from_": 0,
-     "start": 30.614,
-     "end": 32.416,
+     "start": 26.896,
+     "end": 28.649,
      "rate": 1,
      "crop": 1.6,
      "source": [
@@ -194,17 +194,17 @@
    ]
   },
   {
-   "start": 32.016,
-   "end": 44.34,
+   "start": 28.249,
+   "end": 41.319,
    "title": "ALLEMAND A1 • A2 • B1 • B2\nPRÉPARATION AUX EXAMENS GOETHE",
    "shots": [
     {
      "src": "almozon/clips/s3_0.mp4",
      "from_": 0,
-     "start": 32.016,
-     "end": 36.605,
+     "start": 28.249,
+     "end": 33.091,
      "rate": 1,
-     "crop": 1.5,
+     "crop": 1.68,
      "source": [
       "p3",
       0.0,
@@ -214,8 +214,8 @@
     {
      "src": "almozon/clips/s3_1.mp4",
      "from_": 0,
-     "start": 36.205,
-     "end": 38.538,
+     "start": 32.691,
+     "end": 35.141,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -227,8 +227,8 @@
     {
      "src": "almozon/clips/s3_2.mp4",
      "from_": 0,
-     "start": 38.138,
-     "end": 40.068,
+     "start": 34.741,
+     "end": 36.764,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -240,8 +240,8 @@
     {
      "src": "almozon/clips/s3_3.mp4",
      "from_": 0,
-     "start": 39.668,
-     "end": 42.485,
+     "start": 36.364,
+     "end": 39.327,
      "rate": 1,
      "crop": 1.5,
      "source": [
@@ -253,8 +253,8 @@
     {
      "src": "almozon/clips/s3_4.mp4",
      "from_": 0,
-     "start": 42.085,
-     "end": 44.84,
+     "start": 38.927,
+     "end": 41.819,
      "rate": 1,
      "crop": 1.32,
      "source": [
@@ -266,83 +266,83 @@
    ]
   }
  ],
- "endStart": 43.84,
+ "endStart": 40.819,
  "subs": [
   {
-   "start": 0.9,
-   "end": 4.648,
+   "start": 0.6,
+   "end": 2.935,
    "text": "Vous cherchez un centre d'allemand qui sort de l'ordinaire ?",
    "rtl": false
   },
   {
-   "start": 4.948,
-   "end": 8.252,
+   "start": 3.085,
+   "end": 6.607,
    "text": "في Al Mozon Academy، اخترنالك فضاء مختلف، فيلا",
    "rtl": true
   },
   {
-   "start": 8.252,
-   "end": 11.915,
+   "start": 6.607,
+   "end": 10.511,
    "text": "راقية وحديقة تعطيك الراحة والجو المناسب باش تتعلّم.",
    "rtl": true
   },
   {
-   "start": 12.615,
-   "end": 16.018,
+   "start": 10.961,
+   "end": 13.519,
    "text": "Parce que la réussite commence par un bon encadrement.",
    "rtl": false
   },
   {
-   "start": 16.318,
-   "end": 19.421,
+   "start": 13.669,
+   "end": 16.497,
    "text": "مع أساتذة أكفاء وعندهم الخبرة، يرافقوك خطوة",
    "rtl": true
   },
   {
-   "start": 19.421,
-   "end": 22.451,
+   "start": 16.497,
+   "end": 19.259,
    "text": "بخطوة باش تطوّر مستواك في اللغة الألمانية.",
    "rtl": true
   },
   {
-   "start": 23.151,
-   "end": 26.899,
+   "start": 19.709,
+   "end": 23.977,
    "text": "Un espace exceptionnel, dans un emplacement privilégié à Ben Arous.",
    "rtl": false
   },
   {
-   "start": 27.199,
-   "end": 31.666,
+   "start": 24.127,
+   "end": 28.149,
    "text": "موش كان تقرا الألمانية، زادة تتعلّم في محيط مريح ومميّز.",
    "rtl": true
   },
   {
-   "start": 32.366,
-   "end": 34.647,
+   "start": 28.599,
+   "end": 31.099,
    "text": "Des formations adaptées à tous les",
    "rtl": false
   },
   {
-   "start": 34.647,
-   "end": 36.19,
+   "start": 31.099,
+   "end": 32.79,
    "text": "niveaux : A1, A2, B1 et",
    "rtl": false
   },
   {
-   "start": 36.19,
-   "end": 38.873,
+   "start": 32.79,
+   "end": 35.731,
    "text": "B2, avec préparation aux examens Goethe.",
    "rtl": false
   },
   {
-   "start": 39.173,
-   "end": 43.64,
+   "start": 35.881,
+   "end": 40.869,
    "text": "مستقبلك يبدأ باللغة الألمانية، والبداية تكون مع Al Mozon Academy.",
    "rtl": true
   },
   {
-   "start": 44.34,
-   "end": 46.723,
+   "start": 41.319,
+   "end": 43.045,
    "text": "سجّل توا وخوذ بلاصتك !",
    "rtl": true
   }
@@ -353,90 +353,90 @@
    "scene": 0,
    "lang": "fr",
    "text": "Vous cherchez un centre d'allemand qui sort de l'ordinaire ?",
-   "d": 3.748,
-   "file": null,
-   "start": 0.9,
-   "end": 4.648
+   "d": 2.335,
+   "file": "voice/vo_0.wav",
+   "start": 0.6,
+   "end": 2.935
   },
   {
    "i": 1,
    "scene": 0,
    "lang": "ar",
    "text": "في Al Mozon Academy، اخترنالك فضاء مختلف، فيلا راقية وحديقة تعطيك الراحة والجو المناسب باش تتعلّم.",
-   "d": 6.967,
-   "file": null,
-   "start": 4.948,
-   "end": 11.915
+   "d": 7.426,
+   "file": "voice/vo_1.wav",
+   "start": 3.085,
+   "end": 10.511
   },
   {
    "i": 2,
    "scene": 1,
    "lang": "fr",
    "text": "Parce que la réussite commence par un bon encadrement.",
-   "d": 3.403,
-   "file": null,
-   "start": 12.615,
-   "end": 16.018
+   "d": 2.558,
+   "file": "voice/vo_2.wav",
+   "start": 10.961,
+   "end": 13.519
   },
   {
    "i": 3,
    "scene": 1,
    "lang": "ar",
    "text": "مع أساتذة أكفاء وعندهم الخبرة، يرافقوك خطوة بخطوة باش تطوّر مستواك في اللغة الألمانية.",
-   "d": 6.133,
-   "file": null,
-   "start": 16.318,
-   "end": 22.451
+   "d": 5.59,
+   "file": "voice/vo_3.wav",
+   "start": 13.669,
+   "end": 19.259
   },
   {
    "i": 4,
    "scene": 2,
    "lang": "fr",
    "text": "Un espace exceptionnel, dans un emplacement privilégié à Ben Arous.",
-   "d": 3.748,
-   "file": null,
-   "start": 23.151,
-   "end": 26.899
+   "d": 4.268,
+   "file": "voice/vo_4.wav",
+   "start": 19.709,
+   "end": 23.977
   },
   {
    "i": 5,
    "scene": 2,
    "lang": "ar",
    "text": "موش كان تقرا الألمانية، زادة تتعلّم في محيط مريح ومميّز.",
-   "d": 4.467,
-   "file": null,
-   "start": 27.199,
-   "end": 31.666
+   "d": 4.022,
+   "file": "voice/vo_5.wav",
+   "start": 24.127,
+   "end": 28.149
   },
   {
    "i": 6,
    "scene": 3,
    "lang": "fr",
    "text": "Des formations adaptées à tous les niveaux : A1, A2, B1 et B2, avec préparation aux examens Goethe.",
-   "d": 6.507,
-   "file": null,
-   "start": 32.366,
-   "end": 38.873
+   "d": 7.132,
+   "file": "voice/vo_6.wav",
+   "start": 28.599,
+   "end": 35.731
   },
   {
    "i": 7,
    "scene": 3,
    "lang": "ar",
    "text": "مستقبلك يبدأ باللغة الألمانية، والبداية تكون مع Al Mozon Academy.",
-   "d": 4.467,
-   "file": null,
-   "start": 39.173,
-   "end": 43.64
+   "d": 4.988,
+   "file": "voice/vo_7.wav",
+   "start": 35.881,
+   "end": 40.869
   },
   {
    "i": 8,
    "scene": 4,
    "lang": "ar",
    "text": "سجّل توا وخوذ بلاصتك !",
-   "d": 2.383,
-   "file": null,
-   "start": 44.34,
-   "end": 46.723
+   "d": 1.726,
+   "file": "voice/vo_8.wav",
+   "start": 41.319,
+   "end": 43.045
   }
  ],
  "contact": {
