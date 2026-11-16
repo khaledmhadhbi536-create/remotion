@@ -9,3 +9,4 @@ out
 __pycache__
 renders/lasagne/
 public/lasagne/
+public/almozon/
