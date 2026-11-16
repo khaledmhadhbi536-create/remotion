@@ -31,12 +31,15 @@ import { LASAGNE_FRAMES, LasagneV4 } from "./lasagne/LasagneV4";
 import { ALMOZON_FRAMES, AlMozonPremium } from "./almozon/AlMozonPremium";
 import { ALMOZON_V3_FRAMES, AlMozonPremiumV3 } from "./almozon/AlMozonPremiumV3";
 import { ALMOZON_V4_FRAMES, AlMozonPremiumV4 } from "./almozon/AlMozonPremiumV4";
+import { ALMOZON_V5_FRAMES, AlMozonPremiumV5 } from "./almozon/AlMozonPremiumV5";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
       {/* Al Mozon Academy premium spot: with and without subtitles */}
       <Composition id="AlMozonPremiumSubs" component={AlMozonPremium} durationInFrames={ALMOZON_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ subtitles: true }} />
+      <Composition id="AlMozonV5Subs" component={AlMozonPremiumV5} durationInFrames={ALMOZON_V5_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ subtitles: true }} />
+      <Composition id="AlMozonV5Clean" component={AlMozonPremiumV5} durationInFrames={ALMOZON_V5_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ subtitles: false }} />
       <Composition id="AlMozonV4Subs" component={AlMozonPremiumV4} durationInFrames={ALMOZON_V4_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ subtitles: true }} />
       <Composition id="AlMozonV4Clean" component={AlMozonPremiumV4} durationInFrames={ALMOZON_V4_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ subtitles: false }} />
       <Composition id="AlMozonV3Subs" component={AlMozonPremiumV3} durationInFrames={ALMOZON_V3_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ subtitles: true }} />
