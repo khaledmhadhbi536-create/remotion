@@ -31,15 +31,15 @@ for i, (sc, lang, text) in enumerate(VO):
     f = f'voice/vo_{i}.wav'
     d = dur(f) if os.path.exists(f) else len(text.split()) / (2.9 if lang == 'fr' else 2.4) + .3
     segs.append(dict(i=i, scene=sc, lang=lang, text=text, d=round(d, 3), file=f if os.path.exists(f) else None))
-t = 0.9; scenes = [dict(start=0.0) for _ in range(4)]
+t = 0.6; scenes = [dict(start=0.0) for _ in range(4)]
 for s in segs:
     prev = segs[s['i'] - 1] if s['i'] else None
     if prev is not None:
-        t += .7 if s['scene'] != prev['scene'] else .3
+        t += .45 if s['scene'] != prev['scene'] else .15
         if s['scene'] != prev['scene'] and s['scene'] < 4: scenes[s['scene']]['start'] = round(t - .35, 3)
     s['start'] = round(t, 3); s['end'] = round(t + s['d'], 3); t = s['end']
 END_START = round(segs[8]['start'] - .5, 3)
-TOTAL = round(segs[8]['end'] + 2.6, 3)
+TOTAL = round(segs[8]['end'] + 1.95, 3)
 for k in range(4):
     scenes[k]['end'] = scenes[k + 1]['start'] if k < 3 else END_START + .5
     a, b = scenes[k]['start'], scenes[k]['end']; tot = sum(x[2] - x[1] for x in SHOTS[k]); rate = tot / (b - a); shots = []; st = a
