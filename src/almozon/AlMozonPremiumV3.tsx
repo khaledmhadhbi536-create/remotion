@@ -16,7 +16,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import "../theme"; // loads Cairo + Playfair Display from public/fonts
-import plan from "./plan_v2.json";
+import plan from "./plan_v3.json";
+import geo from "./benarous_map.json";
 
 const T = {
   orange: "#F07926",
@@ -202,13 +203,86 @@ const EndCard: React.FC = () => {
         >
           INSCRIPTIONS OUVERTES
         </div>
-        <div style={{ marginTop: 40, fontFamily: T.sans, fontWeight: 700, fontSize: 48, color: T.ink, ...rise(c) }}>
+        <div style={{ marginTop: 34, fontFamily: T.sans, fontWeight: 600, fontSize: 40, color: "#3A3A3A", ...rise(c) }}>
+          Contactez-nous pour plus d'informations
+        </div>
+        <div style={{ marginTop: 10, fontFamily: T.sans, fontWeight: 700, fontSize: 48, color: T.ink, ...rise(c) }}>
           WhatsApp {plan.contact.whatsapp}
         </div>
         <div style={{ marginTop: 6, fontFamily: T.sans, fontWeight: 500, fontSize: 36, color: "#555", ...rise(c) }}>
           {plan.contact.place}
         </div>
       </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
+
+// map of Ben Arous governorate (OpenStreetMap outlines), then a flash and a pin on Radès, the camera eases in on it
+const MapOverlay: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const m = plan.map;
+  if (t < m.start - 0.05 || t > m.end + 0.4) return null;
+  const inP = spring({ frame: Math.round((t - m.start) * fps), fps, config: { damping: 20, stiffness: 90, mass: 1 } });
+  const out = interpolate(t, [m.end, m.end + 0.35], [1, 0], { ...clamp, easing: T.in });
+  const fl = t - m.flash;
+  const hit = spring({ frame: Math.round(fl * fps), fps, config: { damping: 12, stiffness: 160, mass: 0.6 } });
+  const flash = interpolate(fl, [0, 0.06, 0.5], [0, 0.9, 0], clamp);
+  const rades = geo.deleg.find((d) => d.name === "Radès")!;
+  const [cx, cy] = rades.c;
+  const zoom = 1 + 0.35 * interpolate(fl, [0.1, 1.4], [0, 1], { ...clamp, easing: T.inOut });
+  const S = 0.95, W = geo.w * S, X = (1080 - W) / 2, Y = 560;
+  const ox = X + cx * S, oy = Y + cy * S;
+  return (
+    <AbsoluteFill style={{ opacity: Math.min(1, inP * 1.2) * out }}>
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, #13110F 0%, #1E1A16 100%)" }} />
+      <AbsoluteFill style={{ transform: `scale(${zoom})`, transformOrigin: `${ox}px ${oy}px` }}>
+        <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
+          <g transform={`translate(${X},${Y + (1 - inP) * 40}) scale(${S})`}>
+            <path d={geo.gov} fill="#3A332C" stroke="#8C7B6A" strokeWidth={3} />
+            {geo.deleg.map((d) => (
+              <path key={d.name} d={d.d} fill={d.name === "Radès" ? T.orange : "#4A4139"} fillOpacity={d.name === "Radès" ? hit : 1}
+                stroke="#BFAF9C" strokeOpacity={0.55} strokeWidth={1.6} />
+            ))}
+            {[0, 1, 2].map((k) => {
+              const r = interpolate(((fl - k * 0.35) % 1.05 + 1.05) % 1.05, [0, 1.05], [10, 120]);
+              const o = fl > 0 ? interpolate(((fl - k * 0.35) % 1.05 + 1.05) % 1.05, [0, 1.05], [0.7, 0]) : 0;
+              return <circle key={k} cx={cx} cy={cy} r={r} fill="none" stroke={T.orange} strokeWidth={4} opacity={o} />;
+            })}
+          </g>
+        </svg>
+        {/* pin + label on Radès */}
+        <div style={{ position: "absolute", left: ox, top: oy, transform: `translate(-50%, -100%) translateY(${(1 - hit) * -60}px) scale(${hit})`, opacity: hit }}>
+          <div style={{ background: T.white, color: T.ink, borderRadius: 18, padding: "10px 22px", fontFamily: T.sans, fontWeight: 800, fontSize: 38, whiteSpace: "nowrap", boxShadow: "0 12px 30px rgba(0,0,0,0.45)" }}>
+            Al Mozon Academy · <span style={{ color: T.orange }}>Radès</span>
+          </div>
+          <div style={{ width: 4, height: 46, background: T.white, margin: "0 auto" }} />
+          <div style={{ width: 22, height: 22, borderRadius: 11, background: T.orange, border: "4px solid #fff", margin: "-4px auto 0" }} />
+        </div>
+      </AbsoluteFill>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 1700, textAlign: "center", fontFamily: T.sans, fontWeight: 700, fontSize: 34, letterSpacing: "0.2em", color: "#CDBFAE", opacity: inP }}>
+        GOUVERNORAT DE BEN AROUS
+      </div>
+      <AbsoluteFill style={{ background: `radial-gradient(circle at ${ox}px ${oy}px, rgba(255,240,220,${flash}) 0%, rgba(255,200,140,${flash * 0.5}) 18%, transparent 45%)` }} />
+    </AbsoluteFill>
+  );
+};
+
+// the plane flies from Al Mozon (Radès) to München: real clip from the academy's campaign
+const PlaneOverlay: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const p = plan.plane;
+  if (t < p.start - 0.05 || t > p.end + 0.3) return null;
+  const o = interpolate(t, [p.start, p.start + 0.25, p.end, p.end + 0.3], [0, 1, 1, 0], { ...clamp, easing: T.inOut });
+  return (
+    <AbsoluteFill style={{ opacity: o }}>
+      <Sequence from={Math.round(p.start * fps)} layout="none">
+        <OffthreadVideo src={staticFile("almozon/avion.mp4")} trimBefore={Math.round(0.8 * fps)} playbackRate={1.05} muted style={{ width: "100%", height: "100%" }} />
+      </Sequence>
     </AbsoluteFill>
   );
 };
@@ -226,13 +300,15 @@ const Finish: React.FC = () => {
   );
 };
 
-export const ALMOZON_V2_FRAMES = plan.durationInFrames;
+export const ALMOZON_V3_FRAMES = plan.durationInFrames;
 
-export const AlMozonPremiumV2: React.FC<{ subtitles: boolean }> = ({ subtitles }) => (
+export const AlMozonPremiumV3: React.FC<{ subtitles: boolean }> = ({ subtitles }) => (
   <AbsoluteFill style={{ backgroundColor: T.ink }}>
     <Footage />
     <Grade />
+    <MapOverlay />
     <SceneTitle />
+    <PlaneOverlay />
     {subtitles ? <Subtitles /> : null}
     <EndCard />
     <Finish />
