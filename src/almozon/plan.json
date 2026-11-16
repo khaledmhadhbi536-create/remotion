@@ -12,60 +12,65 @@
      "src": "almozon/clips/s0_0.mp4",
      "from_": 0,
      "start": 0.0,
-     "end": 3.252,
+     "end": 3.445,
      "rate": 1,
+     "crop": 1.5,
      "source": [
-      "p4",
-      6.0,
-      7.5
+      "p6",
+      0.8,
+      2.6
      ]
     },
     {
      "src": "almozon/clips/s0_1.mp4",
      "from_": 0,
-     "start": 2.852,
-     "end": 5.059,
+     "start": 3.045,
+     "end": 5.221,
      "rate": 1,
+     "crop": 1.32,
      "source": [
-      "marque",
-      6.0,
-      6.95
+      "p4",
+      5.85,
+      6.9
      ]
     },
     {
      "src": "almozon/clips/s0_2.mp4",
      "from_": 0,
-     "start": 4.659,
-     "end": 6.77,
+     "start": 4.821,
+     "end": 6.575,
      "rate": 1,
+     "crop": 1.32,
      "source": [
-      "p4",
-      0.0,
-      0.9
+      "marque",
+      5.6,
+      6.4
      ]
     },
     {
      "src": "almozon/clips/s0_3.mp4",
      "from_": 0,
-     "start": 6.37,
-     "end": 9.813,
+     "start": 6.175,
+     "end": 9.958,
      "rate": 1,
+     "crop": 1.32,
      "source": [
       "marque",
-      7.0,
+      6.6,
       8.6
      ]
     },
     {
      "src": "almozon/clips/s0_4.mp4",
      "from_": 0,
-     "start": 9.413,
+     "start": 9.558,
      "end": 12.665,
      "rate": 1,
+     "crop": 1.32,
      "source": [
       "marque",
-      11.4,
-      12.9
+      11.0,
+      12.6
      ]
     }
    ]
@@ -79,72 +84,78 @@
      "src": "almozon/clips/s1_0.mp4",
      "from_": 0,
      "start": 12.265,
-     "end": 15.091,
+     "end": 14.799,
      "rate": 1,
+     "crop": 1.32,
      "source": [
       "p2",
       4.0,
-      5.9
+      5.6
      ]
     },
     {
      "src": "almozon/clips/s1_1.mp4",
      "from_": 0,
-     "start": 14.691,
-     "end": 16.305,
+     "start": 14.399,
+     "end": 16.399,
      "rate": 1,
+     "crop": 1.32,
      "source": [
       "p5",
-      5.0,
-      5.95
+      4.2,
+      5.4
      ]
     },
     {
      "src": "almozon/clips/s1_2.mp4",
      "from_": 0,
-     "start": 15.905,
-     "end": 18.731,
+     "start": 15.999,
+     "end": 18.266,
      "rate": 1,
+     "crop": 1.32,
      "source": [
-      "p2",
-      6.0,
-      7.9
+      "plan",
+      2.6,
+      4.0
      ]
     },
     {
      "src": "almozon/clips/s1_3.mp4",
      "from_": 0,
-     "start": 18.331,
-     "end": 19.944,
+     "start": 17.866,
+     "end": 19.867,
      "rate": 1,
+     "crop": 1.32,
      "source": [
       "p3",
-      5.0,
-      5.95
+      4.2,
+      5.4
      ]
     },
     {
      "src": "almozon/clips/s1_4.mp4",
      "from_": 0,
-     "start": 19.544,
-     "end": 22.243,
+     "start": 19.467,
+     "end": 21.867,
      "rate": 1,
+     "crop": 1.32,
      "source": [
       "marque",
-      16.0,
-      17.8
+      15.9,
+      17.4
      ]
     },
     {
      "src": "almozon/clips/s1_5.mp4",
      "from_": 0,
-     "start": 21.843,
+     "start": 21.467,
      "end": 23.201,
      "rate": 1,
+     "crop": 1.32,
      "source": [
-      "marque",
-      14.2,
-      14.95
+      "p5",
+      3.0,
+      4.0
      ]
     }
    ]
@@ -158,48 +169,52 @@
      "src": "almozon/clips/s2_0.mp4",
      "from_": 0,
      "start": 22.801,
-     "end": 27.092,
+     "end": 25.597,
      "rate": 1,
+     "crop": 1.32,
      "source": [
       "marque",
-      18.0,
-      19.9
+      17.9,
+      19.2
      ]
     },
     {
      "src": "almozon/clips/s2_1.mp4",
      "from_": 0,
-     "start": 26.692,
-     "end": 29.14,
+     "start": 25.197,
+     "end": 27.808,
      "rate": 1,
+     "crop": 1.32,
      "source": [
       "marque",
       13.0,
-      14.0
+      14.2
      ]
     },
     {
      "src": "almozon/clips/s2_2.mp4",
      "from_": 0,
-     "start": 28.74,
-     "end": 30.573,
+     "start": 27.408,
+     "end": 31.126,
      "rate": 1,
+     "crop": 1.32,
      "source": [
-      "p4",
-      3.9,
-      4.6
+      "plan",
+      4.2,
+      6.0
      ]
     },
     {
      "src": "almozon/clips/s2_3.mp4",
      "from_": 0,
-     "start": 30.173,
+     "start": 30.726,
      "end": 32.416,
      "rate": 1,
+     "crop": 1.32,
      "source": [
       "plan",
       0.0,
-      0.9
+      0.7
      ]
     }
    ]
@@ -213,72 +228,65 @@
      "src": "almozon/clips/s3_0.mp4",
      "from_": 0,
      "start": 32.016,
-     "end": 34.234,
+     "end": 36.605,
      "rate": 1,
+     "crop": 1.5,
      "source": [
       "p3",
       0.0,
-      0.9
+      2.6
      ]
     },
     {
      "src": "almozon/clips/s3_1.mp4",
      "from_": 0,
-     "start": 33.834,
-     "end": 36.255,
+     "start": 36.205,
+     "end": 38.538,
      "rate": 1,
+     "crop": 1.32,
      "source": [
       "marque",
-      15.0,
-      16.0
+      14.5,
+      15.7
      ]
     },
     {
      "src": "almozon/clips/s3_2.mp4",
      "from_": 0,
-     "start": 35.855,
-     "end": 38.275,
+     "start": 38.138,
+     "end": 40.068,
      "rate": 1,
+     "crop": 1.32,
      "source": [
       "p3",
-      6.0,
-      7.0
+      5.85,
+      6.8
      ]
     },
     {
      "src": "almozon/clips/s3_3.mp4",
      "from_": 0,
-     "start": 37.875,
-     "end": 40.093,
+     "start": 39.668,
+     "end": 42.485,
      "rate": 1,
+     "crop": 1.5,
      "source": [
       "p5",
-      0.0,
-      0.9
+      0.3,
+      1.8
      ]
     },
     {
      "src": "almozon/clips/s3_4.mp4",
      "from_": 0,
-     "start": 39.693,
-     "end": 42.922,
-     "rate": 1,
-     "source": [
-      "p5",
-      6.0,
-      7.4
-     ]
-    },
-    {
-     "src": "almozon/clips/s3_5.mp4",
-     "from_": 0,
-     "start": 42.522,
+     "start": 42.085,
      "end": 44.84,
      "rate": 1,
+     "crop": 1.32,
      "source": [
-      "p2",
-      3.0,
-      3.9
+      "p5",
+      5.6,
+      7.0
      ]
     }
    ]
