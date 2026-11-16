@@ -29,12 +29,15 @@ import { ValueScene } from "./scenes/ValueScene";
 import { colors } from "./theme";
 import { LASAGNE_FRAMES, LasagneV4 } from "./lasagne/LasagneV4";
 import { ALMOZON_FRAMES, AlMozonPremium } from "./almozon/AlMozonPremium";
+import { ALMOZON_V2_FRAMES, AlMozonPremiumV2 } from "./almozon/AlMozonPremiumV2";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
       {/* Al Mozon Academy premium spot: with and without subtitles */}
       <Composition id="AlMozonPremiumSubs" component={AlMozonPremium} durationInFrames={ALMOZON_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ subtitles: true }} />
+      <Composition id="AlMozonV2Subs" component={AlMozonPremiumV2} durationInFrames={ALMOZON_V2_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ subtitles: true }} />
+      <Composition id="AlMozonV2Clean" component={AlMozonPremiumV2} durationInFrames={ALMOZON_V2_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ subtitles: false }} />
       <Composition id="AlMozonPremiumClean" component={AlMozonPremium} durationInFrames={ALMOZON_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ subtitles: false }} />
       {/* Lasagne / gratin cooking edit V4: 9:16, voice-over, motion captions */}
       <Composition id="LasagneV4" component={LasagneV4} durationInFrames={LASAGNE_FRAMES} fps={30} width={1080} height={1920} />
