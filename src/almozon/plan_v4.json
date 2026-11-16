@@ -1,0 +1,540 @@
+{
+ "fps": 30,
+ "total": 43.994,
+ "durationInFrames": 1320,
+ "scenes": [
+  {
+   "start": 0.0,
+   "end": 9.013,
+   "title": "UN CADRE D'APPRENTISSAGE\nEXCEPTIONNEL.",
+   "shots": [
+    {
+     "src": "almozon/clips_v4/s0_0.mp4",
+     "from_": 0,
+     "start": 0.0,
+     "end": 2.638,
+     "rate": 1,
+     "crop": 1.5,
+     "source": [
+      "p6",
+      0.8,
+      2.6
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s0_1.mp4",
+     "from_": 0,
+     "start": 2.238,
+     "end": 3.943,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "p4",
+      5.85,
+      6.9
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s0_2.mp4",
+     "from_": 0,
+     "start": 3.543,
+     "end": 4.938,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "marque",
+      5.6,
+      6.4
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s0_3.mp4",
+     "from_": 0,
+     "start": 4.538,
+     "end": 7.424,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "marque",
+      6.6,
+      8.6
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s0_4.mp4",
+     "from_": 0,
+     "start": 7.024,
+     "end": 9.413,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "marque",
+      11.0,
+      12.6
+     ]
+    }
+   ]
+  },
+  {
+   "start": 9.013,
+   "end": 15.086,
+   "title": "DES ENSEIGNANTS COMPÉTENTS\nET EXPÉRIMENTÉS.",
+   "shots": [
+    {
+     "src": "almozon/clips_v4/s1_0.mp4",
+     "from_": 0,
+     "start": 9.013,
+     "end": 11.356,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "p2",
+      4.0,
+      5.6
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s1_1.mp4",
+     "from_": 0,
+     "start": 10.956,
+     "end": 12.814,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "p5",
+      4.2,
+      5.4
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s1_2.mp4",
+     "from_": 0,
+     "start": 12.414,
+     "end": 14.271,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "p3",
+      4.2,
+      5.4
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s1_3.mp4",
+     "from_": 0,
+     "start": 13.871,
+     "end": 15.486,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "p5",
+      3.0,
+      4.0
+     ]
+    }
+   ]
+  },
+  {
+   "start": 15.086,
+   "end": 22.724,
+   "title": "UN ESPACE UNIQUE\nÀ RADÈS.",
+   "shots": [
+    {
+     "src": "almozon/clips_v4/s2_0.mp4",
+     "from_": 0,
+     "start": 15.086,
+     "end": 17.645,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "marque",
+      17.9,
+      19.2
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s2_1.mp4",
+     "from_": 0,
+     "start": 17.245,
+     "end": 19.637,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "marque",
+      13.0,
+      14.2
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s2_2.mp4",
+     "from_": 0,
+     "start": 19.237,
+     "end": 21.962,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "plan",
+      2.6,
+      4.0
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s2_3.mp4",
+     "from_": 0,
+     "start": 21.562,
+     "end": 23.124,
+     "rate": 1,
+     "crop": 1.6,
+     "source": [
+      "plan",
+      0.0,
+      0.7
+     ]
+    }
+   ]
+  },
+  {
+   "start": 22.724,
+   "end": 29.3,
+   "title": "PROGRAMME FLEXIBLE\nSUR PLACE OU EN LIGNE",
+   "shots": [
+    {
+     "src": "almozon/clips_v4/s3_0.mp4",
+     "from_": 0,
+     "start": 22.724,
+     "end": 24.044,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "marque",
+      17.45,
+      17.85
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s3_1.mp4",
+     "from_": 0,
+     "start": 23.644,
+     "end": 24.688,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "p2",
+      5.72,
+      6.0
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s3_2.mp4",
+     "from_": 0,
+     "start": 24.288,
+     "end": 25.561,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "plan",
+      6.0,
+      6.38
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s3_3.mp4",
+     "from_": 0,
+     "start": 25.161,
+     "end": 29.7,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "plan",
+      4.2,
+      6.0
+     ]
+    }
+   ]
+  },
+  {
+   "start": 29.3,
+   "end": 39.181,
+   "title": "ALLEMAND A1 • A2 • B1 • B2\nPRÉPARATION AUX EXAMENS GOETHE",
+   "shots": [
+    {
+     "src": "almozon/clips_v4/s4_0.mp4",
+     "from_": 0,
+     "start": 29.3,
+     "end": 33.058,
+     "rate": 1,
+     "crop": 1.68,
+     "source": [
+      "p3",
+      0.0,
+      2.6
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s4_1.mp4",
+     "from_": 0,
+     "start": 32.658,
+     "end": 34.608,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "marque",
+      14.5,
+      15.7
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s4_2.mp4",
+     "from_": 0,
+     "start": 34.208,
+     "end": 35.835,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "p3",
+      5.85,
+      6.8
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s4_3.mp4",
+     "from_": 0,
+     "start": 35.435,
+     "end": 37.773,
+     "rate": 1,
+     "crop": 1.5,
+     "source": [
+      "p5",
+      0.3,
+      1.8
+     ]
+    },
+    {
+     "src": "almozon/clips_v4/s4_4.mp4",
+     "from_": 0,
+     "start": 37.373,
+     "end": 39.681,
+     "rate": 1,
+     "crop": 1.32,
+     "source": [
+      "p5",
+      5.6,
+      7.0
+     ]
+    }
+   ]
+  }
+ ],
+ "endStart": 38.681,
+ "subs": [
+  {
+   "start": 0.6,
+   "end": 2.935,
+   "text": "Vous cherchez un centre d'allemand qui sort de l'ordinaire ?",
+   "rtl": false
+  },
+  {
+   "start": 3.085,
+   "end": 6.181,
+   "text": "في Al Mozon Academy، فضاء استثنائي",
+   "rtl": true
+  },
+  {
+   "start": 6.181,
+   "end": 8.913,
+   "text": "يعطيك الجو المناسب باش تتعلّم.",
+   "rtl": true
+  },
+  {
+   "start": 9.363,
+   "end": 11.703,
+   "text": "La réussite commence par un bon encadrement.",
+   "rtl": false
+  },
+  {
+   "start": 11.853,
+   "end": 14.986,
+   "text": "عندنا أساتذة أكفاء، يرافقوك خطوة بخطوة.",
+   "rtl": true
+  },
+  {
+   "start": 15.436,
+   "end": 16.905,
+   "text": "Vous êtes à Radès ou à Ben",
+   "rtl": false
+  },
+  {
+   "start": 16.905,
+   "end": 18.769,
+   "text": "Arous ? Notre centre est à Radès.",
+   "rtl": false
+  },
+  {
+   "start": 18.919,
+   "end": 22.624,
+   "text": "السنتر متاعنا موجود في رادس، قريب منك.",
+   "rtl": true
+  },
+  {
+   "start": 23.074,
+   "end": 24.933,
+   "text": "Programme flexible : sur place, ou",
+   "rtl": false
+  },
+  {
+   "start": 24.933,
+   "end": 26.791,
+   "text": "en ligne sur notre plateforme pro.",
+   "rtl": false
+  },
+  {
+   "start": 26.941,
+   "end": 29.2,
+   "text": "اللي ما ينجمش يجي، يقرا en ligne من دارو.",
+   "rtl": true
+  },
+  {
+   "start": 29.65,
+   "end": 32.696,
+   "text": "De A1 à B2, avec préparation aux examens Goethe.",
+   "rtl": false
+  },
+  {
+   "start": 34.946,
+   "end": 38.731,
+   "text": "مستقبلك يبدا مع Al Mozon Academy.",
+   "rtl": true
+  },
+  {
+   "start": 39.181,
+   "end": 42.044,
+   "text": "اتصل بينا لمزيد من المعلومات !",
+   "rtl": true
+  }
+ ],
+ "voice": [
+  {
+   "i": 0,
+   "scene": 0,
+   "lang": "fr",
+   "text": "Vous cherchez un centre d'allemand qui sort de l'ordinaire ?",
+   "d": 2.335,
+   "file": "voice/vo_0.wav",
+   "start": 0.6,
+   "end": 2.935
+  },
+  {
+   "i": 1,
+   "scene": 0,
+   "lang": "ar",
+   "text": "في Al Mozon Academy، فضاء استثنائي يعطيك الجو المناسب باش تتعلّم.",
+   "d": 5.828,
+   "file": "voice/vo_v4_s0ar.wav",
+   "start": 3.085,
+   "end": 8.913
+  },
+  {
+   "i": 2,
+   "scene": 1,
+   "lang": "fr",
+   "text": "La réussite commence par un bon encadrement.",
+   "d": 2.34,
+   "file": "voice/vo_v4_s1fr.wav",
+   "start": 9.363,
+   "end": 11.703
+  },
+  {
+   "i": 3,
+   "scene": 1,
+   "lang": "ar",
+   "text": "عندنا أساتذة أكفاء، يرافقوك خطوة بخطوة.",
+   "d": 3.133,
+   "file": "voice/vo_v4_s1ar.wav",
+   "start": 11.853,
+   "end": 14.986
+  },
+  {
+   "i": 4,
+   "scene": 2,
+   "lang": "fr",
+   "text": "Vous êtes à Radès ou à Ben Arous ? Notre centre est à Radès.",
+   "d": 3.333,
+   "file": "voice/vo_v4_s2fr.wav",
+   "start": 15.436,
+   "end": 18.769
+  },
+  {
+   "i": 5,
+   "scene": 2,
+   "lang": "ar",
+   "text": "السنتر متاعنا موجود في رادس، قريب منك.",
+   "d": 3.705,
+   "file": "voice/vo_v4_s2ar.wav",
+   "start": 18.919,
+   "end": 22.624
+  },
+  {
+   "i": 6,
+   "scene": 3,
+   "lang": "fr",
+   "text": "Programme flexible : sur place, ou en ligne sur notre plateforme pro.",
+   "d": 3.717,
+   "file": "voice/vo_v4_s3fr.wav",
+   "start": 23.074,
+   "end": 26.791
+  },
+  {
+   "i": 7,
+   "scene": 3,
+   "lang": "ar",
+   "text": "اللي ما ينجمش يجي، يقرا en ligne من دارو.",
+   "d": 2.259,
+   "file": "voice/vo_v4_s3ar.wav",
+   "start": 26.941,
+   "end": 29.2
+  },
+  {
+   "i": 8,
+   "scene": 4,
+   "lang": "fr",
+   "text": "De A1 à B2, avec préparation aux examens Goethe.",
+   "d": 3.046,
+   "file": "voice/vo_v4_s4fr.wav",
+   "start": 29.65,
+   "end": 32.696
+  },
+  {
+   "i": 9,
+   "scene": 4,
+   "lang": "ar",
+   "text": "مستقبلك يبدا مع Al Mozon Academy.",
+   "d": 3.785,
+   "file": "voice/vo_v4_s4ar.wav",
+   "start": 34.946,
+   "end": 38.731
+  },
+  {
+   "i": 10,
+   "scene": 5,
+   "lang": "ar",
+   "text": "اتصل بينا لمزيد من المعلومات !",
+   "d": 2.863,
+   "file": "voice/vo_ctaar.wav",
+   "start": 39.181,
+   "end": 42.044
+  }
+ ],
+ "contact": {
+  "whatsapp": "99 008 008",
+  "place": "Radès"
+ },
+ "map": {
+  "start": 15.636,
+  "flash": 17.269,
+  "end": 22.424
+ },
+ "plane": {
+  "start": 32.796,
+  "end": 34.896
+ }
+}
