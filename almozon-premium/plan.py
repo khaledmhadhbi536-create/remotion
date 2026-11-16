@@ -21,8 +21,8 @@ TITLES = ["UN CADRE D'APPRENTISSAGE\nEXCEPTIONNEL.", "DES ENSEIGNANTS COMPÉTENT
 # real academy footage only: (file, in, out) in seconds; every shot is cropped to hide the old caption cards
 SHOTS = [  # (file, in, out[, crop]) - crop 1.5 where the old ad's hook card sits lower
     [('p6', 0.8, 2.6, 1.5), ('p4', 5.85, 6.9), ('marque', 5.6, 6.4), ('marque', 6.6, 8.6), ('marque', 11.0, 12.6)],   # garden paths, gate + sign, entrance, villa staircase
-    [('p2', 4.0, 5.6), ('p5', 4.2, 5.4), ('plan', 2.6, 4.0), ('p3', 4.2, 5.4), ('marque', 15.9, 17.4), ('p5', 3.0, 4.0)],  # teachers with students
-    [('marque', 17.9, 19.2), ('marque', 13.0, 14.2), ('plan', 4.2, 6.0), ('plan', 0.0, 0.7)],                          # villa stairs, Berlin/Stuttgart rooms, classroom, logo wall
+    [('p2', 4.0, 5.6), ('p5', 4.2, 5.4), ('p3', 4.2, 5.4), ('p5', 3.0, 4.0)],                                        # teachers with students
+    [('marque', 17.9, 19.2), ('marque', 13.0, 14.2), ('plan', 2.6, 4.0), ('plan', 0.0, 0.7, 1.6)],                     # villa stairs, Berlin/Stuttgart rooms, lounge, logo wall
     [('p3', 0.0, 2.6, 1.5), ('marque', 14.5, 15.7), ('p3', 5.85, 6.8), ('p5', 0.3, 1.8, 1.5), ('p5', 5.6, 7.0)],        # students, books, Goethe prep, flag
 ]
 def dur(p): return float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', p], capture_output=True, text=True).stdout)
