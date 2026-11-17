@@ -16,7 +16,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import "../theme"; // loads Cairo + Playfair Display from public/fonts
-import plan from "./plan_v5.json";
+import plan from "./plan_v6.json";
 import geo from "./benarous_map.json";
 
 const T = {
@@ -300,9 +300,9 @@ const Finish: React.FC = () => {
   );
 };
 
-export const ALMOZON_V5_FRAMES = plan.durationInFrames;
+export const ALMOZON_V6_FRAMES = plan.durationInFrames;
 
-export const AlMozonPremiumV5: React.FC<{ subtitles: boolean }> = ({ subtitles }) => (
+export const AlMozonPremiumV6: React.FC<{ subtitles: boolean }> = ({ subtitles }) => (
   <AbsoluteFill style={{ backgroundColor: T.ink }}>
     <Footage />
     <Grade />
