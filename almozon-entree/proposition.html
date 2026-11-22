@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Al mozon Academy — nouvelle entrée</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1800px; background: #0d1226; color: #eef1fa; font-family: "Segoe UI", Arial, sans-serif; padding: 40px; }
+  h1 { font-size: 40px; letter-spacing: .5px; }
+  h1 span { color: #ff7a1a; }
+  .sub { color: #9aa6c8; font-size: 20px; margin: 6px 0 28px; }
+  .row { display: flex; gap: 32px; align-items: flex-start; }
+  .col-photo { width: 480px; }
+  .label { font-size: 16px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; color: #9aa6c8; }
+  .label.after { color: #ff7a1a; }
+  .col-photo img { width: 480px; border-radius: 14px; display: block; }
+  .issues { margin-top: 16px; font-size: 16px; line-height: 1.55; color: #c9d0e6; }
+  .issues li { margin-left: 20px; }
+  svg { border-radius: 14px; display: block; }
+  .legend { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 26px; }
+  .card { background: #161d3a; border-radius: 12px; padding: 16px 18px; font-size: 15.5px; line-height: 1.45; color: #c9d0e6; }
+  .card b { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 17px; margin-bottom: 6px; }
+  .n { display: inline-flex; width: 28px; height: 28px; border-radius: 50%; background: #ff7a1a; color: #0d1226; font-weight: 800; align-items: center; justify-content: center; font-size: 15px; flex: none; }
+</style>
+</head>
+<body>
+  <h1>Al mozon <span>Academy</span> : proposition pour la nouvelle entrée</h1>
+  <p class="sub">On garde la structure existante (auvent arrondi, portail, enseigne lumineuse) et on l'habille aux couleurs de la marque : bleu nuit et orange.</p>
+
+  <div class="row">
+    <div class="col-photo">
+      <div class="label">Avant</div>
+      <img src="avant.jpg" alt="Entrée actuelle">
+      <ul class="issues">
+        <li>Éclairage vert qui donne un aspect terne et froid</li>
+        <li>Murs blancs tachés en bas, peinture fatiguée</li>
+        <li>Portail beige ancien qui ne rappelle pas la marque</li>
+        <li>Affiches collées au mur, peu visibles la nuit</li>
+        <li>Auvent vide, poubelle et sol sale devant l'accès</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="label after">Après (maquette)</div>
+      <svg width="1208" height="860" viewBox="0 0 1208 860" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#060914"/><stop offset="1" stop-color="#151c38"/>
+          </linearGradient>
+          <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5d5f66"/><stop offset="1" stop-color="#2b2d33"/>
+          </linearGradient>
+          <linearGradient id="navyWall" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1b2e6e"/><stop offset="1" stop-color="#101c48"/>
+          </linearGradient>
+          <linearGradient id="court" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3a2a14"/><stop offset=".55" stop-color="#c98a3c"/><stop offset="1" stop-color="#f3c37a"/>
+          </linearGradient>
+          <radialGradient id="cone" cx=".5" cy="0" r="1">
+            <stop offset="0" stop-color="#ffe2b0" stop-opacity=".75"/><stop offset="1" stop-color="#ffe2b0" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="pool" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#ffd9a0" stop-opacity=".45"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="poster1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2a3f9a"/><stop offset="1" stop-color="#121f5c"/>
+          </linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <!-- laser-cut pattern for the gate, inspired by the square logo -->
+          <pattern id="cut" width="34" height="34" patternUnits="userSpaceOnUse">
+            <rect width="34" height="34" fill="#23262e"/>
+            <path d="M6 6h10v4h-6v6h-4zM28 28h-10v-4h6v-6h4zM20 8h6v6h-2v-4h-4zM14 26h-6v-6h2v4h4z" fill="#f0a34a" opacity=".85"/>
+          </pattern>
+          <symbol id="logo" viewBox="0 0 40 40">
+            <path d="M4 4h22v6H10v10H4zM36 36H14v-6h16V20h6zM16 14h10v12h-6v-6h-4z" fill="#ff7a1a"/>
+          </symbol>
+        </defs>
+
+        <rect width="1208" height="860" fill="url(#sky)"/>
+
+        <!-- neighbours (left: kiné, right: shop), kept neutral -->
+        <rect x="0" y="330" width="170" height="420" fill="#4a4e57"/>
+        <rect x="20" y="520" width="130" height="200" fill="#5b5f68"/>
+        <g stroke="#666b75" stroke-width="3">
+          <line x1="20" y1="545" x2="150" y2="545"/><line x1="20" y1="575" x2="150" y2="575"/><line x1="20" y1="605" x2="150" y2="605"/><line x1="20" y1="635" x2="150" y2="635"/><line x1="20" y1="665" x2="150" y2="665"/><line x1="20" y1="695" x2="150" y2="695"/>
+        </g>
+        <rect x="1040" y="330" width="168" height="420" fill="#4a4e57"/>
+        <rect x="1060" y="470" width="130" height="250" fill="#585c66"/>
+
+        <!-- main façade: white upper, navy cladding lower -->
+        <rect x="170" y="330" width="870" height="420" fill="#ecebe6"/>
+        <rect x="170" y="560" width="870" height="190" fill="url(#navyWall)"/>
+        <rect x="170" y="556" width="870" height="6" fill="#ff7a1a"/>
+
+        <!-- existing light-box sign, kept -->
+        <rect x="430" y="150" width="350" height="128" rx="6" fill="#16267a" stroke="#0b1446" stroke-width="4"/>
+        <use href="#logo" x="452" y="172" width="60" height="60" filter="url(#glow)"/>
+        <text x="525" y="208" font-family="Arial Black, Arial" font-weight="900" font-size="38" fill="#ffffff">Al mozon</text>
+        <text x="527" y="236" font-family="Arial" font-weight="700" font-size="22" fill="#ff8a2a">Academy</text>
+        <rect x="448" y="244" width="314" height="3" fill="#4d7dff" filter="url(#glow)"/>
+        <text x="605" y="266" text-anchor="middle" font-family="Arial" font-weight="700" font-size="14" fill="#ffd2a6">• Soutien Scolaire • Formation académique •</text>
+        <rect x="500" y="278" width="10" height="52" fill="#30343d"/><rect x="700" y="278" width="10" height="52" fill="#30343d"/>
+
+        <!-- curved canopy with navy fascia + orange LED line -->
+        <path d="M250 330 H960 Q990 330 990 360 V378 H220 V360 Q220 330 250 330Z" fill="#14235f"/>
+        <text x="605" y="362" text-anchor="middle" font-family="Arial" font-weight="800" font-size="22" letter-spacing="6" fill="#ffffff">ENTRÉE · AL MOZON ACADEMY</text>
+        <rect x="220" y="378" width="770" height="5" fill="#ff8a2a" filter="url(#glow)"/>
+        <rect x="228" y="383" width="754" height="14" fill="#d9d7cf"/>
+        <!-- downlights under canopy -->
+        <polygon points="470,397 400,640 560,640" fill="url(#cone)" opacity=".55"/>
+        <polygon points="740,397 650,640 810,640" fill="url(#cone)" opacity=".55"/>
+
+        <!-- opening + warm-lit courtyard -->
+        <rect x="455" y="397" width="300" height="353" fill="url(#court)"/>
+        <ellipse cx="640" cy="560" rx="70" ry="80" fill="#2f5a2a"/>
+        <rect x="634" y="600" width="12" height="70" fill="#4a3320"/>
+        <rect x="455" y="690" width="300" height="60" fill="#e9d2a8" opacity=".6"/>
+
+        <!-- gate: left leaf closed (laser-cut), right leaf open -->
+        <rect x="455" y="420" width="150" height="330" fill="url(#cut)" stroke="#1a1c22" stroke-width="6"/>
+        <rect x="470" y="440" width="120" height="44" fill="#1a1c22"/>
+        <use href="#logo" x="510" y="443" width="38" height="38"/>
+        <polygon points="755,420 712,438 712,738 755,750" fill="url(#cut)" stroke="#1a1c22" stroke-width="5"/>
+        <!-- house number plaque -->
+        <rect x="962" y="440" width="56" height="40" rx="4" fill="#ff7a1a"/>
+        <text x="990" y="466" text-anchor="middle" font-family="Arial" font-weight="800" font-size="16" fill="#0d1226">N°</text>
+
+        <!-- backlit poster frames on both walls -->
+        <g filter="url(#glow)">
+          <rect x="268" y="420" width="140" height="250" rx="6" fill="url(#poster1)" stroke="#ff7a1a" stroke-width="4"/>
+          <rect x="802" y="420" width="140" height="250" rx="6" fill="url(#poster1)" stroke="#ff7a1a" stroke-width="4"/>
+        </g>
+        <g font-family="Arial" fill="#fff">
+          <use href="#logo" x="282" y="434" width="26" height="26"/>
+          <text x="314" y="453" font-size="15" font-weight="800">Al mozon</text>
+          <text x="282" y="492" font-size="13" font-weight="700" fill="#ffb066">Soutien scolaire</text>
+          <text x="282" y="510" font-size="13" font-weight="700" fill="#ffb066">Langues</text>
+          <text x="282" y="528" font-size="13" font-weight="700" fill="#ffb066">Formations</text>
+          <rect x="282" y="548" width="44" height="44" fill="#fff"/><rect x="288" y="554" width="12" height="12" fill="#111"/><rect x="308" y="554" width="12" height="12" fill="#111"/><rect x="288" y="574" width="12" height="12" fill="#111"/><rect x="310" y="576" width="6" height="6" fill="#111"/>
+          <text x="282" y="618" font-size="12" fill="#c9d0e6">Inscriptions</text>
+          <text x="282" y="636" font-size="15" font-weight="800">ouvertes</text>
+
+          <use href="#logo" x="816" y="434" width="26" height="26"/>
+          <text x="848" y="453" font-size="15" font-weight="800">Al mozon</text>
+          <text x="816" y="492" font-size="13" font-weight="700" fill="#ffb066">Toutes matières</text>
+          <text x="816" y="510" font-size="13" font-weight="700" fill="#ffb066">Concours</text>
+          <text x="816" y="528" font-size="13" font-weight="700" fill="#ffb066">&amp; examens</text>
+          <circle cx="872" cy="590" r="34" fill="#ff7a1a" opacity=".9"/>
+          <text x="872" y="586" text-anchor="middle" font-size="12" font-weight="800" fill="#0d1226">HORAIRES</text>
+          <text x="872" y="602" text-anchor="middle" font-size="11" font-weight="700" fill="#0d1226">+ TÉL</text>
+                  </g>
+
+        <!-- wall sconces (up/down light) -->
+        <g>
+          <polygon points="338,404 300,330 376,330" fill="url(#cone)" opacity=".5"/>
+          <rect x="330" y="396" width="16" height="14" rx="3" fill="#1d1f26"/>
+          <polygon points="872,404 834,330 910,330" fill="url(#cone)" opacity=".5"/>
+          <rect x="864" y="396" width="16" height="14" rx="3" fill="#1d1f26"/>
+        </g>
+
+        <!-- ground: clean paving, light pools, entrance mat -->
+        <rect x="0" y="750" width="1208" height="110" fill="url(#ground)"/>
+        <g stroke="#6c6e75" stroke-width="1.5" opacity=".5">
+          <line x1="0" y1="780" x2="1208" y2="780"/><line x1="0" y1="815" x2="1208" y2="815"/><line x1="0" y1="848" x2="1208" y2="848"/>
+        </g>
+        <ellipse cx="605" cy="770" rx="320" ry="38" fill="url(#pool)"/>
+        <rect x="490" y="752" width="230" height="34" rx="4" fill="#14235f" stroke="#ff7a1a" stroke-width="2"/>
+        <text x="605" y="775" text-anchor="middle" font-family="Arial" font-weight="800" font-size="16" letter-spacing="3" fill="#fff">BIENVENUE</text>
+
+        <!-- two matching planters -->
+        <g>
+          <rect x="400" y="680" width="44" height="70" rx="4" fill="#ff7a1a"/>
+          <ellipse cx="422" cy="640" rx="36" ry="48" fill="#2f6b34"/>
+          <ellipse cx="410" cy="625" rx="18" ry="24" fill="#3d8443"/>
+          <rect x="766" y="680" width="44" height="70" rx="4" fill="#ff7a1a"/>
+          <ellipse cx="788" cy="640" rx="36" ry="48" fill="#2f6b34"/>
+          <ellipse cx="800" cy="625" rx="18" ry="24" fill="#3d8443"/>
+        </g>
+
+        <!-- numbered callouts -->
+        <g font-family="Arial" font-weight="800" font-size="17" text-anchor="middle">
+          <g><circle cx="190" cy="660" r="17" fill="#ff7a1a"/><text x="190" y="666" fill="#0d1226">1</text></g>
+          <g><circle cx="1010" cy="355" r="17" fill="#ff7a1a"/><text x="1010" y="361" fill="#0d1226">2</text></g>
+          <g><circle cx="530" cy="540" r="17" fill="#ff7a1a"/><text x="530" y="546" fill="#0d1226">3</text></g>
+          <g><circle cx="250" cy="430" r="17" fill="#ff7a1a"/><text x="250" y="436" fill="#0d1226">4</text></g>
+          <g><circle cx="338" cy="380" r="17" fill="#ff7a1a"/><text x="338" y="386" fill="#0d1226">5</text></g>
+          <g><circle cx="368" cy="712" r="17" fill="#ff7a1a"/><text x="368" y="718" fill="#0d1226">6</text></g>
+          <g><circle cx="740" cy="806" r="17" fill="#ff7a1a"/><text x="740" y="812" fill="#0d1226">7</text></g>
+          <g><circle cx="990" cy="508" r="17" fill="#ff7a1a"/><text x="990" y="514" fill="#0d1226">8</text></g>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="card"><b><span class="n">1</span>Peinture et soubassement</b>Murs en blanc propre en haut, soubassement bleu nuit (peinture lessivable ou bardage) avec un filet orange. Il masque les taches du bas.</div>
+    <div class="card"><b><span class="n">2</span>Bandeau de l'auvent</b>Le bord arrondi de l'auvent peint en bleu nuit, avec des lettres « ENTRÉE · AL MOZON ACADEMY » et un ruban LED orange en dessous.</div>
+    <div class="card"><b><span class="n">3</span>Nouveau portail</b>Portail repeint en gris anthracite mat, avec une tôle découpée au laser au motif du logo et une plaque logo en haut.</div>
+    <div class="card"><b><span class="n">4</span>Caissons lumineux</b>Remplacer les affiches collées par 2 cadres rétroéclairés (≈ 60 × 160 cm), avec services, QR code et « Inscriptions ouvertes ».</div>
+    <div class="card"><b><span class="n">5</span>Éclairage chaud</b>Supprimer le projecteur vert. Mettre 2 appliques haut/bas et 2 spots sous l'auvent en blanc chaud (3000 K).</div>
+    <div class="card"><b><span class="n">6</span>Deux jardinières</b>Deux bacs orange identiques avec des plantes de chaque côté du portail, à la place du pot isolé.</div>
+    <div class="card"><b><span class="n">7</span>Sol et propreté</b>Nettoyer le pavé, ajouter un tapis « BIENVENUE » aux couleurs de la marque et déplacer la poubelle hors de l'entrée.</div>
+    <div class="card"><b><span class="n">8</span>Infos pratiques</b>Une plaque orange avec le numéro, les horaires et le téléphone, lisible depuis la rue.</div>
+  </div>
+</body>
+</html>
