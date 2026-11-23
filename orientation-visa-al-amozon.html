@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test d'orientation visa Allemagne – Al Amozon Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1F2A44; --navy2:#2B3A5E; --red:#C8102E; --gold:#E8B10E;
+  --bg:#F4F6FA; --card:#FFFFFF; --text:#1C2333; --muted:#5A6275; --line:#DDE2EC;
+  --ok:#1E8E4E; --okbg:#E6F5EC; --prep:#B7791F; --prepbg:#FFF5DB; --no:#8A93A6; --nobg:#F0F2F6;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.flag{height:6px;background:linear-gradient(90deg,#000 0 33.3%,var(--red) 33.3% 66.6%,var(--gold) 66.6%)}
+header{background:var(--navy);color:#fff;padding:28px 20px 34px}
+header .wrap{max-width:980px;margin:0 auto}
+.brand{font-weight:800;letter-spacing:.08em;font-size:13px;color:var(--gold);text-transform:uppercase}
+h1{margin:8px 0 6px;font-size:clamp(24px,4vw,34px);line-height:1.15}
+header p{margin:0;color:#C9D1E4;max-width:720px}
+main{max-width:980px;margin:-18px auto 40px;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 1px 2px rgba(20,30,60,.04)}
+.card h2{margin:0 0 4px;font-size:18px;color:var(--navy)}
+.card .sub{margin:0 0 14px;color:var(--muted);font-size:14px}
+.step{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-weight:700;font-size:13px;margin-right:8px;vertical-align:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 18px}
+label.f{display:block;font-weight:600;font-size:14px;margin-bottom:5px}
+.hint{font-weight:400;color:var(--muted);font-size:12.5px}
+select,input[type=number]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;font:inherit;font-size:15px;background:#fff;color:var(--text)}
+select:focus,input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.checks{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.checks label{display:flex;gap:9px;align-items:flex-start;font-size:14px;cursor:pointer}
+.checks input{margin-top:3px;width:17px;height:17px;accent-color:var(--red)}
+.hidden{display:none!important}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+button{font:inherit;font-weight:600;border-radius:10px;padding:11px 18px;border:1px solid transparent;cursor:pointer;font-size:15px}
+.primary{background:var(--red);color:#fff}
+.primary:hover{background:#A60D26}
+.ghost{background:#fff;color:var(--navy);border-color:var(--line)}
+.ghost:hover{border-color:var(--navy)}
+.linkbtn{background:none;border:none;color:var(--red);padding:0;font-size:14px;text-decoration:underline;cursor:pointer}
+/* quiz */
+.q{border-top:1px solid var(--line);padding:12px 0}
+.q:first-of-type{border-top:none}
+.q .qt{font-weight:600;margin-bottom:6px}
+.q .lv{font-size:11px;font-weight:700;color:#fff;background:var(--navy2);border-radius:5px;padding:1px 6px;margin-right:6px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opts label{border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:14px;display:flex;gap:6px;align-items:center}
+.opts input{accent-color:var(--red)}
+.quizres{margin-top:10px;padding:12px;border-radius:10px;background:var(--okbg);font-weight:600}
+/* results */
+#results{scroll-margin-top:12px}
+.summary{background:var(--navy);color:#fff;border:none}
+.summary h2{color:#fff}
+.summary .sub{color:#C9D1E4}
+.best{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:6px}
+.kpi{background:rgba(255,255,255,.08);border-radius:12px;padding:14px}
+.kpi .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);font-weight:700}
+.kpi .v{font-size:20px;font-weight:800;margin-top:4px;line-height:1.2}
+.kpi .d{font-size:13px;color:#C9D1E4;margin-top:4px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:2px 0 12px}
+.visa{border:1px solid var(--line);border-left-width:5px;border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fff}
+.visa.ok{border-left-color:var(--ok)}
+.visa.prep{border-left-color:var(--prep)}
+.visa.no{border-left-color:var(--no);background:#FBFBFD}
+.vh{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.vt{font-weight:700;font-size:16px;color:var(--navy)}
+.vl{font-size:12.5px;color:var(--muted)}
+.badge{font-size:12.5px;font-weight:700;border-radius:999px;padding:4px 11px;white-space:nowrap}
+.b-ok{background:var(--okbg);color:var(--ok)}
+.b-prep{background:var(--prepbg);color:var(--prep)}
+.b-no{background:var(--nobg);color:#5A6275}
+.visa ul{margin:8px 0 0;padding-left:20px;font-size:14px}
+.visa li{margin:3px 0}
+.miss li::marker{color:var(--red)}
+.have li::marker{color:var(--ok)}
+.tag{display:inline-block;font-size:12px;font-weight:600;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 8px;margin:8px 6px 0 0}
+details.nolist summary{cursor:pointer;font-weight:600;color:var(--navy);margin:8px 0}
+.timeline{display:flex;flex-direction:column;gap:0;margin-top:8px}
+.tl{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+.tl .dot{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12.5px}
+.tl .dot.g{background:var(--gold);color:var(--navy)}
+.tl .dot.r{background:var(--red)}
+.tl .body{padding:4px 0 14px;border-left:2px solid var(--line);margin-left:-27px;padding-left:27px}
+.tl:last-child .body{border-left-color:transparent}
+.tl .t{font-weight:700}
+.tl .s{font-size:13.5px;color:var(--muted)}
+.note{font-size:13px;color:var(--muted)}
+.warn{background:var(--prepbg);border-left:4px solid var(--gold);border-radius:8px;padding:10px 12px;font-size:13.5px;margin-top:10px}
+footer{max-width:980px;margin:0 auto 40px;padding:0 16px;color:var(--muted);font-size:12.5px}
+footer a{color:var(--navy)}
+.copied{color:var(--ok);font-weight:600;font-size:14px;align-self:center}
+@media (max-width:560px){.card{padding:16px}}
+</style>
+</head>
+<body>
+<div class="flag"></div>
+<header><div class="wrap">
+  <div class="brand" id="brandName">Al Amozon Academy</div>
+  <h1>Quel visa pour l'Allemagne ?</h1>
+  <p>Répondez à quelques questions (5 minutes). Vous verrez les visas possibles pour votre profil, ce qu'il vous manque, le niveau d'allemand à atteindre et votre parcours de cours dans notre centre.</p>
+</div></header>
+
+<main>
+<form id="f" autocomplete="off">
+
+<!-- 1 Profil -->
+<section class="card">
+  <h2><span class="step">1</span>Votre profil</h2>
+  <p class="sub">Informations de base.</p>
+  <div class="grid">
+    <div><label class="f" for="age">Âge</label><input type="number" id="age" min="14" max="70" value="22"></div>
+    <div><label class="f" for="famille">Situation familiale</label>
+      <select id="famille"><option value="celib">Célibataire</option><option value="marie">Marié(e), sans enfant</option><option value="enfants">Marié(e) ou parent, avec enfant(s)</option></select></div>
+    <div><label class="f" for="proche">Avez-vous un conjoint (mari/femme) qui vit déjà en Allemagne ?</label>
+      <select id="proche"><option value="non">Non</option><option value="oui">Oui, avec un titre de séjour ou la nationalité allemande</option></select></div>
+  </div>
+</section>
+
+<!-- 2 Études -->
+<section class="card">
+  <h2><span class="step">2</span>Vos études et votre métier</h2>
+  <p class="sub">Indiquez votre diplôme le plus élevé.</p>
+  <div class="grid">
+    <div><label class="f" for="bac">Baccalauréat</label>
+      <select id="bac"><option value="oui">Oui, j'ai le bac</option><option value="encours">Je suis en terminale (bac cette année)</option><option value="non">Non, je n'ai pas le bac</option></select></div>
+    <div id="secBox"><label class="f" for="section">Section du bac</label>
+      <select id="section">
+        <option value="maths">Mathématiques</option><option value="sciences">Sciences expérimentales</option>
+        <option value="technique">Sciences techniques</option><option value="info">Sciences de l'informatique</option>
+        <option value="eco">Économie et gestion</option><option value="lettres">Lettres</option><option value="sport">Sport</option></select></div>
+    <div id="moyBox"><label class="f" for="moy">Moyenne du bac <span class="hint">(sur 20, environ)</span></label><input type="number" id="moy" min="8" max="20" step="0.5" value="12"></div>
+    <div><label class="f" for="diplome">Diplôme le plus élevé</label>
+      <select id="diplome">
+        <option value="none">Aucun après le secondaire</option>
+        <option value="bac">Baccalauréat seulement</option>
+        <option value="pro">Diplôme de formation professionnelle (CAP, BTP, BTS – 2 ans ou plus)</option>
+        <option value="licence">Licence (Bac+3)</option><option value="master">Master / ingénieur (Bac+5)</option><option value="doctorat">Doctorat / médecine</option></select></div>
+    <div id="domBox"><label class="f" for="domaine">Domaine de votre diplôme, ou métier qui vous intéresse</label>
+      <select id="domaine">
+        <option value="sante_inf">Soins infirmiers, paramédical</option>
+        <option value="sante_med">Médecine, pharmacie, dentaire</option>
+        <option value="it">Informatique, IT</option>
+        <option value="ing">Ingénierie, sciences (maths, physique...)</option>
+        <option value="tech">Métier technique (électricité, mécanique, bâtiment, plomberie...)</option>
+        <option value="hotel">Hôtellerie, restauration, tourisme</option>
+        <option value="educ">Éducation, social, petite enfance</option>
+        <option value="gestion">Commerce, gestion, langues, droit</option>
+        <option value="autre" selected>Autre / je ne sais pas encore</option></select></div>
+    <div id="recoBox"><label class="f" for="reco">Votre diplôme est-il reconnu en Allemagne ?</label>
+      <select id="reco"><option value="non">Je ne sais pas / pas de démarche</option><option value="partielle">Reconnu partiellement (avis de différences)</option><option value="complete">Oui, reconnaissance complète (ou anabin H+ pour l'université)</option></select></div>
+    <div id="expBox"><label class="f" for="exp">Expérience professionnelle dans ce domaine</label>
+      <select id="exp"><option value="0">Aucune ou moins d'1 an</option><option value="1">1 an</option><option value="2">2 à 4 ans (dans les 5 dernières années)</option><option value="5">5 ans ou plus (dans les 7 dernières années)</option></select></div>
+    <div id="recentBox"><label class="f">&nbsp;</label>
+      <div class="checks"><label><input type="checkbox" id="recent"> Diplôme universitaire obtenu il y a moins de 3 ans</label></div></div>
+  </div>
+</section>
+
+<!-- 3 Langues -->
+<section class="card">
+  <h2><span class="step">3</span>Vos langues</h2>
+  <p class="sub">Vous ne connaissez pas votre niveau d'allemand ? <button type="button" class="linkbtn" id="openQuiz">Faites le mini-test de niveau (2 minutes)</button></p>
+  <div class="grid">
+    <div><label class="f" for="de">Niveau d'allemand actuel</label>
+      <select id="de"><option value="0">Aucun (débutant)</option><option value="1">A1</option><option value="2">A2</option><option value="3">B1</option><option value="4">B2</option><option value="5">C1 ou plus</option></select></div>
+    <div><label class="f" for="en">Niveau d'anglais</label>
+      <select id="en"><option value="0">Moins de B2</option><option value="1">B2</option><option value="2">C1 ou plus</option></select></div>
+  </div>
+  <div id="quiz" class="hidden" style="margin-top:14px"></div>
+</section>
+
+<!-- 4 Projet -->
+<section class="card">
+  <h2><span class="step">4</span>Votre projet et votre budget</h2>
+  <p class="sub">Ces réponses changent beaucoup le résultat.</p>
+  <div class="grid">
+    <div><label class="f" for="offre">Avez-vous déjà quelque chose en Allemagne ?</label>
+      <select id="offre"><option value="none">Rien pour le moment</option><option value="ausbildung">Un contrat d'Ausbildung (formation professionnelle)</option><option value="emploi">Une offre d'emploi qualifié</option><option value="admission">Une admission dans une université allemande</option></select></div>
+    <div id="salBox" class="hidden"><label class="f" for="salaire">Salaire brut annuel proposé (€)</label><input type="number" id="salaire" min="0" step="500" value="40000"></div>
+    <div><label class="f" for="budget">Argent disponible pour un compte bloqué</label>
+      <select id="budget"><option value="0">Moins de 5 000 €</option><option value="1">5 000 à 9 800 €</option><option value="2">9 800 à 13 000 €</option><option value="3">Plus de 13 000 €</option></select></div>
+    <div><label class="f">Autres informations</label>
+      <div class="checks">
+        <label><input type="checkbox" id="garant"> Une personne en Allemagne peut se porter garante (Verpflichtungserklärung)</label>
+        <label><input type="checkbox" id="sejour"> J'ai déjà vécu légalement 6 mois ou plus en Allemagne</label>
+        <label id="partLbl"><input type="checkbox" id="partenaire"> Mon conjoint part avec moi et a aussi un diplôme et un niveau de langue suffisants</label>
+      </div></div>
+  </div>
+</section>
+
+<div class="btns" style="margin-bottom:22px">
+  <button type="submit" class="primary">Voir mes visas possibles</button>
+  <button type="button" class="ghost" id="resetBtn">Recommencer</button>
+</div>
+</form>
+
+<div id="results" class="hidden"></div>
+</main>
+
+<footer>
+  <p><b>Important :</b> ce test donne une orientation générale, pas une décision. Seules l'ambassade d'Allemagne et les autorités allemandes décident d'un visa. Les montants et règles datent de novembre 2026 et changent souvent (surtout chaque 1er janvier) : votre conseiller vérifie votre cas avant tout dossier.</p>
+  <p>Sources officielles : <a href="https://www.make-it-in-germany.com/fr/">make-it-in-germany.com</a> · <a href="https://tunis.diplo.de">Ambassade d'Allemagne à Tunis</a> · <a href="https://www.anerkennung-in-deutschland.de">anerkennung-in-deutschland.de</a> · <a href="https://anabin.kmk.org">anabin</a> · <a href="https://www.uni-assist.de">uni-assist</a> · <a href="https://www.bibb.de/mindestausbildungsverguetung">BIBB</a></p>
+</footer>
+
+<script>
+const CENTRE = "Al Amozon Academy";
+const LV = ["Débutant","A1","A2","B1","B2","C1"];
+// Mois de cours intensifs pour passer AU niveau indiqué (index)
+const MONTHS = [0,2,2,3,3,4];
+const R = { // montants 2026
+  ausbSearchTotal: 9819, // 9 x 1 091 €
+  study: 11904,          // 992 € x 12
+  chance: 13092,         // 1 091 € x 12
+  blue: 50700, blueLow: 45934.2, exp19c: 45630,
+};
+const BUDGET_MAX = [4999, 9799, 12999, 999999];
+const $ = id => document.getElementById(id);
+const fmt = n => n.toLocaleString("fr-FR") + " €";
+
+/* ---------- UI dynamique ---------- */
+function sync(){
+  const bac = $("bac").value, dip = $("diplome").value, off = $("offre").value, fam = $("famille").value;
+  $("secBox").classList.toggle("hidden", bac==="non");
+  $("moyBox").classList.toggle("hidden", bac!=="oui");
+  const hasQual = ["pro","licence","master","doctorat"].includes(dip);
+  $("domBox").classList.toggle("hidden", false);
+  $("recoBox").classList.toggle("hidden", !hasQual);
+  $("expBox").classList.toggle("hidden", false);
+  $("recentBox").classList.toggle("hidden", !["licence","master","doctorat"].includes(dip));
+  $("salBox").classList.toggle("hidden", off!=="emploi");
+  $("partLbl").classList.toggle("hidden", fam==="celib");
+  if(bac==="non" && (dip==="bac")) $("diplome").value="none";
+}
+["bac","diplome","offre","famille"].forEach(id=>$(id).addEventListener("change",sync));
+sync();
+
+/* ---------- Mini-test de niveau ---------- */
+const QUIZ = [
+ ["A1","Wie ___ du?",["heißt","heißen","heiße"],0],
+ ["A1","Ich komme ___ Tunesien.",["von","aus","in"],1],
+ ["A1","Das ist ___ Buch.",["eine","einen","ein"],2],
+ ["A2","Gestern ___ ich ins Kino gegangen.",["bin","habe","war"],0],
+ ["A2","Ich helfe ___ Mutter.",["meine","meiner","meinen"],1],
+ ["A2","Mein Bruder ist größer ___ ich.",["wie","dann","als"],2],
+ ["B1","Ich weiß nicht, ___ er morgen kommt.",["ob","als","denn"],0],
+ ["B1","Wenn ich mehr Zeit ___, würde ich dich besuchen.",["habe","hätte","hatte"],1],
+ ["B1","Das ist der Mann, ___ ich gestern gesehen habe.",["der","dem","den"],2],
+ ["B2","Das Haus ___ letztes Jahr renoviert.",["wurde","würde","wird"],0],
+ ["B2","___ des schlechten Wetters fand das Konzert statt.",["Wegen","Trotz","Obwohl"],1],
+ ["B2","Er tat so, als ___ er nichts gewusst.",["hat","habe","hätte"],2],
+];
+$("openQuiz").addEventListener("click",()=>{
+  const box=$("quiz");
+  if(!box.innerHTML){
+    let h='<div class="card" style="margin:0;background:#FAFBFD"><h2 style="font-size:16px">Mini-test d\'allemand</h2><p class="sub">Choisissez la bonne réponse. Si vous ne savez pas, ne répondez pas.</p>';
+    QUIZ.forEach((q,i)=>{
+      h+=`<div class="q"><div class="qt"><span class="lv">${q[0]}</span>${i+1}. ${q[1]}</div><div class="opts">`+
+        q[2].map((o,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${o}</label>`).join("")+`</div></div>`;
+    });
+    h+='<div class="btns"><button type="button" class="primary" id="quizGo">Calculer mon niveau</button></div><div id="quizRes"></div><p class="note" style="margin-top:8px">Test indicatif. Le test de niveau complet se fait au centre.</p></div>';
+    box.innerHTML=h;
+    $("quizGo").addEventListener("click",scoreQuiz);
+  }
+  box.classList.toggle("hidden");
+});
+function scoreQuiz(){
+  const per={A1:0,A2:0,B1:0,B2:0};
+  QUIZ.forEach((q,i)=>{const s=document.querySelector(`input[name=q${i}]:checked`); if(s && +s.value===q[3]) per[q[0]]++;});
+  let lvl=0; for(const [k,idx] of [["A1",1],["A2",2],["B1",3],["B2",4]]){ if(per[k]>=2) lvl=idx; else break; }
+  $("de").value=String(lvl);
+  $("quizRes").innerHTML=`<div class="quizres">Niveau estimé : ${LV[lvl]} (réponses justes : A1 ${per.A1}/3 · A2 ${per.A2}/3 · B1 ${per.B1}/3 · B2 ${per.B2}/3). Le niveau a été reporté dans le formulaire.</div>`;
+}
+
+/* ---------- Moteur d'orientation ---------- */
+function read(){
+  return {
+    age:+$("age").value||0, famille:$("famille").value, proche:$("proche").value,
+    bac:$("bac").value, section:$("section").value, moy:+$("moy").value||0,
+    dip:$("diplome").value, dom:$("domaine").value, reco:$("reco").value,
+    exp:+$("exp").value, recent:$("recent").checked,
+    de:+$("de").value, en:+$("en").value,
+    offre:$("offre").value, salaire:+$("salaire").value||0,
+    budget:+$("budget").value, garant:$("garant").checked, sejour:$("sejour").checked,
+    partenaire:$("partenaire").checked && $("famille").value!=="celib",
+  };
+}
+function evaluate(p){
+  const uni=["licence","master","doctorat"].includes(p.dip);
+  const qual=uni||p.dip==="pro";
+  const sante=p.dom==="sante_inf"||p.dom==="sante_med";
+  const hasBac=p.bac==="oui"||p.bac==="encours";
+  const money=amt=>p.garant||BUDGET_MAX[p.budget]>=amt;
+  const out=[];
+  const V=(o)=>{out.push(o);};
+
+  /* 1. Ausbildung */
+  {
+    const target=sante?4:3, have=[], miss=[], notes=[];
+    if(p.age<16){V({id:"ausb",title:"Ausbildung (formation professionnelle payée)",law:"§16a AufenthG",status:"no",target,prio:7,have,miss:["Âge minimum : avoir terminé l'école (16 ans ou plus en pratique)"],notes});}
+    else{
+      if(p.offre==="ausbildung") have.push("Contrat d'Ausbildung"); else miss.push("Trouver une entreprise et signer un contrat d'Ausbildung");
+      if(p.de>=target) have.push("Allemand "+LV[target]+" atteint"); else miss.push("Atteindre l'allemand "+LV[target]+(sante?" (soins : B2 souvent exigé)":""));
+      if(p.bac==="non") notes.push("Sans bac : possible pour beaucoup de métiers en entreprise (cuisine, bâtiment, boulangerie, logistique). Les soins demandent en général 10 ans d'école.");
+      if(p.age>35) notes.push("Après 35 ans : la loi le permet, mais les entreprises sont plus difficiles à convaincre. Valoriser l'expérience.");
+      if(uni&&p.reco!=="non") notes.push("Avec un diplôme universitaire reconnu, un visa de travail est souvent plus intéressant qu'une Ausbildung.");
+      notes.push("Salaire minimum 2026 : 724 € brut/mois la 1re année. Pour le visa, il faut 1 048 € brut/mois : sinon, compléter avec un compte bloqué ou un garant.");
+      const st=(p.offre==="ausbildung"&&p.de>=target)?"ok":"prep";
+      V({id:"ausb",title:"Ausbildung (formation professionnelle payée)",law:"§16a AufenthG",status:st,target,prio:sante?6:7,have,miss,notes});
+    }
+  }
+  /* 2. Recherche place Ausbildung */
+  {
+    const have=[],miss=[],notes=["Séjour jusqu'à 9 mois pour chercher sur place, travail jusqu'à 20 h/semaine autorisé.","Une ancienne page de l'ambassade de Tunis indiquait 25 ans maximum : faire confirmer l'âge limite."];
+    let block=false;
+    if(p.age<=35) have.push("Âge : 35 ans maximum"); else {miss.push("Âge : 35 ans maximum (dépassé)");block=true;}
+    if(p.bac==="oui") have.push("Baccalauréat"); else {miss.push("Baccalauréat obligatoire");block=p.bac==="non"?true:block;}
+    if(p.de>=3) have.push("Allemand B1"); else miss.push("Allemand B1");
+    if(money(R.ausbSearchTotal)) have.push("Financement (env. "+fmt(R.ausbSearchTotal)+" pour 9 mois)"); else miss.push("Compte bloqué : environ "+fmt(R.ausbSearchTotal)+" pour 9 mois (1 091 €/mois)");
+    const st=block?"no":(miss.length===0?"ok":"prep");
+    V({id:"ausbs",title:"Recherche d'une place d'Ausbildung en Allemagne",law:"§17 AufenthG",status:st,target:3,prio:5,have,miss,notes});
+  }
+  /* 3. Études */
+  {
+    const have=[],miss=[],notes=[];
+    const direct=["maths","sciences","technique","info"].includes(p.section)&&(p.bac!=="oui"||p.moy>=12);
+    if(!hasBac){V({id:"etu",title:"Études universitaires",law:"§16b AufenthG",status:"no",target:5,prio:6,have,miss:["Baccalauréat obligatoire"],notes});}
+    else{
+      have.push(p.bac==="oui"?"Baccalauréat":"Bac en cours");
+      if(uni) notes.push("Avec une licence, un master en Allemagne est possible (souvent en anglais).");
+      else if(direct) notes.push("Section "+$("section").selectedOptions[0].text+" : accès direct possible à certaines filières (vérifier sur anabin / uni-assist). Sinon : Studienkolleg.");
+      else notes.push("Pour votre section, un Studienkolleg (année préparatoire) est en général nécessaire avant l'université.");
+      if(p.offre==="admission") have.push("Admission universitaire"); else miss.push("Obtenir une admission (candidature via uni-assist ou l'université)");
+      const langOk=p.de>=5||p.en>=1||(uni&&p.en>=1);
+      if(langOk) have.push(p.de>=5?"Allemand C1 (études en allemand)":"Anglais B2+ (programmes en anglais)");
+      else miss.push("Allemand C1 (TestDaF/DSH) pour étudier en allemand, ou anglais B2/C1 pour un programme en anglais");
+      if(money(R.study)) have.push("Financement : "+fmt(R.study)+" par an (compte bloqué)"); else miss.push("Compte bloqué : "+fmt(R.study)+" par an (992 €/mois)");
+      notes.push("Pendant les études : travail autorisé 140 jours entiers par an. Les universités publiques sont presque gratuites (frais de semestre), sauf dans certains Länder pour les étrangers.");
+      const st=miss.length===0?"ok":"prep";
+      V({id:"etu",title:"Études universitaires",law:"§16b AufenthG",status:st,target:p.de>=5?5:(p.en>=1?2:5),prio:uni?4:6,have,miss,notes});
+    }
+  }
+  /* 4. Studienkolleg / candidat aux études */
+  {
+    const have=[],miss=[],notes=["Le Studienkolleg prépare un an à l'université ; il faut réussir un examen d'entrée en allemand.","Visa pour candidat aux études : séjour jusqu'à 9 mois pour obtenir l'admission."];
+    if(!hasBac||uni){V({id:"stk",title:"Studienkolleg / candidat aux études",law:"§16b / §17 AufenthG",status:"no",target:4,prio:5,have,miss:[!hasBac?"Baccalauréat obligatoire":"Peu utile avec un diplôme universitaire"],notes});}
+    else{
+      have.push("Baccalauréat");
+      if(p.de>=4) have.push("Allemand B2 (examen d'entrée)"); else miss.push("Allemand B1 minimum, B2 conseillé pour l'examen d'entrée");
+      if(money(R.study)) have.push("Financement"); else miss.push("Compte bloqué : environ "+fmt(R.study)+" par an");
+      V({id:"stk",title:"Studienkolleg / candidat aux études",law:"§16b / §17 AufenthG",status:miss.length?"prep":"ok",target:4,prio:5,have,miss,notes});
+    }
+  }
+  /* 5. Chancenkarte */
+  {
+    const have=[],miss=[],notes=[]; let pts=0; const detail=[];
+    if(!qual){V({id:"chance",title:"Chancenkarte (carte opportunité, recherche d'emploi)",law:"§20a AufenthG",status:"no",target:2,prio:6.5,have,miss:["Diplôme obligatoire : formation professionnelle d'au moins 2 ans ou diplôme universitaire"],notes});}
+    else{
+      have.push("Diplôme qualifiant");
+      const full=p.reco==="complete";
+      if(p.de>=1||p.en>=1) have.push("Langue : allemand A1 ou anglais B2"); else miss.push("Allemand A1 minimum (ou anglais B2)");
+      if(money(R.chance)) have.push("Financement : "+fmt(R.chance)+" pour 12 mois"); else miss.push("Compte bloqué : "+fmt(R.chance)+" (1 091 €/mois)");
+      if(full){ have.push("Diplôme reconnu en Allemagne : pas besoin de points"); }
+      else{
+        if(p.reco==="partielle"){pts+=4;detail.push("reconnaissance partielle +4");}
+        if(p.exp>=5){pts+=3;detail.push("expérience 5 ans +3");} else if(p.exp>=2){pts+=2;detail.push("expérience 2 ans +2");}
+        if(["sante_inf","sante_med","it","ing","tech","educ"].includes(p.dom)){pts+=1;detail.push("métier en pénurie +1");}
+        if(p.de>=4){pts+=3;detail.push("allemand B2 +3");} else if(p.de===3){pts+=2;detail.push("allemand B1 +2");} else if(p.de===2){pts+=1;detail.push("allemand A2 +1");}
+        if(p.en>=2){pts+=1;detail.push("anglais C1 +1");}
+        if(p.age<35){pts+=2;detail.push("moins de 35 ans +2");} else if(p.age<=40){pts+=1;detail.push("35-40 ans +1");}
+        if(p.sejour){pts+=1;detail.push("séjour en Allemagne +1");}
+        if(p.partenaire){pts+=1;detail.push("conjoint éligible +1");}
+        if(pts>=6) have.push(`Points : ${pts}/6 minimum (${detail.join(", ")})`);
+        else miss.push(`Points : ${pts} sur 6 nécessaires (${detail.join(", ")||"aucun"}). Monter l'allemand à B1/B2 rapporte 2 à 3 points`);
+      }
+      notes.push("Séjour d'1 an pour chercher un emploi. Travail jusqu'à 20 h/semaine et essais de 2 semaines autorisés.");
+      if(!full) notes.push("Le diplôme doit être reconnu par l'État tunisien. Points estimés : votre conseiller recalcule avec les documents.");
+      const st=miss.length?"prep":"ok";
+      V({id:"chance",title:"Chancenkarte (carte opportunité, recherche d'emploi)",law:"§20a AufenthG",status:st,target:p.de>=3?3:(full?1:3),prio:6.5,have,miss,notes,pts});
+    }
+  }
+  /* 6. Travailleur qualifié */
+  {
+    const target=sante?4:3, have=[],miss=[],notes=[];
+    if(!qual){V({id:"fk",title:"Travailleur qualifié avec diplôme reconnu",law:"§18a / §18b AufenthG",status:"no",target,prio:9,have,miss:["Diplôme professionnel ou universitaire nécessaire"],notes});}
+    else{
+      if(p.reco==="complete") have.push("Diplôme reconnu en Allemagne"); else miss.push("Faire reconnaître le diplôme en Allemagne (Anerkennung)");
+      if(p.offre==="emploi") have.push("Offre d'emploi qualifié"); else miss.push("Trouver un emploi dans son domaine en Allemagne");
+      if(p.de>=target) have.push("Allemand "+LV[target]); else miss.push("Allemand "+LV[target]+" conseillé (exigé selon le métier"+(sante?" ; santé : B2":"")+")");
+      notes.push("Avec l'employeur, la procédure accélérée (§81a) réduit fortement les délais.");
+      V({id:"fk",title:"Travailleur qualifié avec diplôme reconnu",law:"§18a / §18b AufenthG",status:miss.length?"prep":"ok",target,prio:9,have,miss,notes});
+    }
+  }
+  /* 7. Carte bleue */
+  {
+    const have=[],miss=[],notes=[];
+    const low=["it","ing","sante_med","educ"].includes(p.dom)||p.recent;
+    const seuil=low?R.blueLow:R.blue;
+    if(p.dom==="sante_inf"){V({id:"blue",title:"Carte bleue européenne (Blaue Karte EU)",law:"§18g AufenthG",status:"no",target:0,prio:10,have,miss:["Non applicable aux infirmiers et soignants : voir reconnaissance du diplôme ou travailleur qualifié"],notes});}
+    else if(!uni){V({id:"blue",title:"Carte bleue européenne (Blaue Karte EU)",law:"§18g AufenthG",status:"no",target:0,prio:10,have,miss:["Diplôme universitaire nécessaire"+(p.dom==="it"?" (exception : informaticiens avec 3 ans d'expérience)":"")],notes});}
+    else{
+      have.push("Diplôme universitaire");
+      if(p.reco==="complete") have.push("Diplôme reconnu ou comparable (anabin H+)"); else miss.push("Vérifier que le diplôme est comparable (anabin H+) ou le faire reconnaître");
+      if(p.offre==="emploi"){ if(p.salaire>=seuil) have.push("Salaire "+fmt(p.salaire)+" ≥ "+fmt(seuil)); else miss.push("Salaire minimum "+fmt(seuil)+" brut/an (proposé : "+fmt(p.salaire)+")"); }
+      else miss.push("Offre d'emploi avec un salaire d'au moins "+fmt(seuil)+" brut/an");
+      notes.push("Pas de niveau d'allemand exigé par la loi, mais B1 aide beaucoup pour trouver l'emploi et s'installer. Séjour permanent possible après 21 à 27 mois.");
+      if(low) notes.push("Seuil réduit : métier en pénurie ou jeune diplômé.");
+      V({id:"blue",title:"Carte bleue européenne (Blaue Karte EU)",law:"§18g AufenthG",status:miss.length?"prep":"ok",target:3,prio:10,have,miss,notes});
+    }
+  }
+  /* 8. Expérience §19c */
+  {
+    const have=[],miss=[],notes=["Pas besoin de reconnaissance allemande du diplôme. Pas de niveau d'allemand exigé par la loi.","Pas possible pour les professions réglementées (soins infirmiers, médecine...)."];
+    if(!qual||sante){V({id:"exp",title:"Travail grâce à l'expérience professionnelle",law:"§19c al. 2 AufenthG",status:"no",target:2,prio:8,have,miss:[!qual?"Diplôme professionnel (2 ans) ou universitaire reconnu en Tunisie nécessaire":"Non applicable aux professions de santé réglementées"],notes});}
+    else{
+      have.push("Diplôme reconnu en Tunisie");
+      if(p.exp>=2) have.push("Au moins 2 ans d'expérience (5 dernières années)"); else miss.push("Au moins 2 ans d'expérience dans les 5 dernières années");
+      if(p.offre==="emploi"){ if(p.salaire>=R.exp19c) have.push("Salaire ≥ "+fmt(R.exp19c)); else miss.push("Salaire minimum "+fmt(R.exp19c)+" brut/an (sauf employeur sous convention collective)"); }
+      else miss.push("Offre d'emploi avec au moins "+fmt(R.exp19c)+" brut/an (ou employeur sous convention collective)");
+      V({id:"exp",title:"Travail grâce à l'expérience professionnelle",law:"§19c al. 2 AufenthG",status:miss.length?"prep":"ok",target:2,prio:8,have,miss,notes});
+    }
+  }
+  /* 9. Reconnaissance §16d */
+  {
+    const target=sante?(p.dom==="sante_med"?5:4):2, have=[],miss=[],notes=[];
+    if(!qual){V({id:"reco",title:"Visa pour la reconnaissance du diplôme",law:"§16d AufenthG",status:"no",target,prio:7,have,miss:["Diplôme professionnel ou universitaire nécessaire"],notes});}
+    else if(p.reco==="complete"){V({id:"reco",title:"Visa pour la reconnaissance du diplôme",law:"§16d AufenthG",status:"no",target,prio:7,have,miss:["Inutile : votre diplôme est déjà reconnu"],notes});}
+    else{
+      if(p.reco==="partielle") have.push("Avis de reconnaissance partielle"); else miss.push("Lancer la reconnaissance (Anerkennung) auprès de l'autorité allemande compétente");
+      if(p.de>=target) have.push("Allemand "+LV[target]); else miss.push("Allemand "+LV[target]+(sante?" (santé : B1/B2, médecins C1 médical)":" minimum"));
+      miss.push("Trouver une mesure de compensation (stage d'adaptation) ou un employeur en Allemagne");
+      notes.push("Permet de venir terminer la reconnaissance en Allemagne (jusqu'à 2 à 3 ans) en travaillant.");
+      if(sante) notes.push("Pour les infirmiers et paramédicaux, c'est souvent LA meilleure voie : salaire de professionnel, pas d'apprenti.");
+      V({id:"reco",title:"Visa pour la reconnaissance du diplôme",law:"§16d AufenthG",status:"prep",target,prio:sante?9.5:7,have,miss,notes});
+    }
+  }
+  /* 10. Regroupement familial */
+  {
+    const have=[],miss=[],notes=["Le conjoint en Allemagne doit avoir un logement suffisant et des revenus pour la famille."];
+    if(p.proche!=="oui"||p.famille==="celib"){V({id:"fam",title:"Regroupement familial (rejoindre son conjoint)",law:"§30 AufenthG",status:"no",target:1,prio:9,have,miss:["Seulement si votre conjoint vit déjà en Allemagne"],notes});}
+    else{
+      if(p.age>=18) have.push("18 ans ou plus"); else miss.push("18 ans minimum");
+      if(p.de>=1) have.push("Allemand A1"); else miss.push("Allemand A1 (certificat), sauf exceptions (ex. conjoint de titulaire de carte bleue)");
+      V({id:"fam",title:"Regroupement familial (rejoindre son conjoint)",law:"§30 AufenthG",status:miss.length?"prep":"ok",target:1,prio:9,have,miss,notes});
+    }
+  }
+  /* 11. Au pair */
+  {
+    const have=[],miss=[],notes=["Vivre dans une famille allemande et garder les enfants, avec argent de poche, pendant 1 an maximum."];
+    if(p.age<18||p.age>26||p.famille==="enfants"){V({id:"aupair",title:"Au pair",law:"§19c / BeschV",status:"no",target:1,prio:3,have,miss:["Âge entre 18 et 26 ans, sans enfant"],notes});}
+    else{
+      have.push("Âge 18-26 ans");
+      if(p.de>=1) have.push("Allemand A1"); else miss.push("Allemand A1");
+      miss.push("Trouver une famille d'accueil (contrat au pair)");
+      V({id:"aupair",title:"Au pair",law:"§19c / BeschV",status:"prep",target:1,prio:3,have,miss,notes});
+    }
+  }
+  /* 12. Volontariat */
+  {
+    const have=[],miss=[],notes=["Service volontaire (FSJ jusqu'à 26 ans, BFD sans âge maximum) de 6 à 18 mois, logé et avec argent de poche. Bon tremplin vers l'Ausbildung dans le social ou la santé."];
+    if(p.age<18){V({id:"vol",title:"Volontariat (FSJ / BFD)",law:"§19e AufenthG",status:"no",target:2,prio:3,have,miss:["18 ans minimum"],notes});}
+    else{
+      have.push("18 ans ou plus");
+      if(p.de>=2) have.push("Allemand A2"); else miss.push("Allemand A2 (B1 souvent préféré)");
+      miss.push("Trouver une organisation d'accueil agréée");
+      V({id:"vol",title:"Volontariat (FSJ / BFD)",law:"§19e AufenthG",status:"prep",target:2,prio:3,have,miss,notes});
+    }
+  }
+  /* 13. Cours de langue en Allemagne */
+  {
+    const have=[],miss=[],notes=["Cours intensif d'au moins 18 h/semaine. Ce visa ne permet pas de travailler, et passer ensuite à un autre visa est limité.","Conseil : apprendre l'allemand en Tunisie coûte beaucoup moins cher."];
+    if(p.age<18){V({id:"sprach",title:"Cours de langue intensif en Allemagne",law:"§16f AufenthG",status:"no",target:0,prio:1,have,miss:["18 ans minimum en général"],notes});}
+    else{
+      if(money(6546)) have.push("Financement (1 091 €/mois de cours)"); else miss.push("Compte bloqué : 1 091 € par mois de cours");
+      V({id:"sprach",title:"Cours de langue intensif en Allemagne",law:"§16f AufenthG",status:miss.length?"prep":"ok",target:0,prio:1,have,miss,notes});
+    }
+  }
+  return out;
+}
+
+/* ---------- Affichage ---------- */
+function plan(cur,target){
+  const steps=[];
+  for(let l=cur+1;l<=target;l++) steps.push({lvl:LV[l],m:MONTHS[l]});
+  return steps;
+}
+function render(p,list){
+  const rank={ok:0,prep:1,no:2};
+  // une voie "prep" avec beaucoup de manques passe après
+  list.forEach(v=>{v.score=(rank[v.status]*100)-(v.prio*5)+(v.status==="prep"?v.miss.length*10:0);});
+  list.sort((a,b)=>a.score-b.score);
+  const good=list.filter(v=>v.status!=="no");
+  const top=good.slice(0,2);
+  const target=Math.max(p.de,...top.map(v=>v.target||0));
+  const steps=plan(p.de,target);
+  const months=steps.reduce((s,x)=>s+x.m,0);
+  const best=top[0];
+
+  let h=`<section class="card summary"><h2>Votre résultat</h2><p class="sub">Basé sur vos réponses. Votre conseiller ${CENTRE} vérifie chaque point avec vos documents.</p>
+  <div class="best">
+    <div class="kpi"><div class="k">Meilleure voie</div><div class="v">${best?best.title:"Aucune pour le moment"}</div><div class="d">${best?(best.status==="ok"?"Conditions principales réunies":"Possible après préparation"):"Venez en parler avec un conseiller"}</div></div>
+    <div class="kpi"><div class="k">Niveau d'allemand à viser</div><div class="v">${target>p.de?LV[target]:(p.de?LV[p.de]+" (atteint)":"A1")}</div><div class="d">Niveau actuel : ${LV[p.de]}</div></div>
+    <div class="kpi"><div class="k">Durée de cours estimée</div><div class="v">${months?("≈ "+months+" mois"):"Niveau atteint"}</div><div class="d">Cours intensifs, avant l'examen officiel</div></div>
+  </div></section>`;
+
+  // parcours centre
+  h+=`<section class="card"><h2>Votre parcours chez ${CENTRE}</h2><p class="sub">De votre niveau actuel jusqu'au dépôt du visa.</p><div class="timeline">`;
+  let n=1;
+  h+=tl(n++,"","Test de niveau et entretien d'orientation","Confirmation du niveau d'allemand et du visa le plus adapté avec un conseiller.");
+  steps.forEach(s=>{h+=tl(n++,"","Cours d'allemand "+s.lvl,"Environ "+s.m+" mois en intensif.");});
+  if(target>0) h+=tl(n++,"g","Examen officiel "+LV[target],"Goethe-Institut, telc ou ÖSD. Préparation à l'examen au centre.");
+  h+=tl(n++,"r","Traitement de votre dossier","Checklist des documents, légalisations et traductions, CV et lettre de motivation en allemand, préparation de la demande de visa et de l'entretien.");
+  h+=`</div></section>`;
+
+  // visas
+  h+=`<section class="card"><h2>Détail des visas</h2><div class="legend"><span>🟢 Possible maintenant</span><span>🟡 Possible après préparation</span><span>⚪ Pas adapté à votre profil</span></div>`;
+  good.forEach(v=>h+=visaHTML(v));
+  const bad=list.filter(v=>v.status==="no");
+  if(bad.length){h+=`<details class="nolist"><summary>Voir les ${bad.length} visas non adaptés et pourquoi</summary>`;bad.forEach(v=>h+=visaHTML(v));h+=`</details>`;}
+  h+=`<div class="warn">Ce résultat est une orientation, pas une garantie. Personne ne peut garantir un visa : la décision appartient à l'ambassade d'Allemagne.</div>`;
+  h+=`<div class="btns" style="margin-top:14px"><button type="button" class="primary" id="copyBtn">Copier la fiche résumé</button><button type="button" class="ghost" id="editBtn">Modifier mes réponses</button><span id="copyMsg" class="copied"></span></div></section>`;
+
+  $("results").innerHTML=h;
+  $("results").classList.remove("hidden");
+  $("results").scrollIntoView({behavior:"smooth"});
+  $("editBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+  $("copyBtn").onclick=async()=>{
+    const txt=summaryText(p,list,target,months);
+    try{await navigator.clipboard.writeText(txt);$("copyMsg").textContent="Fiche copiée ✓";}
+    catch(e){$("copyMsg").textContent="Copie impossible : sélectionnez le texte à la main.";}
+  };
+}
+function tl(n,c,t,s){return `<div class="tl"><div class="dot ${c}">${n}</div><div class="body"><div class="t">${t}</div><div class="s">${s}</div></div></div>`;}
+function visaHTML(v){
+  const b={ok:["b-ok","🟢 Possible maintenant"],prep:["b-prep","🟡 Après préparation"],no:["b-no","⚪ Pas adapté"]}[v.status];
+  let h=`<div class="visa ${v.status}"><div class="vh"><div><div class="vt">${v.title}</div><div class="vl">${v.law}</div></div><span class="badge ${b[0]}">${b[1]}</span></div>`;
+  if(v.have.length) h+=`<ul class="have">${v.have.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+  if(v.miss.length) h+=`<ul class="miss">${v.miss.map(x=>`<li><b>À faire :</b> ${x}</li>`).join("")}</ul>`;
+  if(v.status!=="no"){
+    if(v.target) h+=`<span class="tag">Allemand visé : ${LV[v.target]}</span>`;
+    if(v.notes.length) h+=`<ul>${v.notes.map(x=>`<li class="note">${x}</li>`).join("")}</ul>`;
+  }
+  return h+`</div>`;
+}
+function summaryText(p,list,target,months){
+  const L=[];
+  L.push(`FICHE D'ORIENTATION – ${CENTRE}`);
+  L.push(`Âge : ${p.age} | Bac : ${p.bac} | Diplôme : ${$("diplome").selectedOptions[0].text} | Domaine : ${$("domaine").selectedOptions[0].text}`);
+  L.push(`Allemand : ${LV[p.de]} | Anglais : ${$("en").selectedOptions[0].text} | Projet : ${$("offre").selectedOptions[0].text}`);
+  L.push(`Niveau à viser : ${LV[target]} | Cours estimés : ${months} mois`);
+  L.push("");
+  list.filter(v=>v.status!=="no").forEach(v=>{
+    L.push(`[${v.status==="ok"?"POSSIBLE":"APRÈS PRÉPARATION"}] ${v.title} (${v.law})`);
+    v.miss.forEach(m=>L.push("   - À faire : "+m));
+  });
+  L.push("");
+  L.push("Orientation indicative – à vérifier par le conseiller (règles nov. 2026).");
+  return L.join("\n");
+}
+
+$("f").addEventListener("submit",e=>{e.preventDefault();const p=read();render(p,evaluate(p));});
+$("resetBtn").addEventListener("click",()=>{$("f").reset();sync();$("results").classList.add("hidden");$("results").innerHTML="";window.scrollTo({top:0,behavior:"smooth"});});
+</script>
+</body>
+</html>
