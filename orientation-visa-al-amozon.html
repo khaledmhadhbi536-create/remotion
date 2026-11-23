@@ -100,7 +100,7 @@ footer a{color:var(--navy)}
 <header><div class="wrap">
   <div class="brand" id="brandName">Al Amozon Academy</div>
   <h1>Quel visa pour l'Allemagne ?</h1>
-  <p>Répondez à quelques questions (5 minutes). Vous verrez les visas possibles pour votre profil, ce qu'il vous manque, le niveau d'allemand à atteindre et votre parcours de cours dans notre centre.</p>
+  <p>Répondez à quelques questions (5 minutes). Vous verrez les visas possibles pour votre profil, ce qu'il vous manque, le niveau d'allemand à atteindre et votre accompagnement complet jusqu'au visa.</p>
 </div></header>
 
 <main>
@@ -209,6 +209,7 @@ const CENTRE = "Al Amozon Academy";
 const LV = ["Débutant","A1","A2","B1","B2","C1"];
 // Mois de cours intensifs pour passer AU niveau indiqué (index)
 const MONTHS = [0,2,2,3,3,4];
+const CENTRE_MAX = 4; // le centre enseigne A1, A2, B1, B2
 const R = { // montants 2026
   ausbSearchTotal: 9819, // 9 x 1 091 €
   study: 11904,          // 992 € x 12
@@ -312,7 +313,7 @@ function evaluate(p){
   }
   /* 2. Recherche place Ausbildung */
   {
-    const have=[],miss=[],notes=["Séjour jusqu'à 9 mois pour chercher sur place, travail jusqu'à 20 h/semaine autorisé.","Une ancienne page de l'ambassade de Tunis indiquait 25 ans maximum : faire confirmer l'âge limite."];
+    const have=[],miss=[],notes=["Visa de 9 mois maximum pour chercher l'entreprise sur place.","Une ancienne page de l'ambassade de Tunis indiquait 25 ans maximum : faire confirmer l'âge limite."];
     let block=false;
     if(p.age<=35) have.push("Âge : 35 ans maximum"); else {miss.push("Âge : 35 ans maximum (dépassé)");block=true;}
     if(p.bac==="oui") have.push("Baccalauréat"); else {miss.push("Baccalauréat obligatoire");block=p.bac==="non"?true:block;}
@@ -336,7 +337,6 @@ function evaluate(p){
       if(langOk) have.push(p.de>=5?"Allemand C1 (études en allemand)":"Anglais B2+ (programmes en anglais)");
       else miss.push("Allemand C1 (TestDaF/DSH) pour étudier en allemand, ou anglais B2/C1 pour un programme en anglais");
       if(money(R.study)) have.push("Financement : "+fmt(R.study)+" par an (compte bloqué)"); else miss.push("Compte bloqué : "+fmt(R.study)+" par an (992 €/mois)");
-      notes.push("Pendant les études : travail autorisé 140 jours entiers par an. Les universités publiques sont presque gratuites (frais de semestre), sauf dans certains Länder pour les étrangers.");
       const st=miss.length===0?"ok":"prep";
       V({id:"etu",title:"Études universitaires",law:"§16b AufenthG",status:st,target:p.de>=5?5:(p.en>=1?2:5),prio:uni?4:6,have,miss,notes});
     }
@@ -374,7 +374,7 @@ function evaluate(p){
         if(pts>=6) have.push(`Points : ${pts}/6 minimum (${detail.join(", ")})`);
         else miss.push(`Points : ${pts} sur 6 nécessaires (${detail.join(", ")||"aucun"}). Monter l'allemand à B1/B2 rapporte 2 à 3 points`);
       }
-      notes.push("Séjour d'1 an pour chercher un emploi. Travail jusqu'à 20 h/semaine et essais de 2 semaines autorisés.");
+      notes.push("Visa pour venir chercher un emploi en Allemagne.");
       if(!full) notes.push("Le diplôme doit être reconnu par l'État tunisien. Points estimés : votre conseiller recalcule avec les documents.");
       const st=miss.length?"prep":"ok";
       V({id:"chance",title:"Chancenkarte (carte opportunité, recherche d'emploi)",law:"§20a AufenthG",status:st,target:p.de>=3?3:(full?1:3),prio:6.5,have,miss,notes,pts});
@@ -404,7 +404,7 @@ function evaluate(p){
       if(p.reco==="complete") have.push("Diplôme reconnu ou comparable (anabin H+)"); else miss.push("Vérifier que le diplôme est comparable (anabin H+) ou le faire reconnaître");
       if(p.offre==="emploi"){ if(p.salaire>=seuil) have.push("Salaire "+fmt(p.salaire)+" ≥ "+fmt(seuil)); else miss.push("Salaire minimum "+fmt(seuil)+" brut/an (proposé : "+fmt(p.salaire)+")"); }
       else miss.push("Offre d'emploi avec un salaire d'au moins "+fmt(seuil)+" brut/an");
-      notes.push("Pas de niveau d'allemand exigé par la loi, mais B1 aide beaucoup pour trouver l'emploi et s'installer. Séjour permanent possible après 21 à 27 mois.");
+      notes.push("Pas de niveau d'allemand exigé par la loi, mais le B1 aide beaucoup à obtenir l'offre d'emploi.");
       if(low) notes.push("Seuil réduit : métier en pénurie ou jeune diplômé.");
       V({id:"blue",title:"Carte bleue européenne (Blaue Karte EU)",law:"§18g AufenthG",status:miss.length?"prep":"ok",target:3,prio:10,have,miss,notes});
     }
@@ -430,8 +430,8 @@ function evaluate(p){
       if(p.reco==="partielle") have.push("Avis de reconnaissance partielle"); else miss.push("Lancer la reconnaissance (Anerkennung) auprès de l'autorité allemande compétente");
       if(p.de>=target) have.push("Allemand "+LV[target]); else miss.push("Allemand "+LV[target]+(sante?" (santé : B1/B2, médecins C1 médical)":" minimum"));
       miss.push("Trouver une mesure de compensation (stage d'adaptation) ou un employeur en Allemagne");
-      notes.push("Permet de venir terminer la reconnaissance en Allemagne (jusqu'à 2 à 3 ans) en travaillant.");
-      if(sante) notes.push("Pour les infirmiers et paramédicaux, c'est souvent LA meilleure voie : salaire de professionnel, pas d'apprenti.");
+      notes.push("Visa pour venir terminer la reconnaissance du diplôme en Allemagne.");
+      if(sante) notes.push("Pour les infirmiers et paramédicaux, c'est souvent la meilleure voie.");
       V({id:"reco",title:"Visa pour la reconnaissance du diplôme",law:"§16d AufenthG",status:"prep",target,prio:sante?9.5:7,have,miss,notes});
     }
   }
@@ -447,7 +447,7 @@ function evaluate(p){
   }
   /* 11. Au pair */
   {
-    const have=[],miss=[],notes=["Vivre dans une famille allemande et garder les enfants, avec argent de poche, pendant 1 an maximum."];
+    const have=[],miss=[],notes=["Programme d'un an maximum dans une famille allemande."];
     if(p.age<18||p.age>26||p.famille==="enfants"){V({id:"aupair",title:"Au pair",law:"§19c / BeschV",status:"no",target:1,prio:3,have,miss:["Âge entre 18 et 26 ans, sans enfant"],notes});}
     else{
       have.push("Âge 18-26 ans");
@@ -458,7 +458,7 @@ function evaluate(p){
   }
   /* 12. Volontariat */
   {
-    const have=[],miss=[],notes=["Service volontaire (FSJ jusqu'à 26 ans, BFD sans âge maximum) de 6 à 18 mois, logé et avec argent de poche. Bon tremplin vers l'Ausbildung dans le social ou la santé."];
+    const have=[],miss=[],notes=["Service volontaire (FSJ jusqu'à 26 ans, BFD sans âge maximum) de 6 à 18 mois."];
     if(p.age<18){V({id:"vol",title:"Volontariat (FSJ / BFD)",law:"§19e AufenthG",status:"no",target:2,prio:3,have,miss:["18 ans minimum"],notes});}
     else{
       have.push("18 ans ou plus");
@@ -469,7 +469,7 @@ function evaluate(p){
   }
   /* 13. Cours de langue en Allemagne */
   {
-    const have=[],miss=[],notes=["Cours intensif d'au moins 18 h/semaine. Ce visa ne permet pas de travailler, et passer ensuite à un autre visa est limité.","Conseil : apprendre l'allemand en Tunisie coûte beaucoup moins cher."];
+    const have=[],miss=[],notes=["Cours intensif d'au moins 18 h/semaine en Allemagne.","Conseil : apprendre l'allemand en Tunisie coûte beaucoup moins cher."];
     if(p.age<18){V({id:"sprach",title:"Cours de langue intensif en Allemagne",law:"§16f AufenthG",status:"no",target:0,prio:1,have,miss:["18 ans minimum en général"],notes});}
     else{
       if(money(6546)) have.push("Financement (1 091 €/mois de cours)"); else miss.push("Compte bloqué : 1 091 € par mois de cours");
@@ -482,13 +482,13 @@ function evaluate(p){
 /* ---------- Affichage ---------- */
 function plan(cur,target){
   const steps=[];
-  for(let l=cur+1;l<=target;l++) steps.push({lvl:LV[l],m:MONTHS[l]});
+  for(let l=cur+1;l<=Math.min(target,CENTRE_MAX);l++) steps.push({lvl:LV[l],m:MONTHS[l]});
   return steps;
 }
 function render(p,list){
   const rank={ok:0,prep:1,no:2};
   // une voie "prep" avec beaucoup de manques passe après
-  list.forEach(v=>{v.score=(rank[v.status]*100)-(v.prio*5)+(v.status==="prep"?v.miss.length*10:0);});
+  list.forEach(v=>{v.score=(rank[v.status]*100)-(v.prio*5)+(v.status==="prep"?v.miss.length*10:0)+(v.id==="sprach"&&v.status!=="no"?150:0);});
   list.sort((a,b)=>a.score-b.score);
   const good=list.filter(v=>v.status!=="no");
   const top=good.slice(0,2);
@@ -500,17 +500,40 @@ function render(p,list){
   let h=`<section class="card summary"><h2>Votre résultat</h2><p class="sub">Basé sur vos réponses. Votre conseiller ${CENTRE} vérifie chaque point avec vos documents.</p>
   <div class="best">
     <div class="kpi"><div class="k">Meilleure voie</div><div class="v">${best?best.title:"Aucune pour le moment"}</div><div class="d">${best?(best.status==="ok"?"Conditions principales réunies":"Possible après préparation"):"Venez en parler avec un conseiller"}</div></div>
-    <div class="kpi"><div class="k">Niveau d'allemand à viser</div><div class="v">${target>p.de?LV[target]:(p.de?LV[p.de]+" (atteint)":"A1")}</div><div class="d">Niveau actuel : ${LV[p.de]}</div></div>
-    <div class="kpi"><div class="k">Durée de cours estimée</div><div class="v">${months?("≈ "+months+" mois"):"Niveau atteint"}</div><div class="d">Cours intensifs, avant l'examen officiel</div></div>
+    <div class="kpi"><div class="k">Niveau d'allemand à viser</div><div class="v">${target>p.de?LV[target]:(p.de?LV[p.de]+" (atteint)":"A1")}</div><div class="d">Niveau actuel : ${LV[p.de]}${target>CENTRE_MAX?" · le centre vous amène jusqu'au B2":""}</div></div>
+    <div class="kpi"><div class="k">Durée de cours estimée</div><div class="v">${months?("≈ "+months+" mois"):"Niveau atteint"}</div><div class="d">Cours au centre (A1 à B2), avant l'examen officiel</div></div>
   </div></section>`;
 
   // parcours centre
-  h+=`<section class="card"><h2>Votre parcours chez ${CENTRE}</h2><p class="sub">De votre niveau actuel jusqu'au dépôt du visa.</p><div class="timeline">`;
+  h+=`<section class="card"><h2>Votre accompagnement complet chez ${CENTRE}</h2><p class="sub">Du test de niveau jusqu'à l'obtention du visa.</p><div class="timeline">`;
   let n=1;
   h+=tl(n++,"","Test de niveau et entretien d'orientation","Confirmation du niveau d'allemand et du visa le plus adapté avec un conseiller.");
-  steps.forEach(s=>{h+=tl(n++,"","Cours d'allemand "+s.lvl,"Environ "+s.m+" mois en intensif.");});
-  if(target>0) h+=tl(n++,"g","Examen officiel "+LV[target],"Goethe-Institut, telc ou ÖSD. Préparation à l'examen au centre.");
-  h+=tl(n++,"r","Traitement de votre dossier","Checklist des documents, légalisations et traductions, CV et lettre de motivation en allemand, préparation de la demande de visa et de l'entretien.");
+  steps.forEach(s=>{h+=tl(n++,"","Cours d'allemand "+s.lvl,"Environ "+s.m+" mois en intensif au centre.");});
+  const exam=Math.min(target,CENTRE_MAX);
+  if(exam>0) h+=tl(n++,"g","Examen officiel "+LV[exam],"Goethe-Institut, telc ou ÖSD. Préparation à l'examen au centre.");
+  if(target>CENTRE_MAX) h+=tl(n++,"g","Niveau C1 (hors programme du centre)","Votre visa demande le C1 : à préparer après votre B2, avec un organisme qui propose ce niveau.");
+  const id=best?best.id:"";
+  const cand={
+    ausb:["Recherche d'entreprise et candidatures","CV et lettre de motivation en allemand, candidatures ciblées, préparation aux entretiens avec les entreprises."],
+    ausbs:["Préparation de la recherche sur place","CV et lettres en allemand prêts à envoyer, liste d'entreprises, préparation aux entretiens."],
+    etu:["Candidature à l'université","Choix des formations, dossier uni-assist ou université, lettre de motivation."],
+    stk:["Candidature au Studienkolleg","Choix du Studienkolleg, dossier de candidature, préparation à l'examen d'entrée."],
+    chance:["Calcul des points et preuves","Vérification des points, reconnaissance du diplôme en Tunisie, preuves d'expérience et de langue."],
+    fk:["Reconnaissance du diplôme et candidatures","Dossier de reconnaissance (Anerkennung), CV et candidatures en allemand, procédure accélérée avec l'employeur."],
+    blue:["Candidatures et contrat de travail","CV et candidatures, vérification du diplôme (anabin) et du salaire, procédure accélérée avec l'employeur."],
+    exp:["Candidatures et contrat de travail","Preuves d'expérience, CV et candidatures, vérification du salaire minimum."],
+    reco:["Dossier de reconnaissance du diplôme","Constitution du dossier Anerkennung auprès de l'autorité allemande, recherche de stage d'adaptation ou d'employeur."],
+    fam:["Dossier de regroupement familial","Documents du mariage, du conjoint en Allemagne (logement, revenus) et certificat A1."],
+    aupair:["Recherche d'une famille d'accueil","Profil au pair en allemand, contrat avec la famille."],
+    vol:["Candidature au volontariat","Recherche d'une organisation agréée, lettre de motivation, convention."],
+    sprach:["Inscription à l'école de langue","Inscription au cours intensif en Allemagne."],
+  }[id]||["Candidatures","CV et lettre de motivation en allemand, préparation aux entretiens."];
+  h+=tl(n++,"r",cand[0],cand[1]);
+  h+=tl(n++,"r","Constitution du dossier visa","Checklist personnalisée"+(best?" pour : "+best.title:"")+". Légalisation des documents tunisiens et traductions assermentées.");
+  h+=tl(n++,"r","Financement et assurance","Compte bloqué ou garant si nécessaire, vérification du salaire, assurance voyage.");
+  h+=tl(n++,"r","Demande de visa et rendez-vous","Demande en ligne (Auslandsportal), prise de rendez-vous TLScontact, vérification finale du dossier.");
+  h+=tl(n++,"r","Préparation à l'entretien de l'ambassade","Simulation des questions, ordre des documents, conseils pour le jour du rendez-vous.");
+  h+=tl(n++,"g","Suivi jusqu'à la décision : visa obtenu","Suivi de votre dossier jusqu'à la réponse de l'ambassade (en cas de refus : analyse et recours ou nouvelle demande).");
   h+=`</div></section>`;
 
   // visas
