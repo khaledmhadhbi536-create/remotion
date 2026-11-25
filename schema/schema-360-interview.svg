@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1500" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd76a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffd76a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="keyBeam" cx="0%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#fff6d8" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#fff6d8" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <rect width="1000" height="1500" fill="#f7f5f0"/>
+  <text x="500" y="50" text-anchor="middle" font-size="30" font-weight="bold" fill="#222">Schéma 360° – Interview UGC (S24 Ultra)</text>
+  <text x="500" y="82" text-anchor="middle" font-size="17" fill="#666">Vue de dessus – personne au centre, 0° = téléphone</text>
+
+  <!-- ===== VUE DE DESSUS ===== -->
+  <!-- Mur -->
+  <rect x="80" y="110" width="840" height="34" fill="#d9d6d0" stroke="#999"/>
+  <text x="110" y="133" font-size="16" fill="#444">MUR BLANC TEXTURÉ</text>
+  <!-- Logo -->
+  <circle cx="680" cy="144" r="60" fill="url(#glow)"/>
+  <rect x="640" y="136" width="80" height="14" rx="3" fill="#2b2b2b"/>
+  <text x="680" y="190" text-anchor="middle" font-size="15" font-weight="bold" fill="#b8860b">LOGO (M) ~3000K</text>
+
+  <!-- Cercle 360 -->
+  <g transform="translate(500,520)">
+    <circle r="300" fill="none" stroke="#c9c3b8" stroke-dasharray="6 6"/>
+    <circle r="150" fill="none" stroke="#e0dbd2" stroke-dasharray="3 6"/>
+    <!-- graduations -->
+    <g font-size="15" fill="#888" text-anchor="middle">
+      <text x="0" y="325">0°</text>
+      <text x="262" y="185">45°</text>
+      <text x="322" y="5">90°</text>
+      <text x="232" y="-225">135°</text>
+      <text x="0" y="-308">180°</text>
+      <text x="-232" y="-225">225°</text>
+      <text x="-325" y="5">270°</text>
+      <text x="-262" y="185">315°</text>
+    </g>
+    <line x1="0" y1="-300" x2="0" y2="300" stroke="#e6e1d8"/>
+    <line x1="-300" y1="0" x2="300" y2="0" stroke="#e6e1d8"/>
+
+    <!-- faisceau key light (vient de 315° = avant gauche) -->
+    <path d="M-200,200 L-20,-40 L40,20 Z" fill="#ffe9a8" opacity="0.45"/>
+    <!-- faisceau back light -->
+    <path d="M150,-250 L-10,-20 L25,0 Z" fill="#ffc94d" opacity="0.35"/>
+
+    <!-- Fauteuil + personne -->
+    <rect x="-38" y="-30" width="76" height="62" rx="10" fill="#222"/>
+    <rect x="-44" y="-44" width="88" height="18" rx="6" fill="#111"/>
+    <circle cx="0" cy="0" r="24" fill="#e8b98e" stroke="#7a5230" stroke-width="2"/>
+    <path d="M-10,18 L0,30 L10,18" fill="#7a5230"/>
+    <text x="58" y="-8" font-size="16" font-weight="bold" fill="#222">PERSONNE</text>
+    <text x="58" y="12" font-size="13" fill="#555">fauteuil à 1–1,5 m du mur</text>
+    <!-- micro -->
+    <circle cx="-8" cy="22" r="5" fill="#d33"/>
+    <text x="-150" y="40" font-size="13" fill="#d33">🎤 micro-cravate</text>
+
+    <!-- Table en verre -->
+    <rect x="-150" y="70" width="300" height="70" rx="4" fill="#bfe3ef" fill-opacity="0.55" stroke="#7fb3c4"/>
+    <text x="-75" y="100" text-anchor="middle" font-size="14" fill="#3b6f80">TABLE EN VERRE</text><text x="-75" y="120" text-anchor="middle" font-size="12" fill="#3b6f80">sous-main noir mat</text>
+
+    <!-- Téléphone 0° -->
+    <rect x="-16" y="255" width="32" height="56" rx="6" fill="#333"/>
+    <circle cx="0" cy="268" r="5" fill="#6cf"/>
+    <line x1="0" y1="250" x2="0" y2="35" stroke="#555" stroke-width="2" marker-end="url(#arr)" stroke-dasharray="8 5"/>
+    <text x="28" y="290" font-size="16" font-weight="bold" fill="#222">📱 S24 ULTRA</text>
+    <text x="28" y="309" font-size="13" fill="#555">trépied · 1x · 4K 30fps</text>
+    <text x="10" y="210" font-size="13" fill="#555">1,2 – 1,5 m</text>
+
+    <!-- Key light 315° -->
+    <g transform="translate(-212,212)">
+      <rect x="-30" y="-14" width="60" height="28" rx="4" fill="#fff" stroke="#e0a800" stroke-width="3" transform="rotate(-45)"/>
+    </g>
+    <text x="-300" y="265" font-size="16" font-weight="bold" fill="#b07d00">💡 LUMIÈRE PRINCIPALE</text>
+    <text x="-300" y="284" font-size="13" fill="#555">315° · 4500K · softbox / LED</text>
+    <text x="-300" y="301" font-size="13" fill="#555">au-dessus des yeux, ~1 m</text>
+
+    <!-- Réflecteur / fill 45° -->
+    <g transform="translate(212,212)">
+      <rect x="-34" y="-6" width="68" height="12" rx="3" fill="#fff" stroke="#999" stroke-width="2" transform="rotate(45)"/>
+    </g>
+    <text x="250" y="262" font-size="16" font-weight="bold" fill="#666">⬜ REMPLISSAGE</text>
+    <text x="250" y="281" font-size="13" fill="#555">45° · réflecteur blanc</text>
+
+    <!-- Back light 135° -->
+    <circle cx="160" cy="-260" r="13" fill="#ffc94d" stroke="#c88a00" stroke-width="2"/>
+    <text x="-60" y="-235" font-size="15" font-weight="bold" fill="#c88a00">✨ CONTRE-JOUR (option)</text>
+    <text x="-60" y="-217" font-size="13" fill="#555">135° · lumière chaude basse puissance</text>
+
+    <!-- Zone à éviter -->
+    <text x="-290" y="-60" font-size="13" fill="#b33">⛔ Ne pas mettre</text>
+    <text x="-290" y="-43" font-size="13" fill="#b33">de lampe derrière</text>
+    <text x="-290" y="-26" font-size="13" fill="#b33">le téléphone</text>
+    <text x="-290" y="-9" font-size="13" fill="#b33">(reflets dans le verre)</text>
+  </g>
+
+  <!-- ===== VUE DE CÔTÉ ===== -->
+  <line x1="60" y1="880" x2="940" y2="880" stroke="#ccc"/>
+  <text x="500" y="920" text-anchor="middle" font-size="22" font-weight="bold" fill="#222">Vue de côté – hauteurs</text>
+
+  <!-- sol -->
+  <line x1="80" y1="1240" x2="920" y2="1240" stroke="#888" stroke-width="3"/>
+  <!-- mur -->
+  <rect x="820" y="950" width="24" height="290" fill="#d9d6d0" stroke="#999"/>
+  <circle cx="820" cy="1020" r="34" fill="url(#glow)"/>
+  <rect x="812" y="995" width="8" height="50" fill="#2b2b2b"/>
+  <text x="740" y="975" font-size="13" fill="#b8860b">logo</text>
+
+  <!-- personne assise -->
+  <rect x="640" y="1150" width="70" height="12" fill="#222"/>
+  <rect x="700" y="1080" width="12" height="80" fill="#111"/>
+  <line x1="650" y1="1162" x2="650" y2="1240" stroke="#666" stroke-width="3"/>
+  <line x1="705" y1="1162" x2="705" y2="1240" stroke="#666" stroke-width="3"/>
+  <rect x="660" y="1070" width="34" height="82" rx="10" fill="#7a5230"/>
+  <circle cx="677" cy="1048" r="20" fill="#e8b98e" stroke="#7a5230" stroke-width="2"/>
+  <line x1="600" y1="1048" x2="140" y2="1048" stroke="#6cf" stroke-dasharray="4 6"/>
+  <text x="560" y="1040" font-size="12" fill="#3a8fb7" text-anchor="end">ligne des yeux ≈ 1,15–1,25 m</text>
+
+  <!-- table -->
+  <rect x="470" y="1160" width="140" height="8" fill="#bfe3ef" stroke="#7fb3c4"/>
+  <line x1="480" y1="1168" x2="480" y2="1240" stroke="#aaa" stroke-width="2"/>
+  <line x1="600" y1="1168" x2="600" y2="1240" stroke="#aaa" stroke-width="2"/>
+
+  <!-- trépied + téléphone -->
+  <line x1="200" y1="1060" x2="170" y2="1240" stroke="#444" stroke-width="3"/>
+  <line x1="200" y1="1060" x2="230" y2="1240" stroke="#444" stroke-width="3"/>
+  <line x1="200" y1="1060" x2="200" y2="1240" stroke="#444" stroke-width="3"/>
+  <rect x="192" y="1030" width="16" height="34" rx="3" fill="#333"/>
+  <text x="200" y="1270" text-anchor="middle" font-size="14" font-weight="bold">📱 hauteur des yeux</text>
+  <text x="200" y="1290" text-anchor="middle" font-size="12" fill="#555">objectif droit, pas incliné</text>
+
+  <!-- key light -->
+  <line x1="340" y1="985" x2="340" y2="1240" stroke="#444" stroke-width="3"/>
+  <rect x="318" y="960" width="44" height="34" rx="4" fill="#fff" stroke="#e0a800" stroke-width="3"/>
+  <line x1="365" y1="985" x2="650" y2="1045" stroke="#e0a800" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="340" y="945" text-anchor="middle" font-size="14" font-weight="bold" fill="#b07d00">💡 ~1,6–1,7 m</text>
+  <text x="480" y="1000" font-size="12" fill="#b07d00">angle ≈ 30° vers le bas</text>
+
+  <!-- distances -->
+  <line x1="200" y1="1310" x2="677" y2="1310" stroke="#555" marker-end="url(#arr)"/>
+  <text x="440" y="1330" text-anchor="middle" font-size="13" fill="#555">1,2 – 1,5 m</text>
+  <line x1="700" y1="1310" x2="820" y2="1310" stroke="#555" marker-end="url(#arr)"/>
+  <text x="760" y="1330" text-anchor="middle" font-size="13" fill="#555">1 – 1,5 m</text>
+
+  <!-- Encadré réglages -->
+  <rect x="80" y="1360" width="840" height="115" rx="12" fill="#222"/>
+  <text x="105" y="1393" font-size="17" font-weight="bold" fill="#ffd76a">RÉGLAGES PRO VIDÉO</text>
+  <text x="105" y="1420" font-size="15" fill="#eee">4K · 30 fps · 1/60 s · ISO 100–400 · Balance des blancs 4500K · HDR10+ OFF</text>
+  <text x="105" y="1445" font-size="15" fill="#eee">Mise au point verrouillée sur le visage · Expo −0,3 à −0,7 si le logo brûle</text>
+  <text x="105" y="1466" font-size="13" fill="#aaa">Masquer le câble et le point rouge sous le logo · Mode avion activé</text>
+</svg>
