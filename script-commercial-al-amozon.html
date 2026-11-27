@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Script commercial – Réponses aux messages – Al Amozon Academy</title>
+<title>Script commercial – Réponses aux messages – Al Mozon Academy</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#1F2A44;--red:#C8102E;--gold:#E8B10E;--bg:#F4F6FA;--line:#DDE2EC;--muted:#5A6275;--ok:#1E8E4E;--okbg:#E6F5EC;--warnbg:#FFF5DB}
@@ -60,7 +60,7 @@ footer{max-width:1000px;margin:0 auto 40px;padding:0 14px;font-size:12.5px;color
 <body>
 <div class="flag"></div>
 <header><div class="wrap">
-  <div class="brand" id="hdrBrand">Al Amozon Academy</div>
+  <div class="brand" id="hdrBrand">Al Mozon Academy</div>
   <h1>Script commercial : répondre aux messages</h1>
   <p>WhatsApp · Facebook · Instagram. Maximum <b>3 messages</b>, puis <b>l'appel</b>. Objectif de l'appel : <b>le rendez-vous pour le test de niveau</b>.</p>
 </div></header>
@@ -92,7 +92,7 @@ Règle légale : ne jamais promettre un visa ou un contrat de travail, et ne jam
 <script>
 /* ---------- Variables ---------- */
 const VARS=[
- ["centre","Nom du centre","Al Amozon Academy"],
+ ["centre","Nom du centre","Al Mozon Academy"],
  ["conseiller","Prénom du conseiller",""],
  ["tel","Téléphone / WhatsApp",""],
  ["adresse","Adresse du centre",""],
@@ -103,7 +103,7 @@ const VARS=[
  ["session","Date prochaine session",""],
  ["lien","Lien du test d'orientation",""],
 ];
-let V={};try{V=JSON.parse(localStorage.getItem("alamozon_vars")||"{}")}catch(e){}
+let V={};try{V=JSON.parse(localStorage.getItem("almozon_vars")||"{}")}catch(e){}
 VARS.forEach(([k,,d])=>{if(V[k]===undefined)V[k]=d;});
 
 /* ---------- Contenu ---------- */
@@ -261,7 +261,7 @@ function fill(s,html){
 }
 function renderVars(){
   $("vars").innerHTML=VARS.map(([k,l])=>`<div><label for="v_${k}">${l}</label><input type="text" id="v_${k}" value="${esc(V[k]||"")}"></div>`).join("");
-  VARS.forEach(([k])=>$("v_"+k).addEventListener("input",e=>{V[k]=e.target.value;try{localStorage.setItem("alamozon_vars",JSON.stringify(V))}catch(_){}
+  VARS.forEach(([k])=>$("v_"+k).addEventListener("input",e=>{V[k]=e.target.value;try{localStorage.setItem("almozon_vars",JSON.stringify(V))}catch(_){}
     if(k==="centre")$("hdrBrand").textContent=V.centre||"Votre centre";renderContent();}));
   $("hdrBrand").textContent=V.centre||"Votre centre";
 }
